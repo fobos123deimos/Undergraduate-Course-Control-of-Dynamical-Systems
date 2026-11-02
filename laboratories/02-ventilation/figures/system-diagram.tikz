@@ -1,0 +1,26 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex,font=\small,
+block/.style={draw=ink,fill=blue!4,rounded corners=2pt,minimum height=9mm,align=center,line width=.7pt,inner sep=5pt},
+sum/.style={circle,draw=ink,fill=white,minimum size=6mm,inner sep=0pt,line width=.7pt},
+sig/.style={->,draw=ink,line width=.85pt},
+fb/.style={->,draw=teal!70!black,line width=.85pt},
+dist/.style={->,draw=orange!75!black,line width=.85pt},
+tap/.style={circle,fill=ink,inner sep=1.4pt},
+note/.style={font=\footnotesize,align=center,text=black!75}]
+
+\node[draw=ink,fill=teal!4,rounded corners,minimum width=50mm,minimum height=22mm,align=center](v)at(7,2.3){Well-mixed volume\\$V=120\ \mathrm{m^3}$\\excess tracer $c$ (ppm)};
+\draw[sig](1,2.3)--node[above]{fresh airflow $q$}(v.west);
+\draw[sig](v.east)--node[above]{tracer outflow $qc$}(14,2.3);
+\draw[dist](7,4.5)--node[right]{source $S$}(v.north);
+\node[note]at(2.5,3.5){Inlet excess\\concentration $=0$};
+\node[note]at(12,3.5){Concentration is\\relative to the inlet.};
+\node[sum](s)at(6,-.7){$\Sigma$};
+\node[block](p)at(10,-.7){$\dfrac{1}{Vs+q_0}$};
+\node[block](gain)at(3,-2.3){$c_0$};
+\draw[sig](0,-.7)--node[above]{$\delta S$}node[pos=.93,below]{$+$}(s);
+\draw[dist](0,-2.3)--node[above]{$\delta q$}(gain);
+\draw[dist](gain)--(6,-2.3)--node[pos=.9,right]{$-$}(s);
+\draw[sig](s)--node[above]{$\delta S-c_0\delta q$}(p);
+\draw[sig](p)--(14,-.7)node[right]{$\delta c$};
+\node[note]at(11,-2.35){Local model around $q_0=3\ \mathrm{m^3/min}$\\$c_0=120\ \mathrm{ppm}$; omitted term: $-\delta q\,\delta c$};
+
+\end{tikzpicture}

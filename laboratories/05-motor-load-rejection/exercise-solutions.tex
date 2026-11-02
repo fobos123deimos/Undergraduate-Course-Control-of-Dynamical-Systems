@@ -1,0 +1,85 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Laboratory 05}
+{\color{ink}\LARGE\bfseries Laboratory 05}\par
+{\large Flywheel speed regulation under a load torque}\par
+\textbf{Worked solutions -- five integrated problems}\par
+{\small\textbf{Evidence boundary.} Original hypothetical scenarios. Derive, calculate and justify decisions; every numerical record is synthetic. Figures are conceptual and not to scale.}
+\smallskip\textbf{Shared nominal data.} Motor: $R=2\,\Omega$, $L=0.02$ H, $J=0.01$ kg m$^2$, $b=0.02$ N m s/rad and $k_t=k_e=0.1$ in consistent SI units. The nominal load is 0.03 N m. Saturation applies only where explicitly stated.
+\par\smallskip{\small\textbf{Study route.} Begin with balances, power and P/PI behavior. Problem 4(a,c) uses Routh stability from Laboratory 06; Problem 1(b) previews controllability developed in Laboratory 10. These are planned return tasks.}
+\task{1}{From armature current to flywheel motion}
+The illustrated DC motor drives a flywheel against bearing friction and an opposing load. Identify the two energy stores and distinguish back emf from mechanical load torque.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A voltage-driven motor converts armature current into shaft torque. The rotor and external brake introduce inertia, friction and load torque. The illustrative cutaway does not add magnetic saturation or friction to the stated linear model.}\end{center}
+\begin{enumerate}
+\item A motor has $R=2\,\Omega$, $L=0.02$ H, $J=0.01$ kg m$^2$, $b=0.02$ N m s/rad and $k_t=k_e=0.1$ in SI units. Define voltage $v$, current $i$, speed $\omega$ and opposing load torque $d$. Derive the two balance equations and both speed transfer functions.
+\answer The balances are $L\dot i=v-Ri-k_e\omega$ and $J\dot\omega=k_t i-b\omega-d$. Eliminating current gives $D(s)\Omega=k_t V-(Ls+R)D_{load}$, where $D(s)=(Ls+R)(Js+b)+k_tk_e=0.0002s^2+0.0204s+0.05$. Thus $G_v=0.1/D(s)$ and $G_d=-(0.02s+2)/D(s)$. The negative disturbance numerator encodes opposing torque. Voltage and load act at different physical locations.
+\item Use $x=[i,\omega]^T$ and voltage as control input. Write A, B and the load-input vector. Compute the determinant of the controllability matrix and interpret it.
+\answer The matrices are $A=\begin{bmatrix}-100&-5\\10&-2\end{bmatrix}$, $B=[50,0]^T$, and $E=[0,-100]^T$. Since $AB=[-5000,500]^T$, $[B\ AB]=\begin{bmatrix}50&-5000\\0&500\end{bmatrix}$ has determinant 25000. It has rank two, so the ideal voltage input can control both states. This algebraic property does not imply unlimited voltage or arbitrarily fast physically feasible control.
+\item Explain why controllability of the linear state model does not guarantee that a requested motion can be produced by a voltage-limited supply. Identify the missing constraint in an unconstrained controllability calculation.
+\answer The controllability matrix has full rank, so unconstrained input functions can connect states in the ideal linear model. That rank test places no bound on voltage, current, torque or maneuver duration. A real voltage constraint restricts admissible inputs and may make an equilibrium or a fast transition unreachable. The same controllable model requires 3.1 V for the stated 5 rad/s loaded equilibrium, which a 2 V supply cannot provide.
+\end{enumerate}
+
+\newpage
+\task{2}{Checking both torque and power at the supply limit}
+Before tuning feedback, determine whether the requested speed and load are physically compatible with the supply. Use equilibrium and energy balance as independent checks.
+\begin{enumerate}
+\item Find the current and voltage required to hold 5 rad/s against 0.03 N m load. If available voltage is limited to 2 V, find the largest sustainable positive speed for that load.
+\answer Mechanical equilibrium gives $i=(b\omega+d)/k_t=(0.02\cdot5+0.03)/0.1=1.3$ A. Then $v=Ri+k_e\omega=2(1.3)+0.5=3.1$ V. More generally $v=(Rb/k_t+k_e)\omega+Rd/k_t=0.5\omega+0.6$. A 2 V limit permits at most $(2-0.6)/0.5=2.8$ rad/s. Controller tuning cannot remove this equilibrium feasibility limit.
+\item At 5 rad/s and 0.03 N m load, calculate electrical input power, copper loss, viscous dissipation and useful load power. Verify conservation using the equilibrium from Problem 2(a).
+\answer With $v=3.1$ V and $i=1.3$ A, input power is $vi=4.03$ W. Copper loss is $Ri^2=3.38$ W. Viscous dissipation is $b\omega^2=0.5$ W and useful load power is $d\omega=0.15$ W. Their sum is 4.03 W. Electromagnetic conversion is $k_t i\omega=0.65$ W, equal to back-emf power $k_e\omega i$ because $k_t=k_e$ in the chosen SI convention. Stored energies are constant at equilibrium.
+\item At the largest loaded equilibrium speed permitted by a 2 V supply, calculate current, electrical input power, copper loss, viscous loss and useful load power. Verify their sum.
+\answer The speed is $(2-0.6)/0.5=2.8$ rad/s. Current is $(2-0.1(2.8))/2=0.86$ A. Input power is $2(0.86)=1.72$ W; copper loss is $2(0.86)^2=1.4792$ W; viscous loss is $0.02(2.8)^2=0.1568$ W; useful load power is $0.03(2.8)=0.084$ W. The losses and useful power sum to 1.72 W. Both energy-storage derivatives vanish at this equilibrium.
+\end{enumerate}
+
+\newpage
+\task{3}{Proportional tracking versus integral load rejection}
+Compare proportional and PI regulation of the same loaded flywheel. The controller's internal integral state is a voltage contribution, not an additional physical energy source.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}\par{\small Outer PI speed regulation around the electromechanical motor. The inner back-emf path and opposing load torque have explicit negative signs.}\end{center}
+\begin{enumerate}
+\item Use $v=k_p(r-\omega)$ with $k_p=0.8$, constant reference $r=5$ and load $d=0.03$. Find the equilibrium speed and tracking error from the physical equilibrium relation.
+\answer At equilibrium $v=0.5\omega+0.6$, while feedback gives $v=0.8(5-\omega)$. Thus $1.3\omega=3.4$ and $\omega=34/13\approx2.61538$ rad/s. The error is $5-34/13=31/13\approx2.38462$ rad/s. Even with zero load, finite proportional gain gives $\omega=4/1.3\approx3.07692$. Both reference offset and load rejection must be evaluated, rather than assuming proportional feedback enforces the setpoint exactly.
+\item Replace the controller by $v=k_p(r-\omega)+z$, $\dot z=k_i(r-\omega)$, with $k_p=0.8$, $k_i=1.6$. Find the equilibrium speed and integral state for $r=5$, $d=0.03$. State the conditions needed to use this equilibrium as a final-value prediction.
+\answer At a finite equilibrium with $k_i\ne0$, $\dot z=0$ forces $\omega=r=5$. The required voltage is still 3.1 V, so the zero proportional error leaves $z=3.1$ V. Convergence additionally requires stable closed-loop dynamics and an actuator capable of supplying that voltage. Integral action removes the nominal constant-load offset only when the requested equilibrium is feasible and reached; it does not prove stability by itself.
+\item Restore the 2 V supply constraint while retaining the 5 rad/s reference. What equilibrium claim from the ideal PI design becomes invalid, and what can anti-windup legitimately improve?
+\answer The ideal PI equilibrium requires zero tracking error and 3.1 V. With a 2 V supply, the largest loaded steady speed is 2.8 rad/s, so the 5 rad/s zero-error equilibrium is infeasible. Integral action continues requesting unavailable voltage unless constrained. Anti-windup can limit accumulated controller state and improve recovery after the command becomes feasible; it cannot supply the missing voltage or eliminate the capacity-limited steady error.
+\end{enumerate}
+
+\newpage
+\task{4}{A stable PI controller has two different closed-loop channels}
+Controller tuning changes reference tracking and load rejection through a shared denominator, but different numerators. Check stability before applying final-value arguments.
+\begin{enumerate}
+\item Derive the strict stability condition for positive PI gains. Decide whether $(k_p,k_i)=(0.8,1.6)$ and $(0.8,150)$ satisfy it, and interpret the equality boundary.
+\answer The characteristic polynomial is $0.0002s^3+0.0204s^2+(0.05+0.1k_p)s+0.1k_i$. Positive coefficients leave the cubic Routh condition $0.0204(0.05+0.1k_p)>0.00002k_i$, or $0<k_i<51+102k_p$. At $k_p=0.8$, the upper boundary is 132.6. The first design is stable; the second is unstable despite positive gains. Equality gives an imaginary-axis pair and is excluded from strict asymptotic stability.
+\item For an arbitrary stabilizing controller C, derive $\Omega/R$ and $\Omega/D_{load}$. Evaluate the latter at zero frequency for proportional gain 0.8 and for a stable PI controller with nonzero integral gain.
+\answer Use $\Omega=G_vC(R-\Omega)+G_dD_{load}$ to obtain $\Omega/R=CG_v/(1+CG_v)$ and $\Omega/D_{load}=G_d/(1+CG_v)$. At DC, $G_v(0)=2$ and $G_d(0)=-40$. Proportional gain 0.8 gives $-40/2.6=-200/13$ (rad/s)/(N m). A stable PI loop has infinite nominal DC loop gain and zero DC load-to-speed gain. The disturbance numerator is not $CG_v$.
+\item For $k_p=0.8$, impose the additional design rule that $k_i$ must stay at least 20 percent below its Routh upper boundary. Calculate the allowed positive interval and assess $k_i=1.6$. Explain what this rule does not measure.
+\answer The cubic condition is $k_i<51+102k_p$, giving the boundary 132.6 at $k_p=0.8$. A 20 percent algebraic reserve gives $0<k_i\le0.8(132.6)=106.08$, and 1.6 satisfies it. This is distance from a coefficient inequality under fixed nominal parameters. It is not the frequency-domain gain margin, a settling-time guarantee, or a robustness proof for simultaneous parameter changes.
+\end{enumerate}
+
+\newpage
+\task{5}{A reduced model and a load estimate during acceleration}
+The electrical time scale is short compared with the nominal mechanical one. Decide what may be neglected in a speed model and what must still be retained when estimating load.
+\begin{enumerate}
+\item Set L to zero and derive the reduced voltage-to-speed model and its time constant. Compare that time constant with $L/R$. Explain why this scale comparison is not a universal proof that inductance can be ignored.
+\answer With $L=0$, $D=RJ s+Rb+k_tk_e=0.02s+0.05$. Therefore $G_{red}=0.1/(0.02s+0.05)=2/(0.4s+1)$ and its time constant is 0.4 s. The nominal electrical scale is $L/R=0.01$ s, forty times shorter. This suggests a useful low-frequency approximation. High-bandwidth controllers, fast current transients and voltage switching can still excite electrical dynamics, so compare full and reduced responses over the intended operating bandwidth.
+\item Derive a steady load estimate using measured voltage and speed. Find the load-estimate error caused separately by a +0.1 V voltage bias and a +0.1 rad/s speed bias.
+\answer At steady state $i=(v-k_e\omega)/R$, so $\hat d=(k_t/R)v-(k_tk_e/R+b)\omega=0.05v-0.025\omega$. A +0.1 V bias adds $0.005$ N m to the estimate; a +0.1 rad/s bias subtracts $0.0025$ N m. This estimator assumes negligible derivatives and known parameters. During acceleration, omitting $J\dot\omega$ incorrectly assigns inertial torque to the load.
+\item Starting from the full balances, derive the exact load torque in terms of measured voltage, speed and their state derivatives. Find the transient bias in the steady load estimator and explain why noise complicates correcting it.
+\answer Eliminate current through $i=(v-L\dot i-k_e\omega)/R$. Then $d=(k_t/R)v-(k_tk_e/R+b)\omega-(k_tL/R)\dot i-J\dot\omega$. The steady estimator therefore overestimates true load by $(k_tL/R)\dot i+J\dot\omega$. A small electrical time constant does not remove inertial torque during acceleration. Derivative estimates can amplify measurement noise, so correcting the bias requires a suitable dynamic estimator or filtered derivative model, not unqualified numerical differencing.
+\end{enumerate}
+
+\end{document}

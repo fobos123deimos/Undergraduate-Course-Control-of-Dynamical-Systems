@@ -1,0 +1,44 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,tikz,hyperref,fvextra}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=3em
+
+\title{\color{ink}Lead-lag design for a normalized camera axis}
+\author{}
+\date{Original learning collection -- November 2026}
+\begin{document}
+\begin{center}{\LARGE\color{ink}Lead-lag design for a normalized camera axis}\\[5pt]{\small Original learning collection -- November 2026}\end{center}
+
+\textbf{Evidence note.} Original teaching scenario. Numerical parameters are deliberately chosen for learning. All generated data and curves are synthetic; no physical measurement is asserted.
+\section{Design brief}
+For $G(s)=1/[s(s+1)]$, design lead compensation with crossover $\omega_c=3\,\mathrm{rad/s}$ and target phase margin $55^\circ$, centering maximum lead at crossover. Add lag zero $0.03\,\mathrm{rad/s}$ and pole $0.006\,\mathrm{rad/s}$, then renormalize gain at $\omega_c$. Compare final phase margins, velocity constants $K_v$, ramp errors and reference responses.
+\section{Physical system}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A camera gimbal illustrates angular tracking and disturbance rejection. Its normalized plant is stipulated, with no claim that geometry alone determines its two poles.}\end{center}
+\section{Lead synthesis}
+At $\omega_c=3$, the plant phase is $-90^\circ-\tan^{-1}(3)$. Required additional phase is $\phi=55^\circ-180^\circ-\angle G(j3)$, a positive value less than 90 degrees. For
+\[C_a=K\frac{Ts+1}{\alpha Ts+1},\quad \alpha=\frac{1-\sin\phi}{1+\sin\phi},\quad T=\frac1{\omega_c\sqrt\alpha},\]
+the maximum phase lead occurs at the prescribed crossover. Its magnitude there is $K/\sqrt\alpha$, giving $K=\sqrt\alpha/|G(j\omega_c)|$.
+\section{Lag extension}
+Use $C_b=(1+s/0.03)/(1+s/0.006)$. Its DC gain is one and high-frequency gain is 0.2. Renormalize with $\gamma=1/|C_a(j3)C_b(j3)G(j3)|$. The combined controller is $\gamma C_aC_b$.
+The lag decreases the margin slightly; it does not preserve the lead-only margin exactly. Because its corner frequencies are far below crossover, the reduction is small while the low-frequency loop gain rises by approximately five.
+\section{Ramp accuracy}
+For this type-one plant, $K_v=\lim_{s\to0}sC(s)G(s)=C(0)$ and the unit-ramp error is $1/K_v$, provided the closed loop is stable. Reference-step final values remain one, so a step alone cannot reveal the improvement in ramp accuracy.
+\section{Tradeoffs}
+The slower lag dynamics can extend settling and store controller state. This normalized exercise does not include actuator saturation, camera inertia units, backlash or sensor noise; the controller is not a hardware calibration.
+\section{What to learn from the experiment}
+A meaningful compensation comparison needs both stability margin and low-frequency accuracy. Keep the slow lag transient visible when interpreting ramp error.
+\section{System sketch}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}
+\par\small\refstepcounter{figure}\label{fig:system}\textbf{Figure \thefigure.} Lead and lag sections are drawn separately so their gain normalization and frequency ordering can be analyzed independently.\end{center}
+\section{Executed computational evidence}
+\VerbatimInput[fontsize=\small,breaklines=true]{results.txt}
+\begin{center}\includegraphics[width=\linewidth,height=.46\textheight,keepaspectratio]{response.png}\end{center}
+\section{Method references}
+The equations use standard balance laws and feedback-control methods. Further explanation: \url{https://apmonitor.com/pdc/} and \url{https://fbsbook.org/}. Implementation documentation: \url{https://python-control.readthedocs.io/en/0.10.2/}. See the repository reference catalog for individual topics and videos.
+\end{document}

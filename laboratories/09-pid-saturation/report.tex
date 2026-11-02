@@ -1,0 +1,48 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,tikz,hyperref,fvextra}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=3em
+
+\title{\color{ink}PID regulation when the actuator saturates}
+\author{}
+\date{Original learning collection -- November 2026}
+\begin{document}
+\begin{center}{\LARGE\color{ink}PID regulation when the actuator saturates}\\[5pt]{\small Original learning collection -- November 2026}\end{center}
+
+\textbf{Evidence note.} Original teaching scenario. Numerical parameters are deliberately chosen for learning. All generated data and curves are synthetic; no physical measurement is asserted.
+\section{Design brief}
+A normalized position plant obeys $\ddot x+2\dot x+x=u$. Match ideal PID gains to poles $-2,-3,-4$. Implement derivative action on measured position using filter time constant $\tau_f=0.03\,\mathrm{s}$ and constrain $u\in[-2,2]$. Command $r=3$ for six seconds and then $r=0.2$. Compare ordinary integration with back-calculation gain $k_{aw}=8\,\mathrm{s^{-1}}$ and report recovery error over the final six seconds.
+\section{Physical system}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A mass, spring, damper and bounded force actuator physically realize the normalized second-order plant. Force saturation is included; contact, dry friction and travel stops are not.}\end{center}
+\section{Ideal pole matching}
+For an ideal PID $K_p+K_i/s+K_ds$, the closed-loop characteristic polynomial is $s^3+(2+K_d)s^2+(1+K_p)s+K_i$. Matching $(s+2)(s+3)(s+4)=s^3+9s^2+26s+24$ gives
+\[K_p=25,\qquad K_i=24,\qquad K_d=7.\]
+These desired poles describe an ideal linear controller, not the filtered saturated implementation.
+\section{Realizable controller states}
+Let $z$ be a low-pass filtered position, $\tau_f\dot z=x-z$, and let $I$ denote the integral contribution in actuator units. Define
+\[e=r-x,\quad u_* = K_pe+I-K_d(x-z)/\tau_f,\quad u=\operatorname{clip}(u_*,-2,2).\]
+Derivative action is applied to the measurement, avoiding the ideal derivative impulse from a reference step. The unsaturated characteristic polynomial becomes
+\[\tau_fs^4+(1+2\tau_f)s^3+[2+\tau_f(1+K_p)+K_d]s^2+[1+K_p+K_i\tau_f]s+K_i.\]
+Its roots must be checked separately.
+\section{Windup and back-calculation}
+Ordinary integration uses $\dot I=K_ie$. Back-calculation uses $\dot I=K_ie+8(u-u_*)$. The second term reduces the mismatch between requested and realizable actuator effort. It vanishes when unsaturated.
+The initial command 3 is infeasible because the plant's static gain is one and the actuator limit is 2. The experiment intentionally accumulates windup, then commands a feasible target. Integrate the two time intervals separately so the reference discontinuity is not smoothed by the solver.
+\section{Assessment}
+Compare the integral state, output, actuator and integral absolute error after the command reduction. Back-calculation improves this particular recovery; its gain is not a universal optimum and noisy measurements or other saturation limits can change the result.
+\section{What to learn from the experiment}
+An infeasible command cannot be repaired by controller gain. Anti-windup improves recovery after saturation rather than increasing physical actuator capacity.
+\section{System sketch}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}
+\par\small\refstepcounter{figure}\label{fig:system}\textbf{Figure \thefigure.} Filtered derivative acts on measurement. Back-calculation sends the actual-minus-requested actuator effort into the integral-state equation.\end{center}
+\section{Executed computational evidence}
+\VerbatimInput[fontsize=\small,breaklines=true]{results.txt}
+\begin{center}\includegraphics[width=\linewidth,height=.46\textheight,keepaspectratio]{response.png}\end{center}
+\section{Method references}
+The equations use standard balance laws and feedback-control methods. Further explanation: \url{https://apmonitor.com/pdc/} and \url{https://fbsbook.org/}. Implementation documentation: \url{https://python-control.readthedocs.io/en/0.10.2/}. See the repository reference catalog for individual topics and videos.
+\end{document}

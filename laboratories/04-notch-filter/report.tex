@@ -1,0 +1,43 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,tikz,hyperref,fvextra}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=3em
+
+\title{\color{ink}A passive notch filter and component tolerance}
+\author{}
+\date{Original learning collection -- November 2026}
+\begin{document}
+\begin{center}{\LARGE\color{ink}A passive notch filter and component tolerance}\\[5pt]{\small Original learning collection -- November 2026}\end{center}
+
+\textbf{Evidence note.} Original teaching scenario. Numerical parameters are deliberately chosen for learning. All generated data and curves are synthetic; no physical measurement is asserted.
+\section{Design brief}
+An ideal voltage source drives series $R$, $L$ and $C$. Measure the combined voltage $y=v_L+v_C$. Use $L=10\,\mathrm{mH}$, $C=100\,\mu\mathrm{F}$ and $R=10\,\Omega$. Derive the notch transfer, compare it with the capacitor-voltage response, and evaluate the effect of a $\pm10\%$ capacitance tolerance. Assume ideal components and an unloaded measurement.
+\section{Physical system}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A source excites the series RLC network; an ideal differential probe spans the combined inductor and capacitor. Measuring only the capacitor would produce a different transfer function. Wire placement is schematic.}\end{center}
+\section{Voltage division}
+The impedances are $Z_R=R$, $Z_L=sL$ and $Z_C=1/(sC)$. Measuring across the combined LC section gives
+\[G_n(s)=\frac{sL+1/(sC)}{R+sL+1/(sC)}=\frac{LCs^2+1}{LCs^2+RCs+1}.\]
+Measuring across C alone instead gives $G_C(s)=1/(LCs^2+RCs+1)$. Both share poles, but their zeros and frequency responses differ.
+\section{Nominal design}
+Here $LC=10^{-6}$ s$^2$, $RC=10^{-3}$ s, $\omega_0=1/\sqrt{LC}=1000$ rad/s and $\zeta=(R/2)\sqrt{C/L}=0.5$. The notch has zeros at $\pm j1000$ and stable poles $-500\pm j866.0254$. Its DC and high-frequency gains are one.
+\section{Tolerance analysis}
+At ideal resonance, the inductor and capacitor voltages cancel in their sum. A capacitance factor $a$ moves the notch to $\omega_0/\sqrt a$; a 10 percent tolerance is not a symmetric 10 percent frequency change. The first-order sensitivity is $\delta\omega_0/\omega_0\simeq-\delta C/(2C)$.
+\section{Physical interpretation}
+A zero in the measured sum does not mean zero branch current or zero energy in the individual elements. Resistance in the inductor, source impedance and output loading reduce notch depth and alter the ideal transfer function. The logarithmic plot is clipped only for display at very small magnitudes.
+\section{What to learn from the experiment}
+Output selection changes zeros even when the physical circuit is unchanged. An ideal notch is sensitive to component tolerance and omitted losses.
+\section{System sketch}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}
+\par\small\refstepcounter{figure}\label{fig:system}\textbf{Figure \thefigure.} Series RLC network with output measured across L and C together. The output probe spans those two components, not the whole source.\end{center}
+\section{Executed computational evidence}
+\VerbatimInput[fontsize=\small,breaklines=true]{results.txt}
+\begin{center}\includegraphics[width=\linewidth,height=.16\textheight,keepaspectratio]{response.png}\end{center}
+\paragraph{Method references.}
+The equations use standard balance laws and feedback-control methods. Further explanation: \url{https://apmonitor.com/pdc/} and \url{https://fbsbook.org/}. Implementation documentation: \url{https://python-control.readthedocs.io/en/0.10.2/}. See the repository reference catalog for individual topics and videos.
+\end{document}

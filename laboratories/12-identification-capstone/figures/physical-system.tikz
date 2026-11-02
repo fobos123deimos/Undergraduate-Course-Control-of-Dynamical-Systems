@@ -1,0 +1,37 @@
+\begin{tikzpicture}[
+font=\sffamily\small,>=Latex,line cap=round,line join=round,
+wall/.style={draw=ink,line width=1.2pt,fill=blue!5},
+water/.style={fill=cyan!25,draw=none},
+metal/.style={draw=ink,fill=blue!12,line width=.9pt},
+flow/.style={->,draw=blue!65!black,line width=1.2pt},
+heat/.style={->,draw=orange!85!black,line width=1.1pt},
+measure/.style={->,draw=teal!70!black,line width=.9pt},
+dim/.style={<->,draw=ink!65,line width=.6pt},
+spring/.style={draw=ink,decorate,decoration={coil,aspect=.5,segment length=4pt,amplitude=3pt}},
+wire/.style={draw=ink,line width=1pt},
+lab/.style={align=center,font=\sffamily\small},
+smalllab/.style={align=center,font=\sffamily\scriptsize}]
+
+\fill[water](1,.7)rectangle(7,3.45);
+\draw[wall,fill=none](1,4.4)--(1,.7)--(7,.7)--(7,4.4);
+\draw[blue!55](1,3.45)--(7,3.45);
+\draw[metal](3.3,4)rectangle(4.7,4.7);
+\draw[wire](4,4)--(4,1.7)(3.1,1.8)--(4.9,1.8)(3.1,1.8)--(2.9,2.1)(4.9,1.8)--(5.1,1.5);
+\draw[orange!85!black,line width=1.3pt,decorate,decoration={zigzag,segment length=6pt,amplitude=3pt}](1.8,1.1)--(6.2,1.1);
+\draw[heat](.2,1.1)--(1.7,1.1);
+\node[smalllab]at(1.7,.1){heater input $u$};
+\node[lab]at(4,2.9){stirred thermal inventory\\temperature deviation $x$};
+\draw[heat](1.2,3.8)--(.1,4.5);
+\node[smalllab]at(1.5,4.9){wall heat leakage};
+\draw[flow](.2,5.65)--(2.3,5.65)--(2.3,3.8);
+\node[smalllab]at(4.8,5.65){matched inlet at ambient temperature};
+\draw[blue!45,line width=6pt](7,2.5)--(10,2.5)--(10,1.2)--(13,1.2);
+\draw[flow](7.5,2.5)--(9,2.5);
+\draw[teal!70!black,line width=2pt](12,1.2)--(12,2.6);
+\fill[teal!70!black](12,1.2)circle(.13);
+\draw[measure](12,2.6)--(13.3,2.6);
+\node[smalllab]at(12.3,3.2){remote readout $y$};
+\node[lab]at(10.2,4.3){transport delay $\theta$\\ideal plug-flow path};
+\node[smalllab]at(9.2,.25){$y(t)=x(t-\theta)$};
+\node[lab]at(7,-.75){One physical interpretation of a first-order-plus-delay model};
+\end{tikzpicture}

@@ -1,0 +1,25 @@
+name: Validate original learning materials
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python tools/validate.py --notebooks
+      - run: python tools/validate_exercises.py
+      - run: python tools/validate_integrated.py
+      - run: python tools/validate_notation.py
+  octave:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y octave octave-control gnuplot-nox fonts-freefont-otf
+      - run: octave --no-gui --quiet --eval "addpath('matlab'); addpath('simulink'); assert(nargin('build_models') == 1); graphics_toolkit('gnuplot'); set(0,'defaultfigurevisible','off'); for number=1:12, run_lesson(number); close all; end"

@@ -1,0 +1,84 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Laboratory 09}
+{\color{ink}\LARGE\bfseries Laboratory 09}\par
+{\large PID regulation when the actuator saturates}\par
+\textbf{Worked solutions -- five integrated problems}\par
+{\small\textbf{Evidence boundary.} Original hypothetical scenarios. Derive, calculate and justify decisions; every numerical record is synthetic. Figures are conceptual and not to scale.}
+\smallskip\textbf{Shared nominal data.} Nominal plant: $\ddot y+2\dot y+y=u$. The physical realization has $m=1$ kg, $b=2$ N s/m and $k=1$ N/m. Ideal PID pole targets are $-2,-3,-4$; constrained cases impose $|u|\le2$.
+\task{1}{Pole placement for a force-limited positioning stage}
+The physical illustration gives one realization of $\ddot y+2\dot y+y=u$: a 1 kg carriage, a 2 N s/m damper and a 1 N/m spring, driven by an ideal force actuator. Position is in m and force in N.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A mass, spring, damper and bounded force actuator physically realize the normalized second-order plant. Force saturation is included; contact, dry friction and travel stops are not.}\end{center}
+\begin{enumerate}
+\item For $G=1/(s^2+2s+1)$, use ideal PID $C=k_p+k_i/s+k_ds$. Match the closed-loop denominator to $(s+2)(s+3)(s+4)$ and find all three gains.
+\answer The characteristic equation becomes $s^3+(2+k_d)s^2+(1+k_p)s+k_i=0$. The desired polynomial expands to $s^3+9s^2+26s+24$. Coefficient matching gives $k_d=7$, $k_p=25$ and $k_i=24$. This is an ideal linear design with no derivative filter or actuator limit. The subsequent implementation changes must be checked separately.
+\item Compare $u=k_pe+k_i\int e\,dt+k_d\dot e$ with $u=k_pe+k_i\int e\,dt-k_d\dot y$, where $e=r-y$. Derive both reference numerators for the preceding plant and explain derivative kick.
+\answer Both implementations produce the same ideal characteristic denominator $s^3+9s^2+26s+24$. Derivative on error gives reference numerator $7s^2+25s+24$; derivative on measurement gives $25s+24$. A step in r has a distributional derivative, so differentiating error requests an impulsive control component. Differentiating measurement removes that direct reference impulse. It still reacts to measurement noise and does not eliminate proportional jumps.
+\item For a 3 m reference step, determine the impulsive contribution requested by ideal derivative-on-error action with the designed $k_d$. Explain why matching the nominal poles does not make that command physically realizable.
+\answer The designed derivative gain is $k_d=7$ N s/m. A reference jump of 3 m has distributional derivative $3\delta(t)$ m/s, so derivative-on-error requests $21\delta(t)$ N, an impulse of area 21 N s. A finite force actuator cannot realize an ideal impulse. Moving derivative action to the measurement removes the direct reference-step impulse, but saturation, bandwidth and the filtered controller still require separate analysis.
+\end{enumerate}
+
+\newpage
+\task{2}{Implementing a filtered controller as a state model}
+Replace the ideal derivative by a first-order filter and retain the resulting additional dynamics. Compare a transfer-function calculation with a state-equation calculation.
+\begin{enumerate}
+\item Use derivative-on-measurement $D_f=7s/(0.03s+1)$. Derive a first-order filter-state implementation and its high-frequency gain. Give the units of the filter time constant.
+\answer Let $0.03\dot z=y-z$. Then $(y-z)/0.03=sY/(0.03s+1)$ in the zero-state Laplace domain. Implement the derivative contribution as $-7(y-z)/0.03$. The magnitude approaches $7/0.03\approx233.333$ at high frequency, rather than growing without bound. The filter constant is 0.03 s. A bounded gain can still amplify noise substantially; filtering is not equivalent to noise elimination.
+\item With gains 25, 24 and 7 and filter constant 0.03, derive the unsaturated characteristic polynomial. Verify strict stability using the quartic Routh inequalities.
+\answer Combining the PI and filtered derivative gives characteristic polynomial $s(0.03s+1)(s^2+2s+1)+(25s+24)(0.03s+1)+7s^2$. It expands to $0.03s^4+1.06s^3+9.78s^2+26.72s+24$. For positive coefficients, check $a_3a_2>a_4a_1$ and $a_3a_2a_1>a_4a_1^2+a_3^2a_0$. Here $10.3668>0.8016$ and approximately $277.001>48.385$, so the filtered linear system is stable. Its poles are not exactly the original three target poles.
+\item Use states $[y,v,z,I]^T$, where $v=\dot y$ and $\tau_f\dot z=y-z$. Derive the unsaturated zero-reference state matrix and explain how its eigenvalues check the filtered characteristic polynomial.
+\answer With $u=-k_py+I-k_d(y-z)/\tau_f$, the matrix is \[A_f=\begin{bmatrix}0&1&0&0\\-1-k_p-k_d/\tau_f&-2&k_d/\tau_f&1\\1/\tau_f&0&-1/\tau_f&0\\-k_i&0&0&0\end{bmatrix}.\] For $(k_p,k_i,k_d,\tau_f)=(25,24,7,0.03)$, its characteristic polynomial is the quartic from part (b), divided by its leading coefficient 0.03. Comparing all four eigenvalues checks the filter-state realization independently. It does not describe the saturated nonlinear regime.
+\end{enumerate}
+
+\newpage
+\task{3}{An unreachable reference with a bounded integral state}
+The requested position exceeds the equilibrium capability of the force actuator. Analyze both ordinary integration and back-calculation without confusing bounded controller state with successful tracking.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}\par{\small Filtered derivative acts on measurement. Back-calculation sends the actual-minus-requested actuator effort into the integral-state equation.}\end{center}
+\begin{enumerate}
+\item The plant satisfies $\ddot y+2\dot y+y=u$ and the actuator is limited to $[-2,2]$. Is a constant reference of 3 feasible? What is the largest positive equilibrium output, and what happens to an ordinary integral state if the tracking error stays at one?
+\answer At equilibrium $y=u$, so the largest feasible positive output is 2. A reference of 3 cannot be reached. If output settles near 2, error stays near one and the ordinary integral derivative tends to $k_i e=24$. The integral state therefore continues increasing instead of converging. The feasible equilibrium and the controller's internal-state behavior are separate issues; a stable unsaturated polynomial does not prevent windup.
+\item Use $\dot I=24e+k_{aw}(u-u_*)$ with $k_{aw}=8$. At an instant when $e=1$, requested effort $u_*=5$ and saturated effort $u=2$, evaluate $\dot I$. Find the request excess that balances integration for a constant positive error e.
+\answer Substitution gives $\dot I=24+8(2-5)=0$. Generally the balance is $u_*-u=24e/8=3e$. Back-calculation can prevent unbounded accumulation by allowing a finite difference between requested and delivered effort. It does not make an infeasible reference feasible and does not generally force the requested effort to equal the saturation limit while error persists.
+\item Find a saturated steady state for $r=3$, $u_{\max}=2$ and $k_{aw}=8$, including $y,v,z,I,u_*$, for the filtered derivative-on-measurement implementation. State the remaining tracking error.
+\answer At a steady state with positive saturation, $y=u=2$, $v=0$, $z=y=2$ and $e=r-y=1$. The derivative contribution vanishes. Requiring $\dot I=24+8(2-u_*)=0$ gives $u_*=5$. Since $u_*=25e+I$, the integral state is $I=-20$ N. Thus back-calculation permits a bounded controller state while error remains 1 m. This algebraic equilibrium is not a claim that every initial condition converges to it.
+\end{enumerate}
+
+\newpage
+\task{4}{Anti-windup speed and numerical step-size limits}
+During a fixed saturation interval, the anti-windup correction can be faster than the plant. Examine that local time scale before choosing a numerical integrator.
+\begin{enumerate}
+\item Assume, only for this local calculation, that $e=0.4$ and $u-u_*=-0.5$ remain constant for 2 s. Find the integral-state increment with and without back-calculation gain 8. Explain the scope of this calculation.
+\answer Without correction, $\Delta I=(24\cdot0.4)2=19.2$. With correction, $\Delta I=[24\cdot0.4+8(-0.5)]2=11.2$. The correction reduces the increment by 8 effort units. In a full closed-loop simulation, error and saturation mismatch evolve with the states, so these fixed-input increments cannot replace numerical integration of the coupled dynamics. They are an accounting check on sign and units.
+\item Hold y, r and the filtered derivative contribution fixed while the actuator remains at a fixed saturation limit. Derive the homogeneous dynamics of a perturbation in integral state I. Compare its time constant for gains 8 and 40.
+\answer Under this frozen-state approximation, requested effort has the form $u_*=a+I$ with constant a. Then $\dot I=24e+k_{aw}(u-a-I)$. Subtracting two trajectories gives $\delta\dot I=-k_{aw}\delta I$. The correction time constant is $1/k_{aw}$: 0.125 s for 8 and 0.025 s for 40. A larger gain makes this correction faster but can create numerical stiffness or interact with other dynamics; the frozen-state result is not a full-loop stability proof.
+\item Apply explicit Euler to the homogeneous local integral-state perturbation. Derive the strict step-size condition for its decay and evaluate it for gains 8 and 40. Explain why satisfying this condition alone is insufficient for the full simulation.
+\answer The local equation is $\delta\dot I=-k_{aw}\delta I$, so Euler gives $\delta I_{k+1}=(1-hk_{aw})\delta I_k$. Strict decay requires $|1-hk_{aw}|<1$, or $0<h<2/k_{aw}$. The bounds are 0.25 s for gain 8 and 0.05 s for gain 40. The full model also contains plant, filter, switching and coupling dynamics; this scalar test is a necessary check of this isolated mode, not a universal simulation step-size guarantee.
+\end{enumerate}
+
+\newpage
+\task{5}{A reproducible recovery comparison with an explicit evidence limit}
+The reference becomes feasible after an initial saturated interval. Compare recovery using both tracking and actuator records, keeping all data explicitly synthetic.
+\begin{enumerate}
+\item A synthetic experiment commands 3 until 6 s, then 0.2 until 12 s. Define recovery IAE on the second interval. Given values 9.756216 without back-calculation and 1.841207 with it, calculate the percentage reduction and discuss what the metric omits.
+\answer Use $IAE=\int_6^{12}|0.2-y(t)|\,dt$. The reduction is $100(1-1.841207/9.756216)\approx81.13\%$. This compares integrated tracking error over the same window and input sequence. It does not alone quantify peak excursion, control movement, noise amplification or performance outside the interval. The reported numbers come from the declared synthetic model and numerical setup, not hardware measurements.
+\item Specify a numerical protocol for comparing the two anti-windup settings fairly. Include the reference discontinuity, time resolution, metrics and the evidence label. Explain why plotting only the requested effort is insufficient.
+\answer Use the same plant, gains, initial states, command and saturation limits. Integrate separately before and after 6 s, passing the final state continuously across the command change. Save requested effort $u_*$ and actual saturated effort u, integral state and output. Refine tolerances and maximum step size until recovery IAE and peaks change negligibly. Report the interval, solver settings and synthetic origin. Requested effort alone hides what the plant actually received and can conceal saturation-induced differences.
+\item Suppose a design objective is $J={\rm IAE}+\lambda\int_6^{12}\dot u(t)^2\,dt$ with $\lambda>0$. Can the supplied two IAE values alone rank the controllers under this objective? Specify the additional records and numerical care required.
+\answer No. IAE ranks the stated tracking metric, but the actuator-rate integral has not been supplied. Save the actual limited input $u(t)$ for both runs and state the actuator bandwidth or smoothing model before estimating its derivative. An ideal input jump can make a squared-derivative cost ill-defined; a rate-limited actuator model or a clearly specified discrete variation penalty resolves the definition. Report both terms and a time-resolution study, rather than inventing an unrecorded control-effort metric.
+\end{enumerate}
+
+\end{document}

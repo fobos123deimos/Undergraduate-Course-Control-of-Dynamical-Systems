@@ -1,0 +1,84 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Laboratory 12}
+{\color{ink}\LARGE\bfseries Laboratory 12}\par
+{\large A synthetic process from identification to validation}\par
+\textbf{Worked solutions -- five integrated problems}\par
+{\small\textbf{Evidence boundary.} Original hypothetical scenarios. Derive, calculate and justify decisions; every numerical record is synthetic. Figures are conceptual and not to scale.}
+\smallskip\textbf{Shared nominal data.} Synthetic process: $G(s)=1.8e^{-0.6s}/(4s+1)$. Identification and validation use separate generated records. No parameter estimate or fitted response is a physical measurement.
+\task{1}{Inferring an aggregate thermal process from a step}
+The illustration shows a well-mixed thermal inventory followed by an ideal transport delay. The drawing supplies a physical interpretation, while the declared parameters define a synthetic teaching model.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A stirred thermal inventory followed by ideal transport is one possible physical interpretation of the identified transfer function. The effective conductance includes wall leakage and through-flow heat removal. Its fitted gain and time constant do not separately determine capacity, conductance and heater efficiency.}\end{center}
+\begin{enumerate}
+\item A synthetic process is $G(s)=K e^{-\theta s}/(\tau s+1)$ with $K=1.8$, $\tau=4$ s and $\theta=0.6$ s. A 2-unit step starts at $t_0=2$ s. Derive the zero-state output and find its final value and the time at which it reaches 63.212 percent of that final value.
+\answer For $t<2.6$, output is zero. Thereafter $y(t)=3.6[1-e^{-(t-2.6)/4}]$. The final output is 3.6. The fraction $1-e^{-1}$ occurs one time constant after the delayed onset, at $t=2+0.6+4=6.6$ s. Measuring the time from zero or from the original step without accounting for delay would overestimate the time constant.
+\item In a deliberately noise-free synthetic step record with amplitude 2, the final output is 3.6, onset occurs 0.6 s after input changes, and the 63.212 percent point occurs 4 s after onset. Recover K, delay and time constant. Explain two obstacles with noisy sampled data.
+\answer The gain is final change divided by input amplitude: $K=3.6/2=1.8$. Onset identifies $\theta=0.6$ s, and the post-onset fraction time identifies $\tau=4$ s. Noise makes a threshold-defined onset ambiguous, while finite sampling quantizes or blurs event timing. A noisy finite record may not reach a clear plateau. Joint model fitting with uncertainty assessment is preferable to treating one threshold reading as exact.
+\item For $C\dot x=\eta u-Hx$ followed by pure delay, relate $K,\tau$ to $C,\eta,H$. Show that $K=1.8$, $\tau=4$ do not uniquely identify all three physical parameters.
+\answer The undelayed transfer is $\eta/(Cs+H)$, so $K=\eta/H$ and $\tau=C/H$. Taking $\eta=1$ gives $H=5/9$ and $C=20/9$ in consistent units. Multiplying $\eta,H,C$ by any common positive factor leaves both identified ratios unchanged. Consequently a perfect input--output fit does not uniquely recover all physical parameters. The delay is a separate transport idealization; tank geometry is not inferred from the illustration.
+\end{enumerate}
+
+\newpage
+\task{2}{Fitting a delayed model without leaking validation information}
+Fit only the training record, using an admissible parameterization. Keep independent excitation and noise for validation, and examine how the numerical delay representation affects optimization.
+\begin{enumerate}
+\item Write a least-squares objective for fitting K, time constant and delay to sampled step data. Propose a positive-parameter reparameterization and explain its limitation when zero delay is a plausible model.
+\answer Let $\hat y_i=A K[1-\exp(-\max(t_i-t_0-\theta,0)/\tau)]$. Minimize $J=\sum_i(y_i-\hat y_i)^2$. Setting $K=e^{\eta_K}$, $\tau=e^{\eta_\tau}$ and $\theta=e^{\eta_\theta}$ enforces strict positivity during unconstrained optimization. It excludes exactly zero delay and assumes positive process gain. If zero delay is plausible, compare a separate zero-delay fit or use bounds allowing $\theta=0$. The parameterization should express the intended model class rather than silently exclude candidates.
+\item Explain why reporting only training RMSE after fitting a noisy step response gives incomplete evidence. Specify a held-out synthetic input record and noise-generation procedure that avoids reusing the training noise.
+\answer The optimizer has already used training residuals to choose parameters, so training error can reward overfitting and reveal little about other excitation patterns. Freeze the fitted parameters, then apply a multistep input with changes at 1, 8, 15 and 22 s and independently generated noise. Evaluate predictions without refitting. Keep the random seed or generator state reproducible while using distinct draws. This tests generalization within a synthetic plant class, not agreement with a real process.
+\item What happens if a gradient-based fit represents delay only by a buffer rounded to an integer number of fixed time steps? Propose a more informative fitting representation and a subsequent implementation check.
+\answer Rounding makes the predicted output piecewise constant with respect to delay between sample thresholds; its derivative can be zero over intervals and jump at their boundaries. This gives misleading gradient information. Fit the analytic delayed-step response or a justified fractional-delay/interpolation model with explicit bounds. Then test the selected implementation on an independent multistep input, including delay onset and a time-step refinement study. Good optimization of one representation does not validate another automatically.
+\end{enumerate}
+
+\newpage
+\task{3}{A held-out multistep test with a statistical reference}
+The validation record uses new input transitions and independent noise. Interpret residual magnitude using a specified stochastic model rather than claiming a perfect model from one small RMSE.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}\par{\small Training selects parameters; held-out validation freezes them. Separate noise records avoid reusing training residuals as validation evidence.}\end{center}
+\begin{enumerate}
+\item Use input increments $+1$ at 1 s, $-0.6$ at 8 s, $+1.1$ at 15 s and $-0.8$ at 22 s. Write the exact synthetic model output and find its eventual equilibrium.
+\answer For increments $\Delta u_j$ at times $t_j$, superposition gives $y(t)=K\sum_j\Delta u_j[1-e^{-\max(t-t_j-\theta,0)/\tau}]$. Each term is zero until its delayed onset. The final input level is $1-0.6+1.1-0.8=0.7$, so $y_\infty=1.8(0.7)=1.26$. Negative increments reduce the input level; they are not negative absolute input levels by themselves.
+\item Validation adds independent zero-mean Gaussian noise of standard deviation 0.015. Explain the expected mean squared residual for a perfect deterministic model. Does a realized RMSE of 0.0145 prove the identified dynamics are exact?
+\answer For a perfect deterministic prediction, residuals equal noise and $E[r_i^2]=\sigma^2=0.000225$. Therefore the expected sample MSE is 0.000225, while finite-sample RMSE fluctuates and its expectation is not exactly $\sigma$ because of the square root. An RMSE of 0.0145 is compatible with this noise scale but does not prove exact parameters. Bias, time correlation, input-correlated errors and performance on different excitation records need separate inspection.
+\item For a perfect fixed deterministic model and $N=400$ independent Gaussian validation errors with $\sigma=0.015$, derive a central 95 percent reference interval for realized RMSE. Explain why it is not a confidence interval proving the fitted dynamics correct.
+\answer Under exactly these assumptions, $N\,{\rm RMSE}^2/\sigma^2\sim\chi^2_N$. The central interval is $[\sigma\sqrt{\chi^2_{400,0.025}/400},\sigma\sqrt{\chi^2_{400,0.975}/400}]$. It is approximately $[0.01396,0.01604]$; the executable check reports precise endpoints. A value 0.0145 is compatible with this noise model, but that is not evidence that every dynamic parameter is correct. Estimated parameters, correlated residuals or model mismatch change the interpretation.
+\end{enumerate}
+
+\newpage
+\task{4}{Tuning a PI law subject to uncertain steady capability}
+Treat the tuning rule as a proposal and separately test whether the actuator can maintain the requested operating point under gain uncertainty and a constant disturbance.
+\begin{enumerate}
+\item Use $k_p=\tau/[K(\lambda+\theta)]$, $k_i=k_p/\tau$ with $\lambda=2$ s and nominal parameters. Calculate both gains and their changes if the assumed delay rises to 0.9 s.
+\answer Nominally $k_p=4/[1.8(2.6)]=100/117\approx0.854701$ and $k_i=25/117\approx0.213675$. At delay 0.9 s, $k_p=4/[1.8(2.9)]=200/261\approx0.766284$ and $k_i=50/261\approx0.191571$. The larger assumed delay reduces aggressiveness in this tuning rule. These are proposed gains, not a proof of constrained closed-loop stability for every uncertain process.
+\item The process input is constrained to $[0,2]$, and the reference is one. A constant disturbance of $-0.2$ is added inside the first-order state equation as $\tau\dot y=-y+Ku(t-\theta)-0.2$. Find the required equilibrium input before and after the disturbance.
+\answer Before the disturbance, $u_{eq}=1/K=5/9\approx0.555556$. Afterward $0=-1+1.8u-0.2$, so $u_{eq}=1.2/1.8=2/3\approx0.666667$. Both fit within $[0,2]$. The disturbance here is in output-equivalent units inside the state balance. A disturbance added to the actuator input would be multiplied by K and require a different compensation calculation.
+\item Suppose the true gain lies in $[1.5,2.1]$, $u\in[0,2]$, and the disturbance in the state equation is $-0.2$. Find the largest reference guaranteed feasible at equilibrium for all allowed gains. Can increasing $\lambda$ make a reference of 3 feasible?
+\answer The equilibrium is $y=Ku-0.2$. The smallest guaranteed maximum output occurs at $K=1.5$, giving $r_{\max}=1.5(2)-0.2=2.8$. A reference of 3 requires $u=3.2/K$, which exceeds 2 at the low-gain endpoint. Changing $\lambda$ changes the proposed PI gains and response speed, not the physical equilibrium relation or actuator capacity. Feasibility alone does not prove delayed closed-loop stability across the uncertainty set.
+\end{enumerate}
+
+\newpage
+\task{5}{Implementing a noninteger transport delay}
+The nominal simulation uses an exactly aligned delay, while a fitted delay need not align with the numerical grid. Preserve this distinction in uncertainty tests and reproduction notes.
+\begin{enumerate}
+\item Let $h=0.01$ s and delay 0.6 s, with zero-based indexing. Derive the exact held-input plant update and state which stored control sample is used at index k. Specify the first index at which an initial command $u_0$ influences the update.
+\answer There are $N=\theta/h=60$ delay intervals. With $a=e^{-h/\tau}$, use $y_{k+1}=ay_k+(1-a)[K u_{k-N}+d_k]$ for $k\ge N$ and zero delayed input for $k<N$. The first affected update is $k=60$, mapping $y_{60}$ to $y_{61}$ using $u_0$. Before that, the initial command is still inside the delay buffer. The sample value at time 0.6 s is unchanged, while its right-hand evolution starts responding.
+\item The fitted parameters are approximately $[1.800025,3.993491,0.604289]$. Describe how to evaluate delay and gain uncertainty without claiming physical validation. Include training/validation separation, actuator limits and a numerical convergence check.
+\answer Freeze the fitted controller, choose an explicitly declared grid or distribution of synthetic gain and delay variations, and run separate closed-loop simulations with the same limits and reference/disturbance schedule. Record stability indicators, tracking error, peak output and time in saturation. Keep the identification record separate from held-out prediction tests. Refine the integration interval and delay representation to check numerical convergence. Report only the tested parameter range and model class; finite simulations do not establish universal robustness or fidelity to real equipment.
+\item For $\theta=qh+\delta$ with integer $q$ and $0\le\delta<h$, derive the exact held-input update of the first-order process over one step. Identify both historical input samples used and apply the indexing rule to $\theta=0.604289$ s, $h=0.01$ s.
+\answer Let $a=e^{-h/\tau}$ and $b=e^{-(h-\delta)/\tau}$. During the first $\delta$ seconds the delayed input is $u_{k-q-1}$; during the remainder it is $u_{k-q}$. Integrating both subintervals gives $y_{k+1}=ay_k+K[(b-a)u_{k-q-1}+(1-b)u_{k-q}]$. Here $q=60$ and $\delta=0.004289$ s. Negative-index inputs use the declared prehistory, typically zero. This exponential weighting is the exact update for the stipulated zero-order hold; simply rounding the delay changes the model.
+\end{enumerate}
+
+\end{document}

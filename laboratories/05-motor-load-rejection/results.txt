@@ -1,0 +1,3 @@
+P: final simulated speed=2.615385 rad/s
+PI: final simulated speed=5.000000 rad/s
+Required ideal steady voltage at 5 rad/s with load: 3.100000 V

@@ -1,0 +1,74 @@
+[
+  {
+    "module": "01-thermal-enclosure",
+    "script_passed": true,
+    "notebook_passed": true,
+    "saved_figures": 1
+  },
+  {
+    "module": "02-ventilation",
+    "script_passed": true,
+    "notebook_passed": true,
+    "saved_figures": 1
+  },
+  {
+    "module": "03-vibration-isolation",
+    "script_passed": true,
+    "notebook_passed": true,
+    "saved_figures": 1
+  },
+  {
+    "module": "04-notch-filter",
+    "script_passed": true,
+    "notebook_passed": true,
+    "saved_figures": 1
+  },
+  {
+    "module": "05-motor-load-rejection",
+    "script_passed": true,
+    "notebook_passed": true,
+    "saved_figures": 1
+  },
+  {
+    "module": "06-root-locus",
+    "script_passed": true,
+    "notebook_passed": true,
+    "saved_figures": 1
+  },
+  {
+    "module": "07-delay-budget",
+    "script_passed": true,
+    "notebook_passed": true,
+    "saved_figures": 1
+  },
+  {
+    "module": "08-camera-compensation",
+    "script_passed": true,
+    "notebook_passed": true,
+    "saved_figures": 1
+  },
+  {
+    "module": "09-pid-saturation",
+    "script_passed": true,
+    "notebook_passed": true,
+    "saved_figures": 1
+  },
+  {
+    "module": "10-observer-control",
+    "script_passed": true,
+    "notebook_passed": true,
+    "saved_figures": 1
+  },
+  {
+    "module": "11-digital-control",
+    "script_passed": true,
+    "notebook_passed": true,
+    "saved_figures": 1
+  },
+  {
+    "module": "12-identification-capstone",
+    "script_passed": true,
+    "notebook_passed": true,
+    "saved_figures": 1
+  }
+]

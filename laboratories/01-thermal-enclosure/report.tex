@@ -1,0 +1,47 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,tikz,hyperref,fvextra}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=3em
+
+\title{\color{ink}Thermal enclosure and a slow sensor}
+\author{}
+\date{Original learning collection -- November 2026}
+\begin{document}
+\begin{center}{\LARGE\color{ink}Thermal enclosure and a slow sensor}\\[5pt]{\small Original learning collection -- November 2026}\end{center}
+
+\textbf{Evidence note.} Original teaching scenario. Numerical parameters are deliberately chosen for learning. All generated data and curves are synthetic; no physical measurement is asserted.
+\section{Design brief}
+A camera enclosure receives a $40\,\mathrm{W}$ heat increment. Use thermal capacitance $C_{\mathrm{th}}=900\,\mathrm{J/K}$, conductance $H=15\,\mathrm{W/K}$ and sensor time constant $\tau_s=12\,\mathrm{s}$. Starting at ambient temperature, derive physical rise $x=T-T_a$ and sensor indication $y$, their poles and final values, and the sensor error after one enclosure time constant.
+\section{Physical system}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small Cutaway of a lumped thermal enclosure. Orange arrows carry heat; the probe measures a lagged temperature. The drawing fixes the energy boundary, not a real device geometry.}\end{center}
+\section{Energy balance}
+Let $x=T-T_a$ denote temperature rise in kelvin and $P$ the incremental heat input in watts. With constant ambient temperature and a spatially uniform enclosure,
+\[C_{th}\dot x=P-Hx,\qquad \tau_s\dot y=x-y.\]
+The enclosure time constant is $\tau=C_{th}/H=60$ s and its static gain is $1/H=1/15$ K/W. The sensor does not change the enclosure energy balance.
+\section{Cascade model}
+Taking Laplace transforms with zero initial deviations gives
+\[G_x(s)=\frac{1/15}{60s+1},\qquad G_y(s)=\frac{1/15}{(60s+1)(12s+1)}.\]
+The physical and measured responses share the final rise $40/15=8/3$ K, but the measured path adds the pole $-1/12$ to the thermal pole $-1/60$.
+\section{Closed-form step responses}
+Integrating the energy balance gives $x(t)=\frac83(1-e^{-t/60})$. Partial fractions of $G_y(s)40/s$ give
+\[y(t)=\frac83\left[1-\frac{60e^{-t/60}-12e^{-t/12}}{48}\right].\]
+Both start at zero; $\dot x(0)=40/900$ K/s while $\dot y(0)=0$. Evaluate these expressions at $t=60$ s rather than treating 63.2 percent of the measured final value as the enclosure time constant.
+\section{Model boundaries}
+Heat leakage is linearized and the enclosure is assumed well mixed. Radiation, internal temperature gradients, sensor self-heating and changing ambient temperature are omitted. Every curve is a simulation with invented design parameters.
+\section{What to learn from the experiment}
+A slow sensor can hide a thermal excursion even when its final calibration is exact. Compare physical and measured states before estimating a time constant.
+\section{System sketch}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}
+\par\small\refstepcounter{figure}\label{fig:system}\textbf{Figure \thefigure.} Thermal storage, heat leakage and sensor dynamics are separate elements. The lower loop implements the energy balance, not an added temperature controller.\end{center}
+\section{Executed computational evidence}
+\VerbatimInput[fontsize=\small,breaklines=true]{results.txt}
+\begin{center}\includegraphics[width=\linewidth,height=.46\textheight,keepaspectratio]{response.png}\end{center}
+\section{Method references}
+The equations use standard balance laws and feedback-control methods. Further explanation: \url{https://apmonitor.com/pdc/} and \url{https://fbsbook.org/}. Implementation documentation: \url{https://python-control.readthedocs.io/en/0.10.2/}. See the repository reference catalog for individual topics and videos.
+\end{document}

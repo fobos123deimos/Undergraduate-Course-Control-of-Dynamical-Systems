@@ -1,0 +1,74 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Laboratory 11}
+{\color{ink}\LARGE\bfseries Laboratory 11}\par
+{\large Sampling can destabilize a continuous-time design}\par
+\textbf{Exercise sheet -- five integrated problems}\par
+{\small\textbf{Evidence boundary.} Original hypothetical scenarios. Derive, calculate and justify decisions; every numerical record is synthetic. Figures are conceptual and not to scale.}
+\smallskip\textbf{Shared nominal data.} Plant: $\dot y=-2y+2u$. Nominal digital PI applies $u_k=2(r_k-y_k)+I_k$ before updating $I_{k+1}=I_k+4T_s(r_k-y_k)$. The exact hold and controller update order are part of the model.
+\task{1}{A sampled controller connected to a continuous RC circuit}
+The physical example is an ideal $10\,{\rm k}\Omega$ resistor and $50\,\mu{\rm F}$ capacitor, with held input voltage $u$ and capacitor voltage $y$. An ideal ADC/DAC pair connects the circuit to a digital PI controller.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A held voltage drives an ideal RC network. The capacitor voltage is sampled by an ideal ADC; the software controller updates the DAC once per period. Quantization, converter lag and electrical loading are omitted.}\end{center}
+\begin{enumerate}
+\item The plant is $\dot y=-2y+2u$. Derive its exact update for input held constant over a sampling interval $T_s$, and evaluate coefficients at $T_s=0.5$ s.
+\item Use $u_k=2(r_k-y_k)+I_k$ and $I_{k+1}=I_k+4T_s(r_k-y_k)$. Derive the state update matrix for $[y_k,I_k]^T$ and its reference-input vector.
+\item Derive the continuous-time PI characteristic polynomial for $k_p=2$, $k_i=4$ and compare its poles with what a sampled implementation must check separately.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{2}{A stability proof instead of a sampling-rate guess}
+Derive the exact sampled characteristic polynomial and apply all second-order Jury conditions. Keep the strictness of the interval explicit.
+\begin{enumerate}
+\item Derive the characteristic polynomial $z^2-tz+d$ of the update matrix. Express t and d using $a=e^{-2T_s}$.
+\item Use the real second-order Jury conditions to prove strict stability for $0<T_s<0.75$ and failure for $T_s\ge0.75$. Show the three inequalities rather than only checking selected samples.
+\item Retain $k_p=2$ but allow positive $k_i$. Derive a necessary sampling bound from the determinant condition alone. Evaluate it at $k_i=8$ and state why the other Jury inequalities are still needed.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{3}{The onset of sustained sampled oscillations}
+Compare stable, marginal and unstable sample periods. Interpret the boundary in physical time, not only as a point in the discrete z-plane.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}\par{\small The sampler, digital update order and hold are explicit. Continuous plant dynamics and sampled controller states occupy different parts of the loop.}\end{center}
+\begin{enumerate}
+\item At $T_s=0.75$, find determinant, trace and the nature of the poles. Explain why this endpoint is excluded even though no pole magnitude exceeds one.
+\item Compute the spectral radius for $T_s=0.05$, 0.5 and 1 s. Classify each implementation and relate the result to the analytic interval.
+\item At $T_s=0.75$ s, derive the oscillation angle per sample and corresponding angular frequency per second from the conjugate unit-circle pair.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{4}{An equilibrium is not a convergence guarantee}
+The sampled controller has a nominal reference equilibrium even at sample periods that make it unstable. Separate equilibrium equations from local behavior near that equilibrium.
+\begin{enumerate}
+\item For a mode with discrete magnitude $\rho$, define an equivalent envelope decay rate per second. Compare the two stable sampling periods in Problem 3(b) and explain why this comparison still does not fully describe their transients.
+\item For constant reference r and any positive sampling interval, derive the nominal equilibrium of the discrete update. Explain why existence of this equilibrium does not ensure convergence to it.
+\item At $T_s=1$ s and constant $r$, initialize exactly at $[y,I]=[r,r]$. Explain why a perfect simulation can remain there forever although the implementation is unstable, and design a revealing numerical test.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{5}{Implementation order and what happens between samples}
+Two programs can implement the same displayed PI gains but update the integrator in different orders. Compare the resulting matrices and reconstruct the actual continuous circuit motion.
+\begin{enumerate}
+\item Now update $I_{k+1}=I_k+4T_s(r_k-y_k)$ first and apply $u_k=2(r_k-y_k)+I_{k+1}$ during the next plant interval. Derive the new matrix and show directly that $T_s=0.5$ is unstable.
+\item Given $y_k$ and held input $u_k$, derive $y(kT_s+\tau)$ for $0\le\tau\le T_s$. Explain why a plot of sample values alone may conceal an implementation error or performance issue.
+\item For this first-order circuit under a truly held input, prove whether an intersample extremum can exceed both endpoint values. Explain why that result does not generalize automatically to a higher-order plant.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\end{document}

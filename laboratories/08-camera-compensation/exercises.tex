@@ -1,0 +1,74 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Laboratory 08}
+{\color{ink}\LARGE\bfseries Laboratory 08}\par
+{\large Lead-lag design for a normalized camera axis}\par
+\textbf{Exercise sheet -- five integrated problems}\par
+{\small\textbf{Evidence boundary.} Original hypothetical scenarios. Derive, calculate and justify decisions; every numerical record is synthetic. Figures are conceptual and not to scale.}
+\smallskip\textbf{Shared nominal data.} Nominal camera-axis plant: $G(s)=1/[s(s+1)]$. Design crossover is 3 rad/s and desired phase margin is $55^\circ$. Use unrounded compensator parameters in subsequent calculations.
+\task{1}{A camera axis with simultaneous speed and phase requirements}
+The physical sketch shows a single rotating camera axis with a position sensor. The normalized transfer is stipulated; inertia, drive bandwidth and unit scaling are already aggregated into it.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A camera gimbal illustrates angular tracking and disturbance rejection. Its normalized plant is stipulated, with no claim that geometry alone determines its two poles.}\end{center}
+\begin{enumerate}
+\item The normalized plant is $G(s)=1/[s(s+1)]$. At unity controller gain, derive the closed-loop polynomial, gain crossover and phase margin.
+\item A redesign targets crossover 3 rad/s and phase margin 55 degrees. Compute the plant phase at that frequency and the phase the lead section must provide. Explain why changing scalar gain alone cannot achieve both targets.
+\item Suppose an omitted actuator lag $1/(0.1s+1)$ is added to the plant. At the fixed 3 rad/s crossover, find the scalar gain needed for unity magnitude, the resulting phase margin, and the lead phase now required for the $55^\circ$ target. Compare with the original plant.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{2}{Realizing and normalizing a lead network}
+The desired phase improvement must be produced by a realizable pole--zero pair and then normalized at the selected frequency.
+\begin{enumerate}
+\item For $C_{lead}=K(Ts+1)/(\alpha Ts+1)$, center maximum phase lead at 3 rad/s and supply the phase found in Problem 1(b). Derive $\alpha$ and T and locate the controller zero and pole.
+\item Find K so the lead-compensated magnitude equals one at 3 rad/s. Show explicitly why the magnitude of the lead section cannot be ignored.
+\item An implementation accidentally exchanges the calculated lead pole and zero. Determine the sign of its maximum phase contribution and explain why retuning scalar gain cannot repair that phase error.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{3}{Improving ramp tracking without silently relaxing phase specifications}
+Add a lag network to improve low-frequency tracking while preserving crossover. Carry the gain normalization through all steady-error calculations.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}\par{\small Lead and lag sections are drawn separately so their gain normalization and frequency ordering can be analyzed independently.}\end{center}
+\begin{enumerate}
+\item For the stable lead-compensated loop, calculate its velocity constant and unit-ramp error. State why the DC gain of G itself cannot be inserted as a finite number.
+\item Add $F(s)=(1+s/0.03)/(1+s/0.006)$ and multiply the controller by g so crossover remains at 3. Derive g, the new velocity constant and the new unit-ramp error.
+\item Require unit-ramp error no greater than 0.05 and phase margin at least 55 degrees. Using the resulting design, check both requirements together rather than rounding the margin.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{4}{Spending the remaining phase reserve on a real communication link}
+Evaluate the final lead--lag design after a pure communication delay is introduced. Keep strict stability and a desired robustness margin as separate requirements.
+\begin{enumerate}
+\item Compute the lag section phase at the retained crossover and the resulting phase margin. Explain why a lag network can improve low-frequency tracking while slightly reducing margin.
+\item Assume the final lead-lag loop has the single crossover 3 rad/s and phase margin from Problem 4(a). Calculate its first constant-delay boundary and the delay allowance if at least 40 degrees of margin must remain. State the assumptions.
+\item A proposed link adds 0.09 s of constant pure delay. Does the model retain 40 degrees of margin? Is failure of that requirement equivalent to instability under the stated single-crossover assumptions?
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{5}{A stable compensated output can still demand noisy actuator effort}
+Check algebraic stability and then trace measurement noise to both physical output and controller output. These are different performance channels.
+\begin{enumerate}
+\item Derive the lead-only characteristic polynomial and use the cubic Routh inequality to check stability with the design formulas. Do not infer stability solely from an intended phase target.
+\item Let measurement be $y+n$ and feedback error be $r-y-n$. Derive the noise-to-output and noise-to-control transfers. Explain a high-frequency consequence of lead compensation.
+\item For the final controller $C=gK(Ts+1)(1+s/0.03)/[(\alpha Ts+1)(1+s/0.006)]$, find its high-frequency gain and the corresponding limiting noise-to-control and noise-to-output gains.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\end{document}

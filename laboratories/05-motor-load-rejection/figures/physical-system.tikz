@@ -1,0 +1,37 @@
+\begin{tikzpicture}[
+font=\sffamily\small,>=Latex,line cap=round,line join=round,
+wall/.style={draw=ink,line width=1.2pt,fill=blue!5},
+water/.style={fill=cyan!25,draw=none},
+metal/.style={draw=ink,fill=blue!12,line width=.9pt},
+flow/.style={->,draw=blue!65!black,line width=1.2pt},
+heat/.style={->,draw=orange!85!black,line width=1.1pt},
+measure/.style={->,draw=teal!70!black,line width=.9pt},
+dim/.style={<->,draw=ink!65,line width=.6pt},
+spring/.style={draw=ink,decorate,decoration={coil,aspect=.5,segment length=4pt,amplitude=3pt}},
+wire/.style={draw=ink,line width=1pt},
+lab/.style={align=center,font=\sffamily\small},
+smalllab/.style={align=center,font=\sffamily\scriptsize}]
+
+\draw[metal](3,1.4)rectangle(7.2,3.9);
+\draw[metal](3,2.65)ellipse(.45 and 1.25);
+\draw[metal](7.2,2.65)ellipse(.45 and 1.25);
+\fill[orange!30](3.6,3.35)rectangle(6.5,3.7);
+\fill[blue!25](3.6,1.6)rectangle(6.5,1.95);
+\node[smalllab]at(5.05,3.53){stator field};
+\draw[orange!80!black,line width=1.5pt,decorate,decoration={coil,segment length=7pt,amplitude=4pt}](3.7,2.65)--(6.5,2.65);
+\draw[ink,line width=3pt](6.4,2.65)--(11.7,2.65);
+\draw[metal](9.4,2.65)ellipse(.35 and 1.1);
+\draw[metal](10.1,2.65)ellipse(.35 and 1.1);
+\draw[ink](9.4,3.75)--(10.1,3.75)(9.4,1.55)--(10.1,1.55);
+\draw[metal](11.2,1.5)rectangle(12.8,2.15);
+\draw[metal](11.2,3.15)rectangle(12.8,3.8);
+\node[smalllab]at(12,4.35){load brake\\$\tau_L$};
+\draw[flow](9,3.8)arc(120:-100:.65);
+\node[lab]at(8.5,4.4){$\omega$};
+\draw[wire](3.2,3.8)--(1.2,3.8)--(1.2,3.1)(3.2,1.5)--(1.2,1.5)--(1.2,2.2);
+\draw[ink](1.2,2.65)circle(.45);
+\node at(1.2,2.65){$V$};
+\draw[flow](1.8,3.8)--(2.7,3.8)node[midway,above]{$i$};
+\node[lab]at(5.1,.6){Armature: $R,L$\\electromagnetic torque $k_t i$};
+\node[lab]at(10,.6){Rotor: $J,b$\\back emf $k_e\omega$};
+\end{tikzpicture}

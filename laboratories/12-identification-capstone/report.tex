@@ -1,0 +1,47 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,tikz,hyperref,fvextra}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=3em
+
+\title{\color{ink}A synthetic process from identification to validation}
+\author{}
+\date{Original learning collection -- November 2026}
+\begin{document}
+\begin{center}{\LARGE\color{ink}A synthetic process from identification to validation}\\[5pt]{\small Original learning collection -- November 2026}\end{center}
+
+\textbf{Evidence note.} Original teaching scenario. Numerical parameters are deliberately chosen for learning. All generated data and curves are synthetic; no physical measurement is asserted.
+\section{Design brief}
+Create a reproducible synthetic identification experiment with gain $K=1.8$, time constant $\tau=4\,\mathrm{s}$ and delay $\theta=0.6\,\mathrm{s}$. Apply a two-unit step at $t=2\,\mathrm{s}$, sample every $0.05\,\mathrm{s}$ and add independent Gaussian noise with standard deviation $0.015$ using seed 2026. Estimate the parameters without initializing at truth, validate on a separate multistep record, and tune PI using $\lambda=2\,\mathrm{s}$. Assess the delayed closed loop with $u\in[0,2]$, distinguishing training, validation and simulated controller evaluation.
+\section{Physical system}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A stirred thermal inventory followed by ideal transport is one possible physical interpretation of the identified transfer function. The effective conductance includes wall leakage and through-flow heat removal. Its fitted gain and time constant do not separately determine capacity, conductance and heater efficiency.}\end{center}
+\section{A declared synthetic experiment}
+The teaching plant is $G(s)=K e^{-\theta s}/(\tau s+1)$ with $K=1.8$, $\tau=4$ s and $\theta=0.6$ s. These values define a simulation, not measured equipment. For an input step of amplitude $A$ at $t_0$,
+\[y(t)=KA\left(1-e^{-(t-t_0-\theta)/\tau}\right)\mathbf1_{t\ge t_0+\theta}.\]
+Independent Gaussian noise is added with a stated seed. The optimizer receives bounds and the starting guess $(1,2,0.2)$, not the true parameters.
+\section{Identification and a separate check}
+Minimize the sum of squared residuals between the noisy training samples and the delayed-step expression. Use positive bounds on gain and time constant and a nonnegative delay. Then form an independent multistep response by superposing signed step increments. Do not refit on this validation record.
+Report training and validation RMSE. A good fit on both synthetic records checks the computation under the chosen model class; it does not establish that a real plant follows that class or quantify experimental uncertainty.
+\section{Controller calculation}
+With estimated parameters $\hat K,\hat\tau,\hat\theta$ and chosen $\lambda=2$ s, use the standard IMC-style PI tuning rule
+\[K_p=\frac{\hat\tau}{\hat K(\lambda+\hat\theta)},\qquad K_i=K_p/\hat\tau.\]
+This is the standard \href{https://apmonitor.com/pdc/index.php/Main/ProportionalIntegralControl}{APMonitor IMC-style PI tuning rule}. Evaluate the controller against the declared true synthetic plant, including its pure input delay and actuator limit.
+\section{Delay implementation and limitations}
+Use a 0.01 s numerical control interval. The true delay is exactly 60 such intervals, so a history buffer applies the delayed held input without a Pade approximation. Propagate the first-order plant with its exact held-input update. Add a constant output-equivalent process disturbance after 15 s and use integral back-calculation when the actuator clips.
+This evaluation has numerical sampling, exact nominal plant parameters and noiseless feedback. It is not a hardware test, robustness proof, statistical confidence interval or validation against independent real measurements.
+\section{What to learn from the experiment}
+Training, validation and controller evaluation answer different questions. All three records are synthetic here; experimental claims require independently collected measurements.
+\section{System sketch}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}
+\par\small\refstepcounter{figure}\label{fig:system}\textbf{Figure \thefigure.} Training selects parameters; held-out validation freezes them. Separate noise records avoid reusing training residuals as validation evidence.\end{center}
+\newpage
+\section{Executed computational evidence}
+\VerbatimInput[fontsize=\small,breaklines=true]{results.txt}
+\begin{center}\includegraphics[width=\linewidth,height=.39\textheight,keepaspectratio]{response.png}\end{center}
+\textbf{Reading the panels.} The upper row compares the training fit with prediction on a separate synthetic input record. The lower row shows the simulated closed-loop disturbance response and constrained actuator command. These are numerical checks under the declared model, not measurements of a physical process.
+\end{document}

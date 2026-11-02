@@ -1,0 +1,36 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex,font=\small,
+block/.style={draw=ink,fill=blue!4,rounded corners=2pt,minimum height=9mm,align=center,line width=.7pt,inner sep=5pt},
+sum/.style={circle,draw=ink,fill=white,minimum size=6mm,inner sep=0pt,line width=.7pt},
+sig/.style={->,draw=ink,line width=.85pt},
+fb/.style={->,draw=teal!70!black,line width=.85pt},
+dist/.style={->,draw=orange!75!black,line width=.85pt},
+tap/.style={circle,fill=ink,inner sep=1.4pt},
+note/.style={font=\footnotesize,align=center,text=black!75}]
+
+\node[block](plant)at(3,1.5){Declared plant\\$G(s)$};
+\node[sum](noise)at(6,1.5){$\Sigma$};
+\node[block](fit)at(9,1.5){Fit $K,\tau,\theta$\\training data only};
+\node[block](freeze)at(13,1.5){Freeze\\$\hat{\boldsymbol\theta}$};
+\draw[sig](0,1.5)--node[below]{$u_{\mathrm{train}}$}(plant);
+\draw[sig](plant)--node[pos=.9,below]{$+$}(noise);
+\draw[dist](6,3.2)--node[right]{$\varepsilon_{\mathrm{train}}$}node[pos=.9,left]{$+$}(noise);
+\draw[sig](noise)--(fit);\draw[sig](fit)--(freeze);
+\draw[sig](.8,1.5)--(.8,4.1)--node[above]{known training input}(9,4.1)--(fit.north);
+\fill[ink](.8,1.5)circle(1.4pt);
+\node[block](truth)at(3,-1.3){Declared plant\\$G(s)$};
+\node[block](pred)at(3,-3.5){Fitted model\\$\hat G(s;\hat{\boldsymbol\theta})$};
+\node[sum](nv)at(6,-1.3){$\Sigma$};
+\node[sum](err)at(10,-2.5){$\Sigma$};
+\node[block](metric)at(13,-2.5){Held-out residual\\RMSE and structure};
+\draw[sig](0,-2.4)--node[above]{$u_{\mathrm{val}}$}(1,-2.4);
+\draw[sig](1,-2.4)--(1,-1.3)--(truth);
+\draw[sig](1,-2.4)--(1,-3.5)--(pred);
+\fill[ink](1,-2.4)circle(1.4pt);
+\draw[sig](truth)--node[pos=.9,below]{$+$}(nv);
+\draw[dist](6,.1)--node[right]{$\varepsilon_{\mathrm{val}}$}node[pos=.9,left]{$+$}(nv);
+\draw[sig](nv)--node[above]{$y_{\mathrm{val}}$}(10,-1.3)--node[pos=.9,right]{$+$}(err);
+\draw[fb](pred)--node[below]{$\hat y_{\mathrm{val}}$}(10,-3.5)--node[pos=.9,right]{$-$}(err);
+\draw[sig](err)--node[above]{$e_{\mathrm{val}}$}(metric);
+\node[note]at(8,-4.6){Different input record and independent noise; no refitting on validation data.\\All records in this exercise are synthetic.};
+
+\end{tikzpicture}

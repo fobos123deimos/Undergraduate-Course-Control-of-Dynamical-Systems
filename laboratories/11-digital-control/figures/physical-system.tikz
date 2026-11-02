@@ -1,0 +1,34 @@
+\begin{tikzpicture}[
+font=\sffamily\small,>=Latex,line cap=round,line join=round,
+wall/.style={draw=ink,line width=1.2pt,fill=blue!5},
+water/.style={fill=cyan!25,draw=none},
+metal/.style={draw=ink,fill=blue!12,line width=.9pt},
+flow/.style={->,draw=blue!65!black,line width=1.2pt},
+heat/.style={->,draw=orange!85!black,line width=1.1pt},
+measure/.style={->,draw=teal!70!black,line width=.9pt},
+dim/.style={<->,draw=ink!65,line width=.6pt},
+spring/.style={draw=ink,decorate,decoration={coil,aspect=.5,segment length=4pt,amplitude=3pt}},
+wire/.style={draw=ink,line width=1pt},
+lab/.style={align=center,font=\sffamily\small},
+smalllab/.style={align=center,font=\sffamily\scriptsize}]
+
+\draw[metal,rounded corners=2pt](.2,1)rectangle(3.4,4.2);
+\draw[fill=white,draw=ink](.7,2.6)rectangle(2.9,3.8);
+\node[smalllab]at(1.8,3.2){DAC\\zero-order hold};
+\node[smalllab]at(1.8,1.75){clock $T_s$};
+\draw[wire](3.4,3.4)--(4.5,3.4);
+\draw[metal](4.5,3.18)rectangle(6.3,3.62);
+\draw[wire](6.3,3.4)--(8.4,3.4)--(8.4,2.45);
+\draw[wire](7.9,2.45)--(8.9,2.45)(7.9,2.15)--(8.9,2.15);
+\draw[wire](8.4,2.15)--(8.4,.9)--(3.4,.9)--(3.4,1.5);
+\node[lab]at(5.4,4.2){$R=10$ k$\Omega$};
+\node[lab]at(9.5,2.15){$C=50\,\mu$F};
+\fill[ink](8.4,3.4)circle(.06);
+\draw[measure](8.4,3.4)--(10.5,3.4);
+\draw[metal,rounded corners=2pt](10.5,2.7)rectangle(13.3,4.2);
+\node[lab]at(11.9,3.45){ADC\\sample $y_k$};
+\draw[teal!60!black,dashed,->](11.9,2.7)--(11.9,.25)--(1.8,.25)--(1.8,1);
+\node[smalllab]at(6.6,-.2){digital controller; updated voltage held between samples};
+\node[smalllab]at(4.2,2.65){$u(t)$};
+\node[smalllab]at(9.5,4){$y(t)$};
+\end{tikzpicture}

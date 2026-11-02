@@ -1,0 +1,38 @@
+\begin{tikzpicture}[
+font=\sffamily\small,>=Latex,line cap=round,line join=round,
+wall/.style={draw=ink,line width=1.2pt,fill=blue!5},
+water/.style={fill=cyan!25,draw=none},
+metal/.style={draw=ink,fill=blue!12,line width=.9pt},
+flow/.style={->,draw=blue!65!black,line width=1.2pt},
+heat/.style={->,draw=orange!85!black,line width=1.1pt},
+measure/.style={->,draw=teal!70!black,line width=.9pt},
+dim/.style={<->,draw=ink!65,line width=.6pt},
+spring/.style={draw=ink,decorate,decoration={coil,aspect=.5,segment length=4pt,amplitude=3pt}},
+wire/.style={draw=ink,line width=1pt},
+lab/.style={align=center,font=\sffamily\small},
+smalllab/.style={align=center,font=\sffamily\scriptsize}]
+
+\fill[blue!8] (1,0) rectangle (9,4.5);
+\fill[white] (1.4,.4) rectangle (8.6,4.1);
+\draw[ink,line width=1.2pt] (1,0) rectangle (9,4.5);
+\draw[ink!45] (1.4,.4) rectangle (8.6,4.1);
+\foreach \x in {1.6,2.2,...,8.2}{\draw[ink!20](\x,4.1)--++(.25,.4);}
+\node[lab]at(5,4.9){Insulated camera enclosure};
+\draw[metal,rounded corners=2pt](3.6,1.8)rectangle(6.3,3.3);
+\draw[metal](6.3,2.2)--(6.9,2)--(6.9,3.1)--(6.3,2.9)--cycle;
+\draw[ink](4.15,2.8)circle(.22);
+\node[smalllab]at(4.9,2.2){thermal payload};
+\draw[heat](2,1.2)--(3,1.2);
+\draw[orange!85!black,line width=1.5pt,decorate,decoration={zigzag,segment length=6pt,amplitude=3pt}](3,1.2)--(6.8,1.2);
+\node[lab,anchor=east]at(.6,1.2){$P$ [W]};
+\draw[heat](.7,1.2)--(2,1.2);
+\node[smalllab]at(5,.7){electrical heater};
+\draw[teal!70!black,line width=2pt](7.6,1.8)--(7.6,3.3);
+\fill[teal!70!black](7.6,1.8)circle(.14);
+\draw[measure](7.6,3.3)--(10.3,3.3);
+\node[lab,anchor=west]at(10.4,3.3){sensor reading $y$\\$\tau_s=12$ s};
+\draw[heat](8.2,2.1)--(10.3,2.1);
+\node[lab,anchor=west]at(10.4,2.1){heat loss\\$H(T-T_a)$};
+\node[lab]at(11.6,.5){ambient air $T_a$};
+\node[lab]at(5,-.55){Uniform temperature $T$;\quad $C=900$ J/K,\quad $H=15$ W/K};
+\end{tikzpicture}

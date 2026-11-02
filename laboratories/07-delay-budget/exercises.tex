@@ -1,0 +1,74 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Laboratory 07}
+{\color{ink}\LARGE\bfseries Laboratory 07}\par
+{\large A feedback loop with a communication delay}\par
+\textbf{Exercise sheet -- five integrated problems}\par
+{\small\textbf{Evidence boundary.} Original hypothetical scenarios. Derive, calculate and justify decisions; every numerical record is synthetic. Figures are conceptual and not to scale.}
+\smallskip\textbf{Shared nominal data.} Nominal loop: $L(s)=8e^{-Ts}/[s(s+3)]$, unity negative feedback, and ideal constant delay $T$. Exact-delay results and rational Pad\'e approximations must be distinguished.
+\task{1}{A remotely observed actuator}
+A sensor observes a moving carriage through a communication link. Use the declared delay-free loop and distinguish its physical dynamics from the additional time spent transporting information.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A remote mechanism sends measurements and receives commands through a communication path. The model combines those latencies into one ideal constant delay; the drawn packet train is not an experimental record.}\end{center}
+\begin{enumerate}
+\item The loop is $L_0(s)=8/[s(s+3)]$ with unity negative feedback. Derive its closed-loop poles, natural frequency and damping ratio.
+\item Find the unique positive gain crossover of $L_0$. Show why an ideal pure delay $e^{-sT}$ does not change this crossover.
+\item Write the exact delayed closed-loop characteristic equation. Explain why the delay-free second-order poles or any finite-order approximation do not list all modes of the delayed system.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{2}{Allocating a finite phase budget}
+The loop must retain a stated phase margin after communication, computation and actuation delays. Budget the total delay rather than considering each component separately.
+\begin{enumerate}
+\item Calculate the nominal phase margin and the first positive pure-delay boundary. Express the formulas exactly before giving approximate values.
+\item Find the maximum constant delay that retains at least a 30 degree phase margin. Compare it with delays of 0.1 s and 0.3 s.
+\item Assume constant pure delays of 0.12 s, 0.04 s, 0.02 s and 0.01 s in successive stages. Determine whether their combined delay satisfies the 30-degree requirement and calculate the remaining unused delay allowance.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{3}{How a low-order delay approximation can overstate tolerance}
+Compare the exact phase contribution with a first-order rational approximation. Use the comparison to audit a claimed stability boundary.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}\par{\small Constant pure delay shifts a signal in time and contributes frequency-dependent phase lag. The sketch shows ideal steps, not experimental records.}\end{center}
+\begin{enumerate}
+\item Write the first-order Pade approximation of $e^{-sT}$. Locate its pole and zero and explain why the right-half-plane zero does not mean the exact delay has a finite unstable zero.
+\item At the crossover of this loop, compare exact delay phase with first-order Pade phase for $T=0.3$ s. Derive the sign of the approximation error for any positive frequency.
+\item Derive the first-order Padé estimate of the delay boundary at the unchanged crossover, and compare it symbolically with the exact boundary. State the direction of the error without relying on a plot.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{4}{Sensor dynamics invalidate a previously acceptable delay budget}
+A sensor lag is added after the original delay requirement was checked. Reassess the uncertain-delay interval using the modified loop.
+\begin{enumerate}
+\item Add sensor $1/(0.1s+1)$ to the delay-free loop. Calculate its magnitude and phase at the old crossover. Explain what must be recomputed before stating an exact new delay budget.
+\item Suppose the constant delay is uncertain in $[0.12,0.18]$ s. Find the smallest phase margin across this interval and decide whether all frozen-delay models meet a 30 degree margin. Does the result automatically cover arbitrary time-varying jitter?
+\item For the added sensor, derive the equation for the new positive crossover. Recompute the worst frozen-delay phase margin over $T\in[0.12,0.18]$ and decide whether the 30-degree requirement still holds.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{5}{Trading loop speed for delay tolerance and numerical fidelity}
+Reduce loop gain and compare exact-delay simulation with an approximation. Verify both the control tradeoff and the time indexing of the numerical model.
+\begin{enumerate}
+\item Replace numerator 8 by 4. Derive the new crossover and delay boundary and compare the control-design tradeoff.
+\item An exact delayed plant response is zero before delay T when initial conditions are zero. Explain why a finite-order Pade simulation may respond immediately. Describe a reproducible numerical check for a delay-buffer simulation.
+\item Represent a 0.605 s delay using a 0.01 s step and integer-sample rounding. Bound the resulting delay error and its phase error at the new crossover. Propose a grid that represents the stated delay exactly.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\end{document}

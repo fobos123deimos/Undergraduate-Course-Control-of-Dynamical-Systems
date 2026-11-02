@@ -1,0 +1,35 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex,font=\small,
+block/.style={draw=ink,fill=blue!4,rounded corners=2pt,minimum height=9mm,align=center,line width=.7pt,inner sep=5pt},
+sum/.style={circle,draw=ink,fill=white,minimum size=6mm,inner sep=0pt,line width=.7pt},
+sig/.style={->,draw=ink,line width=.85pt},
+fb/.style={->,draw=teal!70!black,line width=.85pt},
+dist/.style={->,draw=orange!75!black,line width=.85pt},
+tap/.style={circle,fill=ink,inner sep=1.4pt},
+note/.style={font=\footnotesize,align=center,text=black!75}]
+
+\node[sum](e)at(.8,0){$\Sigma$};
+\node[block](c)at(2.35,0){$k_p+\dfrac{k_i}{s}$};
+\node[sum](v)at(4.05,0){$\Sigma$};
+\node[block](el)at(6,0){$\dfrac{1}{Ls+R}$};
+\node[block](kt)at(8,0){$k_t$};
+\node[sum](tau)at(9.8,0){$\Sigma$};
+\node[block](mech)at(12,0){$\dfrac{1}{Js+b}$};
+\node[tap](w)at(14,0){};
+\draw[sig](-.1,0)--node[above]{$r$}node[pos=.9,below]{$+$}(e);
+\draw[sig](e)--node[above]{$e$}(c);
+\draw[sig](c)--node[above]{$v$}node[pos=.85,below]{$+$}(v);
+\draw[sig](v)--(el);
+\draw[sig](el)--node[above]{$i$}(kt);
+\draw[sig](kt)--node[above]{$k_ti$}node[pos=.85,below]{$+$}(tau);
+\draw[sig](tau)--(mech);
+\draw[sig](mech)--(14.8,0)node[right]{$\omega$};
+\draw[dist](9.8,1.8)--node[right]{load $d$}node[pos=.88,left]{$-$}(tau);
+\node[block](ke)at(8,-1.6){$k_e$};
+\draw[fb](w)--(14,-1.6)--(ke);
+\draw[fb](ke)--node[below]{back emf}(4.05,-1.6)--node[pos=.9,left]{$-$}(v);
+\draw[fb](14.6,0)--(14.6,-3.1)--(.8,-3.1)--node[pos=.94,left]{$-$}(e);
+\fill[ink](14.6,0)circle(1.4pt);
+\node[note,fill=white]at(7,-3.1){Outer speed feedback};
+\node[note]at(7.6,2.7){Electrical storage $\rightarrow$ torque conversion $\rightarrow$ mechanical storage\\opposing load and back emf enter at different summing junctions};
+
+\end{tikzpicture}

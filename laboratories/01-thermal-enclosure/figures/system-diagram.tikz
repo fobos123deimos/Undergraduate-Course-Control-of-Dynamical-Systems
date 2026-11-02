@@ -1,0 +1,31 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex,font=\small,
+block/.style={draw=ink,fill=blue!4,rounded corners=2pt,minimum height=9mm,align=center,line width=.7pt,inner sep=5pt},
+sum/.style={circle,draw=ink,fill=white,minimum size=6mm,inner sep=0pt,line width=.7pt},
+sig/.style={->,draw=ink,line width=.85pt},
+fb/.style={->,draw=teal!70!black,line width=.85pt},
+dist/.style={->,draw=orange!75!black,line width=.85pt},
+tap/.style={circle,fill=ink,inner sep=1.4pt},
+note/.style={font=\footnotesize,align=center,text=black!75}]
+
+\node[draw=ink,fill=blue!4,rounded corners,minimum width=38mm,minimum height=16mm,align=center](en)at(3,2.5){Enclosure\\$C_{\mathrm{th}},\ T$};
+\draw[sig](0,2.5)--node[above]{$P$ (W)}(en.west);
+\draw[dist](en.east)--node[above]{$H(T-T_a)$}(7.5,2.5);
+\node[note]at(8.5,2.5){Ambient\\$T_a$};
+\node[block](sensor)at(12,2.5){Sensor\\$\tau_s\dot y=x-y$};
+\draw[sig](en.north)--(3,3.8)--node[above]{$x=T-T_a$}(12,3.8)--(sensor.north);
+\draw[sig](sensor.east)--(15,2.5)node[right]{$y$ (K)};
+\node[note]at(3,1.25){Physical state: $x$\\indicated state: $y$};
+\node[sum](s)at(1.6,-.5){$\Sigma$};
+\node[block](int)at(5,-.5){$\dfrac{1}{C_{\mathrm{th}}s}$};
+\node[tap](xt)at(8,-.5){};
+\node[block](gs)at(11.5,-.5){$\dfrac{1}{\tau_s s+1}$};
+\draw[sig](0,-.5)--node[above]{$P$}node[pos=.9,below]{$+$}(s);
+\draw[sig](s)--node[above]{$P-Hx$}(int);
+\draw[sig](int)--node[above]{$x$}(gs);
+\draw[sig](gs)--(15,-.5)node[right]{$y$};
+\node[block](h)at(5,-2.1){$H$};
+\draw[fb](xt)--(8,-2.1)--(h);
+\draw[fb](h)--(1.6,-2.1)--node[pos=.9,left]{$-$}(s);
+\node[note]at(11.4,-2){$C_{\mathrm{th}}=900\ \mathrm{J/K}$\\$H=15\ \mathrm{W/K},\quad\tau_s=12\ \mathrm{s}$};
+
+\end{tikzpicture}

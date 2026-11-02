@@ -1,0 +1,75 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Laboratory 02}
+{\color{ink}\LARGE\bfseries Laboratory 02}\par
+{\large Ventilation as a bilinear dynamical system}\par
+\textbf{Exercise sheet -- five integrated problems}\par
+{\small\textbf{Evidence boundary.} Original hypothetical scenarios. Derive, calculate and justify decisions; every numerical record is synthetic. Figures are conceptual and not to scale.}
+\smallskip\textbf{Shared nominal data.} Nominal room: $V=120$ m$^3$, source $S=360$ ppm m$^3$/min and ventilation $q_0=3$ m$^3$/min, with clean inlet air and perfect mixing. Excess concentration $c$ is in ppm. Problem 5 introduces a separate liquid analogue with explicitly different units.
+\par\smallskip{\small\textbf{Study route.} On a first modeling pass, solve Problems 1--3 and 5(b). Return to Problem 4 and 5(a,c) after Laboratory 05 introduces PI feedback; revisit actuator limits after Laboratory 09.}
+\task{1}{From a ventilated room to a local input--output model}
+A room has a uniform excess tracer concentration. Fresh air removes tracer, and a separate source generates it. Distinguish airflow from tracer flow in the physical illustration.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A ventilated room and a well-mixed liquid analogue share an inventory balance. The room uses m$^3$ and the liquid case uses L; do not mix their concentration or flow units. Equal inlet and outlet volume flows keep each inventory constant.}\end{center}
+\begin{enumerate}
+\item A well-mixed volume has $V=120$ m$^3$, source $S=360$ ppm m$^3$/min and ventilation $q$ in m$^3$/min. Derive the balance for excess concentration $c$ and the equilibrium and time constant at $q_0=3$.
+\item Linearize $V\dot c=S-qc$ about $(S_0,q_0,c_0)=(360,3,120)$. Retain source and ventilation deviations as inputs. Give both transfer functions and the term neglected by linearization.
+\item For nonzero $\delta c$, compare the discarded bilinear term with the retained term $q_0\delta c$. Give a useful local smallness condition and explain why it is not a complete error bound for a long transient.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{2}{Testing a linearization with progressively larger airflow steps}
+Keep the source fixed and increase airflow from its nominal value. Compare exact equilibria, local predictions and the time needed to cross a concentration threshold.
+\begin{enumerate}
+\item Starting from 120 ppm, increase flow to 3.3 m$^3$/min while retaining the source. Derive the exact trajectory and the local-model prediction. Compare their equilibria and time constants.
+\item Repeat the flow change with $q=6$. Find both equilibrium predictions and the exact time to reach 75 ppm. Explain whether the zero equilibrium predicted by the local model is physically attainable with a positive source.
+\item Let $q=q_0(1+\varepsilon)$ with $\varepsilon>-1$. Derive exact and linearized equilibrium concentration, their absolute difference and their relative difference measured against the exact concentration. Evaluate the last quantity for $\varepsilon=0.1$ and 1.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{3}{A feedforward specification under source uncertainty}
+The ventilation actuator has finite capacity. Design decisions must account both for the largest disturbance and for uncertainty in its magnitude.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}\par{\small The physical balance and its local two-input signal model. Airflow enters with a negative sign because increased ventilation removes excess tracer.}\end{center}
+\begin{enumerate}
+\item The target excess concentration is 100 ppm and the source rises from 360 to 480 ppm m$^3$/min. Find the required feedforward flows. If flow is limited to 4 m$^3$/min, find the final concentration after the source change.
+\item At fixed flow $q=3.6$, the source is only known to lie in $[324,396]$. Find the equilibrium interval and the flow needed to guarantee an equilibrium no larger than 110 ppm under that source uncertainty.
+\item Now use the uncertain source interval $[324,396]$ ppm m$^3$/min, require $c_\infty\le100$ ppm and retain maximum flow 4 m$^3$/min. Find the smallest constant flow that guarantees the requirement and the corresponding concentration interval.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{4}{Choosing the feedback sign and checking the resulting operating point}
+The controller increases fresh airflow when excess concentration rises above its target. Use the nonlinear balance to check a controller designed from the local model.
+\begin{enumerate}
+\item Use $q=q_0+k(c-c_{ref})$ near $c_{ref}=c_0=120$. Derive the local closed-loop pole and choose $k$ for a 20 min time constant. Specify the units of $k$.
+\item With the proportional law of Problem 4(a), a constant source increment of 60 ppm m$^3$/min occurs. Find the local steady concentration and flow deviations. Then find the exact positive equilibrium of the nonlinear balance and compare.
+\item For the 60-unit source increment, calculate the exact equilibrium airflow with the specified proportional controller and check the limit $q\le4$. Explain why neither more proportional gain nor integral action can maintain 100 ppm when $S=480$ and this limit applies.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{5}{The same balance in a stirred dilution vessel}
+Use the liquid analogue shown beside the room: an ideally mixed 120 L vessel receives clean water at $q$ L/min and a negligible-volume solute dose $S=360$ mg/min. Equal inlet and outlet flows maintain volume. Here $c_{ref}=120$ mg/L; the gains in part (a) use consistent L, mg and min units.
+\begin{enumerate}
+\item Let $e=c-c_{ref}$, $q=q_0+k_p e+z$, and $\dot z=k_i e$. Derive the linear characteristic polynomial. For $k_p=0.025$ and $k_i=0.0004$, calculate natural frequency and damping ratio.
+\item Assume constant $S\ge0$, $q>0$ and $c(0)\ge0$. Prove that the exact concentration stays nonnegative and tends to $S/q$. Give two reasons a local model or this mixing model can be misleading in practice.
+\item Map the room model to this vessel, state the new concentration units, and evaluate the feasibility of a 100 mg/L target when $S=480$ mg/min and $q\le4$ L/min. Explain the consequence for the proposed integral controller.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\end{document}

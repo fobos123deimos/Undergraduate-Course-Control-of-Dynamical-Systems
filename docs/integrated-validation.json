@@ -1,0 +1,362 @@
+{
+  "laboratory_problems": 60,
+  "laboratory_parts": 180,
+  "general_problems": 5,
+  "general_parts": 30,
+  "checks": [
+    {
+      "check": "01.1(c) competing conductance bounds",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "01.1(c) alternatives",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "01.3(c) integrated energy balance",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "01.3(c) stored energy",
+      "passed": true,
+      "max_error": 6.150457920739427e-10
+    },
+    {
+      "check": "01.5(c) warm-start superposition",
+      "passed": true,
+      "max_error": 6.125766560671764e-12
+    },
+    {
+      "check": "02.2(c) relative change error eps=0.1",
+      "passed": true,
+      "max_error": 1.0755285551056204e-16
+    },
+    {
+      "check": "02.2(c) relative change error eps=1.0",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "02.3(c) worst-source required flow",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "02.3(c) robust concentration limits",
+      "passed": true,
+      "max_error": 1.8181367522629444e-10
+    },
+    {
+      "check": "02.4(c) feasible feedback flow",
+      "passed": true,
+      "max_error": 2.0393020605524725e-10
+    },
+    {
+      "check": "02.5(c) liquid inventory",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "03.5(c) moving-boundary power identity",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "03.5(c) moving-boundary power identity",
+      "passed": true,
+      "max_error": 1.7763568394002505e-15
+    },
+    {
+      "check": "03.4(c) incompatible frequency bounds",
+      "passed": true,
+      "max_error": 2.5381012846992235e-09
+    },
+    {
+      "check": "04.3(c) winding-resistance boundary",
+      "passed": true,
+      "max_error": 6.938893903907228e-18
+    },
+    {
+      "check": "04.4(b) edge identities",
+      "passed": true,
+      "max_error": 1.1368683772161603e-13
+    },
+    {
+      "check": "04.4(c) requested bandwidth and resulting damping",
+      "passed": true,
+      "max_error": 5.551115123125783e-17
+    },
+    {
+      "check": "04.2(c) total reactive energy",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "04.2(c) total reactive energy",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "04.2(c) total reactive energy",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "04.5(c) port energy balance",
+      "passed": true,
+      "max_error": 5.551115123125783e-17
+    },
+    {
+      "check": "04.5(c) port energy balance",
+      "passed": true,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "check": "05.2(c) voltage-limited current",
+      "passed": true,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "check": "05.2(c) voltage-limited power",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "05.4(c) coefficient reserve",
+      "passed": true,
+      "max_error": 2.842170943040401e-14
+    },
+    {
+      "check": "05.5(c) dynamic estimator bias",
+      "passed": true,
+      "max_error": 2.7755575615628914e-17
+    },
+    {
+      "check": "05.5(c) dynamic estimator bias",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "06.2(c) remaining pole at breakaway",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "06.4(c) symmetric gain uncertainty lower bound",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "06.5(c) scaled compensated boundary",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "06.5(c) factorization at boundary",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "07.2(c) remaining delay budget",
+      "passed": true,
+      "max_error": 1.396489755431385e-10
+    },
+    {
+      "check": "07.4(c) sensor crossover and margin",
+      "passed": true,
+      "max_error": 2.1163426566772614e-10
+    },
+    {
+      "check": "08.4(c) delayed retained margin",
+      "passed": true,
+      "max_error": 3.2997793653066765e-07
+    },
+    {
+      "check": "08.5(c) high-frequency controller limit",
+      "passed": true,
+      "max_error": 3.552713678800501e-15
+    },
+    {
+      "check": "08.1(c) omitted actuator lag at fixed crossover",
+      "passed": true,
+      "max_error": 3.150724126044224e-11
+    },
+    {
+      "check": "09.2(c) filtered state characteristic polynomial",
+      "passed": true,
+      "max_error": 4.547473508864641e-13
+    },
+    {
+      "check": "09.3(c) saturated equilibrium derivatives",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "09.4(c) Euler local correction upper bounds",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "10.1(c) thermal balance realization",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "10.4(c) augmented controllability determinant",
+      "passed": true,
+      "max_error": 3.3881317890172014e-21
+    },
+    {
+      "check": "10.5(c) isolated observer bias",
+      "passed": true,
+      "max_error": 1.1934897514720433e-15
+    },
+    {
+      "check": "11.3(c) marginal oscillation frequency",
+      "passed": true,
+      "max_error": 1.236766244971932e-10
+    },
+    {
+      "check": "12.3(c) conditional 95-percent RMSE interval",
+      "passed": true,
+      "max_error": 4.500325946968364e-09
+    },
+    {
+      "check": "12.4(c) robust reachable output",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "12.5(c) fractional-delay exact update",
+      "passed": true,
+      "max_error": 2.7321894746634712e-17
+    },
+    {
+      "check": "12.5(c) fractional-delay exact update",
+      "passed": true,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "check": "G1(a) tank equilibrium",
+      "passed": true,
+      "max_error": 7.228014483236697e-18
+    },
+    {
+      "check": "G1(b) flow-law numerical Jacobian",
+      "passed": true,
+      "max_error": 3.4414693317330602e-12
+    },
+    {
+      "check": "G1(b) tank characteristic polynomial",
+      "passed": true,
+      "max_error": 1.3877787807814457e-17
+    },
+    {
+      "check": "G1(b) tank DC gain",
+      "passed": true,
+      "max_error": 5.684341886080802e-14
+    },
+    {
+      "check": "G1(c) integrated nonlinear final height",
+      "passed": true,
+      "max_error": 4.203581926986999e-13
+    },
+    {
+      "check": "G1(c) relative equilibrium-change error",
+      "passed": true,
+      "max_error": 1.5543122344752192e-15
+    },
+    {
+      "check": "G1(d) PI augmented polynomial",
+      "passed": true,
+      "max_error": 6.938893903907228e-18
+    },
+    {
+      "check": "G1(e) pump-limited level",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "G1(e) required target inflow",
+      "passed": true,
+      "max_error": 4.845017616272873e-13
+    },
+    {
+      "check": "G1(f) intertank flow reverses",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "G2(b) nominal displacement and travel mm",
+      "passed": true,
+      "max_error": 8.662987140972689e-07
+    },
+    {
+      "check": "G2(d) higher damping amplitudes mm",
+      "passed": true,
+      "max_error": 9.667042175087737e-07
+    },
+    {
+      "check": "G3(c) full motor PI poles",
+      "passed": true,
+      "max_error": 2.004753696382977e-09
+    },
+    {
+      "check": "G3(f) feasible steady command",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "G4(c) ramp tracking error",
+      "passed": true,
+      "max_error": 2.2291590406897654e-07
+    },
+    {
+      "check": "G4(d) retained-margin delay limit",
+      "passed": true,
+      "max_error": 6.1486079422357065e-09
+    },
+    {
+      "check": "G5(b) feedback polynomial",
+      "passed": true,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "check": "G5(d) disturbance offset",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "check": "G5(e) held-feedback poles at 1 s",
+      "passed": true,
+      "max_error": 3.0942177708936924e-09
+    },
+    {
+      "check": "G5(e) held-feedback poles at 10 s",
+      "passed": true,
+      "max_error": 1.2733762932981563e-09
+    }
+  ],
+  "numeric_checks": 67,
+  "passed": true,
+  "sampled_thermal_cases": [
+    {
+      "period": 1,
+      "eigenvalues": [
+        0.6565339507637683,
+        0.8198617930942178
+      ]
+    },
+    {
+      "period": 10,
+      "eigenvalues": [
+        -1.7161269989205088,
+        0.1398615587266237
+      ]
+    }
+  ],
+  "scope": "Selected integrated derivations, physical balances, feasibility and implementation claims; no experimental evidence."
+}

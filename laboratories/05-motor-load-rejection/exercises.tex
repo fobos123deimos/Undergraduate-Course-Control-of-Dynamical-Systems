@@ -1,0 +1,75 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Laboratory 05}
+{\color{ink}\LARGE\bfseries Laboratory 05}\par
+{\large Flywheel speed regulation under a load torque}\par
+\textbf{Exercise sheet -- five integrated problems}\par
+{\small\textbf{Evidence boundary.} Original hypothetical scenarios. Derive, calculate and justify decisions; every numerical record is synthetic. Figures are conceptual and not to scale.}
+\smallskip\textbf{Shared nominal data.} Motor: $R=2\,\Omega$, $L=0.02$ H, $J=0.01$ kg m$^2$, $b=0.02$ N m s/rad and $k_t=k_e=0.1$ in consistent SI units. The nominal load is 0.03 N m. Saturation applies only where explicitly stated.
+\par\smallskip{\small\textbf{Study route.} Begin with balances, power and P/PI behavior. Problem 4(a,c) uses Routh stability from Laboratory 06; Problem 1(b) previews controllability developed in Laboratory 10. These are planned return tasks.}
+\task{1}{From armature current to flywheel motion}
+The illustrated DC motor drives a flywheel against bearing friction and an opposing load. Identify the two energy stores and distinguish back emf from mechanical load torque.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A voltage-driven motor converts armature current into shaft torque. The rotor and external brake introduce inertia, friction and load torque. The illustrative cutaway does not add magnetic saturation or friction to the stated linear model.}\end{center}
+\begin{enumerate}
+\item A motor has $R=2\,\Omega$, $L=0.02$ H, $J=0.01$ kg m$^2$, $b=0.02$ N m s/rad and $k_t=k_e=0.1$ in SI units. Define voltage $v$, current $i$, speed $\omega$ and opposing load torque $d$. Derive the two balance equations and both speed transfer functions.
+\item Use $x=[i,\omega]^T$ and voltage as control input. Write A, B and the load-input vector. Compute the determinant of the controllability matrix and interpret it.
+\item Explain why controllability of the linear state model does not guarantee that a requested motion can be produced by a voltage-limited supply. Identify the missing constraint in an unconstrained controllability calculation.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{2}{Checking both torque and power at the supply limit}
+Before tuning feedback, determine whether the requested speed and load are physically compatible with the supply. Use equilibrium and energy balance as independent checks.
+\begin{enumerate}
+\item Find the current and voltage required to hold 5 rad/s against 0.03 N m load. If available voltage is limited to 2 V, find the largest sustainable positive speed for that load.
+\item At 5 rad/s and 0.03 N m load, calculate electrical input power, copper loss, viscous dissipation and useful load power. Verify conservation using the equilibrium from Problem 2(a).
+\item At the largest loaded equilibrium speed permitted by a 2 V supply, calculate current, electrical input power, copper loss, viscous loss and useful load power. Verify their sum.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{3}{Proportional tracking versus integral load rejection}
+Compare proportional and PI regulation of the same loaded flywheel. The controller's internal integral state is a voltage contribution, not an additional physical energy source.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}\par{\small Outer PI speed regulation around the electromechanical motor. The inner back-emf path and opposing load torque have explicit negative signs.}\end{center}
+\begin{enumerate}
+\item Use $v=k_p(r-\omega)$ with $k_p=0.8$, constant reference $r=5$ and load $d=0.03$. Find the equilibrium speed and tracking error from the physical equilibrium relation.
+\item Replace the controller by $v=k_p(r-\omega)+z$, $\dot z=k_i(r-\omega)$, with $k_p=0.8$, $k_i=1.6$. Find the equilibrium speed and integral state for $r=5$, $d=0.03$. State the conditions needed to use this equilibrium as a final-value prediction.
+\item Restore the 2 V supply constraint while retaining the 5 rad/s reference. What equilibrium claim from the ideal PI design becomes invalid, and what can anti-windup legitimately improve?
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{4}{A stable PI controller has two different closed-loop channels}
+Controller tuning changes reference tracking and load rejection through a shared denominator, but different numerators. Check stability before applying final-value arguments.
+\begin{enumerate}
+\item Derive the strict stability condition for positive PI gains. Decide whether $(k_p,k_i)=(0.8,1.6)$ and $(0.8,150)$ satisfy it, and interpret the equality boundary.
+\item For an arbitrary stabilizing controller C, derive $\Omega/R$ and $\Omega/D_{load}$. Evaluate the latter at zero frequency for proportional gain 0.8 and for a stable PI controller with nonzero integral gain.
+\item For $k_p=0.8$, impose the additional design rule that $k_i$ must stay at least 20 percent below its Routh upper boundary. Calculate the allowed positive interval and assess $k_i=1.6$. Explain what this rule does not measure.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{5}{A reduced model and a load estimate during acceleration}
+The electrical time scale is short compared with the nominal mechanical one. Decide what may be neglected in a speed model and what must still be retained when estimating load.
+\begin{enumerate}
+\item Set L to zero and derive the reduced voltage-to-speed model and its time constant. Compare that time constant with $L/R$. Explain why this scale comparison is not a universal proof that inductance can be ignored.
+\item Derive a steady load estimate using measured voltage and speed. Find the load-estimate error caused separately by a +0.1 V voltage bias and a +0.1 rad/s speed bias.
+\item Starting from the full balances, derive the exact load torque in terms of measured voltage, speed and their state derivatives. Find the transient bias in the steady load estimator and explain why noise complicates correcting it.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\end{document}

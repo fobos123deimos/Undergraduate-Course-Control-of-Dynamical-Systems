@@ -1,0 +1,74 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Laboratory 03}
+{\color{ink}\LARGE\bfseries Laboratory 03}\par
+{\large A precision platform under floor motion}\par
+\textbf{Exercise sheet -- five integrated problems}\par
+{\small\textbf{Evidence boundary.} Original hypothetical scenarios. Derive, calculate and justify decisions; every numerical record is synthetic. Figures are conceptual and not to scale.}
+\smallskip\textbf{Shared nominal data.} Nominal payload: $m=8$ kg, $k=3200$ N/m and $\zeta=0.08$ unless varied. Absolute payload motion is $x$; floor motion is $z$. Spring and damper depend on relative motion about static equilibrium.
+\task{1}{An optical platform on a moving foundation}
+A precision payload is supported by a spring and damper attached to a moving floor. Positions are measured about the loaded static equilibrium, so gravity does not appear in the incremental motion equation.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small An optical payload rests on parallel spring and damping elements. The two springs each have stiffness $k/2$, giving total $k$. Both the floor and payload move; spring extension and damping velocity are relative quantities. Weight is balanced at the static equilibrium about which the model is written.}\end{center}
+\begin{enumerate}
+\item An 8 kg platform is attached to a moving floor by a spring $k=3200$ N/m and damper $b$. Let $x$ and $z$ be absolute platform and floor displacements. Derive $X/Z$ and the relative-displacement transfer $(X-Z)/Z$.
+\item Find $\omega_n$ and the damping coefficients for ratios 0.08 and 0.4. Calculate the closed-form poles for both cases.
+\item Find the zero-frequency gains from floor displacement to absolute payload motion and to relative suspension travel. Explain the physical difference and why using the force-input transfer for this experiment would be wrong.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{2}{Damping a resonance while preserving isolation}
+The design must cross a resonant region during operation but should isolate higher-frequency floor motion. Compare the competing effects of damping rather than ranking one damper as universally better.
+\begin{enumerate}
+\item Using $r=\omega/\omega_n$, derive the condition for absolute displacement transmissibility below one. Explain why the nonzero threshold is independent of positive damping in this ideal model.
+\item Calculate transmissibility at $r=1$ for damping ratios 0.08 and 0.4. Which design better suppresses floor motion at that frequency? Do these values necessarily equal the exact peak magnitudes?
+\item Analyze the limit $\zeta\to0^+$ at $r=1$ and at a fixed $r>\sqrt2$. Use the result to explain why an isolation threshold alone is an incomplete design specification.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{3}{Absolute vibration and suspension-travel limits}
+The same floor motion can create different specifications for the optical payload and its supporting suspension. Evaluate both outputs before selecting a mount.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}\par{\small Base excitation drives absolute motion; subtracting the floor coordinate gives relative travel. The spring and damper act in parallel.}\end{center}
+\begin{enumerate}
+\item Evaluate transmissibility at $r=3$ for both damping ratios. For nonzero damping, derive the high-frequency asymptote and explain the design conflict with Problem 2(b).
+\item At $r=2$, floor displacement amplitude is 0.5 mm. With $\zeta=0.08$, find the amplitude of relative travel $x-z$ and decide whether it stays within a 0.8 mm amplitude limit.
+\item For a fixed floor-displacement amplitude of 0.5 mm, find the limiting absolute and relative amplitudes as frequency tends to infinity with nonzero damping. Relate these limits to the finite-frequency travel check.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{4}{A heavier payload under a tight static-sag requirement}
+The payload may change, but static support and vibration isolation must still be achieved by the same spring. Treat these as simultaneous constraints.
+\begin{enumerate}
+\item Keep $k=3200$ and $b=25.6$ but increase total mass to 12 kg. Find the new natural frequency, damping ratio and isolation threshold. Explain why keeping the damper fixed does not keep the damping ratio fixed.
+\item For the original 8 kg platform, calculate static spring deflection under gravity. If deflection may not exceed 3 mm, determine the minimum stiffness and the corresponding natural frequency, using $g=9.81$ m/s$^2$.
+\item Require gravity sag at most 3 mm and isolation of floor motion at 40 rad/s. Derive mass-independent bounds on $\omega_n$ and decide whether any passive spring in this model satisfies both.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{5}{What a decay test says about energy and excitation}
+A synthetic ring-down is used to infer damping. Distinguish that unforced test from operation on a moving floor, which can continually inject energy.
+\begin{enumerate}
+\item In a noise-free synthetic free decay, consecutive positive peaks are 1.5 mm and 0.9 mm, separated by 0.32 s. Infer damping ratio, natural frequency and $b$ if mass is 8 kg. State the assumption behind this inference.
+\item Set $z=0$. Show that mechanical energy decreases for $b>0$ and discuss asymptotic stability. Explain why the same autonomous energy argument cannot prove decreasing platform energy for arbitrary moving-floor excitation.
+\item For moving floor coordinate $z$, use physical stored energy $E=m\dot x^2/2+k(x-z)^2/2$. Derive its power balance and identify the term that prevents an unconditional monotonic-decay claim.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\end{document}

@@ -1,0 +1,53 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,tikz,hyperref,fvextra}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=3em
+
+\title{\color{ink}Two thermal zones with one temperature measurement}
+\author{}
+\date{Original learning collection -- November 2026}
+\begin{document}
+\begin{center}{\LARGE\color{ink}Two thermal zones with one temperature measurement}\\[5pt]{\small Original learning collection -- November 2026}\end{center}
+
+\textbf{Evidence note.} Original teaching scenario. Numerical parameters are deliberately chosen for learning. All generated data and curves are synthetic; no physical measurement is asserted.
+\section{Design brief}
+Two hypothetical thermal zones obey $\dot x=Ax+Bu$ and $y=Cx$, with
+\[
+A=\begin{bmatrix}-0.15&0.05\\0.05&-0.10\end{bmatrix}\,\mathrm{s^{-1}},
+\quad B=\begin{bmatrix}0.1\\0\end{bmatrix}\,\mathrm{K/(s\,W)},
+\quad C=\begin{bmatrix}0&1\end{bmatrix}.
+\]
+Check controllability and observability. Choose feedback poles $-0.20,-0.35$, observer poles $-0.8,-1.0$ and a constant reference prefilter. Starting at $x(0)=[0.6,-0.4]^{\mathsf T}\,\mathrm{K}$ with zero estimate, regulate zone 2 to a $1\,\mathrm{K}$ rise.
+\section{Physical system}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small Two thermal inventories are connected by a conductive bridge. Heating acts in the first zone and sensing in the second. These stated capacities and conductances reproduce the two-state model exactly under the lumped assumptions.}\end{center}
+\section{What can be controlled and observed?}
+The controllability matrix $[B\ AB]$ has determinant $0.0005$, while the observability matrix $[C;CA]$ for $C=[0\ 1]$ has determinant $-0.05$. Both are nonsingular. Heat injected into zone 1 can influence zone 2 through coupling, and the measured zone-2 temperature reveals the other state dynamically.
+\section{Feedback and prefilter}
+Choose $u=-K\hat x+Nr$. Pole placement yields $K$ such that $A-BK$ has eigenvalues $-0.20,-0.35$. For constant references,
+\[N=-\left[C(A-BK)^{-1}B\right]^{-1}.\]
+This formula gives unit DC reference gain only for the nominal model and no constant disturbance. It is not integral regulation.
+\section{Observer and separation}
+Use $\dot{\hat x}=A\hat x+Bu+L(y-C\hat x)$ and select $L$ by placing the eigenvalues of $A-LC$ at $-0.8,-1.0$. With error $e=x-\hat x$,
+\[\begin{bmatrix}\dot x\\\dot e\end{bmatrix}=
+\begin{bmatrix}A-BK&BK\\0&A-LC\end{bmatrix}\begin{bmatrix}x\\e\end{bmatrix}+
+\begin{bmatrix}BN\\0\end{bmatrix}r.\]
+The block triangular matrix shows why controller and observer eigenvalues combine without changing each other in the nominal linear model.
+\section{Interpretation and limits}
+Observer convergence can be faster than output regulation. Faster estimation is not free: sensor noise and unmodeled dynamics are amplified by aggressive observer gains. Heating/cooling limits and temperature-dependent heat transfer are omitted; negative incremental heat can require an active cooler or reduction from a positive bias.
+\section{What to learn from the experiment}
+State estimation and reference prefiltering solve different problems. A nominal prefilter does not replace integral action against unknown constant disturbances.
+\section{System sketch}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}
+\par\small\refstepcounter{figure}\label{fig:system}\textbf{Figure \thefigure.} The observer receives both the applied control and measured output. Its estimated vector supplies state feedback; the prefilter sets nominal reference gain.\end{center}
+\section{Executed computational evidence}
+\VerbatimInput[fontsize=\small,breaklines=true]{results.txt}
+\begin{center}\includegraphics[width=\linewidth,height=.46\textheight,keepaspectratio]{response.png}\end{center}
+\section{Method references}
+The equations use standard balance laws and feedback-control methods. Further explanation: \url{https://apmonitor.com/pdc/} and \url{https://fbsbook.org/}. Implementation documentation: \url{https://python-control.readthedocs.io/en/0.10.2/}. See the repository reference catalog for individual topics and videos.
+\end{document}

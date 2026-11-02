@@ -1,0 +1,4 @@
+Delay 0.00 s: exact margin=54.207784 deg; Pade margin=54.207784 deg
+Delay 0.10 s: exact margin=41.814427 deg; Pade margin=41.814427 deg
+Delay 0.30 s: exact margin=17.027715 deg; Pade margin=17.027715 deg
+Crossover=2.163049 rad/s; ideal delay budget=0.437394 s

@@ -1,0 +1,4 @@
+Declared true [gain, tau, delay]: [1.8 4.  0.6]
+Estimated [gain, tau, delay]: [1.80002469 3.99349123 0.6042892 ]
+Training RMSE=0.015744; independent-input validation RMSE=0.014502
+PI: Kp=0.85189303, Ki=0.21332037; final regulated output=0.998318

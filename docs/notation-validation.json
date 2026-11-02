@@ -1,0 +1,73 @@
+{
+  "markdown_files": 39,
+  "notebooks": 12,
+  "math_expressions": 422,
+  "tikz_diagrams": 25,
+  "delimiter_and_asset_checks": "passed",
+  "scope": "Structural checks; PDF compilation and visual review are documented separately.",
+  "unique_markdown_math_expressions_compiled": 284,
+  "markdown_math_latex_errors": [],
+  "notebook_code_checks": [
+    {
+      "notebook": "laboratories/01-thermal-enclosure/notebook.ipynb",
+      "code_cells_unchanged": true,
+      "code_sha256": "e4dc98e91278427d051deb67a0196422a9b3bd7f5786c57380270c8977aa43c7"
+    },
+    {
+      "notebook": "laboratories/02-ventilation/notebook.ipynb",
+      "code_cells_unchanged": true,
+      "code_sha256": "ff6d7d8d2c887061a0ceeec5947afa77c9b9e1325c9b68bd7ea81b5e40fbbe1c"
+    },
+    {
+      "notebook": "laboratories/03-vibration-isolation/notebook.ipynb",
+      "code_cells_unchanged": true,
+      "code_sha256": "56249930fc9c5ac9307ebef235d6ce8308116905a3df0889be62711e82ba0f80"
+    },
+    {
+      "notebook": "laboratories/04-notch-filter/notebook.ipynb",
+      "code_cells_unchanged": true,
+      "code_sha256": "b5b46723fc55a6ef56647479a7af423e0fc69ec05a5cc3e8d2cd548195ac76d9"
+    },
+    {
+      "notebook": "laboratories/05-motor-load-rejection/notebook.ipynb",
+      "code_cells_unchanged": true,
+      "code_sha256": "cf4b204ac8f70d74c5bc9c2aff69915e75a4bc0f06637769268f38f9aa549c75"
+    },
+    {
+      "notebook": "laboratories/06-root-locus/notebook.ipynb",
+      "code_cells_unchanged": true,
+      "code_sha256": "9b35f2241ab1162348b6735f232950e6cf13cdd9ffe402abe3a48b1f18e5b730"
+    },
+    {
+      "notebook": "laboratories/07-delay-budget/notebook.ipynb",
+      "code_cells_unchanged": true,
+      "code_sha256": "37b8f3dee3727af301fb2cfbc6b5ba553ef8670a702da21c6109eb21962221ec"
+    },
+    {
+      "notebook": "laboratories/08-camera-compensation/notebook.ipynb",
+      "code_cells_unchanged": true,
+      "code_sha256": "7f008d85789c709be13b72fad054296c2376b37604240e0aefb9f01139934c77"
+    },
+    {
+      "notebook": "laboratories/09-pid-saturation/notebook.ipynb",
+      "code_cells_unchanged": true,
+      "code_sha256": "1d651fafd8714e8c67c3803ff4304339e3c131d655f737873ead91017af01825"
+    },
+    {
+      "notebook": "laboratories/10-observer-control/notebook.ipynb",
+      "code_cells_unchanged": true,
+      "code_sha256": "025fa8ca8ffa629f1920e4f00547a2c8754dc0ba055c8757cfe7fe0146b9a5c4"
+    },
+    {
+      "notebook": "laboratories/11-digital-control/notebook.ipynb",
+      "code_cells_unchanged": true,
+      "code_sha256": "ab7b26088070b74919943f5e1935148d449d344601c64c62b8f502c31bf7dee1"
+    },
+    {
+      "notebook": "laboratories/12-identification-capstone/notebook.ipynb",
+      "code_cells_unchanged": true,
+      "code_sha256": "161c3804c10074906a2c7bc696e01d4d5029bb18b7a968264916d643a9ad5a18"
+    }
+  ],
+  "note": "LaTeX smoke compilation checks syntax and glyphs; it is not a substitute for every browser/Colab renderer."
+}

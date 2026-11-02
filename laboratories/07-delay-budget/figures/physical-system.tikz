@@ -1,0 +1,33 @@
+\begin{tikzpicture}[
+font=\sffamily\small,>=Latex,line cap=round,line join=round,
+wall/.style={draw=ink,line width=1.2pt,fill=blue!5},
+water/.style={fill=cyan!25,draw=none},
+metal/.style={draw=ink,fill=blue!12,line width=.9pt},
+flow/.style={->,draw=blue!65!black,line width=1.2pt},
+heat/.style={->,draw=orange!85!black,line width=1.1pt},
+measure/.style={->,draw=teal!70!black,line width=.9pt},
+dim/.style={<->,draw=ink!65,line width=.6pt},
+spring/.style={draw=ink,decorate,decoration={coil,aspect=.5,segment length=4pt,amplitude=3pt}},
+wire/.style={draw=ink,line width=1pt},
+lab/.style={align=center,font=\sffamily\small},
+smalllab/.style={align=center,font=\sffamily\scriptsize}]
+
+\draw[metal](.5,1)rectangle(4,1.5);
+\draw[metal](1.2,1.5)rectangle(3.1,2.8);
+\draw[measure](1.9,3)--(3.7,3)node[midway,above]{$y(t)$};
+\draw[metal](4.7,3.2)rectangle(5.9,4);
+\draw[metal](4.7,3.35)--(4.2,3.2)--(4.2,4)--(4.7,3.85)--cycle;
+\draw[teal!50,dashed](4.2,3.2)--(2.2,1.6)(4.2,4)--(1.2,2.8);
+\node[smalllab]at(5.3,4.5){remote sensor};
+\draw[metal,rounded corners=3pt](10.4,1.7)rectangle(13.3,4);
+\draw[fill=white,draw=ink](10.7,2.2)rectangle(13,3.7);
+\draw[ink](11.6,1.7)--(11.6,1.2)--(12.2,1.2)--(12.2,1.7);
+\node[smalllab]at(11.85,2.95){controller\\time stamp};
+\draw[flow](6.2,3.6)--(10.1,3.6);
+\foreach \x in {6.8,7.5,8.2}{\draw[fill=blue!15,draw=ink](\x,3.45)rectangle++(.35,.3);}
+\node[smalllab]at(8,4.3){sample packets};
+\draw[flow](10.1,1.9)--(6.5,1.9)--(6.5,.3)--(2,.3)--(2,1);
+\node[smalllab]at(8,1.25){actuation command};
+\draw[dim](6.8,2.7)--node[below]{$T$: total information delay}(9.7,2.7);
+\node[lab]at(6.8,-.6){Mechanism and communication path; packet losses and jitter are omitted};
+\end{tikzpicture}

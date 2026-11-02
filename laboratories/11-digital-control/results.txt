@@ -1,0 +1,4 @@
+Ts=0.05 s: spectral radius=0.89390714
+Ts=0.50 s: spectral radius=0.60653066
+Ts=1.00 s: spectral radius=1.36552727
+First unit-circle crossing: 0.75000000 s

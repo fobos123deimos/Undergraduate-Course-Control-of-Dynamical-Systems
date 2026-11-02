@@ -1,0 +1,47 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,tikz,hyperref,fvextra}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=3em
+
+\title{\color{ink}A precision platform under floor motion}
+\author{}
+\date{Original learning collection -- November 2026}
+\begin{document}
+\begin{center}{\LARGE\color{ink}A precision platform under floor motion}\\[5pt]{\small Original learning collection -- November 2026}\end{center}
+
+\textbf{Evidence note.} Original teaching scenario. Numerical parameters are deliberately chosen for learning. All generated data and curves are synthetic; no physical measurement is asserted.
+\section{Design brief}
+An optical platform has mass $m=8\,\mathrm{kg}$ and spring stiffness $k=3200\,\mathrm{N/m}$. Compare damping ratios $\zeta=0.08$ and $0.40$. Derive transmissibility from floor coordinate $z$ to absolute platform coordinate $x$, find the isolation threshold and compare attenuation at $\omega=2\omega_n$. Also find the displacement produced by a static $1\,\mathrm{N}$ force.
+\section{Physical system}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small An optical payload rests on parallel spring and damping elements. The two springs each have stiffness $k/2$, giving total $k$. Both the floor and payload move; spring extension and damping velocity are relative quantities. Weight is balanced at the static equilibrium about which the model is written.}\end{center}
+\section{Relative forces, absolute displacement}
+Let $x$ be platform displacement and $z$ floor displacement. The spring and damper act on relative motion:
+\[m\ddot x=-b(\dot x-\dot z)-k(x-z)+f.\]
+Thus the floor and force inputs have different numerators:
+\[\frac{X}{Z}=\frac{bs+k}{ms^2+bs+k},\qquad \frac{X}{F}=\frac1{ms^2+bs+k}.\]
+With $m=8$ kg and $k=3200$ N/m, $\omega_n=20$ rad/s and $b=2\zeta\sqrt{mk}=320\zeta$ N s/m. The two damping values are 25.6 and 128 N s/m.
+\section{Transmissibility and isolation}
+For $r=\omega/\omega_n$, the squared displacement transmissibility is
+\[|X/Z|^2=\frac{1+(2\zeta r)^2}{(1-r^2)^2+(2\zeta r)^2}.\]
+It is below one precisely when $(1-r^2)^2>1$, or $r>\sqrt2$ for positive frequency. Damping does not move this crossing, but it changes resonance and high-frequency transmission.
+\section{A design tradeoff}
+At $r=2$, use $\sqrt{[1+16\zeta^2]/[9+16\zeta^2]}$. Greater damping lowers resonance but increases transmission in the isolation band. A static 1 N force produces $x=1/k=0.0003125$ m irrespective of damping.
+\section{Limits}
+The floor is an imposed displacement, not a second independent mass. Mount stiffness and damping are ideal constants; travel limits, friction, rotations and material nonlinearities are excluded.
+\section{What to learn from the experiment}
+Reducing a resonance peak and improving high-frequency isolation are different design objectives. The transfer function must reflect which physical input is applied.
+\section{System sketch}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}
+\par\small\refstepcounter{figure}\label{fig:system}\textbf{Figure \thefigure.} Base excitation drives absolute motion; subtracting the floor coordinate gives relative travel. The spring and damper act in parallel.\end{center}
+\section{Executed computational evidence}
+\VerbatimInput[fontsize=\small,breaklines=true]{results.txt}
+\begin{center}\includegraphics[width=\linewidth,height=.46\textheight,keepaspectratio]{response.png}\end{center}
+\section{Method references}
+The equations use standard balance laws and feedback-control methods. Further explanation: \url{https://apmonitor.com/pdc/} and \url{https://fbsbook.org/}. Implementation documentation: \url{https://python-control.readthedocs.io/en/0.10.2/}. See the repository reference catalog for individual topics and videos.
+\end{document}

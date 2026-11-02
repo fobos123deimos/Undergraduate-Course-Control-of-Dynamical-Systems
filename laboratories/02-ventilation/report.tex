@@ -1,0 +1,49 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,tikz,hyperref,fvextra}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=3em
+
+\title{\color{ink}Ventilation as a bilinear dynamical system}
+\author{}
+\date{Original learning collection -- November 2026}
+\begin{document}
+\begin{center}{\LARGE\color{ink}Ventilation as a bilinear dynamical system}\\[5pt]{\small Original learning collection -- November 2026}\end{center}
+
+\textbf{Evidence note.} Original teaching scenario. Numerical parameters are deliberately chosen for learning. All generated data and curves are synthetic; no physical measurement is asserted.
+\section{Design brief}
+A hypothetical well-mixed room has $V=120\,\mathrm{m^3}$, tracer generation $S=360\,\mathrm{ppm\,m^3/min}$ and nominal airflow $q_0=3\,\mathrm{m^3/min}$. Inlet excess concentration is zero. Derive the equilibrium and local airflow-to-concentration model from $V\dot c=S-qc$. Compare $10\%$ and $100\%$ airflow increases using the nonlinear and linearized models, including their final-value errors.
+\section{Physical system}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A ventilated room and a well-mixed liquid analogue share an inventory balance. The room uses m$^3$ and the liquid case uses L; do not mix their concentration or flow units. Equal inlet and outlet volume flows keep each inventory constant.}\end{center}
+\section{Concentration balance}
+For a perfectly mixed room, let $c$ be excess tracer concentration in ppm, $q$ ventilation flow in m$^3$/min and $S$ tracer generation in ppm m$^3$/min. Conservation gives
+\[V\dot c=S-qc.\]
+The model is bilinear in the two variables $q$ and $c$. At constant airflow $q_0=3$, the equilibrium is $c_0=S/q_0=120$ ppm.
+\section{Local perturbation model}
+Write $c=c_0+\delta c$ and $q=q_0+\delta q$. Expanding the product and subtracting the equilibrium gives
+\[V\delta\dot c=-q_0\delta c-c_0\delta q-\delta q\delta c.\]
+Discarding only the second-order product yields
+\[\frac{\delta C(s)}{\delta Q(s)}=\frac{-c_0/q_0}{(V/q_0)s+1}=\frac{-40}{40s+1}.\]
+Increasing airflow reduces concentration, so the negative static gain has a physical meaning.
+\section{Finite changes and approximation error}
+For a flow step $\Delta q$, the exact response is
+\[c(t)=\frac{S}{q_0+\Delta q}+\left(c_0-\frac{S}{q_0+\Delta q}\right)e^{-(q_0+\Delta q)t/V}.\]
+The local prediction is $c_{lin}(t)=c_0-40\Delta q(1-e^{-t/40})$. For a 10 percent step the exact final value is $120/1.1$ ppm, while the linear prediction is 108 ppm. For a doubling, they are 60 ppm and 0 ppm: a useful warning against extrapolating the tangent model.
+\section{Interpretation}
+The linearized model changes neither its time constant nor its input gain after a step. The nonlinear model changes both its equilibrium and decay rate. This is a tracer-transport teaching example, not an indoor-air-quality exposure assessment.
+\section{What to learn from the experiment}
+The doubled-flow experiment deliberately leaves the small-signal regime. Its large error is a limitation of linearization, not a numerical failure.
+\section{System sketch}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}
+\par\small\refstepcounter{figure}\label{fig:system}\textbf{Figure \thefigure.} The physical balance and its local two-input signal model. Airflow enters with a negative sign because increased ventilation removes excess tracer.\end{center}
+\section{Executed computational evidence}
+\VerbatimInput[fontsize=\small,breaklines=true]{results.txt}
+\begin{center}\includegraphics[width=\linewidth,height=.46\textheight,keepaspectratio]{response.png}\end{center}
+\section{Method references}
+The equations use standard balance laws and feedback-control methods. Further explanation: \url{https://apmonitor.com/pdc/} and \url{https://fbsbook.org/}. Implementation documentation: \url{https://python-control.readthedocs.io/en/0.10.2/}. See the repository reference catalog for individual topics and videos.
+\end{document}

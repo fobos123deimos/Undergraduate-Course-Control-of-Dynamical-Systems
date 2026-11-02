@@ -1,0 +1,28 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex,font=\small,
+block/.style={draw=ink,fill=blue!4,rounded corners=2pt,minimum height=9mm,align=center,line width=.7pt,inner sep=5pt},
+sum/.style={circle,draw=ink,fill=white,minimum size=6mm,inner sep=0pt,line width=.7pt},
+sig/.style={->,draw=ink,line width=.85pt},
+fb/.style={->,draw=teal!70!black,line width=.85pt},
+dist/.style={->,draw=orange!75!black,line width=.85pt},
+tap/.style={circle,fill=ink,inner sep=1.4pt},
+note/.style={font=\footnotesize,align=center,text=black!75}]
+
+\node[block](n)at(2,1.1){$N$};
+\node[sum](u)at(4.5,1.1){$\Sigma$};
+\node[block,minimum width=42mm,minimum height=14mm](p)at(9,1.1){Thermal process\\$\dot x=Ax+Bu,\quad y=Cx$};
+\draw[sig](0,1.1)--node[above]{$r$}(n);
+\draw[sig](n)--node[pos=.9,below]{$+$}(u);
+\draw[sig](u)--node[above]{$u$}(p);
+\draw[sig](p)--(14,1.1)node[right]{$y=x_2$};
+\node[block,minimum width=58mm,minimum height=15mm](o)at(9,-1.5){State observer\\$\dot{\hat x}=A\hat x+Bu+L(y-C\hat x)$};
+\draw[sig](5.6,1.1)--(5.6,-1.5)--(o.west);
+\fill[ink](5.6,1.1)circle(1.4pt);
+\draw[fb](13.2,1.1)--(13.2,-1.5)--(o.east);
+\fill[ink](13.2,1.1)circle(1.4pt);
+\node[block](k)at(4.5,-3.1){$K$};
+\draw[fb](o.south)--(9,-3.1)--node[above]{$\hat x$}(k);
+\draw[fb](k.north)--node[pos=.9,left]{$-$}(u.south);
+\node[note]at(1.6,-1.6){Only $y=x_2$ is measured.\\$\hat x$ estimates both states.};
+\node[note]at(10,-4.1){Controller: $u=Nr-K\hat x$\\error: $e=x-\hat x$, $\quad\dot e=(A-LC)e$};
+
+\end{tikzpicture}

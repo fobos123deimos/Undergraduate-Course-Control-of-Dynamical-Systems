@@ -1,0 +1,28 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex,font=\small,
+block/.style={draw=ink,fill=blue!4,rounded corners=2pt,minimum height=9mm,align=center,line width=.7pt,inner sep=5pt},
+sum/.style={circle,draw=ink,fill=white,minimum size=6mm,inner sep=0pt,line width=.7pt},
+sig/.style={->,draw=ink,line width=.85pt},
+fb/.style={->,draw=teal!70!black,line width=.85pt},
+dist/.style={->,draw=orange!75!black,line width=.85pt},
+tap/.style={circle,fill=ink,inner sep=1.4pt},
+note/.style={font=\footnotesize,align=center,text=black!75}]
+
+\node[sum](e)at(1,2.1){$\Sigma$};
+\node[block](g)at(5,2.1){$\dfrac{8}{s(s+3)}$};
+\node[block](d)at(10,2.1){Delay $e^{-sT}$};
+\draw[sig](-.2,2.1)--node[above]{$r$}node[pos=.9,below]{$+$}(e);
+\draw[sig](e)--(g);\draw[sig](g)--node[above]{$u$}(d);
+\draw[sig](d)--(14,2.1)node[right]{$y$};
+\draw[fb](13.5,2.1)--(13.5,.6)--(1,.6)--node[pos=.9,left]{$-$}(e);
+\fill[ink](13.5,2.1)circle(1.4pt);
+\draw[sig](2,-3.7)--(11,-3.7)node[right]{$t$};
+\draw[line width=1pt,draw=ink](2,-1.6)--(3,-1.6)--(3,-.6)--(10.5,-.6);
+\draw[line width=1pt,draw=teal!70!black](2,-3.2)--(6,-3.2)--(6,-2.2)--(10.5,-2.2);
+\draw[densely dashed,black!40](3,-3.8)--(3,-.35)(6,-3.8)--(6,-.35);
+\node[below]at(3,-3.7){$0$};\node[below]at(6,-3.7){$T$};
+\draw[<->,orange!75!black](3,0)--node[above]{time shift $T$}(6,0);
+\node[note]at(13,-.9){$u(t)$};
+\node[note]at(13,-2.5){$u(t-T)$\\$\Delta\phi=-\omega T$};
+\node[note]at(7,-4.5){Equal-height unit steps, drawn on vertically offset tracks for clarity.};
+
+\end{tikzpicture}

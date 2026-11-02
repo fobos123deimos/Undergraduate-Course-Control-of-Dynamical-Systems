@@ -1,0 +1,29 @@
+\begin{tikzpicture}[
+font=\sffamily\small,>=Latex,line cap=round,line join=round,
+wall/.style={draw=ink,line width=1.2pt,fill=blue!5},
+water/.style={fill=cyan!25,draw=none},
+metal/.style={draw=ink,fill=blue!12,line width=.9pt},
+flow/.style={->,draw=blue!65!black,line width=1.2pt},
+heat/.style={->,draw=orange!85!black,line width=1.1pt},
+measure/.style={->,draw=teal!70!black,line width=.9pt},
+dim/.style={<->,draw=ink!65,line width=.6pt},
+spring/.style={draw=ink,decorate,decoration={coil,aspect=.5,segment length=4pt,amplitude=3pt}},
+wire/.style={draw=ink,line width=1pt},
+lab/.style={align=center,font=\sffamily\small},
+smalllab/.style={align=center,font=\sffamily\scriptsize}]
+
+\fill[ink!12](.7,.4)rectangle(13,.7);
+\draw[wall](.7,.7)rectangle(1.1,4);
+\draw[metal](6,1.3)rectangle(9.4,3.3);
+\node[lab]at(7.7,2.4){$m=1$ kg\\position $y$};
+\draw[spring](1.1,2.9)--(6,2.9);
+\node[smalllab]at(3.5,3.55){$k=1$ N/m};
+\draw[wire](1.1,1.65)--(3,1.65)(3,1.35)--(4,1.35)--(4,1.95)--(3,1.95);
+\draw[wire](6,1.65)--(3.5,1.65)(3.5,1.4)--(3.5,1.9);
+\node[smalllab]at(3.5,1){$b=2$ N s/m};
+\draw[metal](6.7,1.1)circle(.35)(8.8,1.1)circle(.35);
+\draw[heat](9.5,2.3)--(12.6,2.3);
+\node[lab]at(11.4,3.15){force actuator\\$|u|\leq2$ N};
+\draw[measure](6.7,4.1)--(9.4,4.1)node[midway,above]{positive $y$};
+\node[lab]at(6.9,-.15){Illustrative force-driven stage; no contact, friction or hard stops};
+\end{tikzpicture}

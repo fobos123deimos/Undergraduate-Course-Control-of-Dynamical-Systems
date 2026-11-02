@@ -1,0 +1,44 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,tikz,hyperref,fvextra}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=3em
+
+\title{\color{ink}Gain selection with a third-order actuator}
+\author{}
+\date{Original learning collection -- November 2026}
+\begin{document}
+\begin{center}{\LARGE\color{ink}Gain selection with a third-order actuator}\\[5pt]{\small Original learning collection -- November 2026}\end{center}
+
+\textbf{Evidence note.} Original teaching scenario. Numerical parameters are deliberately chosen for learning. All generated data and curves are synthetic; no physical measurement is asserted.
+\section{Design brief}
+A normalized actuator has $G(s)=1/[s(s+2)(s+6)]$ under unity negative feedback with proportional gain $K>0$. Derive the strictly stable gain interval using Routh--Hurwitz, the imaginary-axis crossing and real-axis breakaway. Simulate $K=12$, $60$ and $100$ to compare regulation and instability. A short time plot alone is not a stability test.
+\section{Physical system}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A motorized positioning axis illustrates the role of the integrator and two stable lags. The normalized transfer function is specified as a teaching model; the pictured dimensions do not identify its coefficients.}\end{center}
+\section{Characteristic equation}
+The unity-feedback denominator is
+\[p(s)=s(s+2)(s+6)+K=s^3+8s^2+12s+K.\]
+The first column of the Routh array is $1,8,(96-K)/8,K$. Strict stability therefore requires $0<K<96$. At $K=0$ there is a pole at the origin; $K=96$ is a boundary, not a stable maximum.
+\section{Imaginary-axis crossing}
+At $K=96$, $p(s)=(s+8)(s^2+12)$, so the crossing pair is $s=\pm j\sqrt{12}$. The remaining pole stays at $-8$.
+\section{Root-locus geometry}
+There are three open-loop poles and no finite zeros. The centroid is $-8/3$ and the asymptote angles are $60$, $180$ and $300$ degrees. Real-axis locus segments are $(-\infty,-6)$ and $(-2,0)$.
+Since $K(s)=-s(s+2)(s+6)$, a stationary point satisfies $3s^2+16s+12=0$. The root $(-8+2\sqrt7)/3\simeq-0.9028$ belongs to $(-2,0)$ and is the valid positive-gain breakaway. The other stationary point does not lie on a positive-gain real-axis segment.
+\section{Checking the plots}
+Use pole real parts to classify each gain before plotting. A finite horizon can conceal instability when an unstable real part is small. For stable positive gains, the integrator in the open loop gives zero constant-reference error, but says nothing about overshoot.
+\section{What to learn from the experiment}
+An algebraic stability interval provides a guardrail for numerical tuning. The endpoint K=96 must be excluded from strict asymptotic stability.
+\section{System sketch}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}
+\par\small\refstepcounter{figure}\label{fig:system}\textbf{Figure \thefigure.} Unity negative feedback and the open-loop pole map. Pole symbols provide the starting geometry for the root-locus exercises.\end{center}
+\section{Executed computational evidence}
+\VerbatimInput[fontsize=\small,breaklines=true]{results.txt}
+\begin{center}\includegraphics[width=\linewidth,height=.16\textheight,keepaspectratio]{response.png}\end{center}
+\paragraph{Method references.}
+The equations use standard balance laws and feedback-control methods. Further explanation: \url{https://apmonitor.com/pdc/} and \url{https://fbsbook.org/}. Implementation documentation: \url{https://python-control.readthedocs.io/en/0.10.2/}. See the repository reference catalog for individual topics and videos.
+\end{document}

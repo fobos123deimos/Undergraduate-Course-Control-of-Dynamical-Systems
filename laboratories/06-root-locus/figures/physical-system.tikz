@@ -1,0 +1,31 @@
+\begin{tikzpicture}[
+font=\sffamily\small,>=Latex,line cap=round,line join=round,
+wall/.style={draw=ink,line width=1.2pt,fill=blue!5},
+water/.style={fill=cyan!25,draw=none},
+metal/.style={draw=ink,fill=blue!12,line width=.9pt},
+flow/.style={->,draw=blue!65!black,line width=1.2pt},
+heat/.style={->,draw=orange!85!black,line width=1.1pt},
+measure/.style={->,draw=teal!70!black,line width=.9pt},
+dim/.style={<->,draw=ink!65,line width=.6pt},
+spring/.style={draw=ink,decorate,decoration={coil,aspect=.5,segment length=4pt,amplitude=3pt}},
+wire/.style={draw=ink,line width=1pt},
+lab/.style={align=center,font=\sffamily\small},
+smalllab/.style={align=center,font=\sffamily\scriptsize}]
+
+\fill[ink!12](1,.5)rectangle(13,.8);
+\draw[ink,line width=2pt](2,1.4)--(12.5,1.4)(2,3.3)--(12.5,3.3);
+\draw[metal](1,1.9)rectangle(3,2.9);
+\node[smalllab]at(2,2.4){motor};
+\draw[ink,line width=2pt](3,2.4)--(12.5,2.4);
+\foreach \x in {3.2,3.5,...,12.2}{\draw[ink!60](\x,2.25)--++(.22,.3);}
+\draw[metal,rounded corners=2pt](6,1.2)rectangle(9.2,3.5);
+\draw[fill=white,draw=ink](6.6,1.8)rectangle(8.6,2.9);
+\node[lab]at(7.6,2.35){carriage};
+\draw[metal](6.5,3.5)rectangle(8.7,4.2);
+\draw[measure](7.6,4.6)--(10.8,4.6)node[midway,above]{position $x$};
+\draw[flow](-.1,2.4)--(1,2.4);
+\node[smalllab,anchor=east]at(.7,3.35){drive\\command $u$};
+\draw[teal!70!black](11.8,1.1)rectangle(12.5,1.7);
+\node[smalllab]at(11.9,.05){encoder scale};
+\node[lab]at(6.8,-.7){Illustrative positioning axis; $G(s)=1/[s(s+2)(s+6)]$ is stipulated};
+\end{tikzpicture}

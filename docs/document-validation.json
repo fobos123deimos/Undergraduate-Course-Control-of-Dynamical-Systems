@@ -1,0 +1,341 @@
+{
+  "compiler": "Tectonic 0.17.0",
+  "total_pages": 182,
+  "documents": [
+    {
+      "source": "course/guide.tex",
+      "compiled": true,
+      "pages": 2,
+      "sha256": "d0ee5142456975b8f5b95b7b5800b476fc0adc7e0aff67621fbd905bd846ccf3"
+    },
+    {
+      "source": "docs/diagram-atlas.tex",
+      "compiled": true,
+      "pages": 13,
+      "sha256": "939980e7101462ed9c0ff30ca7c253368cc9d4e849a7a3791c759617e3fb536e"
+    },
+    {
+      "source": "laboratories/01-thermal-enclosure/exercise-solutions.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "84adf1692aeeba717ca7ce605257385a3e886c58967e8ebc70b311503a5a5427"
+    },
+    {
+      "source": "laboratories/01-thermal-enclosure/exercises.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "af6b85a40fcb1eb51f7753aabe956f4b3d3e0479acc2f07fd29acbebe094d9cd"
+    },
+    {
+      "source": "laboratories/01-thermal-enclosure/report.tex",
+      "compiled": true,
+      "pages": 3,
+      "sha256": "0c99e897aaf7d0c4cf67a22c3575f7b6f4aacca7a7082c67696532b009efe726"
+    },
+    {
+      "source": "laboratories/02-ventilation/exercise-solutions.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "1449ef905e8e80828f2416fb88c6ec213e71d6a54799a72abccc02eccac865a8"
+    },
+    {
+      "source": "laboratories/02-ventilation/exercises.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "73a422ca55f436bce23760d4d59f346fe4b334f05e9b387d0d68f0166824c89e"
+    },
+    {
+      "source": "laboratories/02-ventilation/report.tex",
+      "compiled": true,
+      "pages": 3,
+      "sha256": "b1b153a4457170736b81840ef3a9903dcffe87c5dbb6a15a9006c7241c0defd2"
+    },
+    {
+      "source": "laboratories/03-vibration-isolation/exercise-solutions.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "63e5af03420b383cf85889724f76c513be83f549f2a5157543fc2fc0e0b0bb0c"
+    },
+    {
+      "source": "laboratories/03-vibration-isolation/exercises.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "f5a359304cf86098d48f3d10dd65a3f0db99c1143935573f52da166b349c149a"
+    },
+    {
+      "source": "laboratories/03-vibration-isolation/report.tex",
+      "compiled": true,
+      "pages": 3,
+      "sha256": "0c99b7b1cf8e5dd90843aff7d0451ca0ee269ade7d892f9f553825744ffd4e2e"
+    },
+    {
+      "source": "laboratories/04-notch-filter/exercise-solutions.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "b3ed0687d57373483d065ca9e17440601712673088a1ee8d71b6254fb198039f"
+    },
+    {
+      "source": "laboratories/04-notch-filter/exercises.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "89d502cab0d95aa39f830589f14c32ae86d57b72250963fd8e0f43fe79e4177a"
+    },
+    {
+      "source": "laboratories/04-notch-filter/report.tex",
+      "compiled": true,
+      "pages": 2,
+      "sha256": "5414a814d43a6b0e21b5f141978a9dcf8cb5604ec2a6affef815ee806f5f7db7"
+    },
+    {
+      "source": "laboratories/05-motor-load-rejection/exercise-solutions.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "41a63cbee48718a58676bf159ac6c783a713e404776e1e571a0f8a583bf94f89"
+    },
+    {
+      "source": "laboratories/05-motor-load-rejection/exercises.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "d26856cad730d9d4c5e241e490961c661e1dbdb8a12470de3b8128b6cfea30a9"
+    },
+    {
+      "source": "laboratories/05-motor-load-rejection/report.tex",
+      "compiled": true,
+      "pages": 3,
+      "sha256": "620ca2c535eeaccead6e70f0aadcd8f54df332cac92f81b64767d4e969f59684"
+    },
+    {
+      "source": "laboratories/06-root-locus/exercise-solutions.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "67865fc1d33420d7a76c02deb26c5b714701500b5c8d4a221e142a6a25b071c7"
+    },
+    {
+      "source": "laboratories/06-root-locus/exercises.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "0ccfcddd752f9c3cff6849d2507b924d8b17901434b7f96fb697283b84df1469"
+    },
+    {
+      "source": "laboratories/06-root-locus/report.tex",
+      "compiled": true,
+      "pages": 2,
+      "sha256": "827083ba6693d8faa401d893baabeaa2e8bb2a2563ac5afdfdbec6a7017fcbc3"
+    },
+    {
+      "source": "laboratories/07-delay-budget/exercise-solutions.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "55db5cf2da6d5e89c0903c67889ea4616e5e8df9ef596bdbb24f6943890ca75f"
+    },
+    {
+      "source": "laboratories/07-delay-budget/exercises.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "580a0159603746bc0cb934350679889df7ac7e160c7240e8a5ce393578ec1291"
+    },
+    {
+      "source": "laboratories/07-delay-budget/report.tex",
+      "compiled": true,
+      "pages": 3,
+      "sha256": "5c62f527320e0f4522857f3ace1ad0c13820870b96eaef2fc4886c4d5b012c66"
+    },
+    {
+      "source": "laboratories/08-camera-compensation/exercise-solutions.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "dae4bc22cf3b5ac85f8c256c541583e8bbda4f6ce07ee4df113467d60916d2cd"
+    },
+    {
+      "source": "laboratories/08-camera-compensation/exercises.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "9ba44c1f756f686a80593a0cbcd655c3c886bd8ae2f6d7e0429bf460843caa19"
+    },
+    {
+      "source": "laboratories/08-camera-compensation/report.tex",
+      "compiled": true,
+      "pages": 3,
+      "sha256": "6f73428aaaeda15de83eb4b4f8c13a42d7eee5ddd05c92b399e61f410a5e68ec"
+    },
+    {
+      "source": "laboratories/09-pid-saturation/exercise-solutions.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "efdab49608d43792e4e49c5dcc384fdae50e298ee0ff2d208df951cd9c24cbe7"
+    },
+    {
+      "source": "laboratories/09-pid-saturation/exercises.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "07978562371e2251889205bbc49d9f809eea5e044b8211139d6d4b512196851c"
+    },
+    {
+      "source": "laboratories/09-pid-saturation/report.tex",
+      "compiled": true,
+      "pages": 3,
+      "sha256": "219c548043993a9c0307d8de7997fb97a8388953ea7687fe3a67a1579efaacf4"
+    },
+    {
+      "source": "laboratories/10-observer-control/exercise-solutions.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "ac2ed9fdffbb07f1eccacdb32add54347243597f675c7394712a934b2c3c1055"
+    },
+    {
+      "source": "laboratories/10-observer-control/exercises.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "b2a3ec84b7300bc219e9b478e8a5cd461fc16a3668778e71531085be855cc006"
+    },
+    {
+      "source": "laboratories/10-observer-control/report.tex",
+      "compiled": true,
+      "pages": 3,
+      "sha256": "4023e26ec3da23b1a75cf59f57ba9c8e8ef36f0cea9c8624628b94cc358651f2"
+    },
+    {
+      "source": "laboratories/11-digital-control/exercise-solutions.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "e7ed496b931d940a5c1c0e29a9b82fe5356fb3f9c5c1e7c69b31f573fa81875c"
+    },
+    {
+      "source": "laboratories/11-digital-control/exercises.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "14bb35afd6e8240540781851eb46d68211170e8317fb747e47cc740660ac5edd"
+    },
+    {
+      "source": "laboratories/11-digital-control/report.tex",
+      "compiled": true,
+      "pages": 2,
+      "sha256": "1be2ba2a3f09e27dfb77b937a395e2022624aa37bc47b870b6d1d7559a5620c8"
+    },
+    {
+      "source": "laboratories/12-identification-capstone/exercise-solutions.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "b58daefbe3c621317e53be7ac9845644aae317edb30844504e0a27312dfe2aba"
+    },
+    {
+      "source": "laboratories/12-identification-capstone/exercises.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "cf0fdd08725ad5d938a8b53c5e8a42e04b7fffd081e0f2af009c3185f0ede7a0"
+    },
+    {
+      "source": "laboratories/12-identification-capstone/report.tex",
+      "compiled": true,
+      "pages": 3,
+      "sha256": "b439428e8aa42d7fba1e56e3fdccbf42af5a3e3e5233f292fcaeb423c792f364"
+    },
+    {
+      "source": "problem-sets/integrated-design/exercises.tex",
+      "compiled": true,
+      "pages": 5,
+      "sha256": "f3417eba226ba01aaee6688d9ee2bb81aeeadcbfa024ea0c93959c436f486750"
+    },
+    {
+      "source": "problem-sets/integrated-design/solutions.tex",
+      "compiled": true,
+      "pages": 9,
+      "sha256": "4fbf4d4b113e8cf8edad677c99ab9822e2606ada3fe4ea7cac445dd3f9a46bff"
+    }
+  ],
+  "glyph_or_latex_errors": [],
+  "layout_warnings": [],
+  "illustrations": [
+    {
+      "id": "physical-01",
+      "source": "laboratories/01-thermal-enclosure/figures/physical-system.tikz",
+      "preview": "laboratories/01-thermal-enclosure/figures/physical-system.png",
+      "caption": "Cutaway of a lumped thermal enclosure. Orange arrows carry heat; the probe measures a lagged temperature. The drawing fixes the energy boundary, not a real device geometry."
+    },
+    {
+      "id": "physical-02",
+      "source": "laboratories/02-ventilation/figures/physical-system.tikz",
+      "preview": "laboratories/02-ventilation/figures/physical-system.png",
+      "caption": "A ventilated room and a well-mixed liquid analogue share an inventory balance. The room uses m$^3$ and the liquid case uses L; do not mix their concentration or flow units. Equal inlet and outlet volume flows keep each inventory constant."
+    },
+    {
+      "id": "physical-03",
+      "source": "laboratories/03-vibration-isolation/figures/physical-system.tikz",
+      "preview": "laboratories/03-vibration-isolation/figures/physical-system.png",
+      "caption": "An optical payload rests on parallel spring and damping elements. Both the floor and payload move; spring extension and damping velocity are relative quantities. Weight is balanced at the static equilibrium about which the model is written."
+    },
+    {
+      "id": "physical-04",
+      "source": "laboratories/04-notch-filter/figures/physical-system.tikz",
+      "preview": "laboratories/04-notch-filter/figures/physical-system.png",
+      "caption": "A source excites the series RLC network; an ideal differential probe spans the combined inductor and capacitor. Measuring only the capacitor would produce a different transfer function. Wire placement is schematic."
+    },
+    {
+      "id": "physical-05",
+      "source": "laboratories/05-motor-load-rejection/figures/physical-system.tikz",
+      "preview": "laboratories/05-motor-load-rejection/figures/physical-system.png",
+      "caption": "A voltage-driven motor converts armature current into shaft torque. The rotor and external brake introduce inertia, friction and load torque. The illustrative cutaway does not add magnetic saturation or friction to the stated linear model."
+    },
+    {
+      "id": "physical-06",
+      "source": "laboratories/06-root-locus/figures/physical-system.tikz",
+      "preview": "laboratories/06-root-locus/figures/physical-system.png",
+      "caption": "A motorized positioning axis illustrates the role of the integrator and two stable lags. The normalized transfer function is specified as a teaching model; the pictured dimensions do not identify its coefficients."
+    },
+    {
+      "id": "physical-07",
+      "source": "laboratories/07-delay-budget/figures/physical-system.tikz",
+      "preview": "laboratories/07-delay-budget/figures/physical-system.png",
+      "caption": "A remote mechanism sends measurements and receives commands through a communication path. The model combines those latencies into one ideal constant delay; the drawn packet train is not an experimental record."
+    },
+    {
+      "id": "physical-08",
+      "source": "laboratories/08-camera-compensation/figures/physical-system.tikz",
+      "preview": "laboratories/08-camera-compensation/figures/physical-system.png",
+      "caption": "A camera gimbal illustrates angular tracking and disturbance rejection. Its normalized plant is stipulated, with no claim that geometry alone determines its two poles."
+    },
+    {
+      "id": "physical-09",
+      "source": "laboratories/09-pid-saturation/figures/physical-system.tikz",
+      "preview": "laboratories/09-pid-saturation/figures/physical-system.png",
+      "caption": "A mass, spring, damper and bounded force actuator physically realize the normalized second-order plant. Force saturation is included; contact, dry friction and travel stops are not."
+    },
+    {
+      "id": "physical-10",
+      "source": "laboratories/10-observer-control/figures/physical-system.tikz",
+      "preview": "laboratories/10-observer-control/figures/physical-system.png",
+      "caption": "Two thermal inventories are connected by a conductive bridge. Heating acts in the first zone and sensing in the second. These stated capacities and conductances reproduce the two-state model exactly under the lumped assumptions."
+    },
+    {
+      "id": "physical-11",
+      "source": "laboratories/11-digital-control/figures/physical-system.tikz",
+      "preview": "laboratories/11-digital-control/figures/physical-system.png",
+      "caption": "A held voltage drives an ideal RC network. The capacitor voltage is sampled by an ideal ADC; the software controller updates the DAC once per period. Quantization, converter lag and electrical loading are omitted."
+    },
+    {
+      "id": "physical-12",
+      "source": "laboratories/12-identification-capstone/figures/physical-system.tikz",
+      "preview": "laboratories/12-identification-capstone/figures/physical-system.png",
+      "caption": "A stirred thermal inventory followed by ideal transport is one possible physical interpretation of the identified transfer function. Its fitted gain and time constant do not separately determine capacity, conductance and heater efficiency."
+    },
+    {
+      "id": "physical-13",
+      "source": "problem-sets/integrated-design/figures/interacting-tanks.tikz",
+      "preview": "problem-sets/integrated-design/figures/interacting-tanks.png",
+      "caption": "Interacting tanks share a submerged connection at a common datum. Flow reverses if the level ordering reverses. Only tank 2 drains to the exterior; this is not a cascade with a freely falling inter-tank stream."
+    }
+  ],
+  "rendered_changed_pages": 182,
+  "final_layout_adjustments": [
+    "laboratories/04-notch-filter/report.tex",
+    "laboratories/06-root-locus/report.tex",
+    "laboratories/11-digital-control/report.tex",
+    "laboratories/08-camera-compensation/exercises.tex",
+    "laboratories/08-camera-compensation/exercise-solutions.tex",
+    "problem-sets/integrated-design/solutions.tex"
+  ],
+  "last_review_rendered_pages": 2,
+  "last_review_sources": [
+    "course/guide.tex"
+  ]
+}

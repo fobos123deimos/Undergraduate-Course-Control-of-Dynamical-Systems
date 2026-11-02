@@ -1,0 +1,38 @@
+\begin{tikzpicture}[
+font=\sffamily\small,>=Latex,line cap=round,line join=round,
+wall/.style={draw=ink,line width=1.2pt,fill=blue!5},
+water/.style={fill=cyan!25,draw=none},
+metal/.style={draw=ink,fill=blue!12,line width=.9pt},
+flow/.style={->,draw=blue!65!black,line width=1.2pt},
+heat/.style={->,draw=orange!85!black,line width=1.1pt},
+measure/.style={->,draw=teal!70!black,line width=.9pt},
+dim/.style={<->,draw=ink!65,line width=.6pt},
+spring/.style={draw=ink,decorate,decoration={coil,aspect=.5,segment length=4pt,amplitude=3pt}},
+wire/.style={draw=ink,line width=1pt},
+lab/.style={align=center,font=\sffamily\small},
+smalllab/.style={align=center,font=\sffamily\scriptsize}]
+
+\fill[water](1,1)rectangle(5.2,3.5);
+\fill[water](8,1)rectangle(12.2,2.6);
+\draw[wall,fill=none](1,4.8)--(1,1)--(5.2,1)--(5.2,4.8);
+\draw[wall,fill=none](8,4.8)--(8,1)--(12.2,1)--(12.2,4.8);
+\draw[blue!65](1,3.5)--(5.2,3.5)(8,2.6)--(12.2,2.6);
+\draw[blue!45,line width=7pt](5.2,1.6)--(8,1.6);
+\draw[blue!45,line width=7pt](12.2,1)--(13.6,1);
+\draw[flow](5.5,1.6)--(7.6,1.6);
+\draw[flow](12.5,1)--(13.8,1);
+\draw[metal](6.3,1.3)--(6.8,1.9)--(6.8,1.3)--(6.3,1.9)--cycle;
+\draw[wire](6.55,1.9)--(6.55,2.2)(6.25,2.2)--(6.85,2.2);
+\node[smalllab]at(6.6,2.9){bidirectional\\connection $q_{12}$};
+\node[smalllab]at(12.9,.65){drain $q_2$};
+\draw[flow](.2,5.4)--(2.2,5.4)--(2.2,4);
+\node[lab]at(3.6,5.4){pump inflow $q$};
+\node[lab]at(3.1,2.5){Tank 1\\$A_1=0.02$ m$^2$};
+\node[lab]at(10.1,2){Tank 2\\$A_2=0.03$ m$^2$};
+\draw[dim](.4,1)--node[left]{$h_1$}(.4,3.5);
+\draw[dim](8.6,1.05)--node[left]{$h_2$}(8.6,2.6);
+\draw[teal!70!black](11.6,2.6)--(11.6,4.4);
+\draw[measure](11.6,4.4)--(13.5,4.4)node[above]{$y=h_2$};
+\draw[ink!45,dashed](.3,.95)--(13.5,.95);
+\node[lab]at(6.6,-.1){Common height datum; open tanks, constant areas, ideal gravity-flow laws};
+\end{tikzpicture}

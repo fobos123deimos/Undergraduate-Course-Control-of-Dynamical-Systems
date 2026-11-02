@@ -1,0 +1,74 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Laboratory 06}
+{\color{ink}\LARGE\bfseries Laboratory 06}\par
+{\large Gain selection with a third-order actuator}\par
+\textbf{Exercise sheet -- five integrated problems}\par
+{\small\textbf{Evidence boundary.} Original hypothetical scenarios. Derive, calculate and justify decisions; every numerical record is synthetic. Figures are conceptual and not to scale.}
+\smallskip\textbf{Shared nominal data.} Nominal unity negative-feedback loop: $G(s)=1/[s(s+2)(s+6)]$ and scalar controller $K$. The positioning-axis picture illustrates a possible application; the normalized coefficients are stipulated.
+\task{1}{A position actuator with an identified aggregate model}
+The sketch shows a possible motor-driven carriage. Its normalized plant $1/[s(s+2)(s+6)]$ is stipulated as an aggregate teaching model; the poles are not inferred from the drawing dimensions.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A motorized positioning axis illustrates the role of the integrator and two stable lags. The normalized transfer function is specified as a teaching model; the pictured dimensions do not identify its coefficients.}\end{center}
+\begin{enumerate}
+\item Consider unity negative feedback with loop $L(s)=K/[s(s+2)(s+6)]$, $K>0$. Derive the reference transfer function, characteristic polynomial and open-loop poles and zeros.
+\item Construct the cubic Routh first column. Find the full strictly stable positive-gain interval and classify its endpoints.
+\item A numerical step plot appears bounded for $K=97$ over a short interval. Use the algebraic result to decide whether this is sufficient evidence of stability and specify a decisive numerical check.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{2}{Following branches through a breakaway}
+Use the open-loop pole map to construct the locus geometrically, then verify the repeated-pole event algebraically. Reject stationary points that belong to the wrong gain sign.
+\begin{enumerate}
+\item Determine the positive-gain real-axis root-locus segments, asymptote centroid and asymptote angles. Explain how many branches reach infinity.
+\item Find the stationary points of $K(s)=-s(s+2)(s+6)$ on the real axis. Select the positive-gain breakaway point and calculate its gain.
+\item At the valid breakaway, determine the third pole without solving another cubic. Check the repeated-pole factorization against the coefficient of $s^2$.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{3}{Boundary oscillations and feedback-sign mistakes}
+Classify the nominal loop at both stability boundaries and after reversing the controller sign. Distinguish input--output cancellation from decay of internal states.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}\par{\small Unity negative feedback and the open-loop pole map. Pole symbols provide the starting geometry for the root-locus exercises.}\end{center}
+\begin{enumerate}
+\item At the upper stability boundary, calculate the oscillation frequency and period and the third pole. Explain whether a bounded-looking oscillation over a finite simulation interval establishes asymptotic stability.
+\item For $K<0$, prove that at least one real closed-loop pole is positive without using a root solver. Relate the result to the feedback sign.
+\item At $K=0$, the reference-to-output transfer has zero numerator. Does that imply every internal state converges to zero? Explain using the unreduced plant modes and nonzero initial conditions.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{4}{A tracking specification with gain uncertainty}
+Proportional gain must satisfy both a ramp-error specification and strict stability. Treat these inequalities jointly rather than increasing gain until the plot looks acceptable.
+\begin{enumerate}
+\item For stable K, derive the position and velocity error constants. Find the unit-step and unit-ramp steady errors at $K=24$. State the stability qualification.
+\item Require unit-ramp error no larger than 0.1 using only positive proportional K. Combine the error and stability conditions. What design conclusion follows?
+\item Relax the allowed unit-ramp error to 0.15 and select nominal $K=84$. If actual gain is $84(1+\delta)$ with $|\delta|\le\varepsilon$, find the largest symmetric uncertainty bound that preserves both requirements.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{5}{Changing time scale and canceling a stable mode}
+A redesign changes actuator time scale and adds a compensator. Keep the physical internal mode visible when reducing a transfer function.
+\begin{enumerate}
+\item Replace the plant denominator by $s(s+2a)(s+6a)$ with $a>0$. Derive the stable gain interval and boundary frequency, and evaluate both at $a=0.5$.
+\item Suppose the controller is $C=K(s+2)/(s+10)$. Under exact cancellation, derive the reduced characteristic cubic and its stability interval. Explain why the physical realization still contains a stable internal mode and why mismatch matters.
+\item Combine the changes: use plant $1/[s(s+2a)(s+6a)]$ and controller $K(s+2a)/(s+10a)$. Derive the reduced stability interval, boundary frequency and hidden stable pole; evaluate them for $a=0.5$.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\end{document}

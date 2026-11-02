@@ -1,0 +1,3 @@
+C factor=0.90: notch=1054.092553 rad/s (167.764040 Hz)
+C factor=1.00: notch=1000.000000 rad/s (159.154943 Hz)
+C factor=1.10: notch=953.462589 rad/s (151.748284 Hz)

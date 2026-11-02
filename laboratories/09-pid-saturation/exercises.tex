@@ -1,0 +1,74 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Laboratory 09}
+{\color{ink}\LARGE\bfseries Laboratory 09}\par
+{\large PID regulation when the actuator saturates}\par
+\textbf{Exercise sheet -- five integrated problems}\par
+{\small\textbf{Evidence boundary.} Original hypothetical scenarios. Derive, calculate and justify decisions; every numerical record is synthetic. Figures are conceptual and not to scale.}
+\smallskip\textbf{Shared nominal data.} Nominal plant: $\ddot y+2\dot y+y=u$. The physical realization has $m=1$ kg, $b=2$ N s/m and $k=1$ N/m. Ideal PID pole targets are $-2,-3,-4$; constrained cases impose $|u|\le2$.
+\task{1}{Pole placement for a force-limited positioning stage}
+The physical illustration gives one realization of $\ddot y+2\dot y+y=u$: a 1 kg carriage, a 2 N s/m damper and a 1 N/m spring, driven by an ideal force actuator. Position is in m and force in N.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A mass, spring, damper and bounded force actuator physically realize the normalized second-order plant. Force saturation is included; contact, dry friction and travel stops are not.}\end{center}
+\begin{enumerate}
+\item For $G=1/(s^2+2s+1)$, use ideal PID $C=k_p+k_i/s+k_ds$. Match the closed-loop denominator to $(s+2)(s+3)(s+4)$ and find all three gains.
+\item Compare $u=k_pe+k_i\int e\,dt+k_d\dot e$ with $u=k_pe+k_i\int e\,dt-k_d\dot y$, where $e=r-y$. Derive both reference numerators for the preceding plant and explain derivative kick.
+\item For a 3 m reference step, determine the impulsive contribution requested by ideal derivative-on-error action with the designed $k_d$. Explain why matching the nominal poles does not make that command physically realizable.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{2}{Implementing a filtered controller as a state model}
+Replace the ideal derivative by a first-order filter and retain the resulting additional dynamics. Compare a transfer-function calculation with a state-equation calculation.
+\begin{enumerate}
+\item Use derivative-on-measurement $D_f=7s/(0.03s+1)$. Derive a first-order filter-state implementation and its high-frequency gain. Give the units of the filter time constant.
+\item With gains 25, 24 and 7 and filter constant 0.03, derive the unsaturated characteristic polynomial. Verify strict stability using the quartic Routh inequalities.
+\item Use states $[y,v,z,I]^T$, where $v=\dot y$ and $\tau_f\dot z=y-z$. Derive the unsaturated zero-reference state matrix and explain how its eigenvalues check the filtered characteristic polynomial.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{3}{An unreachable reference with a bounded integral state}
+The requested position exceeds the equilibrium capability of the force actuator. Analyze both ordinary integration and back-calculation without confusing bounded controller state with successful tracking.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}\par{\small Filtered derivative acts on measurement. Back-calculation sends the actual-minus-requested actuator effort into the integral-state equation.}\end{center}
+\begin{enumerate}
+\item The plant satisfies $\ddot y+2\dot y+y=u$ and the actuator is limited to $[-2,2]$. Is a constant reference of 3 feasible? What is the largest positive equilibrium output, and what happens to an ordinary integral state if the tracking error stays at one?
+\item Use $\dot I=24e+k_{aw}(u-u_*)$ with $k_{aw}=8$. At an instant when $e=1$, requested effort $u_*=5$ and saturated effort $u=2$, evaluate $\dot I$. Find the request excess that balances integration for a constant positive error e.
+\item Find a saturated steady state for $r=3$, $u_{\max}=2$ and $k_{aw}=8$, including $y,v,z,I,u_*$, for the filtered derivative-on-measurement implementation. State the remaining tracking error.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{4}{Anti-windup speed and numerical step-size limits}
+During a fixed saturation interval, the anti-windup correction can be faster than the plant. Examine that local time scale before choosing a numerical integrator.
+\begin{enumerate}
+\item Assume, only for this local calculation, that $e=0.4$ and $u-u_*=-0.5$ remain constant for 2 s. Find the integral-state increment with and without back-calculation gain 8. Explain the scope of this calculation.
+\item Hold y, r and the filtered derivative contribution fixed while the actuator remains at a fixed saturation limit. Derive the homogeneous dynamics of a perturbation in integral state I. Compare its time constant for gains 8 and 40.
+\item Apply explicit Euler to the homogeneous local integral-state perturbation. Derive the strict step-size condition for its decay and evaluate it for gains 8 and 40. Explain why satisfying this condition alone is insufficient for the full simulation.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{5}{A reproducible recovery comparison with an explicit evidence limit}
+The reference becomes feasible after an initial saturated interval. Compare recovery using both tracking and actuator records, keeping all data explicitly synthetic.
+\begin{enumerate}
+\item A synthetic experiment commands 3 until 6 s, then 0.2 until 12 s. Define recovery IAE on the second interval. Given values 9.756216 without back-calculation and 1.841207 with it, calculate the percentage reduction and discuss what the metric omits.
+\item Specify a numerical protocol for comparing the two anti-windup settings fairly. Include the reference discontinuity, time resolution, metrics and the evidence label. Explain why plotting only the requested effort is insufficient.
+\item Suppose a design objective is $J={\rm IAE}+\lambda\int_6^{12}\dot u(t)^2\,dt$ with $\lambda>0$. Can the supplied two IAE values alone rank the controllers under this objective? Specify the additional records and numerical care required.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\end{document}

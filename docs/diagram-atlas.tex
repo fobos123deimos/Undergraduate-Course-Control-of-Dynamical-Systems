@@ -1,0 +1,101 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Illustrated models}
+{\Huge\color{ink}\bfseries Physical systems and control models}\par
+Original vector illustrations for the hypothetical learning collection. Equipment views identify the modeled phenomenon; signal diagrams identify its mathematical structure. A picture does not establish experimental validation.
+\section*{01. Thermal enclosure and a slow sensor}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/01-thermal-enclosure/figures/physical-system.tikz}}\par{\small Cutaway of a lumped thermal enclosure. Orange arrows carry heat; the probe measures a lagged temperature. The drawing fixes the energy boundary, not a real device geometry.}\end{center}
+\medskip\textbf{From equipment to equations}\par
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/01-thermal-enclosure/figures/system-diagram.tikz}}\par{\small Thermal storage, heat leakage and sensor dynamics are separate elements. The lower loop implements the energy balance, not an added temperature controller.}\end{center}
+
+\newpage
+\section*{02. Ventilation as a bilinear dynamical system}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/02-ventilation/figures/physical-system.tikz}}\par{\small A ventilated room and a well-mixed liquid analogue share an inventory balance. The room uses m$^3$ and the liquid case uses L; do not mix their concentration or flow units. Equal inlet and outlet volume flows keep each inventory constant.}\end{center}
+\medskip\textbf{From equipment to equations}\par
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/02-ventilation/figures/system-diagram.tikz}}\par{\small The physical balance and its local two-input signal model. Airflow enters with a negative sign because increased ventilation removes excess tracer.}\end{center}
+
+\newpage
+\section*{03. A precision platform under floor motion}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/03-vibration-isolation/figures/physical-system.tikz}}\par{\small An optical payload rests on parallel spring and damping elements. The two springs each have stiffness $k/2$, giving total $k$. Both the floor and payload move; spring extension and damping velocity are relative quantities. Weight is balanced at the static equilibrium about which the model is written.}\end{center}
+\medskip\textbf{From equipment to equations}\par
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/03-vibration-isolation/figures/system-diagram.tikz}}\par{\small Base excitation drives absolute motion; subtracting the floor coordinate gives relative travel. The spring and damper act in parallel.}\end{center}
+
+\newpage
+\section*{04. A passive notch filter and component tolerance}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/04-notch-filter/figures/physical-system.tikz}}\par{\small A source excites the series RLC network; an ideal differential probe spans the combined inductor and capacitor. Measuring only the capacitor would produce a different transfer function. Wire placement is schematic.}\end{center}
+\medskip\textbf{From equipment to equations}\par
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/04-notch-filter/figures/system-diagram.tikz}}\par{\small Series RLC network with output measured across L and C together. The output probe spans those two components, not the whole source.}\end{center}
+
+\newpage
+\section*{05. Flywheel speed regulation under a load torque}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/05-motor-load-rejection/figures/physical-system.tikz}}\par{\small A voltage-driven motor converts armature current into shaft torque. The rotor and external brake introduce inertia, friction and load torque. The illustrative cutaway does not add magnetic saturation or friction to the stated linear model.}\end{center}
+\medskip\textbf{From equipment to equations}\par
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/05-motor-load-rejection/figures/system-diagram.tikz}}\par{\small Outer PI speed regulation around the electromechanical motor. The inner back-emf path and opposing load torque have explicit negative signs.}\end{center}
+
+\newpage
+\section*{06. Gain selection with a third-order actuator}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/06-root-locus/figures/physical-system.tikz}}\par{\small A motorized positioning axis illustrates the role of the integrator and two stable lags. The normalized transfer function is specified as a teaching model; the pictured dimensions do not identify its coefficients.}\end{center}
+\medskip\textbf{From equipment to equations}\par
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/06-root-locus/figures/system-diagram.tikz}}\par{\small Unity negative feedback and the open-loop pole map. Pole symbols provide the starting geometry for the root-locus exercises.}\end{center}
+
+\newpage
+\section*{07. A feedback loop with a communication delay}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/07-delay-budget/figures/physical-system.tikz}}\par{\small A remote mechanism sends measurements and receives commands through a communication path. The model combines those latencies into one ideal constant delay; the drawn packet train is not an experimental record.}\end{center}
+\medskip\textbf{From equipment to equations}\par
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/07-delay-budget/figures/system-diagram.tikz}}\par{\small Constant pure delay shifts a signal in time and contributes frequency-dependent phase lag. The sketch shows ideal steps, not experimental records.}\end{center}
+
+\newpage
+\section*{08. Lead-lag design for a normalized camera axis}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/08-camera-compensation/figures/physical-system.tikz}}\par{\small A camera gimbal illustrates angular tracking and disturbance rejection. Its normalized plant is stipulated, with no claim that geometry alone determines its two poles.}\end{center}
+\medskip\textbf{From equipment to equations}\par
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/08-camera-compensation/figures/system-diagram.tikz}}\par{\small Lead and lag sections are drawn separately so their gain normalization and frequency ordering can be analyzed independently.}\end{center}
+
+\newpage
+\section*{09. PID regulation when the actuator saturates}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/09-pid-saturation/figures/physical-system.tikz}}\par{\small A mass, spring, damper and bounded force actuator physically realize the normalized second-order plant. Force saturation is included; contact, dry friction and travel stops are not.}\end{center}
+\medskip\textbf{From equipment to equations}\par
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/09-pid-saturation/figures/system-diagram.tikz}}\par{\small Filtered derivative acts on measurement. Back-calculation sends the actual-minus-requested actuator effort into the integral-state equation.}\end{center}
+
+\newpage
+\section*{10. Two thermal zones with one temperature measurement}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/10-observer-control/figures/physical-system.tikz}}\par{\small Two thermal inventories are connected by a conductive bridge. Heating acts in the first zone and sensing in the second. These stated capacities and conductances reproduce the two-state model exactly under the lumped assumptions.}\end{center}
+\medskip\textbf{From equipment to equations}\par
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/10-observer-control/figures/system-diagram.tikz}}\par{\small The observer receives both the applied control and measured output. Its estimated vector supplies state feedback; the prefilter sets nominal reference gain.}\end{center}
+
+\newpage
+\section*{11. Sampling can destabilize a continuous-time design}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/11-digital-control/figures/physical-system.tikz}}\par{\small A held voltage drives an ideal RC network. The capacitor voltage is sampled by an ideal ADC; the software controller updates the DAC once per period. Quantization, converter lag and electrical loading are omitted.}\end{center}
+\medskip\textbf{From equipment to equations}\par
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/11-digital-control/figures/system-diagram.tikz}}\par{\small The sampler, digital update order and hold are explicit. Continuous plant dynamics and sampled controller states occupy different parts of the loop.}\end{center}
+
+\newpage
+\section*{12. A synthetic process from identification to validation}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/12-identification-capstone/figures/physical-system.tikz}}\par{\small A stirred thermal inventory followed by ideal transport is one possible physical interpretation of the identified transfer function. The effective conductance includes wall leakage and through-flow heat removal. Its fitted gain and time constant do not separately determine capacity, conductance and heater efficiency.}\end{center}
+\medskip\textbf{From equipment to equations}\par
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../laboratories/12-identification-capstone/figures/system-diagram.tikz}}\par{\small Training selects parameters; held-out validation freezes them. Separate noise records avoid reusing training residuals as validation evidence.}\end{center}
+
+\newpage
+\section*{Integrated study: interacting water tanks}
+Two open tanks have constant areas $A_1=0.02$ m$^2$ and $A_2=0.03$ m$^2$. Their submerged connection obeys
+\[
+q_{12}=k_{12}\operatorname{sgn}(h_1-h_2)\sqrt{|h_1-h_2|},\qquad
+q_2=k_2\sqrt{h_2},
+\]
+where $k_{12}=0.004$ and $k_2=0.003$ m$^{5/2}$/s. The pump feeds only tank 1. Nominal inflow is $\bar q=0.0012$ m$^3$/s; the measured output is $h_2$. Areas and discharge coefficients are hypothetical. Assume nonnegative levels, no overflow and ideal sensing.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../problem-sets/integrated-design/figures/interacting-tanks.tikz}}\par{\small Interacting tanks share a submerged connection at a common datum. Flow reverses if the level ordering reverses. Only tank 2 drains to the exterior; this is not a cascade with a freely falling inter-tank stream.}\end{center}
+The six-part case derives conservation laws, local dynamics, finite-step error, PI stability, pump feasibility and a validation protocol.
+\end{document}

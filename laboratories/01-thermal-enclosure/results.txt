@@ -1,0 +1,2 @@
+Thermal time constant: 60.000 s; final rise: 2.666667 K
+Sensor under-reading at 60 s: 0.240761 K

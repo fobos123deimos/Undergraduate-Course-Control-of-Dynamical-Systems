@@ -1,0 +1,2 @@
+Airflow +10%: exact final 109.090909 ppm; linear final 108.000000 ppm
+Airflow +100%: exact final 60.000000 ppm; linear final 0.000000 ppm

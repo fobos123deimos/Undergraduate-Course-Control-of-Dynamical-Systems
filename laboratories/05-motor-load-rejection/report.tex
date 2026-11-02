@@ -1,0 +1,49 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,tikz,hyperref,fvextra}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=3em
+
+\title{\color{ink}Flywheel speed regulation under a load torque}
+\author{}
+\date{Original learning collection -- November 2026}
+\begin{document}
+\begin{center}{\LARGE\color{ink}Flywheel speed regulation under a load torque}\\[5pt]{\small Original learning collection -- November 2026}\end{center}
+
+\textbf{Evidence note.} Original teaching scenario. Numerical parameters are deliberately chosen for learning. All generated data and curves are synthetic; no physical measurement is asserted.
+\section{Design brief}
+A synthetic DC motor drives a flywheel with $R=2\,\Omega$, $L=0.02\,\mathrm{H}$, $J=0.01\,\mathrm{kg\,m^2}$, $b=0.02\,\mathrm{N\,m\,s/rad}$ and $k_t=k_e=0.1$ in consistent SI units. Derive the voltage-to-speed and opposing-load-to-speed transfers. Compare proportional gain $k_p=0.8$ with PI gains $k_p=0.8$, $k_i=1.6$ for reference $5\,\mathrm{rad/s}$ and load $0.03\,\mathrm{N\,m}$ applied at $t=4\,\mathrm{s}$. Explain the benefits and limits of integral action.
+\section{Physical system}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A voltage-driven motor converts armature current into shaft torque. The rotor and external brake introduce inertia, friction and load torque. The illustrative cutaway does not add magnetic saturation or friction to the stated linear model.}\end{center}
+\section{Electromechanical balance}
+Let $i$ be armature current, $\omega$ angular speed, $v$ voltage and $d$ opposing load torque. The equations are
+\[L\dot i=v-Ri-k_e\omega,\qquad J\dot\omega=k_t i-b\omega-d.\]
+Eliminating current yields the common denominator $D(s)=(Ls+R)(Js+b)+k_tk_e$ and
+\[G_v(s)=\frac{k_t}{D(s)},\qquad G_d(s)=-\frac{Ls+R}{D(s)}.\]
+Numerically $D(s)=0.0002s^2+0.0204s+0.05$ and $G_v(0)=2$ (rad/s)/V.
+\section{Closed-loop paths}
+For $v=C(s)(r-\omega)$, superposition gives
+\[\Omega=\frac{C G_v}{1+C G_v}R+\frac{G_d}{1+C G_v}D_{load}.\]
+With proportional control, the final speed is $(K_pG_v(0)r+G_d(0)d)/(1+K_pG_v(0))$. Substitution gives $(8-1.2)/2.6=2.61538$ rad/s after the load arrives.
+\section{Integral action and stability}
+For $C=0.8+1.6/s$, the characteristic polynomial is
+\[0.0002s^3+0.0204s^2+0.13s+0.16.\]
+Its positive coefficients satisfy $0.0204(0.13)>0.0002(0.16)$, so the cubic is Hurwitz. A stable loop with integral action rejects a constant load and tracks the constant reference in this ideal unsaturated model. The required steady voltage is not zero: equilibrium requires $i=(br+d)/k_t=1.3$ A and $v=Ri+k_er=3.1$ V.
+\section{Limits}
+Voltage and current limits, magnetic saturation, brush friction, heating and sensor noise are omitted. Integral action cannot provide an unavailable actuator voltage.
+\section{What to learn from the experiment}
+Track the disturbance entry point as carefully as the reference path. Zero ideal steady error is conditional on stability and actuator feasibility.
+\section{System sketch}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}
+\par\small\refstepcounter{figure}\label{fig:system}\textbf{Figure \thefigure.} Outer PI speed regulation around the electromechanical motor. The inner back-emf path and opposing load torque have explicit negative signs.\end{center}
+\section{Executed computational evidence}
+\VerbatimInput[fontsize=\small,breaklines=true]{results.txt}
+\begin{center}\includegraphics[width=\linewidth,height=.46\textheight,keepaspectratio]{response.png}\end{center}
+\section{Method references}
+The equations use standard balance laws and feedback-control methods. Further explanation: \url{https://apmonitor.com/pdc/} and \url{https://fbsbook.org/}. Implementation documentation: \url{https://python-control.readthedocs.io/en/0.10.2/}. See the repository reference catalog for individual topics and videos.
+\end{document}

@@ -1,0 +1,74 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Laboratory 04}
+{\color{ink}\LARGE\bfseries Laboratory 04}\par
+{\large A passive notch filter and component tolerance}\par
+\textbf{Exercise sheet -- five integrated problems}\par
+{\small\textbf{Evidence boundary.} Original hypothetical scenarios. Derive, calculate and justify decisions; every numerical record is synthetic. Figures are conceptual and not to scale.}
+\smallskip\textbf{Shared nominal data.} Nominal series RLC network: $R=10\,\Omega$, $L=0.01$ H, $C=100\,\mu$F. Input is total applied voltage; output spans the combined inductor and capacitor. Components are ideal unless a part adds loss or tolerance.
+\task{1}{Selecting the measured voltage in a real circuit}
+A series RLC network is driven by an ideal voltage source. The probe spans the inductor and capacitor together, not the capacitor alone. Read the physical measurement terminals before writing the transfer.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A source excites the series RLC network; an ideal differential probe spans the combined inductor and capacitor. Measuring only the capacitor would produce a different transfer function. Wire placement is schematic.}\end{center}
+\begin{enumerate}
+\item A voltage source drives series $R=10\,\Omega$, $L=0.01$ H and $C=100\,\mu$F. Output is the sum of inductor and capacitor voltages. Derive $H(s)$ and its DC and high-frequency gains.
+\item Find the notch frequency, damping ratio, poles and zeros for the nominal circuit. State whether a zero on the imaginary axis makes the circuit internally unstable.
+\item Derive the capacitor-voltage transfer for the same components and compare its numerator and direct feedthrough with those of the specified combined output. Explain why the poles remain unchanged.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{2}{A zero output with nonzero circulating energy}
+Compare sinusoidal resonance with the response to a sudden voltage step. Both tests use the same passive network, but expose different aspects of the measured output.
+\begin{enumerate}
+\item At the notch frequency, the source has sinusoidal peak voltage 2 V. Find peak current, peak inductor and capacitor voltages, and the maximum energy in each reactive component.
+\item Derive the nominal unit-step output. Find its initial and final values, and explain why neither contradicts rejection of a sinusoid at 1000 rad/s.
+\item At sinusoidal resonance with a 2 V source peak, write magnetic and electric energy as functions of phase. Determine their sum and explain whether both energy maxima occur simultaneously.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{3}{When component tolerance and winding loss spoil the notch}
+The ideal cancellation is challenged by a capacitor tolerance and a lossy inductor. Separate frequency detuning from an output floor caused by resistance.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}\par{\small Series RLC network with output measured across L and C together. The output probe spans those two components, not the whole source.}\end{center}
+\begin{enumerate}
+\item With L and R fixed, let capacitance be 10 percent low or high. Calculate both notch frequencies. If the input remains at 1000 rad/s, give a formula for the residual output magnitude for a capacitance factor $f=C/C_0$.
+\item Add winding resistance $r_L=1\,\Omega$ in series with the ideal inductor. The output spans that winding resistance, inductor and capacitor. Derive the new transfer and evaluate the output at the nominal resonant frequency.
+\item At the nominal resonance, require output magnitude strictly below 0.05 when only winding resistance varies and $R=10\,\Omega$. Derive the permitted resistance interval and assess a 1 $\Omega$ winding.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{4}{Changing damping without moving the nominal notch}
+The resistor can be changed without changing ideal L or C. Relate pole damping to the useful frequency interval of attenuation.
+\begin{enumerate}
+\item Choose R for critical damping without changing nominal L and C. Determine the resulting poles, and explain what happens to the ideal notch zeros.
+\item Derive the two positive frequencies where the nominal magnitude is $1/\sqrt2$. Show that their product is $\omega_0^2$ and their separation is $R/L$.
+\item Require a notch at 1000 rad/s, a half-power notch bandwidth of 800 rad/s and critically damped poles. Keep the nominal L and C and vary only R. Determine the resistance demanded by each requirement and decide whether all three can hold simultaneously.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{5}{A state model that preserves the circuit power balance}
+Use the circuit states to connect frequency calculations to conservation of energy. Pay attention to the direct contribution of the applied voltage to the selected output.
+\begin{enumerate}
+\item For the nominal circuit, calculate output magnitude at 500 and 2000 rad/s. Explain the equality using the normalized frequency $r=\omega/\omega_0$.
+\item Use capacitor voltage $v_C$ and current $i$ as states and input voltage $u$. Derive A, B, C and D for output equal to the ideal LC voltage sum. Explain the direct feedthrough term.
+\item With states $[i,v_C]^T$, derive $\dot E$ for $E=Li^2/2+Cv_C^2/2$. Use it to distinguish passivity from the incorrect assertion that all output magnitudes must be below one.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\end{document}

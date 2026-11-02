@@ -1,0 +1,74 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=21mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,tikz,graphicx,hyperref,fancyhdr,enumitem}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\task}[2]{\par\medskip{\color{ink}\Large\bfseries #1. #2}\par\smallskip}
+\newcommand{\answer}{\par\smallskip\textbf{Worked reasoning.} }
+\setlist[enumerate]{label=\textbf{(\alph*)},leftmargin=7mm,itemsep=7pt}
+\begin{document}
+\fancyhead[L]{\small Control of Dynamical Systems}
+\fancyhead[R]{\small Laboratory 10}
+{\color{ink}\LARGE\bfseries Laboratory 10}\par
+{\large Two thermal zones with one temperature measurement}\par
+\textbf{Exercise sheet -- five integrated problems}\par
+{\small\textbf{Evidence boundary.} Original hypothetical scenarios. Derive, calculate and justify decisions; every numerical record is synthetic. Figures are conceptual and not to scale.}
+\smallskip\textbf{Shared nominal data.} Two-zone model: $A=[-0.15,0.05;\,0.05,-0.10]$, $B=[0.1,0]^{\mathsf T}$ and $C=[0,1]$. Feedback pole targets are $-0.20,-0.35$ s$^{-1}$ and observer targets are $-0.8,-1.0$ s$^{-1}$.
+\task{1}{Two thermal zones, one heater and one thermometer}
+The illustration shows two lumped thermal masses coupled by a conductive bridge. Only zone 1 is heated and only zone 2 is measured.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small Two thermal inventories are connected by a conductive bridge. Heating acts in the first zone and sensing in the second. These stated capacities and conductances reproduce the two-state model exactly under the lumped assumptions.}\end{center}
+\begin{enumerate}
+\item Consider $A=[-0.15,0.05;0.05,-0.10]$, $B=[0.1,0]^T$, $C=[0,1]$. Write both scalar state equations and identify the actuated and measured zones. Find the open-loop poles.
+\item Construct the controllability and observability matrices and evaluate their determinants. Explain the role of inter-zone coupling.
+\item Realize the stated matrix using $C_1=C_2=10$ J/K, coupling conductance $H_{12}=0.5$ W/K and ambient conductances $H_{1a}=1$, $H_{2a}=0.5$ W/K. Derive the balances and explain what happens to controllability and observability when coupling is removed.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{2}{Pole placement and the distinction between transient and steady feasibility}
+First design ideal full-state feedback and its reference prefilter. Then check whether the resulting input request can be delivered by a constrained heater.
+\begin{enumerate}
+\item Choose $u=-Kx+Nr$ so $A-BK$ has poles $-0.2$ and $-0.35$. Derive K by matching trace and determinant, without a pole-placement library.
+\item With $K=[3,5.5]$, find N for unit DC reference tracking at $y=x_2$. Determine both equilibrium states and input for a unit reference.
+\item Use $r=0.5$, zero initial states and heater limits $0\le u\le2$ W. Compare the immediate ideal control request with the equilibrium request. Does a feasible equilibrium imply an entirely unsaturated transient?
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{3}{An observer must receive the input actually applied}
+Construct the observer and analyze estimated-state feedback. Distinguish the linear separation argument from an implementation with actuator clipping.
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}\par{\small The observer receives both the applied control and measured output. Its estimated vector supplies state feedback; the prefilter sets nominal reference gain.}\end{center}
+\begin{enumerate}
+\item Use $\dot{\hat x}=A\hat x+Bu+L(y-C\hat x)$ and place observer error poles at $-0.8$ and $-1$. Derive both entries of L.
+\item With estimated-state control $u=-K\hat x+Nr$, derive the augmented dynamics in coordinates $[x,e]$ where $e=x-\hat x$. List all four eigenvalues and state the assumptions.
+\item If the heater saturates, derive the estimation-error dynamics when the observer receives actual applied $u$. Contrast this with feeding it the unlimited request $u_*$. State which linear conclusion no longer follows automatically.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{4}{Unknown heat leakage, actuator capacity and integral augmentation}
+A constant unmodeled heat input enters zone 2. The nominal reference prefilter cannot cancel an unknown disturbance, and additional control action still faces a finite heater limit.
+\begin{enumerate}
+\item For full-state feedback with the nominal prefilter, add disturbance $d$ to $\dot x_2$. Derive the final output error for a constant d and evaluate it at $d=0.01$.
+\item Assume heater command must stay in $[0,2]$. Under the nominal model, determine the largest positive constant zone-2 reference that full-state control can maintain at equilibrium. Explain the implication for a requested reference of one.
+\item Propose an integral state for rejecting an unknown constant output error and write the augmented plant matrices before gain design. Check whether the nominal augmented model is controllable, and explain what augmentation cannot fix.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\newpage
+\task{5}{Fast estimation, biased sensors and the limits of a noise-path calculation}
+Observer poles are chosen faster than controller poles. Examine both modal time scales and the effect of measurement noise without claiming that faster poles improve every error norm.
+\begin{enumerate}
+\item Let measured output be $y_m=Cx+n$. Derive the estimation-error dynamics with noise. Then, with true state and input held at zero, derive the transfer from n to the estimate of zone 2 for the selected observer.
+\item Compare the slowest controller and observer modal time constants. Explain why a faster observer pole does not by itself guarantee the same proportional decrease in every estimation-error norm at every time.
+\item Hold the true state and input at zero and add constant sensor bias $n=0.1$ K. Find both steady state estimates for the chosen observer. Explain why this open estimator test does not directly give the final output of the fully closed loop.
+\end{enumerate}
+\vfill{\small\textbf{Submission.} Show the model, intermediate reasoning, units and a conclusion addressing the stated requirements.}
+
+\end{document}

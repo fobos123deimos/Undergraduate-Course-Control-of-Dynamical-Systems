@@ -1,0 +1,37 @@
+\begin{tikzpicture}[
+font=\sffamily\small,>=Latex,line cap=round,line join=round,
+wall/.style={draw=ink,line width=1.2pt,fill=blue!5},
+water/.style={fill=cyan!25,draw=none},
+metal/.style={draw=ink,fill=blue!12,line width=.9pt},
+flow/.style={->,draw=blue!65!black,line width=1.2pt},
+heat/.style={->,draw=orange!85!black,line width=1.1pt},
+measure/.style={->,draw=teal!70!black,line width=.9pt},
+dim/.style={<->,draw=ink!65,line width=.6pt},
+spring/.style={draw=ink,decorate,decoration={coil,aspect=.5,segment length=4pt,amplitude=3pt}},
+wire/.style={draw=ink,line width=1pt},
+lab/.style={align=center,font=\sffamily\small},
+smalllab/.style={align=center,font=\sffamily\scriptsize}]
+
+\fill[ink!12](.4,.2)rectangle(13,.55);
+\draw[ink,line width=1pt](.4,.55)--(13,.55);
+\foreach \x in {1,2,...,12}{\draw[ink!35](\x,.2)--++(-.3,-.3);}
+\draw[metal](2,2.6)rectangle(11.4,3.1);
+\draw[spring](3,.55)--(3,2.6);
+\draw[spring](10,.55)--(10,2.6);
+\draw[wire](4.5,.55)--(4.5,1.2)(4.1,1.2)--(4.1,1.8)--(4.9,1.8)--(4.9,1.2);
+\draw[wire](4.5,2.6)--(4.5,1.5)(4.2,1.5)--(4.8,1.5);
+\draw[metal](3.2,3.1)rectangle(5.6,3.8);
+\draw[metal](6.8,3.1)--(7.15,4)--(7.5,3.1)--cycle;
+\draw[metal](9.3,3.1)rectangle(10.3,4.2);
+\draw[red!65!black,->,line width=.7pt](5.6,3.55)--(9.3,3.55);
+\node[smalllab]at(4.4,4.2){optical source};
+\node[smalllab]at(10,4.65){detector};
+\node[lab]at(7,2.95){payload $m=8$ kg};
+\node[smalllab]at(2,1.5){$k/2$};\node[smalllab]at(10.9,1.5){$k/2$};
+\node[smalllab]at(5.5,1.5){$b$};
+\draw[dim](12.1,.65)--node[right]{$x-z$}(12.1,2.6);
+\draw[measure](11.5,3)--(12.8,3)node[right]{$x(t)$};
+\draw[measure](11.5,.55)--(12.8,.55)node[right]{$z(t)$};
+\draw[blue!60!black,decorate,decoration={snake,amplitude=2pt,segment length=12pt}](2,-.6)--(11,-.6);
+\node[lab]at(6.6,-1.1){Moving floor; displacement measured from static equilibrium};
+\end{tikzpicture}

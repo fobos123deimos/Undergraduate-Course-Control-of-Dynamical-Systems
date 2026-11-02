@@ -1,0 +1,2 @@
+Lead: phase margin=55.000000 deg, Kv=4.775006, limiting unit-ramp error=0.209424
+Lead + lag: phase margin=54.541653 deg, Kv=23.873883, limiting unit-ramp error=0.041887

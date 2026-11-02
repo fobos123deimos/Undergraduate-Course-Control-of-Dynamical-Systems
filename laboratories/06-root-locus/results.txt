@@ -1,0 +1,4 @@
+K=12: largest pole real part=-0.788757
+K=60: largest pole real part=-0.265547
+K=100: largest pole real part=0.026030
+Breakaway=-0.90283246; gain=5.04904248; boundary frequency=3.46410162 rad/s

@@ -1,0 +1,45 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,tikz,hyperref,fvextra}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=3em
+
+\title{\color{ink}Sampling can destabilize a continuous-time design}
+\author{}
+\date{Original learning collection -- November 2026}
+\begin{document}
+\begin{center}{\LARGE\color{ink}Sampling can destabilize a continuous-time design}\\[5pt]{\small Original learning collection -- November 2026}\end{center}
+
+\textbf{Evidence note.} Original teaching scenario. Numerical parameters are deliberately chosen for learning. All generated data and curves are synthetic; no physical measurement is asserted.
+\section{Design brief}
+For $G(s)=1/(0.5s+1)$, use PI gains $k_p=2$ and $k_i=4$ with a held actuator. Apply $u_k=2(r_k-x_k)+I_k$ before updating $I_{k+1}=I_k+4T_s(r_k-x_k)$. Derive the exact sampled plant update and two-state closed-loop matrix. Compare $T_s=0.05$, $0.5$ and $1.0\,\mathrm{s}$ and find the first discrete-time stability boundary.
+\section{Physical system}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A held voltage drives an ideal RC network. The capacitor voltage is sampled by an ideal ADC; the software controller updates the DAC once per period. Quantization, converter lag and electrical loading are omitted.}\end{center}
+\section{Continuous design}
+The continuous PI characteristic polynomial is $0.5s^2+3s+4=0.5(s+2)(s+4)$, so its poles are stable. This does not establish the stability of a particular digital implementation.
+\section{Exact held-input plant}
+Holding $u[k]$ over one sample interval gives $x[k+1]=ax[k]+bu[k]$, where $a=e^{-2T_s}$ and $b=1-a$. The explicit integral update uses the old sample error, so for zero reference,
+\[\begin{bmatrix}x[k+1]\\I[k+1]\end{bmatrix}=M(T_s)\begin{bmatrix}x[k]\\I[k]\end{bmatrix},\quad
+M=\begin{bmatrix}a-2b&b\\-4T_s&1\end{bmatrix}.\]
+Changing the order of integral update and actuator computation would change this matrix.
+\section{Unit-circle test}
+Discrete stability requires every eigenvalue of $M$ to lie strictly inside the unit circle. With trace $t=3a-1$ and determinant $d=3a-2+4T_s(1-a)$, the second-order Jury conditions are $1-t+d>0$, $1+t+d>0$, and $1-d>0$.
+For $T_s>0$, the first expression is $4T_s(1-a)>0$. The determinant becomes one at $T_s=0.75$ s, where the conjugate pair lies on the unit circle. The remaining conditions hold up to that crossing. Thus the first stable interval is $0<T_s<0.75$ s, and the endpoint is excluded.
+\section{Evidence and limits}
+Plot samples explicitly rather than connecting them as if they were continuous measurements. These results assume exact model parameters, an instantaneous computation at each sample, and no extra communication delay or actuator saturation.
+\section{What to learn from the experiment}
+A stable continuous controller can fail after discretization. State the sampling rule and update order, then test the actual discrete closed-loop model.
+\section{System sketch}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}
+\par\small\refstepcounter{figure}\label{fig:system}\textbf{Figure \thefigure.} The sampler, digital update order and hold are explicit. Continuous plant dynamics and sampled controller states occupy different parts of the loop.\end{center}
+\section{Executed computational evidence}
+\VerbatimInput[fontsize=\small,breaklines=true]{results.txt}
+\begin{center}\includegraphics[width=\linewidth,height=.16\textheight,keepaspectratio]{response.png}\end{center}
+\paragraph{Method references.}
+The equations use standard balance laws and feedback-control methods. Further explanation: \url{https://apmonitor.com/pdc/} and \url{https://fbsbook.org/}. Implementation documentation: \url{https://python-control.readthedocs.io/en/0.10.2/}. See the repository reference catalog for individual topics and videos.
+\end{document}

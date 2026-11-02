@@ -1,0 +1,1039 @@
+{
+  "format": "Five integrated problems per collection; linked subparts and separate worked reasoning.",
+  "laboratories": [
+    {
+      "module": 1,
+      "path": "laboratories/01-thermal-enclosure",
+      "problems": [
+        {
+          "problem": 1,
+          "title": "A thermal enclosure under competing design requirements",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 1,
+              "new_part": "a"
+            },
+            {
+              "question": 8,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 2,
+          "title": "A reassuring sensor reading can hide stored heat",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 3,
+              "new_part": "a"
+            },
+            {
+              "question": 4,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 3,
+          "title": "A heating pulse with a finite energy budget",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 2,
+              "new_part": "a"
+            },
+            {
+              "question": 6,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 4,
+          "title": "Identifying a thermal process through an imperfect instrument",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 7,
+              "new_part": "a"
+            },
+            {
+              "question": 10,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 5,
+          "title": "A warm start during an ambient-temperature change",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 5,
+              "new_part": "a"
+            },
+            {
+              "question": 9,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        }
+      ]
+    },
+    {
+      "module": 2,
+      "path": "laboratories/02-ventilation",
+      "problems": [
+        {
+          "problem": 1,
+          "title": "From a ventilated room to a local input--output model",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 1,
+              "new_part": "a"
+            },
+            {
+              "question": 2,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 2,
+          "title": "Testing a linearization with progressively larger airflow steps",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 3,
+              "new_part": "a"
+            },
+            {
+              "question": 4,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 3,
+          "title": "A feedforward specification under source uncertainty",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 5,
+              "new_part": "a"
+            },
+            {
+              "question": 6,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 4,
+          "title": "Choosing the feedback sign and checking the resulting operating point",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 7,
+              "new_part": "a"
+            },
+            {
+              "question": 8,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 5,
+          "title": "The same balance in a stirred dilution vessel",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 9,
+              "new_part": "a"
+            },
+            {
+              "question": 10,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        }
+      ]
+    },
+    {
+      "module": 3,
+      "path": "laboratories/03-vibration-isolation",
+      "problems": [
+        {
+          "problem": 1,
+          "title": "An optical platform on a moving foundation",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 1,
+              "new_part": "a"
+            },
+            {
+              "question": 2,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 2,
+          "title": "Damping a resonance while preserving isolation",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 3,
+              "new_part": "a"
+            },
+            {
+              "question": 4,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 3,
+          "title": "Absolute vibration and suspension-travel limits",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 5,
+              "new_part": "a"
+            },
+            {
+              "question": 6,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 4,
+          "title": "A heavier payload under a tight static-sag requirement",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 7,
+              "new_part": "a"
+            },
+            {
+              "question": 8,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 5,
+          "title": "What a decay test says about energy and excitation",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 9,
+              "new_part": "a"
+            },
+            {
+              "question": 10,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        }
+      ]
+    },
+    {
+      "module": 4,
+      "path": "laboratories/04-notch-filter",
+      "problems": [
+        {
+          "problem": 1,
+          "title": "Selecting the measured voltage in a real circuit",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 1,
+              "new_part": "a"
+            },
+            {
+              "question": 2,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 2,
+          "title": "A zero output with nonzero circulating energy",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 3,
+              "new_part": "a"
+            },
+            {
+              "question": 10,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 3,
+          "title": "When component tolerance and winding loss spoil the notch",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 4,
+              "new_part": "a"
+            },
+            {
+              "question": 8,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 4,
+          "title": "Changing damping without moving the nominal notch",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 5,
+              "new_part": "a"
+            },
+            {
+              "question": 7,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 5,
+          "title": "A state model that preserves the circuit power balance",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 6,
+              "new_part": "a"
+            },
+            {
+              "question": 9,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        }
+      ]
+    },
+    {
+      "module": 5,
+      "path": "laboratories/05-motor-load-rejection",
+      "problems": [
+        {
+          "problem": 1,
+          "title": "From armature current to flywheel motion",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 1,
+              "new_part": "a"
+            },
+            {
+              "question": 7,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 2,
+          "title": "Checking both torque and power at the supply limit",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 2,
+              "new_part": "a"
+            },
+            {
+              "question": 9,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 3,
+          "title": "Proportional tracking versus integral load rejection",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 3,
+              "new_part": "a"
+            },
+            {
+              "question": 4,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 4,
+          "title": "A stable PI controller has two different closed-loop channels",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 5,
+              "new_part": "a"
+            },
+            {
+              "question": 8,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 5,
+          "title": "A reduced model and a load estimate during acceleration",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 6,
+              "new_part": "a"
+            },
+            {
+              "question": 10,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        }
+      ]
+    },
+    {
+      "module": 6,
+      "path": "laboratories/06-root-locus",
+      "problems": [
+        {
+          "problem": 1,
+          "title": "A position actuator with an identified aggregate model",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 1,
+              "new_part": "a"
+            },
+            {
+              "question": 2,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 2,
+          "title": "Following branches through a breakaway",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 3,
+              "new_part": "a"
+            },
+            {
+              "question": 4,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 3,
+          "title": "Boundary oscillations and feedback-sign mistakes",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 5,
+              "new_part": "a"
+            },
+            {
+              "question": 10,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 4,
+          "title": "A tracking specification with gain uncertainty",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 6,
+              "new_part": "a"
+            },
+            {
+              "question": 7,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 5,
+          "title": "Changing time scale and canceling a stable mode",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 8,
+              "new_part": "a"
+            },
+            {
+              "question": 9,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        }
+      ]
+    },
+    {
+      "module": 7,
+      "path": "laboratories/07-delay-budget",
+      "problems": [
+        {
+          "problem": 1,
+          "title": "A remotely observed actuator",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 1,
+              "new_part": "a"
+            },
+            {
+              "question": 2,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 2,
+          "title": "Allocating a finite phase budget",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 3,
+              "new_part": "a"
+            },
+            {
+              "question": 4,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 3,
+          "title": "How a low-order delay approximation can overstate tolerance",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 5,
+              "new_part": "a"
+            },
+            {
+              "question": 6,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 4,
+          "title": "Sensor dynamics invalidate a previously acceptable delay budget",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 7,
+              "new_part": "a"
+            },
+            {
+              "question": 8,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 5,
+          "title": "Trading loop speed for delay tolerance and numerical fidelity",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 9,
+              "new_part": "a"
+            },
+            {
+              "question": 10,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        }
+      ]
+    },
+    {
+      "module": 8,
+      "path": "laboratories/08-camera-compensation",
+      "problems": [
+        {
+          "problem": 1,
+          "title": "A camera axis with simultaneous speed and phase requirements",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 1,
+              "new_part": "a"
+            },
+            {
+              "question": 2,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 2,
+          "title": "Realizing and normalizing a lead network",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 3,
+              "new_part": "a"
+            },
+            {
+              "question": 4,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 3,
+          "title": "Improving ramp tracking without silently relaxing phase specifications",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 5,
+              "new_part": "a"
+            },
+            {
+              "question": 6,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 4,
+          "title": "Spending the remaining phase reserve on a real communication link",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 7,
+              "new_part": "a"
+            },
+            {
+              "question": 10,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 5,
+          "title": "A stable compensated output can still demand noisy actuator effort",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 8,
+              "new_part": "a"
+            },
+            {
+              "question": 9,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        }
+      ]
+    },
+    {
+      "module": 9,
+      "path": "laboratories/09-pid-saturation",
+      "problems": [
+        {
+          "problem": 1,
+          "title": "Pole placement for a force-limited positioning stage",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 1,
+              "new_part": "a"
+            },
+            {
+              "question": 2,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 2,
+          "title": "Implementing a filtered controller as a state model",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 3,
+              "new_part": "a"
+            },
+            {
+              "question": 4,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 3,
+          "title": "An unreachable reference with a bounded integral state",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 5,
+              "new_part": "a"
+            },
+            {
+              "question": 6,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 4,
+          "title": "Anti-windup speed and numerical step-size limits",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 7,
+              "new_part": "a"
+            },
+            {
+              "question": 9,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 5,
+          "title": "A reproducible recovery comparison with an explicit evidence limit",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 8,
+              "new_part": "a"
+            },
+            {
+              "question": 10,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        }
+      ]
+    },
+    {
+      "module": 10,
+      "path": "laboratories/10-observer-control",
+      "problems": [
+        {
+          "problem": 1,
+          "title": "Two thermal zones, one heater and one thermometer",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 1,
+              "new_part": "a"
+            },
+            {
+              "question": 2,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 2,
+          "title": "Pole placement and the distinction between transient and steady feasibility",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 3,
+              "new_part": "a"
+            },
+            {
+              "question": 4,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 3,
+          "title": "An observer must receive the input actually applied",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 5,
+              "new_part": "a"
+            },
+            {
+              "question": 6,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 4,
+          "title": "Unknown heat leakage, actuator capacity and integral augmentation",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 7,
+              "new_part": "a"
+            },
+            {
+              "question": 9,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 5,
+          "title": "Fast estimation, biased sensors and the limits of a noise-path calculation",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 8,
+              "new_part": "a"
+            },
+            {
+              "question": 10,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        }
+      ]
+    },
+    {
+      "module": 11,
+      "path": "laboratories/11-digital-control",
+      "problems": [
+        {
+          "problem": 1,
+          "title": "A sampled controller connected to a continuous RC circuit",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 1,
+              "new_part": "a"
+            },
+            {
+              "question": 2,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 2,
+          "title": "A stability proof instead of a sampling-rate guess",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 3,
+              "new_part": "a"
+            },
+            {
+              "question": 4,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 3,
+          "title": "The onset of sustained sampled oscillations",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 5,
+              "new_part": "a"
+            },
+            {
+              "question": 6,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 4,
+          "title": "An equilibrium is not a convergence guarantee",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 7,
+              "new_part": "a"
+            },
+            {
+              "question": 8,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 5,
+          "title": "Implementation order and what happens between samples",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 9,
+              "new_part": "a"
+            },
+            {
+              "question": 10,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        }
+      ]
+    },
+    {
+      "module": 12,
+      "path": "laboratories/12-identification-capstone",
+      "problems": [
+        {
+          "problem": 1,
+          "title": "Inferring an aggregate thermal process from a step",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 1,
+              "new_part": "a"
+            },
+            {
+              "question": 2,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 2,
+          "title": "Fitting a delayed model without leaking validation information",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 3,
+              "new_part": "a"
+            },
+            {
+              "question": 4,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 3,
+          "title": "A held-out multistep test with a statistical reference",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 5,
+              "new_part": "a"
+            },
+            {
+              "question": 6,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 4,
+          "title": "Tuning a PI law subject to uncertain steady capability",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 7,
+              "new_part": "a"
+            },
+            {
+              "question": 8,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        },
+        {
+          "problem": 5,
+          "title": "Implementing a noninteger transport delay",
+          "parts": 3,
+          "previous_original_questions": [
+            {
+              "question": 9,
+              "new_part": "a"
+            },
+            {
+              "question": 10,
+              "new_part": "b"
+            }
+          ],
+          "new_synthesis_part": "c"
+        }
+      ]
+    }
+  ],
+  "general_problems": 5,
+  "general_parts_per_problem": 6
+}

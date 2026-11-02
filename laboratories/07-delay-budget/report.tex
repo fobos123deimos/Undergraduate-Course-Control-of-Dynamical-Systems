@@ -1,0 +1,45 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,tikz,hyperref,fvextra}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+\definecolor{ink}{RGB}{20,53,78}
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=3em
+
+\title{\color{ink}A feedback loop with a communication delay}
+\author{}
+\date{Original learning collection -- November 2026}
+\begin{document}
+\begin{center}{\LARGE\color{ink}A feedback loop with a communication delay}\\[5pt]{\small Original learning collection -- November 2026}\end{center}
+
+\textbf{Evidence note.} Original teaching scenario. Numerical parameters are deliberately chosen for learning. All generated data and curves are synthetic; no physical measurement is asserted.
+\section{Design brief}
+The normalized tracking loop is $L(s)=8/[s(s+3)]$. Find gain crossover $\omega_c$, phase margin $\phi_m$ and the first constant pure-delay stability boundary. Introduce delays $T=0.10\,\mathrm{s}$ and $0.30\,\mathrm{s}$. Compare fifth-order Pade approximation with exact phase $-\omega T$, explaining the scope of the rational approximation.
+\section{Physical system}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A remote mechanism sends measurements and receives commands through a communication path. The model combines those latencies into one ideal constant delay; the drawn packet train is not an experimental record.}\end{center}
+\section{Gain crossover}
+The open-loop magnitude is $8/[\omega\sqrt{\omega^2+9}]$. Setting it to one and defining $z=\omega^2$ gives $z^2+9z-64=0$, hence
+\[\omega_c=\sqrt{\frac{-9+\sqrt{337}}2}.\]
+The phase is $-90^\circ-\tan^{-1}(\omega/3)$, so the no-delay phase margin is $90^\circ-\tan^{-1}(\omega_c/3)$.
+\section{Delay consumes phase}
+A pure delay multiplies the loop by $e^{-sT}$. Its frequency magnitude is one and its phase is $-\omega T$ radians. Therefore crossover does not move and
+\[PM(T)=PM(0)-\omega_cT\frac{180}{\pi},\qquad T_{crit}=\frac{PM(0)\pi/180}{\omega_c}.\]
+This is the first imaginary-axis crossing for this stable nominal closed loop with its single positive gain crossover. It is not a universal rule for arbitrary loops with multiple crossings.
+\section{Rational approximation}
+The fifth-order Pade model approximates the delay by a rational all-pass transfer function. Compare its phase at crossover with the exact phase before using its time response. Artificial right-half-plane zeros and high-order dynamics are approximation features, not physical actuator modes.
+\section{Design decision}
+Reserve phase for unmodeled sensor and actuator dynamics rather than spending the entire mathematical delay budget. Packet loss, variable delay and sampled-data effects are outside a constant-delay continuous-time approximation.
+\section{What to learn from the experiment}
+Exact delay phase supplies the stability-budget calculation. Pade models are checked approximations used to visualize nominal responses.
+\section{System sketch}
+\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}
+\par\small\refstepcounter{figure}\label{fig:system}\textbf{Figure \thefigure.} Constant pure delay shifts a signal in time and contributes frequency-dependent phase lag. The sketch shows ideal steps, not experimental records.\end{center}
+\section{Executed computational evidence}
+\VerbatimInput[fontsize=\small,breaklines=true]{results.txt}
+\begin{center}\includegraphics[width=\linewidth,height=.46\textheight,keepaspectratio]{response.png}\end{center}
+\section{Method references}
+The equations use standard balance laws and feedback-control methods. Further explanation: \url{https://apmonitor.com/pdc/} and \url{https://fbsbook.org/}. Implementation documentation: \url{https://python-control.readthedocs.io/en/0.10.2/}. See the repository reference catalog for individual topics and videos.
+\end{document}
