@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-04",
+  "status": "passed",
+  "source_commit": "8abb8d1bfa7d87c3736efbc404c166845c49daed",
+  "site": "https://fobos123deimos.github.io/Undergraduate-Course-Control-of-Dynamical-Systems/",
+  "api_workflow": {
+    "run_id": 41917142630,
+    "build_job": 126879692004,
+    "deployment_job": 126880045109,
+    "conclusion": "success",
+    "committed_and_independent_builds_checked": true
+  },
+  "course_workflow": {
+    "run_id": 41917142734,
+    "python_job": 126879691824,
+    "octave_job": 126879692159,
+    "conclusion": "success",
+    "computational_modules_and_notebooks": 12,
+    "exercise_numerical_checks": 88,
+    "integrated_checks": 67,
+    "notation_expressions": 422,
+    "tikz_diagrams": 25
+  },
+  "api_coverage": {
+    "module_pages": 13,
+    "public_entry_points": 12,
+    "html_files_including_redirect": 14,
+    "local_images": 37,
+    "local_links_and_anchors": 2212
+  },
+  "browser_checks": {
+    "public_site_opened": true,
+    "laboratory_navigation": "passed",
+    "thermal_equation_mathjax": "rendered",
+    "signal_diagram_and_response_image": "loaded and visually inspected",
+    "search_query": "observer",
+    "search_results": 2
+  },
+  "boundaries": [
+    "The documentation wrapper preserves the original calculation bodies, while preventing import-time execution.",
+    "This course workflow executes GNU Octave, not proprietary MATLAB or Simulink.",
+    "The API is a Python reference; companion language materials retain their own validation scope."
+  ]
+}

@@ -25,4 +25,6 @@ Edit module/function docstrings and rebuild the site; do not hand-edit generated
 
 pdoc documents Python only. MATLAB/Octave implementations, Simulink builders, reports and notebooks remain linked companion material with their existing validation boundaries.
 
+Publication was verified on 4 November 2026 for source `8abb8d1bfa7d87c3736efbc404c166845c49daed`: [API build and deployment](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/actions/runs/41917142630) and [Python/Octave course validation](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/actions/runs/41917142734) passed. The live site displayed the thermal equation, signal diagram and response figure; searching for `observer` returned two results. The [publication record](api-validation.json) identifies jobs, coverage and execution boundaries.
+
 References: [pdoc rendering API](https://pdoc.dev/docs/pdoc/render.html), [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
