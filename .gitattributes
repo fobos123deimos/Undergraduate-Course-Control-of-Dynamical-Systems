@@ -1,0 +1,5 @@
+* text=auto eol=lf whitespace=cr-at-eol
+*.png binary
+*.pdf binary
+*.slx binary
+docs/api/** -whitespace linguist-generated=true

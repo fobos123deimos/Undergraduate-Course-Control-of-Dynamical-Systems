@@ -1,0 +1,19 @@
+{% extends "default/module.html.jinja2" %}
+{% block nav_title %}
+    <div class="course-heading">Control of Dynamical Systems</div>
+    <div class="course-subheading">Illustrated Python reference</div>
+    <div class="course-links">
+        <a href="course_guide.html">Start here</a>
+        <a href="https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems">Course &amp; notebooks</a>
+        <a href="https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/blob/main/docs/VALIDATION.md">Validation evidence</a>
+        <a href="https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/tree/main/matlab">MATLAB &amp; Octave</a>
+    </div>
+{% endblock %}
+{% block nav_submodules %}
+    <h2>Laboratories</h2>
+    <ul>
+    {% for name, info in course_modules.items() if name != 'course_guide' %}
+        <li><a href="{{ name }}.html">{{ info.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,74 @@
+[
+  {
+    "module": "lab01_thermal_enclosure",
+    "source": "laboratories/01-thermal-enclosure/analysis.py",
+    "title": "Thermal enclosure and sensor lag",
+    "original_body_ast_preserved": true
+  },
+  {
+    "module": "lab02_ventilation",
+    "source": "laboratories/02-ventilation/analysis.py",
+    "title": "Ventilation and local linearization",
+    "original_body_ast_preserved": true
+  },
+  {
+    "module": "lab03_vibration_isolation",
+    "source": "laboratories/03-vibration-isolation/analysis.py",
+    "title": "Base-excited vibration isolation",
+    "original_body_ast_preserved": true
+  },
+  {
+    "module": "lab04_notch_filter",
+    "source": "laboratories/04-notch-filter/analysis.py",
+    "title": "Passive notch filter and component tolerance",
+    "original_body_ast_preserved": true
+  },
+  {
+    "module": "lab05_motor_load_rejection",
+    "source": "laboratories/05-motor-load-rejection/analysis.py",
+    "title": "Motor speed and load rejection",
+    "original_body_ast_preserved": true
+  },
+  {
+    "module": "lab06_root_locus",
+    "source": "laboratories/06-root-locus/analysis.py",
+    "title": "Gain selection and the stability boundary",
+    "original_body_ast_preserved": true
+  },
+  {
+    "module": "lab07_delay_budget",
+    "source": "laboratories/07-delay-budget/analysis.py",
+    "title": "Feedback delay and phase reserve",
+    "original_body_ast_preserved": true
+  },
+  {
+    "module": "lab08_camera_compensation",
+    "source": "laboratories/08-camera-compensation/analysis.py",
+    "title": "Lead-lag compensation for a camera axis",
+    "original_body_ast_preserved": true
+  },
+  {
+    "module": "lab09_pid_saturation",
+    "source": "laboratories/09-pid-saturation/analysis.py",
+    "title": "PID saturation and back-calculation",
+    "original_body_ast_preserved": true
+  },
+  {
+    "module": "lab10_observer_control",
+    "source": "laboratories/10-observer-control/analysis.py",
+    "title": "State feedback with one thermal measurement",
+    "original_body_ast_preserved": true
+  },
+  {
+    "module": "lab11_digital_control",
+    "source": "laboratories/11-digital-control/analysis.py",
+    "title": "Sampling and closed-loop stability",
+    "original_body_ast_preserved": true
+  },
+  {
+    "module": "lab12_identification_capstone",
+    "source": "laboratories/12-identification-capstone/analysis.py",
+    "title": "Identification, held-out prediction and control",
+    "original_body_ast_preserved": true
+  }
+]

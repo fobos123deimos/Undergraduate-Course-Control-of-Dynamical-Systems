@@ -16,6 +16,7 @@ This is an original teaching collection created for this repository. Earlier cou
 
 ## Navigation
 
+- [Illustrated Python API reference](https://fobos123deimos.github.io/Undergraduate-Course-Control-of-Dynamical-Systems/) · [Versioned HTML](docs/api/index.html) · [Build and maintenance](docs/API_DOCUMENTATION.md)
 - [Learning path, prerequisites and course guide](course/README.md)
 - [Repository review and remaining limitations](docs/REVIEW.md)
 - [General collection: five integrated design studies (PDF)](problem-sets/integrated-design/exercises.pdf) and [worked solutions (PDF)](problem-sets/integrated-design/solutions.pdf)

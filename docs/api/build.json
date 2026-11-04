@@ -1,0 +1,223 @@
+{
+  "generator": "pdoc",
+  "pdoc_version": "16.0.0",
+  "render_dependencies": {
+    "Jinja2": "3.1.6",
+    "MarkupSafe": "3.0.4",
+    "markdown2": "2.5.5",
+    "Pygments": "2.21.0"
+  },
+  "source_sha256_lf": {
+    "docs/api-sources.json": "9f8d3e3b86e3763d4e0c8c43692122cc7e205fa92f36028428a1a9e176c33263",
+    "docs/api_index.py": "9f694ab9ee0849937ed6848d9a24483fce8f72a3c41bcde8e89fc97eb7fc4ccc",
+    "docs/pdoc-template/custom.css": "c3990054f4295f1dba1b2779500a065e44daa1cc241a08986091ba0a6f24dfc5",
+    "docs/pdoc-template/module.html.jinja2": "a7da640965b3b40d7d761e984d550b98b95b64e735f632c1d48b83f13f83a629",
+    "laboratories/01-thermal-enclosure/analysis.py": "b45eecea2773fc46f39a158aad4597960225a84ed29780bd9d3b8845d094ed4d",
+    "laboratories/02-ventilation/analysis.py": "096845d469bedcb7a1d1696a27b8910e9af5369f56a395acadc28efe70389df5",
+    "laboratories/03-vibration-isolation/analysis.py": "3e15b51b736caaba163519ba6672ea6ed8b0dfe9c1c0843c9f64bf3058ac46c5",
+    "laboratories/04-notch-filter/analysis.py": "ec07cd4e5b4cfaa698c63011796f433f3e51924a1f8d133d8cf2a349907dfad2",
+    "laboratories/05-motor-load-rejection/analysis.py": "58254c37c2891ce8b75cfc72f6cc770731a911204f88de3d95e63d3541ffae3c",
+    "laboratories/06-root-locus/analysis.py": "a9f06dc36ad477720a11ef8705a20d778e3180b4aff513bf24251378f94b3543",
+    "laboratories/07-delay-budget/analysis.py": "4eb5d588a080120268c9bc038d425c9df3ed601c3a8903d72f07ab2f6b9b9ab1",
+    "laboratories/08-camera-compensation/analysis.py": "cd8426086be2b365923391a289ed3d55fd0d993d3da20adef92431afbb47df16",
+    "laboratories/09-pid-saturation/analysis.py": "44d012398cd28771d43b7312ad99d15ae48c87875e94a4048dbc703cb4f7a467",
+    "laboratories/10-observer-control/analysis.py": "2bfe9a3e589f808ef22aa96e1b081fce1cd935435cad116dc75418479aaad82b",
+    "laboratories/11-digital-control/analysis.py": "029084b328229eae603922fcf79bd6fff36a5cc789991d232a6f353c867ac692",
+    "laboratories/12-identification-capstone/analysis.py": "45daa2139d84caf628acd34b336a6b5e5dda5f8231addc49a78199d709648377",
+    "requirements-docs.txt": "e1258a3d2b6020a71e43acd49976c1bd47ab1a1b8da5a360906afc8240ccd0c0",
+    "tools/build_api_docs.py": "aceedbf8f7366f0d8dc2d05344d30ac068bee3510b4f1d1b318d7d88c26c835b"
+  },
+  "source_image_sha256": {
+    "laboratories/01-thermal-enclosure/figures/physical-system.png": "74d46f6c4d1e01911d407b103b38c5fc67e470bf3c9acc12e9e2b50bb0902f57",
+    "laboratories/01-thermal-enclosure/figures/system-diagram.png": "aa6f4de0b0225636799b11ab6cda1d46cfa8f63be12adb306b6dfd892a05ddfd",
+    "laboratories/01-thermal-enclosure/response.png": "6df39cb2a2d5cb2ac9b60e39ac8d476aa7e755f7eca7e235bad06d6552a417b8",
+    "laboratories/02-ventilation/figures/physical-system.png": "c9f9ff6059e347353fd631cda90226868749a8b8ed71040c60623f495777da67",
+    "laboratories/02-ventilation/figures/system-diagram.png": "0ace376144da7982359b2da60e30fe382a35955a6944a5c2b6c61a58b5b9521f",
+    "laboratories/02-ventilation/response.png": "7fa141a3f02c4484f624319ce123b25fb5b1a20063a8d57457439eb3564e27c2",
+    "laboratories/03-vibration-isolation/figures/physical-system.png": "c2d47296f5d927ae006bfe6a1753ede50458591c5ac4c9a44ff35ead6a2bc65d",
+    "laboratories/03-vibration-isolation/figures/system-diagram.png": "96653f1f5895686c7916208241de604d39bd487c2ab1c55b98589f269014c4a0",
+    "laboratories/03-vibration-isolation/response.png": "eb3e3f919329b209b6cf027cb711a0e975ac868ec6ee4a0aee928adc8bda58d9",
+    "laboratories/04-notch-filter/figures/physical-system.png": "f24878e9434eef114190f949019c1b9e59ef4755997841d2114e8886943a68d5",
+    "laboratories/04-notch-filter/figures/system-diagram.png": "e7ca71869e38e78f32445953adfc960e9e5bde3fc33b9d438c04cc4b25608651",
+    "laboratories/04-notch-filter/response.png": "b29f4810f891a91eead7bde452f9cfe38cdb3431ccea6ce94fdfc7ab3f323cdd",
+    "laboratories/05-motor-load-rejection/figures/physical-system.png": "ec8eafb49b0cb0336e91125bdc37dc56262fec3a99a18acba6ce0a4e0774a3b8",
+    "laboratories/05-motor-load-rejection/figures/system-diagram.png": "1e3f5889bac564f0b7cfe650844e74a3f82274aa1b130f8ac09cc1bb93fe6bd0",
+    "laboratories/05-motor-load-rejection/response.png": "bbbf46f2f9e9639390887f6bde74b0b7bf48b07eeb0e676cb47bc90f7eb23946",
+    "laboratories/06-root-locus/figures/physical-system.png": "96de20e267012acdc0605eb1ba506f97f286956fd707c7258bf071330eb600ab",
+    "laboratories/06-root-locus/figures/system-diagram.png": "5eb42f826f1bf2c45f43b0078c1e11db49976463dcacabdf43341e582a56c436",
+    "laboratories/06-root-locus/response.png": "d82bf018f63cce3395f8907e1f5a57529141e40a76cae318a45a6b547448707b",
+    "laboratories/07-delay-budget/figures/physical-system.png": "1716c853f76a531c56c6ba5fb547fe92b061a7599fc51876714e60b42bab9f5a",
+    "laboratories/07-delay-budget/figures/system-diagram.png": "b2b7cb9bac34d87e9e3664158330ff45cde794318be89ed6604cd9a847adb297",
+    "laboratories/07-delay-budget/response.png": "f3a4e82c1acedc18949bc458bab691bfafcf3d964f40931a6a61ec8df26725b1",
+    "laboratories/08-camera-compensation/figures/physical-system.png": "31fdfaaf1cd181ed490a8b915c33a2cfaf958c17069256b80f3c5e07be00b205",
+    "laboratories/08-camera-compensation/figures/system-diagram.png": "0f7f5374e749b120b347c69b939d74db938d34f271649eef0a54026784678178",
+    "laboratories/08-camera-compensation/response.png": "6437e76b90e262a05ed8cb78c58af373d702e261ed64b92774e4057165f18dc9",
+    "laboratories/09-pid-saturation/figures/physical-system.png": "3827c0fcd0e3df50d3b9c2bfd6fbc9a820a87b6e9363ca209a2206da25d8a2ce",
+    "laboratories/09-pid-saturation/figures/system-diagram.png": "74e57c8f4ccf802707b9460fc49403e716d6d4bd6cadd539bcf538fbeeb673f2",
+    "laboratories/09-pid-saturation/response.png": "f77ee6b11fa69c556541ecaff1dfac2e6637fed9045c40165b2e4cf1d814fe72",
+    "laboratories/10-observer-control/figures/physical-system.png": "c72896be35e89066c73b0d2c46be439c2b2c28d8c96a7f6f739c6ef8dd2e5edd",
+    "laboratories/10-observer-control/figures/system-diagram.png": "0fdde48434cfc9f97431349684c1f301b7af809457fbeda0f88d9b552349314a",
+    "laboratories/10-observer-control/response.png": "62b5f0c78ac31264a7634fbcc59e691132e3a86c86e6dda7eaf55403278b4599",
+    "laboratories/11-digital-control/figures/physical-system.png": "185b185b2f8e6f24c75d8d9a3ac3b7b4f444ff639834553904d517ba5346a503",
+    "laboratories/11-digital-control/figures/system-diagram.png": "976cf10c711558d53f4a05b34d0837279aeec90c83b6ac987ad2e35175c97a0e",
+    "laboratories/11-digital-control/response.png": "bac4826389c122524d325baba0783989fbd4a82b12a85577de92571391a152cc",
+    "laboratories/12-identification-capstone/figures/physical-system.png": "5fa78d98d5a6ef2eddec9dc3b3d116b6c555b589956d6e2d25ed92cf34218706",
+    "laboratories/12-identification-capstone/figures/system-diagram.png": "5588deedb3fead5a79de8f033c6b2233ceca09fccda0c89a53a0ac41734bb174",
+    "laboratories/12-identification-capstone/response.png": "b85ddb124c576783faf987cd990054d52accb923d49ed56253993dd480f6124d",
+    "problem-sets/integrated-design/figures/interacting-tanks.png": "ce1313d1249894f95d13c056bbe7d72d6dbb4ac49b44a036c891b0dca6093e85"
+  },
+  "artifact_sha256": {
+    ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "assets/01-physical-system.png": "74d46f6c4d1e01911d407b103b38c5fc67e470bf3c9acc12e9e2b50bb0902f57",
+    "assets/01-response.png": "6df39cb2a2d5cb2ac9b60e39ac8d476aa7e755f7eca7e235bad06d6552a417b8",
+    "assets/01-system-diagram.png": "aa6f4de0b0225636799b11ab6cda1d46cfa8f63be12adb306b6dfd892a05ddfd",
+    "assets/02-physical-system.png": "c9f9ff6059e347353fd631cda90226868749a8b8ed71040c60623f495777da67",
+    "assets/02-response.png": "7fa141a3f02c4484f624319ce123b25fb5b1a20063a8d57457439eb3564e27c2",
+    "assets/02-system-diagram.png": "0ace376144da7982359b2da60e30fe382a35955a6944a5c2b6c61a58b5b9521f",
+    "assets/03-physical-system.png": "c2d47296f5d927ae006bfe6a1753ede50458591c5ac4c9a44ff35ead6a2bc65d",
+    "assets/03-response.png": "eb3e3f919329b209b6cf027cb711a0e975ac868ec6ee4a0aee928adc8bda58d9",
+    "assets/03-system-diagram.png": "96653f1f5895686c7916208241de604d39bd487c2ab1c55b98589f269014c4a0",
+    "assets/04-physical-system.png": "f24878e9434eef114190f949019c1b9e59ef4755997841d2114e8886943a68d5",
+    "assets/04-response.png": "b29f4810f891a91eead7bde452f9cfe38cdb3431ccea6ce94fdfc7ab3f323cdd",
+    "assets/04-system-diagram.png": "e7ca71869e38e78f32445953adfc960e9e5bde3fc33b9d438c04cc4b25608651",
+    "assets/05-physical-system.png": "ec8eafb49b0cb0336e91125bdc37dc56262fec3a99a18acba6ce0a4e0774a3b8",
+    "assets/05-response.png": "bbbf46f2f9e9639390887f6bde74b0b7bf48b07eeb0e676cb47bc90f7eb23946",
+    "assets/05-system-diagram.png": "1e3f5889bac564f0b7cfe650844e74a3f82274aa1b130f8ac09cc1bb93fe6bd0",
+    "assets/06-physical-system.png": "96de20e267012acdc0605eb1ba506f97f286956fd707c7258bf071330eb600ab",
+    "assets/06-response.png": "d82bf018f63cce3395f8907e1f5a57529141e40a76cae318a45a6b547448707b",
+    "assets/06-system-diagram.png": "5eb42f826f1bf2c45f43b0078c1e11db49976463dcacabdf43341e582a56c436",
+    "assets/07-physical-system.png": "1716c853f76a531c56c6ba5fb547fe92b061a7599fc51876714e60b42bab9f5a",
+    "assets/07-response.png": "f3a4e82c1acedc18949bc458bab691bfafcf3d964f40931a6a61ec8df26725b1",
+    "assets/07-system-diagram.png": "b2b7cb9bac34d87e9e3664158330ff45cde794318be89ed6604cd9a847adb297",
+    "assets/08-physical-system.png": "31fdfaaf1cd181ed490a8b915c33a2cfaf958c17069256b80f3c5e07be00b205",
+    "assets/08-response.png": "6437e76b90e262a05ed8cb78c58af373d702e261ed64b92774e4057165f18dc9",
+    "assets/08-system-diagram.png": "0f7f5374e749b120b347c69b939d74db938d34f271649eef0a54026784678178",
+    "assets/09-physical-system.png": "3827c0fcd0e3df50d3b9c2bfd6fbc9a820a87b6e9363ca209a2206da25d8a2ce",
+    "assets/09-response.png": "f77ee6b11fa69c556541ecaff1dfac2e6637fed9045c40165b2e4cf1d814fe72",
+    "assets/09-system-diagram.png": "74e57c8f4ccf802707b9460fc49403e716d6d4bd6cadd539bcf538fbeeb673f2",
+    "assets/10-physical-system.png": "c72896be35e89066c73b0d2c46be439c2b2c28d8c96a7f6f739c6ef8dd2e5edd",
+    "assets/10-response.png": "62b5f0c78ac31264a7634fbcc59e691132e3a86c86e6dda7eaf55403278b4599",
+    "assets/10-system-diagram.png": "0fdde48434cfc9f97431349684c1f301b7af809457fbeda0f88d9b552349314a",
+    "assets/11-physical-system.png": "185b185b2f8e6f24c75d8d9a3ac3b7b4f444ff639834553904d517ba5346a503",
+    "assets/11-response.png": "bac4826389c122524d325baba0783989fbd4a82b12a85577de92571391a152cc",
+    "assets/11-system-diagram.png": "976cf10c711558d53f4a05b34d0837279aeec90c83b6ac987ad2e35175c97a0e",
+    "assets/12-physical-system.png": "5fa78d98d5a6ef2eddec9dc3b3d116b6c555b589956d6e2d25ed92cf34218706",
+    "assets/12-response.png": "b85ddb124c576783faf987cd990054d52accb923d49ed56253993dd480f6124d",
+    "assets/12-system-diagram.png": "5588deedb3fead5a79de8f033c6b2233ceca09fccda0c89a53a0ac41734bb174",
+    "assets/interacting-tanks.png": "ce1313d1249894f95d13c056bbe7d72d6dbb4ac49b44a036c891b0dca6093e85",
+    "course_guide.html": "98c479551a4e17a1af35f01c6e2ba2b549eef03ed17f9fa6950495f7d39431f4",
+    "index.html": "8d01db188d8abbd3e794abfc6b28ea93710670cd29096ccfdbf683794a47f17e",
+    "lab01_thermal_enclosure.html": "0664b61e3dd2eb8174eafe9b88cddc1bb2d9418b289997adb5e5755d31b8b550",
+    "lab02_ventilation.html": "9dfc6bc46251ccd988bce76464b1725293459ca4399ef3c68fb4b4157661fee3",
+    "lab03_vibration_isolation.html": "cca83ccb35eada5da87e6677d8c32d4f0e08a67d96ffb041d8fcea4992f760cd",
+    "lab04_notch_filter.html": "af1933d1754d2bcb377665187318c33ed6b1e2c69e1f79d4ad7d64e5aac71283",
+    "lab05_motor_load_rejection.html": "ed541ea3830df8eb605ecba38b09426cca1ef059556589c2ea070c3fb25b1cf8",
+    "lab06_root_locus.html": "ca52a5962ef8dea00f1fb4524605cdb925a1c08ce5ae81bb1f7882d824060bc7",
+    "lab07_delay_budget.html": "1f58ec9ba3ef13394fe3adf2cc74d3c263d1f1bee500129e9012a717da750381",
+    "lab08_camera_compensation.html": "80e4e884ac505e0d63dfe398913fc8f19ad3e97794ab62d018bb5f12edf35c6c",
+    "lab09_pid_saturation.html": "e69090d054cfb54de6e89e861f0ea73f6713949b8f72f3e5a1a517bd752c2d0e",
+    "lab10_observer_control.html": "05e3ca6a1f6b0d877936c0ba32c1b7d4e4f803f7e20210497b4a67b7e4b6499e",
+    "lab11_digital_control.html": "e621df6250655f66b1d7b9771db27e5cb4e1b370c070dabceb9b21793e4517fe",
+    "lab12_identification_capstone.html": "8991b821353704f66950325f0389f5feaa275af7507c67563e41a2ddc922c8a8",
+    "search.js": "82172c6fd8f55a2758304ed5dddf844d3097cd81142eec71820dd0c0b0f098ce"
+  },
+  "coverage": {
+    "course_guide": {
+      "source": "docs/api_index.py",
+      "public_definitions": []
+    },
+    "lab01_thermal_enclosure": {
+      "source": "laboratories/01-thermal-enclosure/analysis.py",
+      "public_definitions": [
+        "run"
+      ],
+      "title": "Thermal enclosure and sensor lag"
+    },
+    "lab02_ventilation": {
+      "source": "laboratories/02-ventilation/analysis.py",
+      "public_definitions": [
+        "run"
+      ],
+      "title": "Ventilation and local linearization"
+    },
+    "lab03_vibration_isolation": {
+      "source": "laboratories/03-vibration-isolation/analysis.py",
+      "public_definitions": [
+        "run"
+      ],
+      "title": "Base-excited vibration isolation"
+    },
+    "lab04_notch_filter": {
+      "source": "laboratories/04-notch-filter/analysis.py",
+      "public_definitions": [
+        "run"
+      ],
+      "title": "Passive notch filter and component tolerance"
+    },
+    "lab05_motor_load_rejection": {
+      "source": "laboratories/05-motor-load-rejection/analysis.py",
+      "public_definitions": [
+        "run"
+      ],
+      "title": "Motor speed and load rejection"
+    },
+    "lab06_root_locus": {
+      "source": "laboratories/06-root-locus/analysis.py",
+      "public_definitions": [
+        "run"
+      ],
+      "title": "Gain selection and the stability boundary"
+    },
+    "lab07_delay_budget": {
+      "source": "laboratories/07-delay-budget/analysis.py",
+      "public_definitions": [
+        "run"
+      ],
+      "title": "Feedback delay and phase reserve"
+    },
+    "lab08_camera_compensation": {
+      "source": "laboratories/08-camera-compensation/analysis.py",
+      "public_definitions": [
+        "run"
+      ],
+      "title": "Lead-lag compensation for a camera axis"
+    },
+    "lab09_pid_saturation": {
+      "source": "laboratories/09-pid-saturation/analysis.py",
+      "public_definitions": [
+        "run"
+      ],
+      "title": "PID saturation and back-calculation"
+    },
+    "lab10_observer_control": {
+      "source": "laboratories/10-observer-control/analysis.py",
+      "public_definitions": [
+        "run"
+      ],
+      "title": "State feedback with one thermal measurement"
+    },
+    "lab11_digital_control": {
+      "source": "laboratories/11-digital-control/analysis.py",
+      "public_definitions": [
+        "run"
+      ],
+      "title": "Sampling and closed-loop stability"
+    },
+    "lab12_identification_capstone": {
+      "source": "laboratories/12-identification-capstone/analysis.py",
+      "public_definitions": [
+        "run"
+      ],
+      "title": "Identification, held-out prediction and control"
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "laboratories": 12,
+    "module_pages": 13,
+    "html_files_including_redirect": 14,
+    "public_entry_points": 12,
+    "local_images": 37,
+    "local_links_and_anchors_checked": 2212
+  }
+}
