@@ -176,7 +176,7 @@ def main():
         for name, document in documents.items():
             (output / (name + '.html')).write_bytes(pdoc.render.html_module(document, documents).encode('utf-8'))
         (output / 'search.js').write_bytes(pdoc.render.search_index(documents).encode('utf-8'))
-        (output / 'index.html').write_text('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=course_guide.html"><title>Control of Dynamical Systems API</title></head><body><a href="course_guide.html">Open the illustrated Python reference</a></body></html>\n', encoding='utf-8')
+        (output / 'index.html').write_bytes(b'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=course_guide.html"><title>Control of Dynamical Systems API</title></head><body><a href="course_guide.html">Open the illustrated Python reference</a></body></html>\n')
         (output / '.nojekyll').write_bytes(b'')
         checks = validate_site(output, modules)
         record = {'generator': 'pdoc', 'pdoc_version': pdoc.__version__,
