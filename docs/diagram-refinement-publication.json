@@ -1,0 +1,51 @@
+{
+  "checked_at_utc": "2026-11-05T15:48:59.5039307Z",
+  "source_commit": "7468a832a1c645260afb84eba03e6e2de56cc4cd",
+  "status": "passed",
+  "site": "https://fobos123deimos.github.io/Undergraduate-Course-Control-of-Dynamical-Systems/",
+  "public_html_pages_with_atlas_link": [
+    "course_guide.html"
+  ],
+  "public_tikz_images_matching_local_bytes": 13,
+  "atlas_sha256": "25a632ebfc02456d96de4086538d6220053a739015ab47efbfc4ca8502375009",
+  "atlas_bytes_match_local": true,
+  "artifact_sha256": {
+    "assets/diagram-atlas.pdf": "25a632ebfc02456d96de4086538d6220053a739015ab47efbfc4ca8502375009",
+    "assets/01-physical-system.png": "9457ecee193574ff5d39e406741b741bc4dc601d539f6b1eb12a64ea47c79149",
+    "assets/02-physical-system.png": "b40b7eb8c74b2c3002e66cdaf19b31ede623e819b3ee9d14756383f4f61d904f",
+    "assets/03-physical-system.png": "1aba2478f3aabb2a8d430fcdcb41f2d0ff48e77e8763e3df3da49508a1ee077b",
+    "assets/04-physical-system.png": "0ee69ce8715e95cf42d596114c65a740d64f1f56b393a14f5eedea2e5c6106d2",
+    "assets/05-physical-system.png": "17d8cb1e7e2fdb680b631523e7ce6c42ff9c875581b42075cc02285e0586eac8",
+    "assets/06-physical-system.png": "29026ff140fb612a81ce6961f69c0b876feba2159c0b5d1e365aecd2ebc74741",
+    "assets/07-physical-system.png": "84f6351737e18eb58d340d2b2ab01e2e9295bf09b658067267a616c0591666b7",
+    "assets/08-physical-system.png": "0d7d01a5b6a978037e45a5d89deff0186f4ce4d02159208632076db26b9cb7dd",
+    "assets/09-physical-system.png": "dfdb9c122421969ef97d4c6fa61e219f5be1513ae5de797428fd07f7b8654aa8",
+    "assets/10-physical-system.png": "ab80faa0eb453aac92df6b59b22125eb15984b0e33844a1df536b2ccbfca5da9",
+    "assets/11-physical-system.png": "136b59e49156c5cb2029730373d24ed08af0d185790056f9ffabf2d4f125c806",
+    "assets/12-physical-system.png": "5c80c9e68884cee8dcb977df468a3284c64960522360d5a72062142362579acc",
+    "assets/interacting-tanks.png": "8b9b65d42257aeef66b2e23c131e27c3804134a11c5b7671099c897ee47fa6cb"
+  },
+  "api_validation": {
+    "status": "passed",
+    "laboratories": 12,
+    "module_pages": 13,
+    "html_files_including_redirect": 14,
+    "public_entry_points": 12,
+    "local_images": 37,
+    "local_documents": 1,
+    "local_links_and_anchors_checked": 2232
+  },
+  "scope": "Published HTML and exact PDF/PNG bytes checked against the local reviewed build. This is not a new browser or Colab execution claim.",
+  "workflow_runs": [
+    {
+      "status": "success",
+      "url": "https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/actions/runs/42058278727",
+      "name": "Build and publish Python API"
+    },
+    {
+      "status": "success",
+      "url": "https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/actions/runs/42058278880",
+      "name": "Validate original learning materials"
+    }
+  ]
+}
