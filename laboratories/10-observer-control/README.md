@@ -23,7 +23,7 @@ Five integrated problems each contain three linked parts: model and analyze the 
 
 Two thermal inventories are connected by a conductive bridge. Heating acts in the first zone and sensing in the second. These stated capacities and conductances reproduce the two-state model exactly under the lumped assumptions.
 
-[Editable physical illustration](figures/physical-system.tikz)
+[Editable physical illustration](figures/physical-system.tikz) · [Vector equipment PDF](figures/physical-system.pdf)
 
 ## System diagram
 

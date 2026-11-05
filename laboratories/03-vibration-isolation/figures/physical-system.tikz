@@ -30,8 +30,23 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \node[smalllab]at(2,1.5){$k/2$};\node[smalllab]at(10.9,1.5){$k/2$};
 \node[smalllab]at(5.5,1.5){$b$};
 \draw[dim](12.1,.65)--node[right]{$x-z$}(12.1,2.6);
-\draw[measure](11.5,3)--(12.8,3)node[right]{$x(t)$};
-\draw[measure](11.5,.55)--(12.8,.55)node[right]{$z(t)$};
+\draw[ink!35,densely dashed](11.4,3)--(13.1,3);
+\draw[measure](13.1,3)--(13.1,4.05)node[right]{$x(t)$};
+\draw[measure](13.1,.55)--(13.1,1.5)node[right]{$z(t)$};
 \draw[blue!60!black,decorate,decoration={snake,amplitude=2pt,segment length=12pt}](2,-.6)--(11,-.6);
 \node[lab]at(6.6,-1.1){Moving floor; displacement measured from static equilibrium};
+% REFINED EQUIPMENT DETAILS
+
+% Fasteners, spring seats and a clearly resolved dashpot piston.
+\foreach \x in {2.3,3,10.4,11.1}{\draw[ink!50](\x,2.78)circle(.04);}
+\foreach \x in {3,10}{\draw[ink,line width=1.5pt](\x-.3,.6)--(\x+.3,.6)(\x-.3,2.55)--(\x+.3,2.55);}
+\draw[ink!50](4.2,1.24)--(4.2,1.45)(4.8,1.24)--(4.8,1.45);
+\draw[ink!35](7.15,3.15)--(7.15,3.85);
+\draw[teal!70!black](11.7,2.4)rectangle(12.4,2.7);
+\draw[teal!50!black,densely dashed](12.05,2.4)--(12.05,.75);
+\node[smalllab,anchor=west]at(.5,4.6){Parallel supports\\share one payload};
+
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-1.75){\textbf{Measured coordinates}\\[3pt]$x,z$: absolute displacements [m].\\$x-z$: spring travel [m].\\$\dot x-\dot z$: damping velocity.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-1.75){\textbf{Force balance}\\[3pt]$m\ddot x+b(\dot x-\dot z)$\\$\qquad+k(x-z)=0$.\\Two $k/2$ supports give total $k$.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-1.75){\textbf{Operating boundary}\\[3pt]Coordinates are deviations about static sag. The blue floor trace indicates motion; it is not a measured waveform.};
 \end{tikzpicture}

@@ -23,7 +23,7 @@ Five integrated problems each contain three linked parts: model and analyze the 
 
 A mass, spring, damper and bounded force actuator physically realize the normalized second-order plant. Force saturation is included; contact, dry friction and travel stops are not.
 
-[Editable physical illustration](figures/physical-system.tikz)
+[Editable physical illustration](figures/physical-system.tikz) · [Vector equipment PDF](figures/physical-system.pdf)
 
 ## System diagram
 

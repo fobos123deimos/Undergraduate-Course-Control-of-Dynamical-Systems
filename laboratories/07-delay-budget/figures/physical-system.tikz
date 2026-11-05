@@ -23,11 +23,24 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \draw[fill=white,draw=ink](10.7,2.2)rectangle(13,3.7);
 \draw[ink](11.6,1.7)--(11.6,1.2)--(12.2,1.2)--(12.2,1.7);
 \node[smalllab]at(11.85,2.95){controller\\time stamp};
-\draw[flow](6.2,3.6)--(10.1,3.6);
+\draw[flow](5.9,3.6)--(10.4,3.6);
 \foreach \x in {6.8,7.5,8.2}{\draw[fill=blue!15,draw=ink](\x,3.45)rectangle++(.35,.3);}
 \node[smalllab]at(8,4.3){sample packets};
-\draw[flow](10.1,1.9)--(6.5,1.9)--(6.5,.3)--(2,.3)--(2,1);
+\draw[flow](10.4,1.9)--(6.5,1.9)--(6.5,.3)--(2,.3)--(2,1);
 \node[smalllab]at(8,1.25){actuation command};
 \draw[dim](6.8,2.7)--node[below]{$T$: total information delay}(9.7,2.7);
 \node[lab]at(6.8,-.6){Mechanism and communication path; packet losses and jitter are omitted};
+% REFINED EQUIPMENT DETAILS
+
+% Interfaces are attached to their devices, rather than floating packet arrows.
+\draw[ink!55,line width=1pt](.8,1.65)--(3.7,1.65)(.8,.8)--(3.7,.8);
+\foreach \x in {1,3.5}{\draw[ink!60](\x,1.25)circle(.055);}
+\draw[ink!45](10.75,2.05)--(12.95,2.05);
+\foreach \x in {10.9,11.2,...,12.7}{\draw[ink!35](\x,1.92)--(\x,2.08);}
+\draw[teal!70!black](5.65,3.65)circle(.055);
+\node[smalllab]at(8.8,.6){latency assigned to one\\equivalent pure-delay element};
+
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-1.25){\textbf{Signal direction}\\[3pt]Top path: sensed output to controller. Bottom path: command returning to the mechanism.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-1.25){\textbf{Equivalent delay}\\[3pt]$y_d(t)=y(t-T)$.\\$e^{-sT}$ has unit magnitude and phase $-\omega T$ [rad].};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-1.25){\textbf{Assessment boundary}\\[3pt]Fixed total latency is assumed. Packet jitter, dropouts and scheduling are excluded; packet boxes are conceptual.};
 \end{tikzpicture}

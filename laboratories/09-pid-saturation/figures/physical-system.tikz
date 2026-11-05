@@ -26,4 +26,18 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \node[lab]at(11.4,3.15){force actuator\\$|u|\leq2$ N};
 \draw[measure](6.7,4.1)--(9.4,4.1)node[midway,above]{positive $y$};
 \node[lab]at(6.9,-.15){Illustrative force-driven stage; no contact, friction or hard stops};
+% REFINED EQUIPMENT DETAILS
+
+% Carriage guide, suspension joints and force application point.
+\draw[ink!55](1.1,.8)--(12.4,.8);
+\foreach \x in {6.7,8.8}{\fill[ink](\x,1.1)circle(.055);}
+\foreach \x/\y in {1.1/2.9,6/2.9,1.1/1.65,6/1.65}{\fill[ink](\x,\y)circle(.055);}
+\draw[ink!55,fill=white](9.7,2)rectangle(11.6,2.65);
+\draw[heat](9.4,2.3)--(12.6,2.3);
+\node[smalllab]at(11.1,1.65){ideal bounded-force source};
+\draw[ink!40](.7,1.1)--(1.1,1.35)(.7,1.7)--(1.1,1.95)(.7,2.3)--(1.1,2.55)(.7,2.9)--(1.1,3.15)(.7,3.5)--(1.1,3.75);
+
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-0.8){\textbf{Force and displacement}\\[3pt]$u$: applied force [N].\\$y$: displacement [m].\\Requested and applied inputs differ when saturation is active.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-0.8){\textbf{Dynamics and bound}\\[3pt]$\ddot y+2\dot y+y=u$.\\$-2\leq u\leq2$ N.\\The drawn source applies force to the moving mass.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-0.8){\textbf{Controller implication}\\[3pt]Anti-windup must use applied-minus-requested effort. Wheels depict ideal guidance; rolling friction and hard stops are omitted.};
 \end{tikzpicture}

@@ -20,9 +20,9 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \draw[orange!85!black,line width=1.3pt,decorate,decoration={zigzag,segment length=6pt,amplitude=3pt}](1.8,1.1)--(6.2,1.1);
 \draw[heat](.2,1.1)--(1.7,1.1);
 \node[smalllab]at(1.7,.1){heater input $u$};
-\node[lab]at(4,2.9){stirred thermal inventory\\temperature deviation $x$};
+\node[smalllab]at(5.45,2.85){stirred inventory\\temperature\\deviation $x$};
 \draw[heat](1.2,3.8)--(.1,4.5);
-\node[smalllab]at(1.5,4.9){wall heat leakage};
+\node[smalllab]at(.95,4.9){wall heat\\leakage};
 \draw[flow](.2,5.65)--(2.3,5.65)--(2.3,3.8);
 \node[smalllab]at(4.8,5.65){matched inlet at ambient temperature};
 \draw[blue!45,line width=6pt](7,2.5)--(10,2.5)--(10,1.2)--(13,1.2);
@@ -34,4 +34,19 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \node[lab]at(10.2,4.3){transport delay $\theta$\\ideal plug-flow path};
 \node[smalllab]at(9.2,.25){$y(t)=x(t-\theta)$};
 \node[lab]at(7,-.75){One physical interpretation of a first-order-plus-delay model};
+% REFINED EQUIPMENT DETAILS
+
+% Motor axis, tank baffles, outlet flanges and probe body.
+\fill[ink](4,4.35)circle(.045);
+\draw[flow]($(4,4.35)+(210:.65)$)arc[start angle=210,end angle=20,radius=.65];
+\draw[ink!55](1.3,1.5)--(1.3,3.2)(6.7,1.5)--(6.7,3.2);
+\foreach \x in {8.3,9.2}{\draw[ink!55](\x,2.25)--(\x,2.75);}
+\draw[flow](10.65,1.2)--(11.4,1.2);
+\draw[teal!70!black](11.85,1.15)rectangle(12.15,2.35);
+\draw[ink!40](2,.7)--(2,.45)(6,.7)--(6,.45);
+\node[smalllab]at(7.7,1.7){outflow};
+
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-1.4){\textbf{Synthetic experiment}\\[3pt]$G(s)=1.8e^{-0.6s}/(4s+1)$.\\Declared gain, lag and delay generate the records; none is a physical measurement.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-1.4){\textbf{Thermal interpretation}\\[3pt]One mixed energy store plus ideal transport. Through-flow and wall losses enter one effective conductance.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-1.4){\textbf{Identification boundary}\\[3pt]Fit on training data, freeze the model, then check a separate multistep record. Geometry does not identify capacity or heater efficiency.};
 \end{tikzpicture}

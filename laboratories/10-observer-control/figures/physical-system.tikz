@@ -18,7 +18,7 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \fill[cyan!12](8.1,1)rectangle(13,3.9);
 \draw[metal](6.1,2.1)rectangle(7.8,2.8);
 \draw[heat,<->](5.3,2.45)--(8.6,2.45);
-\node[smalllab]at(6.95,3.45){thermal bridge\\$H_{12}=0.5$ W/K};
+\node[smalllab]at(6.95,3.5){thermal\\bridge\\$H_{12}=0.5$\\W/K};
 \draw[orange!85!black,line width=1.2pt,decorate,decoration={zigzag,segment length=5pt,amplitude=3pt}](1.6,1.6)--(4.7,1.6);
 \draw[heat](.1,1.6)--(1.5,1.6);
 \node[smalllab]at(2.9,1.1){heater $u$ [W]};
@@ -32,4 +32,17 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \node[smalllab]at(3.1,5.5){$H_{1a}=1$ W/K};
 \node[smalllab]at(10.65,5.5){$H_{2a}=0.5$ W/K};
 \node[lab]at(7,-.1){Temperatures are deviations from a fixed ambient temperature};
+% REFINED EQUIPMENT DETAILS
+
+% Distinct thermal masses and finite conductive contact.
+\foreach \x in {1,1.6,2.2,4,4.6,5.2}{\draw[ink!25](\x,4.2)--(\x,4.65);}
+\foreach \x in {8.2,8.8,9.4,11.2,11.8,12.4}{\draw[ink!25](\x,4.2)--(\x,4.65);}
+\foreach \x in {6.3,6.6,6.9,7.2,7.5}{\draw[ink!25](\x,2.1)--(\x+.2,2.8);}
+\foreach \x/\y in {.75/.85,.75/4.05,5.95/.85,5.95/4.05,7.95/.85,7.95/4.05,13.15/.85,13.15/4.05}{\draw[ink!55](\x,\y)circle(.04);}
+\draw[teal!70!black](11.65,1.45)rectangle(11.95,2.3);
+\node[smalllab]at(10.1,1.35){Only zone 2 is sensed};
+
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-0.75){\textbf{Two energy stores}\\[3pt]$C_1=C_2=10$ J/K.\\$x_1,x_2$: ambient-relative temperatures.\\Input heat enters zone 1 only.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-0.75){\textbf{Coupled balances}\\[3pt]$10\dot x_1=u-1.5x_1+0.5x_2$.\\$10\dot x_2=0.5x_1-x_2$.\\All right-hand terms are heat rates.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-0.75){\textbf{Sensing and estimation}\\[3pt]$y=x_2$ supplies one measured coordinate. An observer reconstructs both states from the applied input and this output.};
 \end{tikzpicture}

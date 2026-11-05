@@ -26,12 +26,27 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \draw[metal](11.2,1.5)rectangle(12.8,2.15);
 \draw[metal](11.2,3.15)rectangle(12.8,3.8);
 \node[smalllab]at(12,4.35){load brake\\$\tau_L$};
-\draw[flow](9,3.8)arc(120:-100:.65);
-\node[lab]at(8.5,4.4){$\omega$};
+\draw[flow]($(9.75,2.65)+(110:1.25)$)arc[start angle=110,end angle=-90,radius=1.25];
+\node[lab]at(9.75,4.35){$\omega$ [rad/s]};
 \draw[wire](3.2,3.8)--(1.2,3.8)--(1.2,3.1)(3.2,1.5)--(1.2,1.5)--(1.2,2.2);
 \draw[ink](1.2,2.65)circle(.45);
 \node at(1.2,2.65){$V$};
 \draw[flow](1.8,3.8)--(2.7,3.8)node[midway,above]{$i$};
 \node[lab]at(5.1,.6){Armature: $R,L$\\electromagnetic torque $k_t i$};
 \node[lab]at(10,.6){Rotor: $J,b$\\back emf $k_e\omega$};
+% REFINED EQUIPMENT DETAILS
+
+% Motor feet, bearing blocks, shaft centerline and flywheel spokes.
+\draw[metal](3.7,1.1)rectangle(4.4,1.4);\draw[metal](6,1.1)rectangle(6.7,1.4);
+\foreach \x in {3.85,4.25,6.15,6.55}{\draw[ink!60](\x,1.22)circle(.04);}
+\draw[ink!45,densely dashed](2.6,2.65)--(12.9,2.65);
+\draw[metal,fill=none](7.65,2.25)rectangle(8.25,3.05);
+\draw[ink](7.75,2.3)--(8.15,3)(7.75,3)--(8.15,2.3);
+\foreach \a in {0,60,...,300}{\draw[ink!65](10.1,2.65)--++({.24*cos(\a)},{.85*sin(\a)});}
+\draw[ink!65](11.25,3.25)--(12.75,3.25)(11.25,2.05)--(12.75,2.05);
+\node[smalllab]at(7.95,1.5){bearing};
+
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-0.1){\textbf{Electrical channel}\\[3pt]$L\dot i=V-Ri-k_e\omega$.\\Back emf opposes the applied voltage; input $V$ is in volts.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-0.1){\textbf{Mechanical channel}\\[3pt]$J\dot\omega=k_ti-b\omega-\tau_L$.\\The rotation arrow is centered on the flywheel axis. Positive load torque opposes positive speed.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-0.1){\textbf{Energy conversion}\\[3pt]$k_ti$ is torque [N m]; $\omega$ is speed [rad/s]. Bearing and brake details add no unmodeled dynamic states.};
 \end{tikzpicture}

@@ -22,7 +22,7 @@
 \smallskip\textbf{Shared nominal data.} Synthetic process: $G(s)=1.8e^{-0.6s}/(4s+1)$. Identification and validation use separate generated records. No parameter estimate or fitted response is a physical measurement.
 \task{1}{Inferring an aggregate thermal process from a step}
 The illustration shows a well-mixed thermal inventory followed by an ideal transport delay. The drawing supplies a physical interpretation, while the declared parameters define a synthetic teaching model.
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A stirred thermal inventory followed by ideal transport is one possible physical interpretation of the identified transfer function. The effective conductance includes wall leakage and through-flow heat removal. Its fitted gain and time constant do not separately determine capacity, conductance and heater efficiency.}\end{center}
+\begin{center}\resizebox{.80\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A stirred thermal inventory followed by ideal transport is one possible physical interpretation of the identified transfer function. The effective conductance includes wall leakage and through-flow heat removal. Its fitted gain and time constant do not separately determine capacity, conductance and heater efficiency.}\end{center}
 \begin{enumerate}
 \item A synthetic process is $G(s)=K e^{-\theta s}/(\tau s+1)$ with $K=1.8$, $\tau=4$ s and $\theta=0.6$ s. A 2-unit step starts at $t_0=2$ s. Derive the zero-state output and find its final value and the time at which it reaches 63.212 percent of that final value.
 \answer For $t<2.6$, output is zero. Thereafter $y(t)=3.6[1-e^{-(t-2.6)/4}]$. The final output is 3.6. The fraction $1-e^{-1}$ occurs one time constant after the delayed onset, at $t=2+0.6+4=6.6$ s. Measuring the time from zero or from the original step without accounting for delay would overestimate the time constant.
@@ -32,7 +32,7 @@ The illustration shows a well-mixed thermal inventory followed by an ideal trans
 \answer The undelayed transfer is $\eta/(Cs+H)$, so $K=\eta/H$ and $\tau=C/H$. Taking $\eta=1$ gives $H=5/9$ and $C=20/9$ in consistent units. Multiplying $\eta,H,C$ by any common positive factor leaves both identified ratios unchanged. Consequently a perfect input--output fit does not uniquely recover all physical parameters. The delay is a separate transport idealization; tank geometry is not inferred from the illustration.
 \end{enumerate}
 
-\newpage
+\par\bigskip
 \task{2}{Fitting a delayed model without leaking validation information}
 Fit only the training record, using an admissible parameterization. Keep independent excitation and noise for validation, and examine how the numerical delay representation affects optimization.
 \begin{enumerate}

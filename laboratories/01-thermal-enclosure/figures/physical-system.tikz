@@ -35,4 +35,18 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \node[lab,anchor=west]at(10.4,2.1){heat loss\\$H(T-T_a)$};
 \node[lab]at(11.6,.5){ambient air $T_a$};
 \node[lab]at(5,-.55){Uniform temperature $T$;\quad $C=900$ J/K,\quad $H=15$ W/K};
+% REFINED EQUIPMENT DETAILS
+
+% Cutaway construction and the energy/measurement boundary.
+\foreach \x/\y in {1.2/.2,1.2/4.3,8.8/.2,8.8/4.3}{\draw[ink!60](\x,\y)circle(.055);}
+\foreach \y in {.7,1.4,2.1,2.8,3.5}{\draw[ink!20](1,\y)--(1.4,\y+.2);}
+\draw[orange!65!black,->,line width=.6pt](2.1,1.7)..controls(1.7,2.8)and(2.3,3.6)..(3.1,3.55);
+\draw[orange!65!black,->,line width=.6pt](6.7,3.5)..controls(7,3)and(6.9,2.5)..(6.7,2);
+\draw[teal!70!black](7.45,1.75)rectangle(7.75,3.1);
+\node[smalllab,anchor=south]at(10.9,4.25){\textbf{Heat and sensor paths}};
+\draw[ink!35,densely dashed](9.6,.05)rectangle(13.8,3.85);
+
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-1.15){\textbf{Stored and indicated heat}\\[3pt]$x=T-T_a$ [K]; $y$ [K].\\Physical storage and sensor memory are separate states.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-1.15){\textbf{Balances}\\[3pt]$900\dot x=P-15x$.\\$12\dot y=x-y$.\\Heat rate in W; time in s.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-1.15){\textbf{Read the cutaway}\\[3pt]Orange: heat flow. Teal: measurement. Wall and payload are one lumped capacity; no spatial field is resolved.};
 \end{tikzpicture}

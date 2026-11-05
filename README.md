@@ -48,7 +48,7 @@ This is an original teaching collection created for this repository. Earlier cou
 
 ![Interacting water tanks](problem-sets/integrated-design/figures/interacting-tanks.png)
 
-Thirteen original equipment illustrations show thermal enclosures, water tanks, mechanical supports, circuits, motors and sensing paths. Twelve control diagrams retain the corresponding mathematical structures. Each laboratory has five problems with three linked parts; the general collection has five larger cases with six parts each. Some problems use figures; others require analytical design decisions. [Browse the 25 illustrations and the PDF atlas](docs/DIAGRAMS.md).
+Thirteen detailed TikZ equipment illustrations show thermal enclosures, water tanks, mechanical supports, circuits, motors and sensing paths. Each includes state and unit labels, governing balances, interpretation limits and individual vector PDFs. Shaft and pivot arrows identify their centers explicitly. Twelve control diagrams retain the corresponding mathematical structures. Each laboratory has five problems with three linked parts; the general collection has five larger cases with six parts each. All five integrated cases include their equipment views, with reuse and the links between laboratories listed in the gallery. [Browse the 25 illustrations and the PDF atlas](docs/DIAGRAMS.md).
 
 ## Reproduce the work
 

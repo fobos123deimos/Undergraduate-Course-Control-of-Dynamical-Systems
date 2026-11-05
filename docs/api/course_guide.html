@@ -51,6 +51,8 @@
     <div class="course-subheading">Illustrated Python reference</div>
     <div class="course-links">
         <a href="course_guide.html">Start here</a>
+        <a href="assets/diagram-atlas.pdf">Detailed vector atlas (PDF)</a>
+        <a href="https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/blob/main/docs/DIAGRAMS.md">Equipment, signals &amp; editable TikZ</a>
         <a href="https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems">Course &amp; notebooks</a>
         <a href="https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/blob/main/docs/VALIDATION.md">Validation evidence</a>
         <a href="https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/tree/main/matlab">MATLAB &amp; Octave</a>
@@ -114,6 +116,12 @@ equation, computed response and the actual executable source.</p>
 <p>The common workflow is <strong>physical balance → model → analytical prediction →
 numerical experiment → evidence and limitations</strong>. Every scenario is synthetic.
 The tank illustration belongs to the separate integrated design exercises.</p>
+
+<p>The <a href="assets/diagram-atlas.pdf">vector atlas</a> now includes refined equipment
+views with explicit signal units, energy/inventory balances and interpretation
+panels. Rotation arrows are centered on the indicated shafts or pivots. The
+five integrated studies reuse the corresponding laboratory equipment, as
+mapped in the <a href="https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/blob/main/docs/DIAGRAMS.md">illustrated gallery</a>.</p>
 
 <h2 id="laboratory-api-map">Laboratory API map</h2>
 
@@ -245,59 +253,65 @@ builders and PDF derivations remain linked companion resources.</p>
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="sd">numerical experiment → evidence and limitations**. Every scenario is synthetic.</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="sd">The tank illustration belongs to the separate integrated design exercises.</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">## Laboratory API map</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">| Unit | Illustrated laboratory | Entry point |</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">|---|---|---|</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">| 01 | [Thermal enclosure and sensor lag](lab01_thermal_enclosure.html) | [run](lab01_thermal_enclosure.html#run) |</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">| 02 | [Ventilation and local linearization](lab02_ventilation.html) | [run](lab02_ventilation.html#run) |</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">| 03 | [Base-excited vibration isolation](lab03_vibration_isolation.html) | [run](lab03_vibration_isolation.html#run) |</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">| 04 | [Passive notch filter and component tolerance](lab04_notch_filter.html) | [run](lab04_notch_filter.html#run) |</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">| 05 | [Motor speed and load rejection](lab05_motor_load_rejection.html) | [run](lab05_motor_load_rejection.html#run) |</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">| 06 | [Gain selection and the stability boundary](lab06_root_locus.html) | [run](lab06_root_locus.html#run) |</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">| 07 | [Feedback delay and phase reserve](lab07_delay_budget.html) | [run](lab07_delay_budget.html#run) |</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">| 08 | [Lead-lag compensation for a camera axis](lab08_camera_compensation.html) | [run](lab08_camera_compensation.html#run) |</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">| 09 | [PID saturation and back-calculation](lab09_pid_saturation.html) | [run](lab09_pid_saturation.html#run) |</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">| 10 | [State feedback with one thermal measurement](lab10_observer_control.html) | [run](lab10_observer_control.html#run) |</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">| 11 | [Sampling and closed-loop stability](lab11_digital_control.html) | [run](lab11_digital_control.html#run) |</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">| 12 | [Identification, held-out prediction and control](lab12_identification_capstone.html) | [run](lab12_identification_capstone.html#run) |</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">## First execution</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">```bash</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">python -m pip install -r requirements.txt</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">cd laboratories/01-thermal-enclosure</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">python analysis.py</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">```</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">The [vector atlas](assets/diagram-atlas.pdf) now includes refined equipment</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="sd">views with explicit signal units, energy/inventory balances and interpretation</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">panels. Rotation arrows are centered on the indicated shafts or pivots. The</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">five integrated studies reuse the corresponding laboratory equipment, as</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">mapped in the [illustrated gallery](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/blob/main/docs/DIAGRAMS.md).</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">## Laboratory API map</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">| Unit | Illustrated laboratory | Entry point |</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">|---|---|---|</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">| 01 | [Thermal enclosure and sensor lag](lab01_thermal_enclosure.html) | [run](lab01_thermal_enclosure.html#run) |</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">| 02 | [Ventilation and local linearization](lab02_ventilation.html) | [run](lab02_ventilation.html#run) |</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">| 03 | [Base-excited vibration isolation](lab03_vibration_isolation.html) | [run](lab03_vibration_isolation.html#run) |</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">| 04 | [Passive notch filter and component tolerance](lab04_notch_filter.html) | [run](lab04_notch_filter.html#run) |</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">| 05 | [Motor speed and load rejection](lab05_motor_load_rejection.html) | [run](lab05_motor_load_rejection.html#run) |</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">| 06 | [Gain selection and the stability boundary](lab06_root_locus.html) | [run](lab06_root_locus.html#run) |</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">| 07 | [Feedback delay and phase reserve](lab07_delay_budget.html) | [run](lab07_delay_budget.html#run) |</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">| 08 | [Lead-lag compensation for a camera axis](lab08_camera_compensation.html) | [run](lab08_camera_compensation.html#run) |</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">| 09 | [PID saturation and back-calculation](lab09_pid_saturation.html) | [run](lab09_pid_saturation.html#run) |</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">| 10 | [State feedback with one thermal measurement](lab10_observer_control.html) | [run](lab10_observer_control.html#run) |</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">| 11 | [Sampling and closed-loop stability](lab11_digital_control.html) | [run](lab11_digital_control.html#run) |</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">| 12 | [Identification, held-out prediction and control](lab12_identification_capstone.html) | [run](lab12_identification_capstone.html#run) |</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">## First execution</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">The original scripts are preserved at their laboratory paths. Each now has</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">an explicit `run()` entry point and a main guard, so documentation generation</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">does not execute simulations, change Matplotlib settings or write results.</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">The same calculation still executes when the script is launched directly.</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">The unique `lab01_...` names identify documentation pages, not separately</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">installable modules. Source links point to the actual `analysis.py` files.</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">## Companion material</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">- [Course, notebooks and all twelve laboratories](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems)</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">- [Worked exercises](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/tree/main/problem-sets)</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">- [Equipment and control-diagram atlas](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/blob/main/docs/DIAGRAMS.md)</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">- [MATLAB and Octave](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/tree/main/matlab)</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">- [Simulink builders and their scope](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/tree/main/simulink)</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">- [Validation evidence](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/blob/main/docs/VALIDATION.md)</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">- [Documentation maintenance](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/blob/main/docs/API_DOCUMENTATION.md)</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">## Reading the figures</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">Equipment views establish the physical meaning of variables; block diagrams</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">show the mathematical signal paths. Response plots are numerical evidence</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">under the stated assumptions. Stability checks, approximation errors and</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">intentional unstable cases are explained beside each plot. None of the</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">figures proves experimental calibration or hardware safety.</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">```bash</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">python -m pip install -r requirements.txt</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">cd laboratories/01-thermal-enclosure</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">python analysis.py</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">```</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">The original scripts are preserved at their laboratory paths. Each now has</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">an explicit `run()` entry point and a main guard, so documentation generation</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">does not execute simulations, change Matplotlib settings or write results.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">The same calculation still executes when the script is launched directly.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">The unique `lab01_...` names identify documentation pages, not separately</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">installable modules. Source links point to the actual `analysis.py` files.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">## Companion material</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">- [Course, notebooks and all twelve laboratories](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems)</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">- [Worked exercises](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/tree/main/problem-sets)</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">- [Equipment and control-diagram atlas](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/blob/main/docs/DIAGRAMS.md)</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">- [MATLAB and Octave](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/tree/main/matlab)</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">- [Simulink builders and their scope](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/tree/main/simulink)</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">- [Validation evidence](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/blob/main/docs/VALIDATION.md)</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">- [Documentation maintenance](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/blob/main/docs/API_DOCUMENTATION.md)</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">## Reading the figures</span>
 </span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="sd">This pdoc site documents Python. MATLAB/Octave implementations, Simulink</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a><span class="sd">builders and PDF derivations remain linked companion resources.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a><span class="sd">"""</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="sd">Equipment views establish the physical meaning of variables; block diagrams</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a><span class="sd">show the mathematical signal paths. Response plots are numerical evidence</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a><span class="sd">under the stated assumptions. Stability checks, approximation errors and</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a><span class="sd">intentional unstable cases are explained beside each plot. None of the</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a><span class="sd">figures proves experimental calibration or hardware safety.</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a><span class="sd">This pdoc site documents Python. MATLAB/Octave implementations, Simulink</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a><span class="sd">builders and PDF derivations remain linked companion resources.</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a><span class="sd">"""</span>
 </span></pre></div>
 
 

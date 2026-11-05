@@ -22,7 +22,7 @@
 \smallskip\textbf{Shared nominal data.} Nominal enclosure: $C=900$ J/K, $H=15$ W/K, sensor $\tau_s=12$ s. Input $P$ is heat rate; $x$ is physical temperature rise and $y$ is the indicated rise. A 40 W step starts from ambient unless a part states another condition.
 \task{1}{A thermal enclosure under competing design requirements}
 An insulated instrument box must warm its payload while losing heat through its walls. Use the physical view to identify stored energy, heater input and ambient heat leakage.
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small Cutaway of a lumped thermal enclosure. Orange arrows carry heat; the probe measures a lagged temperature. The drawing fixes the energy boundary, not a real device geometry.}\end{center}
+\begin{center}\resizebox{.80\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small Cutaway of a lumped thermal enclosure. Orange arrows carry heat; the probe measures a lagged temperature. The drawing fixes the energy boundary, not a real device geometry.}\end{center}
 \begin{enumerate}
 \item An enclosure has thermal capacitance $C=900$ J/K and conductance $H=15$ W/K. With constant ambient temperature, define $x=T-T_a$ and derive the balance from heat input $P$ to $x$. Give the units of every term and the zero-state transfer function.
 \answer Stored incremental energy is $Cx$. Conservation gives $C\dot x=P-Hx$: each term is a heat rate in W because J/s = W. Taking the Laplace transform at $x(0)=0$ yields $(900s+15)X=P$, hence $G_x=1/(900s+15)$ K/W. The pole is $-H/C=-1/60$ s$^{-1}$ and the time constant is 60 s. The conductance, rather than the capacitance, fixes the static gain.

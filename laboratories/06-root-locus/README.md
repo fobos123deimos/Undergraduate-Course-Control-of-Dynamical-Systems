@@ -23,7 +23,7 @@ Five integrated problems each contain three linked parts: model and analyze the 
 
 A motorized positioning axis illustrates the role of the integrator and two stable lags. The normalized transfer function is specified as a teaching model; the pictured dimensions do not identify its coefficients.
 
-[Editable physical illustration](figures/physical-system.tikz)
+[Editable physical illustration](figures/physical-system.tikz) · [Vector equipment PDF](figures/physical-system.pdf)
 
 ## System diagram
 

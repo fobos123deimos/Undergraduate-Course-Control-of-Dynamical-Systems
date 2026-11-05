@@ -23,7 +23,7 @@
 \par\smallskip{\small\textbf{Study route.} Begin with balances, power and P/PI behavior. Problem 4(a,c) uses Routh stability from Laboratory 06; Problem 1(b) previews controllability developed in Laboratory 10. These are planned return tasks.}
 \task{1}{From armature current to flywheel motion}
 The illustrated DC motor drives a flywheel against bearing friction and an opposing load. Identify the two energy stores and distinguish back emf from mechanical load torque.
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A voltage-driven motor converts armature current into shaft torque. The rotor and external brake introduce inertia, friction and load torque. The illustrative cutaway does not add magnetic saturation or friction to the stated linear model.}\end{center}
+\begin{center}\resizebox{.80\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A voltage-driven motor converts armature current into shaft torque. The rotor and external brake introduce inertia, friction and load torque. The illustrative cutaway does not add magnetic saturation or friction to the stated linear model.}\end{center}
 \begin{enumerate}
 \item A motor has $R=2\,\Omega$, $L=0.02$ H, $J=0.01$ kg m$^2$, $b=0.02$ N m s/rad and $k_t=k_e=0.1$ in SI units. Define voltage $v$, current $i$, speed $\omega$ and opposing load torque $d$. Derive the two balance equations and both speed transfer functions.
 \answer The balances are $L\dot i=v-Ri-k_e\omega$ and $J\dot\omega=k_t i-b\omega-d$. Eliminating current gives $D(s)\Omega=k_t V-(Ls+R)D_{load}$, where $D(s)=(Ls+R)(Js+b)+k_tk_e=0.0002s^2+0.0204s+0.05$. Thus $G_v=0.1/D(s)$ and $G_d=-(0.02s+2)/D(s)$. The negative disturbance numerator encodes opposing torque. Voltage and load act at different physical locations.
@@ -33,7 +33,7 @@ The illustrated DC motor drives a flywheel against bearing friction and an oppos
 \answer The controllability matrix has full rank, so unconstrained input functions can connect states in the ideal linear model. That rank test places no bound on voltage, current, torque or maneuver duration. A real voltage constraint restricts admissible inputs and may make an equilibrium or a fast transition unreachable. The same controllable model requires 3.1 V for the stated 5 rad/s loaded equilibrium, which a 2 V supply cannot provide.
 \end{enumerate}
 
-\newpage
+\par\bigskip
 \task{2}{Checking both torque and power at the supply limit}
 Before tuning feedback, determine whether the requested speed and load are physically compatible with the supply. Use equilibrium and energy balance as independent checks.
 \begin{enumerate}

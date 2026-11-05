@@ -23,7 +23,7 @@ Five integrated problems each contain three linked parts: model and analyze the 
 
 A voltage-driven motor converts armature current into shaft torque. The rotor and external brake introduce inertia, friction and load torque. The illustrative cutaway does not add magnetic saturation or friction to the stated linear model.
 
-[Editable physical illustration](figures/physical-system.tikz)
+[Editable physical illustration](figures/physical-system.tikz) · [Vector equipment PDF](figures/physical-system.pdf)
 
 ## System diagram
 

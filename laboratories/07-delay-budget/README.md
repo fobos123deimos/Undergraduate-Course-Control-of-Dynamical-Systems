@@ -23,7 +23,7 @@ Five integrated problems each contain three linked parts: model and analyze the 
 
 A remote mechanism sends measurements and receives commands through a communication path. The model combines those latencies into one ideal constant delay; the drawn packet train is not an experimental record.
 
-[Editable physical illustration](figures/physical-system.tikz)
+[Editable physical illustration](figures/physical-system.tikz) · [Vector equipment PDF](figures/physical-system.pdf)
 
 ## System diagram
 

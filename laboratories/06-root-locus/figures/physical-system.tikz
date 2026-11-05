@@ -28,4 +28,19 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \draw[teal!70!black](11.8,1.1)rectangle(12.5,1.7);
 \node[smalllab]at(11.9,.05){encoder scale};
 \node[lab]at(6.8,-.7){Illustrative positioning axis; $G(s)=1/[s(s+2)(s+6)]$ is stipulated};
+% REFINED EQUIPMENT DETAILS
+
+% Guide bearings, screw supports and a scale tied to the carriage coordinate.
+\foreach \x in {6.4,8.8}{\draw[metal,fill=white](\x,1.4)circle(.16)(\x,3.3)circle(.16);}
+\draw[metal,fill=none](3.5,2)rectangle(4,2.8);\draw[metal,fill=none](11.6,2)rectangle(12.1,2.8);
+\draw[ink!45](3.4,1.05)--(11.6,1.05);
+\foreach \x in {3.5,4,...,11.5}{\draw[ink!50](\x,.95)--(\x,1.15);}
+\draw[teal!70!black,densely dashed](7.6,1.2)--(7.6,1.05);
+\foreach \x in {1.25,1.5,...,2.75}{\draw[ink!45](\x,1.95)--(\x,2.15)(\x,2.65)--(\x,2.85);}
+\node[smalllab]at(5,3.8){screw / nut coupling};
+\draw[ink!40,->](5.2,3.55)--(5.8,2.65);
+
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-1.35){\textbf{Command and readout}\\[3pt]Drive command $u$ and measured position $x$ form a normalized teaching interface.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-1.35){\textbf{Stipulated dynamics}\\[3pt]$G(s)=\dfrac{1}{s(s+2)(s+6)}$.\\One integrator and two stable lags determine the pole geometry.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-1.35){\textbf{Geometry is illustrative}\\[3pt]Screw pitch, motor constants, backlash and bearing friction are not inferred from the picture. Use the stated transfer function.};
 \end{tikzpicture}

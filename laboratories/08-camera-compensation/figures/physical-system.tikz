@@ -16,18 +16,31 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \draw[metal](5.3,.9)--(5.6,2.6)--(6.1,2.6)--(6.4,.9)--cycle;
 \draw[metal](7,.9)--(7.3,2.6)--(7.8,2.6)--(8.1,.9)--cycle;
 \draw[ink,line width=2pt](5.7,2.7)--(7.8,2.7);
-\draw[metal,rotate around={12:(6.6,2.8)}](5.3,2.4)rectangle(8,3.8);
-\draw[metal,rotate around={12:(6.6,2.8)}](8,2.7)--(8.6,2.5)--(8.6,3.7)--(8,3.5)--cycle;
+\draw[metal,rotate around={12:(5.8,2.7)}](5.3,2.4)rectangle(8,3.8);
+\draw[metal,rotate around={12:(5.8,2.7)}](8,2.7)--(8.6,2.5)--(8.6,3.7)--(8,3.5)--cycle;
 \draw[metal](5.8,2.7)circle(.36);
-\draw[heat](5.2,2)arc(230:-40:.8);
-\node[smalllab]at(4.1,2.6){torque $u$};
-\draw[ink!40,dashed](7.9,3.2)--(12.7,3.2);
-\draw[measure](7.9,3.2)--(12.7,4.22);
-\draw[dim](10.4,3.2)arc(0:12:2.5);
-\node[lab]at(11.1,3.65){$\theta$};
+\draw[heat]($(5.8,2.7)+(40:.8)$)arc[start angle=40,end angle=225,radius=.8];
+\node[smalllab]at(4.1,3.25){torque $u$};
+\draw[ink!40,dashed](5.8,2.7)--(12.7,2.7);
+\draw[measure](5.8,2.7)--++(12:7.1);
+\draw[dim]($(5.8,2.7)+(0:4.2)$)arc[start angle=0,end angle=12,radius=4.2];
+\node[lab]at(10.6,3.15){$\theta$};
 \draw[ink!50](12.7,2.7)rectangle(13.2,4.7);
 \draw[ink!50](12.7,3.7)--(13.2,3.7);
 \node[smalllab]at(12.9,5.1){target};
 \node[lab]at(6.7,-.25){Gimbal axis with angular readout};
 \node[lab]at(6.7,-.85){Normalized model $G(s)=1/[s(s+1)]$; geometry is illustrative};
+% REFINED EQUIPMENT DETAILS
+
+% Resolved camera lens, mounting bolts, encoder readout and pivot.
+\foreach \x in {4.6,8.3}{\draw[ink!60](\x,.65)circle(.06);}
+\draw[ink!50,rotate around={12:(5.8,2.7)}](8.42,2.58)--(8.42,3.62);
+\draw[ink!45,rotate around={12:(5.8,2.7)}](5.65,3.55)rectangle(6.3,3.72);
+\fill[ink](5.8,2.7)circle(.06);
+\draw[teal!70!black,densely dashed,->](5.8,2.7)--(3.1,2.7)--(3.1,1.05);
+\node[smalllab]at(3.1,.6){angular encoder};
+
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-1.5){\textbf{Coordinate and actuation}\\[3pt]Positive angle is measured from the dashed reference ray. Torque acts about the marked gimbal pivot.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-1.5){\textbf{Normalized axis}\\[3pt]$G(s)=\dfrac{1}{s(s+1)}$.\\Lead supplies phase; lag changes low-frequency gain and the ramp error.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-1.5){\textbf{Limits of the view}\\[3pt]Encoder and lens establish the signal meaning. Camera inertia, gearing and dimensions do not identify this stipulated plant.};
 \end{tikzpicture}

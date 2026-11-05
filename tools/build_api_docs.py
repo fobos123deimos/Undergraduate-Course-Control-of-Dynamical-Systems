@@ -75,6 +75,7 @@ def assets():
             images[f'{number:02d}-{name}.png'] = path.parent / 'figures' / f'{name}.png'
         images[f'{number:02d}-response.png'] = path.parent / 'response.png'
     images['interacting-tanks.png'] = ROOT / 'problem-sets/integrated-design/figures/interacting-tanks.png'
+    images['diagram-atlas.pdf'] = ROOT / 'docs/diagram-atlas.pdf'
     if any(not p.is_file() for p in images.values()):
         raise ValueError('A required equipment, signal or response figure is missing.')
     return images
@@ -123,10 +124,12 @@ def validate_site(output, modules):
         raise ValueError('Missing pdoc search index.')
     expected_assets = set(assets())
     if {p.name for p in (output / 'assets').iterdir()} != expected_assets:
-        raise ValueError('Published asset inventory differs from the intended 37 figures.')
+        raise ValueError('Published asset inventory differs from the figures and vector atlas.')
     return {'status': 'passed', 'laboratories': 12, 'module_pages': len(modules),
             'html_files_including_redirect': len(pages), 'public_entry_points': 12,
-            'local_images': len(expected_assets), 'local_links_and_anchors_checked': checked}
+            'local_images': sum(name.endswith('.png') for name in expected_assets),
+            'local_documents': sum(name.endswith('.pdf') for name in expected_assets),
+            'local_links_and_anchors_checked': checked}
 
 
 def main():

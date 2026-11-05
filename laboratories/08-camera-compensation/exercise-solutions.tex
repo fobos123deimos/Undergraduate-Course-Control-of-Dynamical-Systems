@@ -22,7 +22,7 @@
 \smallskip\textbf{Shared nominal data.} Nominal camera-axis plant: $G(s)=1/[s(s+1)]$. Design crossover is 3 rad/s and desired phase margin is $55^\circ$. Use unrounded compensator parameters in subsequent calculations.
 \task{1}{A camera axis with simultaneous speed and phase requirements}
 The physical sketch shows a single rotating camera axis with a position sensor. The normalized transfer is stipulated; inertia, drive bandwidth and unit scaling are already aggregated into it.
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A camera gimbal illustrates angular tracking and disturbance rejection. Its normalized plant is stipulated, with no claim that geometry alone determines its two poles.}\end{center}
+\begin{center}\resizebox{.80\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A camera gimbal illustrates angular tracking and disturbance rejection. Its normalized plant is stipulated, with no claim that geometry alone determines its two poles.}\end{center}
 \begin{enumerate}
 \item The normalized plant is $G(s)=1/[s(s+1)]$. At unity controller gain, derive the closed-loop polynomial, gain crossover and phase margin.
 \answer The closed polynomial is $s^2+s+1$, so the baseline loop is stable. Magnitude one requires $\omega^2(1+\omega^2)=1$, hence $\omega_c=\sqrt{(\sqrt5-1)/2}$. The phase is $-90^\circ-\arctan\omega_c$ and the phase margin is $90^\circ-\arctan\omega_c\approx51.83^\circ$. These values characterize the baseline before a new crossover is imposed.

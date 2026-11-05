@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-05",
+  "baseline_commit": "975111cbab9a2d72e235209a32dbb4112181ebd3",
+  "scope": "Equipment illustrations, explanatory captions, documentation integration and PDF pagination; numerical models and computed results are unchanged.",
+  "physical_equipment_drawings_refined": 13,
+  "existing_control_diagrams_reviewed": 12,
+  "atlas_pages_visually_reviewed": 13,
+  "documents_recompiled_and_checked_for_pagination": 39,
+  "artifacts_checked_against_source_and_file_hashes": 65,
+  "derived_documents_with_pagination_adjustments": 8,
+  "independent_scientific_and_visual_review": "passed; no unresolved findings",
+  "preservation": {
+    "protected_numerical_source_and_result_files_unchanged": 38,
+    "notebooks_with_identical_code_outputs_and_execution_counts": 12,
+    "status": "passed"
+  },
+  "documentation": {
+    "module_pages": 13,
+    "illustration_files": 37,
+    "local_atlas_pdf": "docs/api/assets/diagram-atlas.pdf",
+    "local_links_and_anchors_checked": 2232,
+    "pdoc_build_and_check": "passed",
+    "source_and_artifact_manifest": "docs/diagram-build.json",
+    "git_diff_whitespace_check": "passed"
+  },
+  "atlas_sha256": "25a632ebfc02456d96de4086538d6220053a739015ab47efbfc4ca8502375009",
+  "publication": "Recorded separately after the GitHub Pages workflow and public asset checks."
+}

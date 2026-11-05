@@ -65,6 +65,7 @@ A hypothetical DC motor has $R=2\,\Omega$, $L=0.02$ H, $J=0.01$ kg m$^2$, $b=0.0
 \newpage
 \task{4}{Camera tracking: lead-lag design with a network-delay budget}
 A normalized camera axis has $G(s)=1/[s(s+1)]$ under unity negative feedback. Design crossover is 3 rad/s and desired phase margin is $55^\circ$. Use $C_{\ell}=K(1+Ts)/(1+\alpha Ts)$, $0<\alpha<1$. A later requirement asks for unit-ramp error at most 0.05. A possible lag stage is $F=(1+s/0.03)/(1+s/0.006)$; a constant delay may also be present.
+\begin{center}\resizebox{.88\linewidth}{!}{\input{../../laboratories/08-camera-compensation/figures/physical-system.tikz}}\par{\small The same camera axis is used in laboratory 08; laboratory 07 supplies the communication-delay interpretation.}\end{center}
 \begin{enumerate}
 \item Show why scalar gain alone cannot meet the crossover and phase-margin targets simultaneously. Determine the needed lead phase.
 \item Place maximum lead at the design crossover and derive $\alpha,T,K$. Verify both the magnitude and phase conditions rather than using rounded parameters alone.
@@ -77,6 +78,7 @@ A normalized camera axis has $G(s)=1/[s(s+1)]$ under unity negative feedback. De
 \newpage
 \task{5}{Two-zone temperature regulation with estimation and sampled actuation}
 Two lumped thermal zones each have capacity 10 J/K. Their mutual conductance is 0.5 W/K; conductances to a fixed ambient are 1 and 0.5 W/K, respectively. Heat input acts in zone 1 and only zone 2 is measured. States are temperature deviations in K. The nominal feedback pole targets are $-0.20,-0.35$ s$^{-1}$; observer targets are $-0.8,-1.0$ s$^{-1}$. A later implementation holds each input constant between samples.
+\begin{center}\resizebox{.88\linewidth}{!}{\input{../../laboratories/10-observer-control/figures/physical-system.tikz}}\par{\small The same two-zone plant is used in laboratory 10. Laboratory 11 supplies the sampling and held-input interpretation; its RC plant is not substituted here.}\end{center}
 \begin{enumerate}
 \item Derive $A,B,C$ from heat balances and test controllability and observability. Explain physically what is lost when the mutual conductance is zero.
 \item Find $K$ for $u=-Kx+Nr$ and the reference prefilter $N$. Derive the equilibrium heat input and distinguish transient and equilibrium feasibility for a 0.5 K step with a 2 W upper limit.

@@ -10,6 +10,12 @@ The common workflow is **physical balance → model → analytical prediction �
 numerical experiment → evidence and limitations**. Every scenario is synthetic.
 The tank illustration belongs to the separate integrated design exercises.
 
+The [vector atlas](assets/diagram-atlas.pdf) now includes refined equipment
+views with explicit signal units, energy/inventory balances and interpretation
+panels. Rotation arrows are centered on the indicated shafts or pivots. The
+five integrated studies reuse the corresponding laboratory equipment, as
+mapped in the [illustrated gallery](https://github.com/fobos123deimos/Undergraduate-Course-Control-of-Dynamical-Systems/blob/main/docs/DIAGRAMS.md).
+
 ## Laboratory API map
 
 | Unit | Illustrated laboratory | Entry point |

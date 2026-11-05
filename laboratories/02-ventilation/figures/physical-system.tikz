@@ -38,6 +38,23 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \node[smalllab]at(11.9,4.65){dose $S$};
 \node[smalllab]at(8.4,4.7){clean $q$};
 \node[smalllab,anchor=west]at(12.8,1.6){$q\,c$};
-\node[lab]at(10.3,2.25){well mixed\\$V=120$ L};
+\node[smalllab]at(11.35,2.25){well mixed\\$V=120$ L};
 \node[lab]at(10.3,-.4){Liquid analogue: same balance, different units};
+% REFINED EQUIPMENT DETAILS
+
+% Intake/exhaust grilles and an explicit concentration sensing port.
+\foreach \y in {2.1,2.3,2.7,2.9}{\draw[ink!50](.08,\y)--(.52,\y)(5.98,\y)--(6.42,\y);}
+\draw[teal!70!black](4.65,.9)rectangle(5.15,1.45);
+\draw[measure](5.15,1.18)--(5.8,1.18);
+\node[smalllab]at(4.9,.65){$c$};
+\draw[blue!50!black,->,line width=.6pt](2.8,3.3)..controls(4,3.6)and(4.6,3.2)..(4.85,2.75);
+\draw[blue!50!black,->,line width=.6pt](5.1,1.8)..controls(4.5,1.45)and(4,1.45)..(3.8,1.8);
+\draw[ink!50,line width=1pt](8.25,.8)--(8.25,2.5)(12.35,.8)--(12.35,2.5);
+\foreach \x in {8.5,12.1}{\draw[ink!35](\x,.4)--(\x,.15);}
+\draw[flow]($(10.3,3.85)+(210:.65)$)arc[start angle=210,end angle=30,radius=.65];
+\fill[ink](10.3,3.85)circle(.045);
+
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-1.05){\textbf{Inventory and channels}\\[3pt]$c$: tracer concentration.\\$S$: source rate; $q$: throughput.\\Equal inlet/outlet flow fixes $V$.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-1.05){\textbf{Balance and bilinearity}\\[3pt]$V\dot c=S-qc$.\\The product $qc$ couples state and input. Room and liquid cases use different volume units.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-1.05){\textbf{Mixing assumption}\\[3pt]Grilles and baffles illustrate ideal mixing only. Air velocity fields, fan dynamics and mixing transients are not modeled.};
 \end{tikzpicture}

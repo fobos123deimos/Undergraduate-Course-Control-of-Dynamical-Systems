@@ -13,9 +13,9 @@ python tools/build_api_docs.py --check
 python -m http.server 8000 --bind 127.0.0.1 --directory docs/api
 ```
 
-Open `http://127.0.0.1:8000/`. Search works over HTTP, and MathJax requires an internet connection. Figures are local files bundled with the site. `--output build/api` creates an independent build. Only `docs/api` and directories under `build/` are accepted as output destinations.
+Open `http://127.0.0.1:8000/`. Search works over HTTP, and MathJax requires an internet connection. Figures and the detailed vector atlas are local files bundled with the site. The menu opens [the atlas PDF](api/assets/diagram-atlas.pdf) directly; the thirteen equipment views include state, balance and interpretation panels. The [gallery](DIAGRAMS.md) maps all five integrated studies to their reused equipment and control diagrams. `--output build/api` creates an independent build. Only `docs/api` and directories under `build/` are accepted as output destinations.
 
-The build imports the guarded scripts without calling `run()`. Checks cover the exact twelve-script inventory, documented entry points, every local link and anchor, three figures per laboratory and the 37-image inventory. The [manifest](api/build.json) records source hashes normalized to LF, original image hashes, generated-file hashes, dependency versions and coverage. `--check` rejects stale sources, changed figures and altered or unexpected artifacts.
+The build imports the guarded scripts without calling `run()`. Checks cover the exact twelve-script inventory, documented entry points, every local link and anchor, three figures per laboratory and the inventory of 37 images plus one vector atlas PDF. `python tools/build_diagrams.py --check` also verifies that the committed atlas, embedded PDFs and equipment previews match their TikZ and LaTeX source hashes. The [manifest](api/build.json) records source hashes normalized to LF, original image hashes, generated-file hashes, dependency versions and coverage. `--check` rejects stale sources, changed figures and altered or unexpected artifacts.
 
 Edit module/function docstrings and rebuild the site; do not hand-edit generated HTML. Refresh a laboratory's response plot only by executing its program and inspecting the numerical checks. These images are synthetic evidence and must retain their assumptions and captions.
 

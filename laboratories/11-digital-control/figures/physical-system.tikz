@@ -22,7 +22,7 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \draw[wire](7.9,2.45)--(8.9,2.45)(7.9,2.15)--(8.9,2.15);
 \draw[wire](8.4,2.15)--(8.4,.9)--(3.4,.9)--(3.4,1.5);
 \node[lab]at(5.4,4.2){$R=10$ k$\Omega$};
-\node[lab]at(9.5,2.15){$C=50\,\mu$F};
+\node[lab,anchor=west]at(9.25,2.0){$C=50\,\mu$F};
 \fill[ink](8.4,3.4)circle(.06);
 \draw[measure](8.4,3.4)--(10.5,3.4);
 \draw[metal,rounded corners=2pt](10.5,2.7)rectangle(13.3,4.2);
@@ -31,4 +31,15 @@ smalllab/.style={align=center,font=\sffamily\scriptsize}]
 \node[smalllab]at(6.6,-.2){digital controller; updated voltage held between samples};
 \node[smalllab]at(4.2,2.65){$u(t)$};
 \node[smalllab]at(9.5,4){$y(t)$};
+% REFINED EQUIPMENT DETAILS
+
+% Held waveform, converter terminals and common electrical reference.
+\draw[blue!65!black,line width=.8pt](.7,2)--(1.2,2)--(1.2,2.3)--(1.8,2.3)--(1.8,2.1)--(2.4,2.1)--(2.4,2.35)--(2.9,2.35);
+\foreach \x/\y in {3.4/3.4,3.4/1.5,10.5/3.4}{\draw[ink,fill=white](\x,\y)circle(.07);}
+\draw[ink!55](8.4,.9)--(8.4,.65)(8.1,.65)--(8.7,.65)(8.2,.53)--(8.6,.53)(8.3,.41)--(8.5,.41);
+\draw[ink!40](11,2.95)--(11.4,2.95)--(11.4,3.15)(12.4,3.8)--(12.8,3.8);
+
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-0.85){\textbf{Continuous energy store}\\[3pt]$RC=0.5$ s; $\dot y=2(u-y)$.\\The held voltage drives a real-valued continuous state between samples.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-0.85){\textbf{Clocked interface}\\[3pt]$y_k=y(kT_s)$.\\$u(t)=u_k$ for $kT_s\leq t<(k+1)T_s$.\\Clock and update order matter.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-0.85){\textbf{Ideal converter boundary}\\[3pt]No quantization, electrical loading or converter dynamics. Use exact held-input discretization when comparing sample periods.};
 \end{tikzpicture}

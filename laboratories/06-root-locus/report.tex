@@ -36,9 +36,10 @@ An algebraic stability interval provides a guardrail for numerical tuning. The e
 \section{System sketch}
 \begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/system-diagram.tikz}}
 \par\small\refstepcounter{figure}\label{fig:system}\textbf{Figure \thefigure.} Unity negative feedback and the open-loop pole map. Pole symbols provide the starting geometry for the root-locus exercises.\end{center}
+\clearpage
 \section{Executed computational evidence}
 \VerbatimInput[fontsize=\small,breaklines=true]{results.txt}
-\begin{center}\includegraphics[width=\linewidth,height=.16\textheight,keepaspectratio]{response.png}\end{center}
+\begin{center}\includegraphics[width=\linewidth,height=.46\textheight,keepaspectratio]{response.png}\end{center}
 \paragraph{Method references.}
 The equations use standard balance laws and feedback-control methods. Further explanation: \url{https://apmonitor.com/pdc/} and \url{https://fbsbook.org/}. Implementation documentation: \url{https://python-control.readthedocs.io/en/0.10.2/}. See the repository reference catalog for individual topics and videos.
 \end{document}
