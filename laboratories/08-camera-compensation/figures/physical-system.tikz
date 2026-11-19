@@ -1,46 +1,38 @@
+% Style 2: raster equipment illustration with exact editable TikZ annotations.
 \begin{tikzpicture}[
 font=\sffamily\small,>=Latex,line cap=round,line join=round,
-wall/.style={draw=ink,line width=1.2pt,fill=blue!5},
-water/.style={fill=cyan!25,draw=none},
-metal/.style={draw=ink,fill=blue!12,line width=.9pt},
-flow/.style={->,draw=blue!65!black,line width=1.2pt},
-heat/.style={->,draw=orange!85!black,line width=1.1pt},
-measure/.style={->,draw=teal!70!black,line width=.9pt},
-dim/.style={<->,draw=ink!65,line width=.6pt},
-spring/.style={draw=ink,decorate,decoration={coil,aspect=.5,segment length=4pt,amplitude=3pt}},
-wire/.style={draw=ink,line width=1pt},
-lab/.style={align=center,font=\sffamily\small},
-smalllab/.style={align=center,font=\sffamily\scriptsize}]
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner sep=3.5pt},
+lead/.style={draw=ink!70,line width=.7pt},
+flow/.style={->,draw=blue!65!black,line width=1.15pt},
+heat/.style={->,draw=orange!85!black,line width=1.15pt},
+heatboth/.style={<->,draw=orange!85!black,line width=1.15pt},
+measure/.style={->,draw=teal!70!black,line width=1.05pt},
+digital/.style={->,draw=teal!70!black,line width=1pt,dashed},
+beam/.style={->,draw=red!70!black,line width=.65pt},
+dim/.style={<->,draw=ink!70,line width=.7pt},
+wire/.style={draw=ink,line width=1pt}]
+\IfFileExists{figures/08-camera-compensation-art.png}{\def\equipmentart{figures/08-camera-compensation-art.png}}{\IfFileExists{../../laboratories/08-camera-compensation/figures/08-camera-compensation-art.png}{\def\equipmentart{../../laboratories/08-camera-compensation/figures/08-camera-compensation-art.png}}{\IfFileExists{../laboratories/08-camera-compensation/figures/08-camera-compensation-art.png}{\def\equipmentart{../laboratories/08-camera-compensation/figures/08-camera-compensation-art.png}}{\def\equipmentart{laboratories/08-camera-compensation/figures/08-camera-compensation-art.png}}}}
+\node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
+\node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Camera-axis compensation};
+\draw[lead,draw=ink] (7.1,8.3)--(7.1,6.75);
+\fill[ink] (7.1,6.75) circle (.035);
+\node[lab,text=ink,text width=4.3cm] at (7.1,8.3) {Gimbal-mounted camera};
+\draw[lead,draw=ink] (14.2,8.3)--(14.2,7.15);
+\fill[ink] (14.2,7.15) circle (.035);
+\node[lab,text=ink,text width=2.4cm] at (14.2,8.3) {Target};
+\draw[lead,draw=teal!70!black] (3.9,0.7)--(4.4,4.4);
+\fill[teal!70!black] (4.4,4.4) circle (.035);
+\node[lab,text=teal!70!black,text width=3.2cm] at (3.9,0.7) {Angular encoder};
+\coordinate (pivot) at (5.28,4.73);\fill[ink] (pivot)circle(.055);
+\draw[ink!55,dashed,line width=.8pt] (pivot)--(14.2,4.73);
+\draw[measure] (pivot)--(14.2,6.63);
+\draw[dim] ($(pivot)+(0:5.5)$) arc[start angle=0,end angle=12,radius=5.5];
+\node[lab,text=ink,text width=1.0cm] at (11.25,5.3) {$\theta$};
+\draw[heat] ($(pivot)+(70:1.08)$) arc[start angle=70,end angle=235,radius=1.08];
+\node[lab,text=ink,text width=2.6cm] at (2.55,5.7) {Torque $u$};
+\node[lab,text=ink,text width=13cm] at (9,0.2) {Normalized model $G(s)=1/[s(s+1)]$; geometry is illustrative};
 
-\draw[metal](4.3,.4)rectangle(8.6,.9);
-\draw[metal](5.3,.9)--(5.6,2.6)--(6.1,2.6)--(6.4,.9)--cycle;
-\draw[metal](7,.9)--(7.3,2.6)--(7.8,2.6)--(8.1,.9)--cycle;
-\draw[ink,line width=2pt](5.7,2.7)--(7.8,2.7);
-\draw[metal,rotate around={12:(5.8,2.7)}](5.3,2.4)rectangle(8,3.8);
-\draw[metal,rotate around={12:(5.8,2.7)}](8,2.7)--(8.6,2.5)--(8.6,3.7)--(8,3.5)--cycle;
-\draw[metal](5.8,2.7)circle(.36);
-\draw[heat]($(5.8,2.7)+(40:.8)$)arc[start angle=40,end angle=225,radius=.8];
-\node[smalllab]at(4.1,3.25){torque $u$};
-\draw[ink!40,dashed](5.8,2.7)--(12.7,2.7);
-\draw[measure](5.8,2.7)--++(12:7.1);
-\draw[dim]($(5.8,2.7)+(0:4.2)$)arc[start angle=0,end angle=12,radius=4.2];
-\node[lab]at(10.6,3.15){$\theta$};
-\draw[ink!50](12.7,2.7)rectangle(13.2,4.7);
-\draw[ink!50](12.7,3.7)--(13.2,3.7);
-\node[smalllab]at(12.9,5.1){target};
-\node[lab]at(6.7,-.25){Gimbal axis with angular readout};
-\node[lab]at(6.7,-.85){Normalized model $G(s)=1/[s(s+1)]$; geometry is illustrative};
-% REFINED EQUIPMENT DETAILS
-
-% Resolved camera lens, mounting bolts, encoder readout and pivot.
-\foreach \x in {4.6,8.3}{\draw[ink!60](\x,.65)circle(.06);}
-\draw[ink!50,rotate around={12:(5.8,2.7)}](8.42,2.58)--(8.42,3.62);
-\draw[ink!45,rotate around={12:(5.8,2.7)}](5.65,3.55)rectangle(6.3,3.72);
-\fill[ink](5.8,2.7)circle(.06);
-\draw[teal!70!black,densely dashed,->](5.8,2.7)--(3.1,2.7)--(3.1,1.05);
-\node[smalllab]at(3.1,.6){angular encoder};
-
-\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-1.5){\textbf{Coordinate and actuation}\\[3pt]Positive angle is measured from the dashed reference ray. Torque acts about the marked gimbal pivot.};
-\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-1.5){\textbf{Normalized axis}\\[3pt]$G(s)=\dfrac{1}{s(s+1)}$.\\Lead supplies phase; lag changes low-frequency gain and the ramp error.};
-\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-1.5){\textbf{Limits of the view}\\[3pt]Encoder and lens establish the signal meaning. Camera inertia, gearing and dimensions do not identify this stipulated plant.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Coordinate and actuation}\\[3pt]Positive angle is measured from the dashed reference ray. Torque acts about the marked gimbal pivot.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Normalized axis}\\[3pt]$G(s)=\dfrac{1}{s(s+1)}$.\\Lead supplies phase; lag changes low-frequency gain and the ramp error.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(10.9,-.3){\textbf{Limits of the view}\\[3pt]Encoder and lens establish the signal meaning. Camera inertia, gearing and dimensions do not identify this stipulated plant.};
 \end{tikzpicture}

@@ -22,7 +22,7 @@
 \smallskip\textbf{Shared nominal data.} Nominal loop: $L(s)=8e^{-Ts}/[s(s+3)]$, unity negative feedback, and ideal constant delay $T$. Exact-delay results and rational Pad\'e approximations must be distinguished.
 \task{1}{A remotely observed actuator}
 A sensor observes a moving carriage through a communication link. Use the declared delay-free loop and distinguish its physical dynamics from the additional time spent transporting information.
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A remote mechanism sends measurements and receives commands through a communication path. The model combines those latencies into one ideal constant delay; the drawn packet train is not an experimental record.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A remote mechanism sends measurements and receives commands through a communication path. The model combines those latencies into one ideal constant delay; the drawn packet train is not an experimental record.}\end{center}
 \begin{enumerate}
 \item The loop is $L_0(s)=8/[s(s+3)]$ with unity negative feedback. Derive its closed-loop poles, natural frequency and damping ratio.
 \item Find the unique positive gain crossover of $L_0$. Show why an ideal pure delay $e^{-sT}$ does not change this crossover.

@@ -19,7 +19,7 @@
 \section{Design brief}
 A normalized position plant obeys $\ddot x+2\dot x+x=u$. Match ideal PID gains to poles $-2,-3,-4$. Implement derivative action on measured position using filter time constant $\tau_f=0.03\,\mathrm{s}$ and constrain $u\in[-2,2]$. Command $r=3$ for six seconds and then $r=0.2$. Compare ordinary integration with back-calculation gain $k_{aw}=8\,\mathrm{s^{-1}}$ and report recovery error over the final six seconds.
 \section{Physical system}
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A mass, spring, damper and bounded force actuator physically realize the normalized second-order plant. Force saturation is included; contact, dry friction and travel stops are not.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A mass, spring, damper and bounded force actuator physically realize the normalized second-order plant. Force saturation is included; contact, dry friction and travel stops are not.}\end{center}
 \section{Ideal pole matching}
 For an ideal PID $K_p+K_i/s+K_ds$, the closed-loop characteristic polynomial is $s^3+(2+K_d)s^2+(1+K_p)s+K_i$. Matching $(s+2)(s+3)(s+4)=s^3+9s^2+26s+24$ gives
 \[K_p=25,\qquad K_i=24,\qquad K_d=7.\]

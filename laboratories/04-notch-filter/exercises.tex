@@ -22,7 +22,7 @@
 \smallskip\textbf{Shared nominal data.} Nominal series RLC network: $R=10\,\Omega$, $L=0.01$ H, $C=100\,\mu$F. Input is total applied voltage; output spans the combined inductor and capacitor. Components are ideal unless a part adds loss or tolerance.
 \task{1}{Selecting the measured voltage in a real circuit}
 A series RLC network is driven by an ideal voltage source. The probe spans the inductor and capacitor together, not the capacitor alone. Read the physical measurement terminals before writing the transfer.
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A source excites the series RLC network; an ideal differential probe spans the combined inductor and capacitor. Measuring only the capacitor would produce a different transfer function. Wire placement is schematic.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A source excites the series RLC network; an ideal differential probe spans the combined inductor and capacitor. Measuring only the capacitor would produce a different transfer function. Wire placement is schematic.}\end{center}
 \begin{enumerate}
 \item A voltage source drives series $R=10\,\Omega$, $L=0.01$ H and $C=100\,\mu$F. Output is the sum of inductor and capacitor voltages. Derive $H(s)$ and its DC and high-frequency gains.
 \item Find the notch frequency, damping ratio, poles and zeros for the nominal circuit. State whether a zero on the imaginary axis makes the circuit internally unstable.

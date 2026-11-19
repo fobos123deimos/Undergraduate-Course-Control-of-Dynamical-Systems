@@ -19,7 +19,7 @@
 \section{Design brief}
 The normalized tracking loop is $L(s)=8/[s(s+3)]$. Find gain crossover $\omega_c$, phase margin $\phi_m$ and the first constant pure-delay stability boundary. Introduce delays $T=0.10\,\mathrm{s}$ and $0.30\,\mathrm{s}$. Compare fifth-order Pade approximation with exact phase $-\omega T$, explaining the scope of the rational approximation.
 \section{Physical system}
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A remote mechanism sends measurements and receives commands through a communication path. The model combines those latencies into one ideal constant delay; the drawn packet train is not an experimental record.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A remote mechanism sends measurements and receives commands through a communication path. The model combines those latencies into one ideal constant delay; the drawn packet train is not an experimental record.}\end{center}
 \section{Gain crossover}
 The open-loop magnitude is $8/[\omega\sqrt{\omega^2+9}]$. Setting it to one and defining $z=\omega^2$ gives $z^2+9z-64=0$, hence
 \[\omega_c=\sqrt{\frac{-9+\sqrt{337}}2}.\]

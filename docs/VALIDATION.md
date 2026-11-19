@@ -27,13 +27,13 @@ Checks include agreement between analytic and integrated responses, physical equ
 
 ## Documents and navigation
 
-All 40 LaTeX documents compiled with Tectonic 0.17.0, totaling 182 pages. Every final page was rendered and visually inspected, including focused re-renders after layout corrections. No missing-character, undefined-command, LaTeX-error or overfull-box warnings remain. The [document record](document-validation.json) lists page counts and SHA-256 hashes.
+The collection contains 40 LaTeX documents totaling 187 pages. On 19 November 2026, all 39 documents embedding equipment views were rebuilt with pdfLaTeX; the unchanged course guide retains its earlier Tectonic build. The 14 figure compositions were visually reviewed, and all rebuilt document logs were checked without missing-character, undefined-command, LaTeX-error or overfull-box warnings. The [document record](document-validation.json) lists current page counts and SHA-256 hashes.
 
 Local navigation and all 24 Colab links in the Markdown pages were checked against actual notebook paths. Teaching files were also checked for accidental source-handout filenames or institutional/professor references; none were found.
 
 ## Diagram and notation revision
 
-Thirteen new physical illustrations and twelve control diagrams give 25 editable TikZ figures with PNG previews. The [atlas and gallery](DIAGRAMS.md) show both equipment and mathematical structures. All twelve notebooks display the relevant physical and control illustrations. The [notation review](NOTATION.md) records 284 distinct Markdown/notebook mathematical expressions compiled without syntax or missing-glyph errors. Executable notebook code is unchanged.
+Thirteen new physical illustrations and twelve control diagrams give 25 TikZ compositions with editable mathematical annotations and PNG previews. The [atlas and gallery](DIAGRAMS.md) show both equipment and mathematical structures. All twelve notebooks display the relevant physical and control illustrations. The [notation review](NOTATION.md) records 284 distinct Markdown/notebook mathematical expressions compiled without syntax or missing-glyph errors. Executable notebook code is unchanged.
 
 ## Integrated exercise revision
 
@@ -50,3 +50,7 @@ The Simulink script generates six nominal models when executed in MATLAB with Si
 ## Evidence boundary
 
 All data are synthetic. There are no measured experiments, hardware calibration results or assertions of experimental agreement. See [model limitations](LIMITATIONS.md).
+
+## Visual styles — November 2026
+
+The root README uses a separate photorealistic tank scene (style 1). All 13 internal equipment views use semi-realistic technical artwork (style 2), including the copies in the API site and the embedded reports, exercises, solutions and atlas. Equipment artwork is raster; labels, mathematical balances, arrows and electrical connections remain editable TikZ. The 12 mathematical control diagrams and numerical simulation sources retain their previous content. `tools/build_diagrams.py --check` verifies the artwork, source and rendered-document hashes.

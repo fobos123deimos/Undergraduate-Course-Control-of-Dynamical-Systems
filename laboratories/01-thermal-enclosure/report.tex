@@ -19,7 +19,7 @@
 \section{Design brief}
 A camera enclosure receives a $40\,\mathrm{W}$ heat increment. Use thermal capacitance $C_{\mathrm{th}}=900\,\mathrm{J/K}$, conductance $H=15\,\mathrm{W/K}$ and sensor time constant $\tau_s=12\,\mathrm{s}$. Starting at ambient temperature, derive physical rise $x=T-T_a$ and sensor indication $y$, their poles and final values, and the sensor error after one enclosure time constant.
 \section{Physical system}
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small Cutaway of a lumped thermal enclosure. Orange arrows carry heat; the probe measures a lagged temperature. The drawing fixes the energy boundary, not a real device geometry.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small Cutaway of a lumped thermal enclosure. Orange arrows carry heat; the probe measures a lagged temperature. The drawing fixes the energy boundary, not a real device geometry.}\end{center}
 \section{Energy balance}
 Let $x=T-T_a$ denote temperature rise in kelvin and $P$ the incremental heat input in watts. With constant ambient temperature and a spatially uniform enclosure,
 \[C_{th}\dot x=P-Hx,\qquad \tau_s\dot y=x-y.\]

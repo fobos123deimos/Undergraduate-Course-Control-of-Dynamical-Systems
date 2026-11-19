@@ -25,7 +25,7 @@ A=\begin{bmatrix}-0.15&0.05\\0.05&-0.10\end{bmatrix}\,\mathrm{s^{-1}},
 \]
 Check controllability and observability. Choose feedback poles $-0.20,-0.35$, observer poles $-0.8,-1.0$ and a constant reference prefilter. Starting at $x(0)=[0.6,-0.4]^{\mathsf T}\,\mathrm{K}$ with zero estimate, regulate zone 2 to a $1\,\mathrm{K}$ rise.
 \section{Physical system}
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small Two thermal inventories are connected by a conductive bridge. Heating acts in the first zone and sensing in the second. These stated capacities and conductances reproduce the two-state model exactly under the lumped assumptions.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small Two thermal inventories are connected by a conductive bridge. Heating acts in the first zone and sensing in the second. These stated capacities and conductances reproduce the two-state model exactly under the lumped assumptions.}\end{center}
 \section{What can be controlled and observed?}
 The controllability matrix $[B\ AB]$ has determinant $0.0005$, while the observability matrix $[C;CA]$ for $C=[0\ 1]$ has determinant $-0.05$. Both are nonsingular. Heat injected into zone 1 can influence zone 2 through coupling, and the measured zone-2 temperature reveals the other state dynamically.
 \section{Feedback and prefilter}

@@ -19,7 +19,7 @@
 \section{Design brief}
 An ideal voltage source drives series $R$, $L$ and $C$. Measure the combined voltage $y=v_L+v_C$. Use $L=10\,\mathrm{mH}$, $C=100\,\mu\mathrm{F}$ and $R=10\,\Omega$. Derive the notch transfer, compare it with the capacitor-voltage response, and evaluate the effect of a $\pm10\%$ capacitance tolerance. Assume ideal components and an unloaded measurement.
 \section{Physical system}
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A source excites the series RLC network; an ideal differential probe spans the combined inductor and capacitor. Measuring only the capacitor would produce a different transfer function. Wire placement is schematic.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A source excites the series RLC network; an ideal differential probe spans the combined inductor and capacitor. Measuring only the capacitor would produce a different transfer function. Wire placement is schematic.}\end{center}
 \section{Voltage division}
 The impedances are $Z_R=R$, $Z_L=sL$ and $Z_C=1/(sC)$. Measuring across the combined LC section gives
 \[G_n(s)=\frac{sL+1/(sC)}{R+sL+1/(sC)}=\frac{LCs^2+1}{LCs^2+RCs+1}.\]

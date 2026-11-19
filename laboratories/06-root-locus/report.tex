@@ -19,7 +19,7 @@
 \section{Design brief}
 A normalized actuator has $G(s)=1/[s(s+2)(s+6)]$ under unity negative feedback with proportional gain $K>0$. Derive the strictly stable gain interval using Routh--Hurwitz, the imaginary-axis crossing and real-axis breakaway. Simulate $K=12$, $60$ and $100$ to compare regulation and instability. A short time plot alone is not a stability test.
 \section{Physical system}
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A motorized positioning axis illustrates the role of the integrator and two stable lags. The normalized transfer function is specified as a teaching model; the pictured dimensions do not identify its coefficients.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A motorized positioning axis illustrates the role of the integrator and two stable lags. The normalized transfer function is specified as a teaching model; the pictured dimensions do not identify its coefficients.}\end{center}
 \section{Characteristic equation}
 The unity-feedback denominator is
 \[p(s)=s(s+2)(s+6)+K=s^3+8s^2+12s+K.\]

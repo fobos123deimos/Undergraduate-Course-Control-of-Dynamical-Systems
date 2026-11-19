@@ -22,7 +22,7 @@
 \smallskip\textbf{Shared nominal data.} Plant: $\dot y=-2y+2u$. Nominal digital PI applies $u_k=2(r_k-y_k)+I_k$ before updating $I_{k+1}=I_k+4T_s(r_k-y_k)$. The exact hold and controller update order are part of the model.
 \task{1}{A sampled controller connected to a continuous RC circuit}
 The physical example is an ideal $10\,{\rm k}\Omega$ resistor and $50\,\mu{\rm F}$ capacitor, with held input voltage $u$ and capacitor voltage $y$. An ideal ADC/DAC pair connects the circuit to a digital PI controller.
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A held voltage drives an ideal RC network. The capacitor voltage is sampled by an ideal ADC; the software controller updates the DAC once per period. Quantization, converter lag and electrical loading are omitted.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A held voltage drives an ideal RC network. The capacitor voltage is sampled by an ideal ADC; the software controller updates the DAC once per period. Quantization, converter lag and electrical loading are omitted.}\end{center}
 \begin{enumerate}
 \item The plant is $\dot y=-2y+2u$. Derive its exact update for input held constant over a sampling interval $T_s$, and evaluate coefficients at $T_s=0.5$ s.
 \item Use $u_k=2(r_k-y_k)+I_k$ and $I_{k+1}=I_k+4T_s(r_k-y_k)$. Derive the state update matrix for $[y_k,I_k]^T$ and its reference-input vector.

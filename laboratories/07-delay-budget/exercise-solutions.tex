@@ -22,7 +22,7 @@
 \smallskip\textbf{Shared nominal data.} Nominal loop: $L(s)=8e^{-Ts}/[s(s+3)]$, unity negative feedback, and ideal constant delay $T$. Exact-delay results and rational Pad\'e approximations must be distinguished.
 \task{1}{A remotely observed actuator}
 A sensor observes a moving carriage through a communication link. Use the declared delay-free loop and distinguish its physical dynamics from the additional time spent transporting information.
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A remote mechanism sends measurements and receives commands through a communication path. The model combines those latencies into one ideal constant delay; the drawn packet train is not an experimental record.}\end{center}
+\begin{center}\resizebox{.60\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A remote mechanism sends measurements and receives commands through a communication path. The model combines those latencies into one ideal constant delay; the drawn packet train is not an experimental record.}\end{center}
 \begin{enumerate}
 \item The loop is $L_0(s)=8/[s(s+3)]$ with unity negative feedback. Derive its closed-loop poles, natural frequency and damping ratio.
 \answer The characteristic equation is $s^2+3s+8=0$. Its roots are $(-3\pm j\sqrt{23})/2$, with negative real parts. Matching $s^2+2\zeta\omega_n s+\omega_n^2$ gives $\omega_n=\sqrt8$ and $\zeta=3/(2\sqrt8)\approx0.53033$. This establishes nominal delay-free stability before interpreting a phase margin or added-delay limit.

@@ -1,52 +1,39 @@
+% Style 2: raster equipment illustration with exact editable TikZ annotations.
 \begin{tikzpicture}[
 font=\sffamily\small,>=Latex,line cap=round,line join=round,
-wall/.style={draw=ink,line width=1.2pt,fill=blue!5},
-water/.style={fill=cyan!25,draw=none},
-metal/.style={draw=ink,fill=blue!12,line width=.9pt},
-flow/.style={->,draw=blue!65!black,line width=1.2pt},
-heat/.style={->,draw=orange!85!black,line width=1.1pt},
-measure/.style={->,draw=teal!70!black,line width=.9pt},
-dim/.style={<->,draw=ink!65,line width=.6pt},
-spring/.style={draw=ink,decorate,decoration={coil,aspect=.5,segment length=4pt,amplitude=3pt}},
-wire/.style={draw=ink,line width=1pt},
-lab/.style={align=center,font=\sffamily\small},
-smalllab/.style={align=center,font=\sffamily\scriptsize}]
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner sep=3.5pt},
+lead/.style={draw=ink!70,line width=.7pt},
+flow/.style={->,draw=blue!65!black,line width=1.15pt},
+heat/.style={->,draw=orange!85!black,line width=1.15pt},
+heatboth/.style={<->,draw=orange!85!black,line width=1.15pt},
+measure/.style={->,draw=teal!70!black,line width=1.05pt},
+digital/.style={->,draw=teal!70!black,line width=1pt,dashed},
+beam/.style={->,draw=red!70!black,line width=.65pt},
+dim/.style={<->,draw=ink!70,line width=.7pt},
+wire/.style={draw=ink,line width=1pt}]
+\IfFileExists{figures/05-motor-load-rejection-art.png}{\def\equipmentart{figures/05-motor-load-rejection-art.png}}{\IfFileExists{../../laboratories/05-motor-load-rejection/figures/05-motor-load-rejection-art.png}{\def\equipmentart{../../laboratories/05-motor-load-rejection/figures/05-motor-load-rejection-art.png}}{\IfFileExists{../laboratories/05-motor-load-rejection/figures/05-motor-load-rejection-art.png}{\def\equipmentart{../laboratories/05-motor-load-rejection/figures/05-motor-load-rejection-art.png}}{\def\equipmentart{laboratories/05-motor-load-rejection/figures/05-motor-load-rejection-art.png}}}}
+\node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
+\node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {DC motor, flywheel and load rejection};
+\draw[lead,draw=ink] (1.7,6.6)--(1.6,4.5);
+\fill[ink] (1.6,4.5) circle (.035);
+\node[lab,text=ink,text width=3.2cm] at (1.7,6.6) {Applied voltage $V$};
+\draw[lead,draw=ink] (5.6,7.85)--(5.8,4.7);
+\fill[ink] (5.8,4.7) circle (.035);
+\node[lab,text=ink,text width=3.5cm] at (5.6,7.85) {Armature $R,L$\\torque $k_t i$};
+\draw[lead,draw=orange!85!black] (13.8,7.7)--(13.0,5.35);
+\fill[orange!85!black] (13.0,5.35) circle (.035);
+\node[lab,text=orange!85!black,text width=3.2cm] at (13.8,7.7) {Load brake $\tau_L$};
+\draw[lead,draw=ink] (10.7,0.65)--(9.3,3.2);
+\fill[ink] (9.3,3.2) circle (.035);
+\node[lab,text=ink,text width=2cm] at (10.7,0.65) {Bearing};
+\node[lab,text=ink,text width=6cm] at (6,0.65) {Rotor $J,b$; back emf $k_e\omega$};
+\coordinate (axle) at (11.15,4.3);\fill[ink] (axle)circle(.045);
+\draw[flow] ($(axle)+(100:1.02 and 2.3)$) arc[start angle=100,end angle=-95,x radius=1.02,y radius=2.3];
+\node[lab,text=ink,text width=2.4cm] at (10.65,7.45) {$\omega$ [rad/s]};
+\draw[flow] (2.75,4.15)--(3.25,4.15);
+\node[lab,text=ink,text width=1.4cm] at (3.0,5.3) {$i$ [A]};
 
-\draw[metal](3,1.4)rectangle(7.2,3.9);
-\draw[metal](3,2.65)ellipse(.45 and 1.25);
-\draw[metal](7.2,2.65)ellipse(.45 and 1.25);
-\fill[orange!30](3.6,3.35)rectangle(6.5,3.7);
-\fill[blue!25](3.6,1.6)rectangle(6.5,1.95);
-\node[smalllab]at(5.05,3.53){stator field};
-\draw[orange!80!black,line width=1.5pt,decorate,decoration={coil,segment length=7pt,amplitude=4pt}](3.7,2.65)--(6.5,2.65);
-\draw[ink,line width=3pt](6.4,2.65)--(11.7,2.65);
-\draw[metal](9.4,2.65)ellipse(.35 and 1.1);
-\draw[metal](10.1,2.65)ellipse(.35 and 1.1);
-\draw[ink](9.4,3.75)--(10.1,3.75)(9.4,1.55)--(10.1,1.55);
-\draw[metal](11.2,1.5)rectangle(12.8,2.15);
-\draw[metal](11.2,3.15)rectangle(12.8,3.8);
-\node[smalllab]at(12,4.35){load brake\\$\tau_L$};
-\draw[flow]($(9.75,2.65)+(110:1.25)$)arc[start angle=110,end angle=-90,radius=1.25];
-\node[lab]at(9.75,4.35){$\omega$ [rad/s]};
-\draw[wire](3.2,3.8)--(1.2,3.8)--(1.2,3.1)(3.2,1.5)--(1.2,1.5)--(1.2,2.2);
-\draw[ink](1.2,2.65)circle(.45);
-\node at(1.2,2.65){$V$};
-\draw[flow](1.8,3.8)--(2.7,3.8)node[midway,above]{$i$};
-\node[lab]at(5.1,.6){Armature: $R,L$\\electromagnetic torque $k_t i$};
-\node[lab]at(10,.6){Rotor: $J,b$\\back emf $k_e\omega$};
-% REFINED EQUIPMENT DETAILS
-
-% Motor feet, bearing blocks, shaft centerline and flywheel spokes.
-\draw[metal](3.7,1.1)rectangle(4.4,1.4);\draw[metal](6,1.1)rectangle(6.7,1.4);
-\foreach \x in {3.85,4.25,6.15,6.55}{\draw[ink!60](\x,1.22)circle(.04);}
-\draw[ink!45,densely dashed](2.6,2.65)--(12.9,2.65);
-\draw[metal,fill=none](7.65,2.25)rectangle(8.25,3.05);
-\draw[ink](7.75,2.3)--(8.15,3)(7.75,3)--(8.15,2.3);
-\foreach \a in {0,60,...,300}{\draw[ink!65](10.1,2.65)--++({.24*cos(\a)},{.85*sin(\a)});}
-\draw[ink!65](11.25,3.25)--(12.75,3.25)(11.25,2.05)--(12.75,2.05);
-\node[smalllab]at(7.95,1.5){bearing};
-
-\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-0.1){\textbf{Electrical channel}\\[3pt]$L\dot i=V-Ri-k_e\omega$.\\Back emf opposes the applied voltage; input $V$ is in volts.};
-\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-0.1){\textbf{Mechanical channel}\\[3pt]$J\dot\omega=k_ti-b\omega-\tau_L$.\\The rotation arrow is centered on the flywheel axis. Positive load torque opposes positive speed.};
-\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-0.1){\textbf{Energy conversion}\\[3pt]$k_ti$ is torque [N m]; $\omega$ is speed [rad/s]. Bearing and brake details add no unmodeled dynamic states.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Electrical channel}\\[3pt]$L\dot i=V-Ri-k_e\omega$.\\Back emf opposes the applied voltage; input $V$ is in volts.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Mechanical channel}\\[3pt]$J\dot\omega=k_ti-b\omega-\tau_L$.\\The rotation arrow is centered on the flywheel axis. Positive load torque opposes positive speed.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(10.9,-.3){\textbf{Energy conversion}\\[3pt]$k_ti$ is torque [N m]; $\omega$ is speed [rad/s]. Bearing and brake details add no unmodeled dynamic states.};
 \end{tikzpicture}

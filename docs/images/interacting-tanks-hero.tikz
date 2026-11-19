@@ -1,0 +1,33 @@
+\begin{tikzpicture}[
+font=\sffamily\small,>=Latex,line cap=round,line join=round,
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner sep=3.5pt},
+lead/.style={draw=ink!70,line width=.7pt},
+flow/.style={->,draw=blue!65!black,line width=1.15pt},
+heat/.style={->,draw=orange!85!black,line width=1.15pt},
+heatboth/.style={<->,draw=orange!85!black,line width=1.15pt},
+measure/.style={->,draw=teal!70!black,line width=1.05pt},
+digital/.style={->,draw=teal!70!black,line width=1pt,dashed},
+beam/.style={->,draw=red!70!black,line width=.65pt},
+dim/.style={<->,draw=ink!70,line width=.7pt},
+wire/.style={draw=ink,line width=1pt}]
+\IfFileExists{figures/hero-art.png}{\def\equipmentart{figures/hero-art.png}}{\IfFileExists{../../docs/images/hero-art.png}{\def\equipmentart{../../docs/images/hero-art.png}}{\IfFileExists{../docs/images/hero-art.png}{\def\equipmentart{../docs/images/hero-art.png}}{\def\equipmentart{docs/images/hero-art.png}}}}
+\node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=10.6667cm]{\equipmentart}};
+\draw[lead,draw=ink] (2.45,9.7)--(4.6,8.3);
+\fill[ink] (4.6,8.3) circle (.035);
+\node[lab,text=ink,text width=3.7cm] at (2.45,9.7) {Pump inflow $q$};
+\node[lab,text=ink,text width=3.3cm] at (5.35,5.8) {Tank 1\\$A_1=0.02$ m$^2$};
+\node[lab,text=ink,text width=3.3cm] at (11.0,4.7) {Tank 2\\$A_2=0.03$ m$^2$};
+\draw[lead,draw=ink] (8.0,6.9)--(7.9,4.05);
+\fill[ink] (7.9,4.05) circle (.035);
+\node[lab,text=ink,text width=3.5cm] at (8.0,6.9) {Connection $q_{12}$\\bidirectional};
+\draw[lead,draw=ink] (13.9,9.1)--(13.3,8.1);
+\fill[ink] (13.3,8.1) circle (.035);
+\node[lab,text=ink,text width=3.4cm] at (13.9,9.1) {Level sensor\\$y=h_2$};
+\draw[lead,draw=ink] (14.3,2.0)--(14.5,3.9);
+\fill[ink] (14.5,3.9) circle (.035);
+\node[lab,text=ink,text width=2.7cm] at (14.3,2.0) {Drain $q_2$};
+\draw[dim] (3.0,3.6)--(3.0,6.75);
+\node[lab,text=ink,text width=1.0cm] at (2.8,5.1) {$h_1$};
+\draw[dim] (8.6,3.6)--(8.6,5.6);
+\node[lab,text=ink,text width=1.0cm] at (8.5,5.95) {$h_2$};
+\end{tikzpicture}

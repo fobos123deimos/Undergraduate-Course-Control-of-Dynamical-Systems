@@ -22,7 +22,7 @@
 \smallskip\textbf{Shared nominal data.} Nominal plant: $\ddot y+2\dot y+y=u$. The physical realization has $m=1$ kg, $b=2$ N s/m and $k=1$ N/m. Ideal PID pole targets are $-2,-3,-4$; constrained cases impose $|u|\le2$.
 \task{1}{Pole placement for a force-limited positioning stage}
 The physical illustration gives one realization of $\ddot y+2\dot y+y=u$: a 1 kg carriage, a 2 N s/m damper and a 1 N/m spring, driven by an ideal force actuator. Position is in m and force in N.
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A mass, spring, damper and bounded force actuator physically realize the normalized second-order plant. Force saturation is included; contact, dry friction and travel stops are not.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A mass, spring, damper and bounded force actuator physically realize the normalized second-order plant. Force saturation is included; contact, dry friction and travel stops are not.}\end{center}
 \begin{enumerate}
 \item For $G=1/(s^2+2s+1)$, use ideal PID $C=k_p+k_i/s+k_ds$. Match the closed-loop denominator to $(s+2)(s+3)(s+4)$ and find all three gains.
 \item Compare $u=k_pe+k_i\int e\,dt+k_d\dot e$ with $u=k_pe+k_i\int e\,dt-k_d\dot y$, where $e=r-y$. Derive both reference numerators for the preceding plant and explain derivative kick.

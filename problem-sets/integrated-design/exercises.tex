@@ -26,7 +26,7 @@ q_{12}=k_{12}\operatorname{sgn}(h_1-h_2)\sqrt{|h_1-h_2|},\qquad
 q_2=k_2\sqrt{h_2},
 \]
 where $k_{12}=0.004$ and $k_2=0.003$ m$^{5/2}$/s. The pump feeds only tank 1. Nominal inflow is $\bar q=0.0012$ m$^3$/s; the measured output is $h_2$. Areas and discharge coefficients are hypothetical. Assume nonnegative levels, no overflow and ideal sensing.
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/interacting-tanks.tikz}}\par{\small Interacting tanks share a submerged connection at a common datum. Flow reverses if the level ordering reverses. Only tank 2 drains to the exterior; this is not a cascade with a freely falling inter-tank stream.}\end{center}
+\begin{center}\resizebox{.70\linewidth}{!}{\input{figures/interacting-tanks.tikz}}\par{\small Interacting tanks share a submerged connection at a common datum. Flow reverses if the level ordering reverses. Only tank 2 drains to the exterior; this is not a cascade with a freely falling inter-tank stream.}\end{center}
 \begin{enumerate}
 \item Starting from conservation of volume, derive the nonlinear state equations. Find both equilibrium heights and explain why the connection flow depends on a level difference.
 \item Linearize about that equilibrium using deviation variables. Derive the transfer function from inflow to the second level, its poles and its DC gain. State where the linearization ceases to be differentiable.
@@ -39,7 +39,7 @@ where $k_{12}=0.004$ and $k_2=0.003$ m$^{5/2}$/s. The pump feeds only tank 1. No
 \newpage
 \task{2}{Optical isolation with conflicting stiffness and travel requirements}
 A hypothetical optical bench of mass $m=8$ kg sits on a parallel spring and viscous damper, with total stiffness $k=3200$ N/m and damping ratio $\zeta=0.08$. The floor displacement is $z(t)$ and payload displacement is $x(t)$, measured about static equilibrium. The floor can oscillate at 40 rad/s with amplitude 0.5 mm. The design brief asks for less payload motion than floor motion, static sag at most 3 mm and relative travel amplitude at most 0.6 mm.
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../../laboratories/03-vibration-isolation/figures/physical-system.tikz}}\par{\small An optical payload rests on parallel spring and damping elements. The two springs each have stiffness $k/2$, giving total $k$. Both the floor and payload move; spring extension and damping velocity are relative quantities. Weight is balanced at the static equilibrium about which the model is written.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{../../laboratories/03-vibration-isolation/figures/physical-system.tikz}}\par{\small An optical payload rests on parallel spring and damping elements. The two springs each have stiffness $k/2$, giving total $k$. Both the floor and payload move; spring extension and damping velocity are relative quantities. Weight is balanced at the static equilibrium about which the model is written.}\end{center}
 \begin{enumerate}
 \item Draw the force balance and derive both $X/Z$ and $(X-Z)/Z$. Compute the natural frequency and damper coefficient; explain why replacing floor motion by an applied force changes the numerator.
 \item Evaluate absolute displacement and relative travel at the stated excitation. Check the two dynamic requirements separately.
@@ -52,7 +52,7 @@ A hypothetical optical bench of mass $m=8$ kg sits on a parallel spring and visc
 \newpage
 \task{3}{A motor speed servo under voltage and load constraints}
 A hypothetical DC motor has $R=2\,\Omega$, $L=0.02$ H, $J=0.01$ kg m$^2$, $b=0.02$ N m s/rad, $k_t=0.1$ N m/A and $k_e=0.1$ V s/rad. The load torque is 0.03 N m. The requested speed is 5 rad/s and the voltage limit is $|V|\le2$ V. Positive torque and speed use the same orientation.
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{../../laboratories/05-motor-load-rejection/figures/physical-system.tikz}}\par{\small A voltage-driven motor converts armature current into shaft torque. The rotor and external brake introduce inertia, friction and load torque. The illustrative cutaway does not add magnetic saturation or friction to the stated linear model.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{../../laboratories/05-motor-load-rejection/figures/physical-system.tikz}}\par{\small A voltage-driven motor converts armature current into shaft torque. The rotor and external brake introduce inertia, friction and load torque. The illustrative cutaway does not add magnetic saturation or friction to the stated linear model.}\end{center}
 \begin{enumerate}
 \item Derive the electrical and mechanical state equations, the voltage-to-speed transfer and the load-to-speed transfer. Identify the approximation made when armature inductance is neglected.
 \item Calculate the voltage and current required at the requested speed. Find the largest nonnegative equilibrium speed at the voltage limit and verify steady power balance there.

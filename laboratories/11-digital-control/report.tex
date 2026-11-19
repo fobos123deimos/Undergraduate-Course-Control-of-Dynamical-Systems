@@ -19,7 +19,7 @@
 \section{Design brief}
 For $G(s)=1/(0.5s+1)$, use PI gains $k_p=2$ and $k_i=4$ with a held actuator. Apply $u_k=2(r_k-x_k)+I_k$ before updating $I_{k+1}=I_k+4T_s(r_k-x_k)$. Derive the exact sampled plant update and two-state closed-loop matrix. Compare $T_s=0.05$, $0.5$ and $1.0\,\mathrm{s}$ and find the first discrete-time stability boundary.
 \section{Physical system}
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A held voltage drives an ideal RC network. The capacitor voltage is sampled by an ideal ADC; the software controller updates the DAC once per period. Quantization, converter lag and electrical loading are omitted.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A held voltage drives an ideal RC network. The capacitor voltage is sampled by an ideal ADC; the software controller updates the DAC once per period. Quantization, converter lag and electrical loading are omitted.}\end{center}
 \section{Continuous design}
 The continuous PI characteristic polynomial is $0.5s^2+3s+4=0.5(s+2)(s+4)$, so its poles are stable. This does not establish the stability of a particular digital implementation.
 \section{Exact held-input plant}

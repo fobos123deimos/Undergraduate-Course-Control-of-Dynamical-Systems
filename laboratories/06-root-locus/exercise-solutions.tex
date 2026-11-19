@@ -22,7 +22,7 @@
 \smallskip\textbf{Shared nominal data.} Nominal unity negative-feedback loop: $G(s)=1/[s(s+2)(s+6)]$ and scalar controller $K$. The positioning-axis picture illustrates a possible application; the normalized coefficients are stipulated.
 \task{1}{A position actuator with an identified aggregate model}
 The sketch shows a possible motor-driven carriage. Its normalized plant $1/[s(s+2)(s+6)]$ is stipulated as an aggregate teaching model; the poles are not inferred from the drawing dimensions.
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A motorized positioning axis illustrates the role of the integrator and two stable lags. The normalized transfer function is specified as a teaching model; the pictured dimensions do not identify its coefficients.}\end{center}
+\begin{center}\resizebox{.60\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A motorized positioning axis illustrates the role of the integrator and two stable lags. The normalized transfer function is specified as a teaching model; the pictured dimensions do not identify its coefficients.}\end{center}
 \begin{enumerate}
 \item Consider unity negative feedback with loop $L(s)=K/[s(s+2)(s+6)]$, $K>0$. Derive the reference transfer function, characteristic polynomial and open-loop poles and zeros.
 \answer The reference transfer is $T=L/(1+L)=K/[s(s+2)(s+6)+K]$. Expanding the product gives the characteristic polynomial $p=s^3+8s^2+12s+K$. The open loop has poles at 0, $-2$ and $-6$ and no finite zeros. Closed-loop poles depend on K; the open-loop poles are their limiting locations as $K\to0^+$.

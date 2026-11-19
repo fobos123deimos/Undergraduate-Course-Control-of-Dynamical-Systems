@@ -1,52 +1,37 @@
+% Style 2: raster equipment illustration with exact editable TikZ annotations.
 \begin{tikzpicture}[
 font=\sffamily\small,>=Latex,line cap=round,line join=round,
-wall/.style={draw=ink,line width=1.2pt,fill=blue!5},
-water/.style={fill=cyan!25,draw=none},
-metal/.style={draw=ink,fill=blue!12,line width=.9pt},
-flow/.style={->,draw=blue!65!black,line width=1.2pt},
-heat/.style={->,draw=orange!85!black,line width=1.1pt},
-measure/.style={->,draw=teal!70!black,line width=.9pt},
-dim/.style={<->,draw=ink!65,line width=.6pt},
-spring/.style={draw=ink,decorate,decoration={coil,aspect=.5,segment length=4pt,amplitude=3pt}},
-wire/.style={draw=ink,line width=1pt},
-lab/.style={align=center,font=\sffamily\small},
-smalllab/.style={align=center,font=\sffamily\scriptsize}]
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner sep=3.5pt},
+lead/.style={draw=ink!70,line width=.7pt},
+flow/.style={->,draw=blue!65!black,line width=1.15pt},
+heat/.style={->,draw=orange!85!black,line width=1.15pt},
+heatboth/.style={<->,draw=orange!85!black,line width=1.15pt},
+measure/.style={->,draw=teal!70!black,line width=1.05pt},
+digital/.style={->,draw=teal!70!black,line width=1pt,dashed},
+beam/.style={->,draw=red!70!black,line width=.65pt},
+dim/.style={<->,draw=ink!70,line width=.7pt},
+wire/.style={draw=ink,line width=1pt}]
+\IfFileExists{figures/01-thermal-enclosure-art.png}{\def\equipmentart{figures/01-thermal-enclosure-art.png}}{\IfFileExists{../../laboratories/01-thermal-enclosure/figures/01-thermal-enclosure-art.png}{\def\equipmentart{../../laboratories/01-thermal-enclosure/figures/01-thermal-enclosure-art.png}}{\IfFileExists{../laboratories/01-thermal-enclosure/figures/01-thermal-enclosure-art.png}{\def\equipmentart{../laboratories/01-thermal-enclosure/figures/01-thermal-enclosure-art.png}}{\def\equipmentart{laboratories/01-thermal-enclosure/figures/01-thermal-enclosure-art.png}}}}
+\node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
+\node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Thermal enclosure and sensor lag};
+\draw[lead,draw=ink] (8,8.45)--(8,7.25);
+\fill[ink] (8,7.25) circle (.035);
+\node[lab,text=ink,text width=4.3cm] at (8,8.45) {Insulated camera enclosure};
+\draw[lead,draw=ink] (1.7,5.65)--(6.5,4.7);
+\fill[ink] (6.5,4.7) circle (.035);
+\node[lab,text=ink,text width=2.7cm] at (1.7,5.65) {Thermal payload};
+\draw[lead,draw=orange!85!black] (6.7,0.65)--(7.9,2.9);
+\fill[orange!85!black] (7.9,2.9) circle (.035);
+\node[lab,text=orange!85!black,text width=3.3cm] at (6.7,0.65) {Electrical heater};
+\draw[heat] (0.7,2.95)--(4.35,2.95);
+\node[lab,text=ink,text width=2cm] at (1.6,3.4) {$P$ [W]};
+\draw[measure] (10.75,4.8)--(14.5,4.8);
+\node[lab,text=ink,text width=3.3cm] at (14.1,5.75) {Sensor reading $y$\\$\tau_s=12$ s};
+\draw[heat] (12.8,3.45)--(14.9,3.45);
+\node[lab,text=ink,text width=3.3cm] at (14.0,2.55) {Heat loss\\$H(T-T_a)$};
+\node[lab,text=ink,text width=10cm] at (8,0.05) {$C=900$ J/K; $H=15$ W/K; ambient $T_a$};
 
-\fill[blue!8] (1,0) rectangle (9,4.5);
-\fill[white] (1.4,.4) rectangle (8.6,4.1);
-\draw[ink,line width=1.2pt] (1,0) rectangle (9,4.5);
-\draw[ink!45] (1.4,.4) rectangle (8.6,4.1);
-\foreach \x in {1.6,2.2,...,8.2}{\draw[ink!20](\x,4.1)--++(.25,.4);}
-\node[lab]at(5,4.9){Insulated camera enclosure};
-\draw[metal,rounded corners=2pt](3.6,1.8)rectangle(6.3,3.3);
-\draw[metal](6.3,2.2)--(6.9,2)--(6.9,3.1)--(6.3,2.9)--cycle;
-\draw[ink](4.15,2.8)circle(.22);
-\node[smalllab]at(4.9,2.2){thermal payload};
-\draw[heat](2,1.2)--(3,1.2);
-\draw[orange!85!black,line width=1.5pt,decorate,decoration={zigzag,segment length=6pt,amplitude=3pt}](3,1.2)--(6.8,1.2);
-\node[lab,anchor=east]at(.6,1.2){$P$ [W]};
-\draw[heat](.7,1.2)--(2,1.2);
-\node[smalllab]at(5,.7){electrical heater};
-\draw[teal!70!black,line width=2pt](7.6,1.8)--(7.6,3.3);
-\fill[teal!70!black](7.6,1.8)circle(.14);
-\draw[measure](7.6,3.3)--(10.3,3.3);
-\node[lab,anchor=west]at(10.4,3.3){sensor reading $y$\\$\tau_s=12$ s};
-\draw[heat](8.2,2.1)--(10.3,2.1);
-\node[lab,anchor=west]at(10.4,2.1){heat loss\\$H(T-T_a)$};
-\node[lab]at(11.6,.5){ambient air $T_a$};
-\node[lab]at(5,-.55){Uniform temperature $T$;\quad $C=900$ J/K,\quad $H=15$ W/K};
-% REFINED EQUIPMENT DETAILS
-
-% Cutaway construction and the energy/measurement boundary.
-\foreach \x/\y in {1.2/.2,1.2/4.3,8.8/.2,8.8/4.3}{\draw[ink!60](\x,\y)circle(.055);}
-\foreach \y in {.7,1.4,2.1,2.8,3.5}{\draw[ink!20](1,\y)--(1.4,\y+.2);}
-\draw[orange!65!black,->,line width=.6pt](2.1,1.7)..controls(1.7,2.8)and(2.3,3.6)..(3.1,3.55);
-\draw[orange!65!black,->,line width=.6pt](6.7,3.5)..controls(7,3)and(6.9,2.5)..(6.7,2);
-\draw[teal!70!black](7.45,1.75)rectangle(7.75,3.1);
-\node[smalllab,anchor=south]at(10.9,4.25){\textbf{Heat and sensor paths}};
-\draw[ink!35,densely dashed](9.6,.05)rectangle(13.8,3.85);
-
-\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(0.0,-1.15){\textbf{Stored and indicated heat}\\[3pt]$x=T-T_a$ [K]; $y$ [K].\\Physical storage and sensor memory are separate states.};
-\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(4.8,-1.15){\textbf{Balances}\\[3pt]$900\dot x=P-15x$.\\$12\dot y=x-y$.\\Heat rate in W; time in s.};
-\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.15cm,minimum height=1.65cm,inner sep=5pt,align=left,font=\sffamily\scriptsize]at(9.6,-1.15){\textbf{Read the cutaway}\\[3pt]Orange: heat flow. Teal: measurement. Wall and payload are one lumped capacity; no spatial field is resolved.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Stored and indicated heat}\\[3pt]$x=T-T_a$ [K]; $y$ [K].\\Physical storage and sensor memory are separate states.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Balances}\\[3pt]$900\dot x=P-15x$.\\$12\dot y=x-y$.\\Heat rate in W; time in s.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(10.9,-.3){\textbf{Read the cutaway}\\[3pt]Orange: heat flow. Teal: measurement. Wall and payload are one lumped capacity; no spatial field is resolved.};
 \end{tikzpicture}

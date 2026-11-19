@@ -19,7 +19,7 @@
 \section{Design brief}
 A synthetic DC motor drives a flywheel with $R=2\,\Omega$, $L=0.02\,\mathrm{H}$, $J=0.01\,\mathrm{kg\,m^2}$, $b=0.02\,\mathrm{N\,m\,s/rad}$ and $k_t=k_e=0.1$ in consistent SI units. Derive the voltage-to-speed and opposing-load-to-speed transfers. Compare proportional gain $k_p=0.8$ with PI gains $k_p=0.8$, $k_i=1.6$ for reference $5\,\mathrm{rad/s}$ and load $0.03\,\mathrm{N\,m}$ applied at $t=4\,\mathrm{s}$. Explain the benefits and limits of integral action.
 \section{Physical system}
-\begin{center}\resizebox{\ifdim\width>.98\linewidth.98\linewidth\else\width\fi}{!}{\input{figures/physical-system.tikz}}\par{\small A voltage-driven motor converts armature current into shaft torque. The rotor and external brake introduce inertia, friction and load torque. The illustrative cutaway does not add magnetic saturation or friction to the stated linear model.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A voltage-driven motor converts armature current into shaft torque. The rotor and external brake introduce inertia, friction and load torque. The illustrative cutaway does not add magnetic saturation or friction to the stated linear model.}\end{center}
 \section{Electromechanical balance}
 Let $i$ be armature current, $\omega$ angular speed, $v$ voltage and $d$ opposing load torque. The equations are
 \[L\dot i=v-Ri-k_e\omega,\qquad J\dot\omega=k_t i-b\omega-d.\]
