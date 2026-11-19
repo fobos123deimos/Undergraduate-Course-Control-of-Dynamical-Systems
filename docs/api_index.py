@@ -4,11 +4,14 @@ An illustrated Python reference for twelve reproducible laboratories.
 Each module page combines the physical equipment, signal diagram, governing
 equation, computed response and the actual executable source.
 
-![Interacting tanks](assets/interacting-tanks.png)
+![Interacting tanks — photorealistic laboratory view](assets/interacting-tanks-hero.png)
 
 The common workflow is **physical balance → model → analytical prediction →
 numerical experiment → evidence and limitations**. Every scenario is synthetic.
-The tank illustration belongs to the separate integrated design exercises.
+The opening scene shares the README's photorealistic laboratory style (style 1).
+The laboratory equipment views use technical illustrations (style 2). A
+[technical tank view](assets/interacting-tanks.png) accompanies the separate
+integrated design exercises.
 
 The [illustrated atlas](assets/diagram-atlas.pdf) now includes refined equipment
 views with explicit signal units, energy/inventory balances and interpretation

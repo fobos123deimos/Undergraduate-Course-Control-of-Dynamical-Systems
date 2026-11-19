@@ -75,6 +75,7 @@ def assets():
             images[f'{number:02d}-{name}.png'] = path.parent / 'figures' / f'{name}.png'
         images[f'{number:02d}-response.png'] = path.parent / 'response.png'
     images['interacting-tanks.png'] = ROOT / 'problem-sets/integrated-design/figures/interacting-tanks.png'
+    images['interacting-tanks-hero.png'] = ROOT / 'docs/images/interacting-tanks-hero.png'
     images['diagram-atlas.pdf'] = ROOT / 'docs/diagram-atlas.pdf'
     if any(not p.is_file() for p in images.values()):
         raise ValueError('A required equipment, signal or response figure is missing.')
@@ -103,8 +104,11 @@ def validate_site(output, modules):
         if not set(info['public_definitions']).issubset(page.ids):
             raise ValueError('Missing function anchors: ' + name)
         expected_images = 3 if name.startswith('lab') else 1
-        if len([x for x in page.images if x.startswith('assets/')]) != expected_images:
+        page_images = [x for x in page.images if x.startswith('assets/')]
+        if len(page_images) != expected_images:
             raise ValueError('Missing illustrated content: ' + name)
+        if name == 'course_guide' and page_images != ['assets/interacting-tanks-hero.png']:
+            raise ValueError('The homepage must display the photorealistic README hero.')
     checked = 0
     for source, parsed in pages.items():
         text = source.read_text(encoding='utf-8')
@@ -124,7 +128,7 @@ def validate_site(output, modules):
         raise ValueError('Missing pdoc search index.')
     expected_assets = set(assets())
     if {p.name for p in (output / 'assets').iterdir()} != expected_assets:
-        raise ValueError('Published asset inventory differs from the figures and vector atlas.')
+        raise ValueError('Published asset inventory differs from the figures, homepage hero and illustrated atlas.')
     return {'status': 'passed', 'laboratories': 12, 'module_pages': len(modules),
             'html_files_including_redirect': len(pages), 'public_entry_points': 12,
             'local_images': sum(name.endswith('.png') for name in expected_assets),

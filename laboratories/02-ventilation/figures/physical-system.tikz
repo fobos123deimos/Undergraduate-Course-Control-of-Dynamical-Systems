@@ -14,18 +14,20 @@ wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/02-ventilation-art.png}{\def\equipmentart{figures/02-ventilation-art.png}}{\IfFileExists{../../laboratories/02-ventilation/figures/02-ventilation-art.png}{\def\equipmentart{../../laboratories/02-ventilation/figures/02-ventilation-art.png}}{\IfFileExists{../laboratories/02-ventilation/figures/02-ventilation-art.png}{\def\equipmentart{../laboratories/02-ventilation/figures/02-ventilation-art.png}}{\def\equipmentart{laboratories/02-ventilation/figures/02-ventilation-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Ventilation and its liquid analogue};
-\node[lab,text=ink,text width=4cm] at (4.1,7.55) {Ventilated room};
+\node[lab,text=ink,text width=4cm] at (4.1,8.35) {Ventilated room};
 \node[lab,text=ink,text width=3.2cm] at (12.0,8.35) {Mixed tank};
 \draw[flow] (0.2,4.4)--(1.5,4.4);
-\node[lab,text=ink,text width=2.4cm] at (1.5,5.95) {Clean air $q$};
+\draw[lead] (1.65,7.1)--(1.65,5.55);
+\node[lab,text=ink,text width=2.6cm] at (1.65,7.45) {Clean air $q$};
 \draw[flow] (7.8,4.4)--(9.0,4.4);
-\node[lab,text=ink,text width=2.3cm] at (7.7,5.95) {Exhaust $qc$};
-\draw[lead,draw=orange!85!black] (4.1,4.2)--(4.2,2.7);
+\draw[lead] (7.4,7.1)--(7.8,5.15);
+\node[lab,text=ink,text width=2.1cm] at (7.4,7.45) {Exhaust $qc$};
+\draw[lead,draw=orange!85!black] (4.15,4.65)--(4.2,2.7);
 \fill[orange!85!black] (4.2,2.7) circle (.035);
-\node[lab,text=orange!85!black,text width=2.2cm] at (4.1,4.2) {Source $S$};
-\draw[lead,draw=teal!70!black] (6.5,1.25)--(6.5,2.8);
+\node[lab,text=orange!85!black,text width=2.8cm] at (4.15,4.65) {Tracer source $S$};
+\draw[lead,draw=teal!70!black] (6.5,1.4)--(6.5,2.8);
 \fill[teal!70!black] (6.5,2.8) circle (.035);
-\node[lab,text=teal!70!black,text width=2.0cm] at (6.5,1.25) {Sensor $c$};
+\node[lab,text=teal!70!black,text width=2.0cm] at (6.5,1.4) {Sensor $c$};
 \draw[flow] (9.5,6.8)--(10.35,6.8);
 \node[lab,text=ink,text width=1.8cm] at (9.9,7.45) {Clean $q$};
 \draw[heat] (14.35,6.9)--(13.55,6.9);
@@ -37,5 +39,5 @@ wire/.style={draw=ink,line width=1pt}]
 
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Inventory and channels}\\[3pt]$c$: tracer concentration.\\$S$: source rate; $q$: throughput.\\Equal inlet/outlet flow fixes $V$.};
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Balance and bilinearity}\\[3pt]$V\dot c=S-qc$.\\The product $qc$ couples state and input. Room and liquid cases use different volume units.};
-\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(10.9,-.3){\textbf{Mixing assumption}\\[3pt]Grilles and baffles illustrate ideal mixing only. Air velocity fields, fan dynamics and mixing transients are not modeled.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(10.9,-.3){\textbf{Mixing assumption}\\[3pt]The fan and stirrer illustrate ideal mixing only. Air velocity fields, fan dynamics and mixing transients are not modeled.};
 \end{tikzpicture}

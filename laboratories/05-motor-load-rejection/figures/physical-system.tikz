@@ -14,24 +14,24 @@ wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/05-motor-load-rejection-art.png}{\def\equipmentart{figures/05-motor-load-rejection-art.png}}{\IfFileExists{../../laboratories/05-motor-load-rejection/figures/05-motor-load-rejection-art.png}{\def\equipmentart{../../laboratories/05-motor-load-rejection/figures/05-motor-load-rejection-art.png}}{\IfFileExists{../laboratories/05-motor-load-rejection/figures/05-motor-load-rejection-art.png}{\def\equipmentart{../laboratories/05-motor-load-rejection/figures/05-motor-load-rejection-art.png}}{\def\equipmentart{laboratories/05-motor-load-rejection/figures/05-motor-load-rejection-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {DC motor, flywheel and load rejection};
-\draw[lead,draw=ink] (1.7,6.6)--(1.6,4.5);
+\draw[lead,draw=ink] (1.7,7.85)--(1.6,4.5);
 \fill[ink] (1.6,4.5) circle (.035);
-\node[lab,text=ink,text width=3.2cm] at (1.7,6.6) {Applied voltage $V$};
+\node[lab,text=ink,text width=3.2cm] at (1.7,7.85) {Applied voltage $V$\\current $i$ [A]};
 \draw[lead,draw=ink] (5.6,7.85)--(5.8,4.7);
 \fill[ink] (5.8,4.7) circle (.035);
 \node[lab,text=ink,text width=3.5cm] at (5.6,7.85) {Armature $R,L$\\torque $k_t i$};
-\draw[lead,draw=orange!85!black] (13.8,7.7)--(13.0,5.35);
+\draw[lead,draw=orange!85!black] (13.8,7.85)--(13.0,5.35);
 \fill[orange!85!black] (13.0,5.35) circle (.035);
-\node[lab,text=orange!85!black,text width=3.2cm] at (13.8,7.7) {Load brake $\tau_L$};
-\draw[lead,draw=ink] (10.7,0.65)--(9.3,3.2);
-\fill[ink] (9.3,3.2) circle (.035);
+\node[lab,text=orange!85!black,text width=3.2cm] at (13.8,7.85) {Load brake $\tau_L$};
+\draw[lead,draw=ink] (10.7,0.65)--(9.25,4.3);
+\fill[ink] (9.25,4.3) circle (.035);
 \node[lab,text=ink,text width=2cm] at (10.7,0.65) {Bearing};
-\node[lab,text=ink,text width=6cm] at (6,0.65) {Rotor $J,b$; back emf $k_e\omega$};
+\node[lab,text=ink,text width=7cm] at (5.7,0.65) {Rotating inertia $J$; friction $b$\\back emf $k_e\omega$};
 \coordinate (axle) at (11.15,4.3);\fill[ink] (axle)circle(.045);
 \draw[flow] ($(axle)+(100:1.02 and 2.3)$) arc[start angle=100,end angle=-95,x radius=1.02,y radius=2.3];
-\node[lab,text=ink,text width=2.4cm] at (10.65,7.45) {$\omega$ [rad/s]};
+\node[lab,text=ink,text width=2.4cm] at (10.65,7.85) {$\omega$ [rad/s]};
 \draw[flow] (2.75,4.15)--(3.25,4.15);
-\node[lab,text=ink,text width=1.4cm] at (3.0,5.3) {$i$ [A]};
+
 
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Electrical channel}\\[3pt]$L\dot i=V-Ri-k_e\omega$.\\Back emf opposes the applied voltage; input $V$ is in volts.};
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Mechanical channel}\\[3pt]$J\dot\omega=k_ti-b\omega-\tau_L$.\\The rotation arrow is centered on the flywheel axis. Positive load torque opposes positive speed.};

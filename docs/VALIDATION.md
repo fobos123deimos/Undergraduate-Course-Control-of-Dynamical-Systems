@@ -53,4 +53,6 @@ All data are synthetic. There are no measured experiments, hardware calibration 
 
 ## Visual styles — November 2026
 
-The root README uses a separate photorealistic tank scene (style 1). All 13 internal equipment views use semi-realistic technical artwork (style 2), including the copies in the API site and the embedded reports, exercises, solutions and atlas. Equipment artwork is raster; labels, mathematical balances, arrows and electrical connections remain editable TikZ. The 12 mathematical control diagrams and numerical simulation sources retain their previous content. `tools/build_diagrams.py --check` verifies the artwork, source and rendered-document hashes.
+The root README and the site opening use the same photorealistic tank scene (style 1). All 13 internal equipment views use semi-realistic technical artwork (style 2), including the copies in the API site and the embedded reports, exercises, solutions and atlas. Equipment artwork is raster; labels, mathematical balances, arrows and electrical connections remain editable TikZ. The 12 mathematical control diagrams and numerical simulation sources retain their previous content. `tools/build_diagrams.py --check` verifies the artwork, source and rendered-document hashes.
+
+The follow-up [illustration review](ILLUSTRATION_REVIEW.md) reorganized all labels and corrected the modeled equipment and instrumentation paths. The shared photorealistic homepage asset is explicitly checked by the site validator.

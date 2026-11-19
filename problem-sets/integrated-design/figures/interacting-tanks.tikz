@@ -13,28 +13,31 @@ dim/.style={<->,draw=ink!70,line width=.7pt},
 wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/interacting-tanks-art.png}{\def\equipmentart{figures/interacting-tanks-art.png}}{\IfFileExists{../../problem-sets/integrated-design/figures/interacting-tanks-art.png}{\def\equipmentart{../../problem-sets/integrated-design/figures/interacting-tanks-art.png}}{\IfFileExists{../problem-sets/integrated-design/figures/interacting-tanks-art.png}{\def\equipmentart{../problem-sets/integrated-design/figures/interacting-tanks-art.png}}{\def\equipmentart{problem-sets/integrated-design/figures/interacting-tanks-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
+
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Interacting water tanks};
-\draw[lead,draw=blue!65!black] (3.1,8.25)--(3.3,7.25);
-\fill[blue!65!black] (3.3,7.25) circle (.035);
-\node[lab,text=blue!65!black,text width=3.5cm] at (3.1,8.25) {Pump inflow $q$};
-\node[lab,text=ink,text width=3.3cm] at (5.0,4.2) {Tank 1\\$A_1=0.02$ m$^2$};
-\node[lab,text=ink,text width=3.3cm] at (10.7,3.3) {Tank 2\\$A_2=0.03$ m$^2$};
-\node[lab,text=ink,text width=5cm] at (10.4,8.1) {Shared atmosphere $p_a$};
-\draw[dim] (3.0,2.65)--(3.0,5.5);
-\node[lab,text=ink,text width=1.0cm] at (2.65,4.6) {$h_1$};
-\draw[dim] (14.0,2.65)--(14.0,4.45);
-\node[lab,text=ink,text width=1.0cm] at (14.55,4.0) {$h_2$};
-\draw[lead,draw=ink] (7.85,5.6)--(7.8,3.0);
-\fill[ink] (7.8,3.0) circle (.035);
-\node[lab,text=ink,text width=3.6cm] at (7.85,5.6) {Connection $q_{12}$\\bidirectional};
+\node[lab,text=blue!65!black,text width=2.5cm] (pump) at (1.75,8.25) {Pump inflow $q$};
+\draw[lead,draw=blue!65!black] (pump.south east)--(3.3,7.25);
+\fill[blue!65!black] (3.3,7.25) circle (.028);
+\node[lab,text=ink,text width=2.8cm] at (5.2,8.25) {Tank 1\\$A_1=0.02$ m$^2$};
+\node[lab,text=ink,text width=2.8cm] at (10.9,8.25) {Tank 2\\$A_2=0.03$ m$^2$};
+\node[lab,text=teal!70!black,text width=2.0cm] (sensor) at (14.6,6.5) {Level sensor\\$y=h_2$};
+\draw[lead,draw=teal!70!black] (sensor.south west)--(12.9,5.6);
+\fill[teal!70!black] (12.9,5.6) circle (.028);
+\draw[dim] (3.0,3.0)--(3.0,5.5);
+\draw[ink!50,line width=.6pt] (2.92,3.0)--(3.3,3.0) (2.92,5.5)--(3.4,5.5);
+\node[lab,text=ink,text width=.5cm,inner sep=2pt] at (2.6,4.45) {$h_1$};
+\draw[dim] (14.0,3.0)--(14.0,4.45);
+\draw[ink!50,line width=.6pt] (13.65,3.0)--(14.08,3.0) (13.5,4.45)--(14.08,4.45);
+\node[lab,text=ink,text width=.5cm,inner sep=2pt] at (14.45,3.9) {$h_2$};
+\node[lab,text=ink,text width=1.35cm] (link) at (7.8,5.4) {Coupling\\$q_{12}$};
+\draw[lead] (link.south)--(8.25,4.35)--(8.25,3.1);
+\fill[ink] (8.25,3.1) circle (.028);
+\draw[flow] (5.1,6.85)--(5.1,5.75);
 \draw[flow] (6.95,3.0)--(8.7,3.0);
 \draw[flow] (14.1,2.85)--(15.25,2.85);
-\node[lab,text=ink,text width=2.5cm] at (14.6,1.75) {Drain $q_2$};
-\draw[lead,draw=teal!70!black] (14.3,6.4)--(12.9,5.6);
-\fill[teal!70!black] (12.9,5.6) circle (.035);
-\node[lab,text=teal!70!black,text width=2.5cm] at (14.3,6.4) {$y=h_2$};
-\draw[ink!50,dashed] (2.8,2.6)--(14.1,2.6);
-\node[lab,text=ink,text width=13cm] at (8,0.55) {Common height datum; only tank 2 drains to the exterior};
+\node[lab,text=ink,text width=2.5cm] (drain) at (14.4,.55) {Drain $q_2$};
+\draw[lead] (drain.north east)--(15.7,1.8)--(15.3,2.85);
+\node[lab,text=ink,text width=8.5cm,font=\sffamily\footnotesize] at (8.3,.55) {Open tanks; common hydraulic datum at the outlets};
 
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Two volume inventories}\\[3pt]$A_1\dot h_1=q-q_{12}$.\\$A_2\dot h_2=q_{12}-q_2$.\\Only tank 2 drains to the exterior.};
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Gravity-driven coupling}\\[3pt]$q_{12}=k_{12}\operatorname{sgn}(h_1-h_2)$\\$\qquad\cdot\sqrt{|h_1-h_2|}$.\\$q_2=k_2\sqrt{h_2}$.};

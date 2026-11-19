@@ -13,273 +13,273 @@
       "source": "docs/diagram-atlas.tex",
       "compiled": true,
       "pages": 13,
-      "sha256": "c660bfce2be654cbbd9ef4ce06d09d3e5c74627b4252382ce73be4924fea22a7",
+      "sha256": "7712970757ed9f57695dfd70f3b75b013874721659d6b4b7bc65513181f8c553",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/01-thermal-enclosure/exercise-solutions.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "95b1fde077baf4cf54969b51f0083cf68ff148010c979b1a479759692dadd741",
+      "sha256": "d7aa2b5c7e48d820a6d0ac39df4595245a5fb4de4a30bb77f6e10372de5269e9",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/01-thermal-enclosure/exercises.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "7c30b521bbc3dea55baac3d283aba404ecf9a6d0f34a2c38491b11c828fff0d6",
+      "sha256": "8147bec0b01b3091f72335b5f397f6f5a9d398eecc474124fc2bcd32a131ff7e",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/01-thermal-enclosure/report.tex",
       "compiled": true,
       "pages": 3,
-      "sha256": "58c65476b13032e9e2569ba2a03fab0706f9c2ca0a02446ab2ac5605ecf7294c",
+      "sha256": "91a9a86b614976465d9db96280ea5392484fb7c16dc2da14000805e619727578",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/02-ventilation/exercise-solutions.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "4e33a76eaea9d2f344853ebdb75a68339e2727656b0a3a24676771c865e5382e",
+      "sha256": "2904fbac777e167850d39a9107ac2d0e0be63d1cb6f8994749592b0ae6bf966c",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/02-ventilation/exercises.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "a0b9980b6cd8cd5699fa6f8da35220bc0f25acfd31a91cb414e990deb36969fc",
+      "sha256": "452153219d94110ee5b10d3536e528ae7eb1e768bc336078d2c56408d8fe6df9",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/02-ventilation/report.tex",
       "compiled": true,
       "pages": 3,
-      "sha256": "d56a6852823620898c27b16abc887d32e4b97fd49ab87ee79e153967f01572a6",
+      "sha256": "60738f87eb966bec3e248194abcf8af9c32af3927a484652e52485533809de45",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/03-vibration-isolation/exercise-solutions.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "4347331304ab93ddcaecf0f06c4a3f4d13816b922cf9f3cfc4e9cb4881780fa5",
+      "sha256": "480555101b47091198a19ff16b1c5089ef3f13ec6ef23ae9e38546962a60e32b",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/03-vibration-isolation/exercises.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "37de798680332f94c22bad87ea8f2d408e65d934c6ba8a72f98a40bfae1383bf",
+      "sha256": "5afc5ff597f2ed77fb53358f3898f732102effc49f333887af8870078e56f54d",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/03-vibration-isolation/report.tex",
       "compiled": true,
       "pages": 3,
-      "sha256": "e69d0462a12fffc630e45a648d029084c5fd12a4ce4889f457429047914ab2d7",
+      "sha256": "5e21535cc57847b6cd52e9b9431e95300bec38f5f3db950773cd273d1112d1c3",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/04-notch-filter/exercise-solutions.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "c4b8ad5e6a1d95eefc72e134f9ecd8c487ae61c2e64cdfb1773e2bddd90e0445",
+      "sha256": "4a52b00244000a735fac42e71ececed40fc2e1603955854b1cfb82e232cd4ff3",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/04-notch-filter/exercises.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "b43d2347a1232c82a2e61d3fa8ca6118a99baf8f1c97e746fa2b239472673666",
+      "sha256": "328c647c0b16e2d04e152a96d05be70193ac0a92fc6f05a400fbad2d2a9d07f8",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/04-notch-filter/report.tex",
       "compiled": true,
       "pages": 3,
-      "sha256": "434d9898751b8e0646e48c663d5e22de5acbe11f5d25180985859a55db5a3902",
+      "sha256": "46e3f8aaea782003628eb5fa1a7fa9e016d46339385a548ce08b6b1d5a956460",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/05-motor-load-rejection/exercise-solutions.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "1497110754acf9943442eed9d7eba4f9eac8c0c660880b02bf756a59ba70de75",
+      "sha256": "9f3fb371203438f160a0442e98d164b978a3f4f7a92008204774937c56951fd6",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/05-motor-load-rejection/exercises.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "c1b9f659e92d49407ca03c4613fed8ceca13b3e083795418785c38f69dc26614",
+      "sha256": "664837ecada9aa6377a0f2f7ab1ca7a7e1be04c0dc3c9d225805f9e12aadcddd",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/05-motor-load-rejection/report.tex",
       "compiled": true,
       "pages": 3,
-      "sha256": "b0b41b7ddb53bb8dc8933880afd17d1bd000029f89583f7aa2802a124de03424",
+      "sha256": "0709797ff6ac631f837f966a1fb7c75534b44b94c823e07a0cf55c1c7ce3a3e7",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/06-root-locus/exercise-solutions.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "9180286e4bc50e8c9954e9ad32bd3b91534b67c782631ff8584af0504f2aae14",
+      "sha256": "6e45d78e66a5a508e2544deb39a34360c1aa16fb16147c386b9037869c89ab22",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/06-root-locus/exercises.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "04bd4c85137f4bc9adc2dd9829758202af12b352d4385ec1a3880f8b0c029a3c",
+      "sha256": "e9b0b9e3d2fd22d5abcaeef43c224feac22ce4b1ce2f5c86b4ec4be9d6e03b3a",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/06-root-locus/report.tex",
       "compiled": true,
       "pages": 3,
-      "sha256": "ef5d0741813fb4f77503cd228d397305180c49e4614c33c65a5ecaab71efa947",
+      "sha256": "f1b516f5b9cf5b3eb67c4116ce21e5279cb261bfae8f43e9a4eb838f7575c937",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/07-delay-budget/exercise-solutions.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "0f0d2c0e23d348380b4c5376ff9d4c88090b711cf8c61d0cee87c3a345192a73",
+      "sha256": "4e9525a9d8312d5220787fc12cf1645284068a4527b62396aad20cd778b1646a",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/07-delay-budget/exercises.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "1e9c9267aa81f05cd746f6a7dcbb3d015f48e9abd97ef6dcf1112906bae0a889",
+      "sha256": "f0da06fa3a1d0a476e0b2d0ebc484e1b82920422f462048fd4bd127f0e544c85",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/07-delay-budget/report.tex",
       "compiled": true,
       "pages": 3,
-      "sha256": "9020fd702340ab011c21d70f8397baafc3ffb878375ceacedc305dae828a1a3f",
+      "sha256": "cb575e44a81608e238f1113128a050ebda85335359c2bb7bead069e502451693",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/08-camera-compensation/exercise-solutions.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "91073602596086782a8550441fcfd6b07af2df9d20c94f66292565f2095f7b6a",
+      "sha256": "1c7d4bf467af924e2d33fe7cc2509895834d2f144bb6289df802d988911d2c6a",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/08-camera-compensation/exercises.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "770ba1295c29e889f87831a307878afe093670d1836f5ee31d46f562fa224b9e",
+      "sha256": "88dc1fdd4624248431b42e727786c8e5bb3cc6734911e13b36154fcf575f23eb",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/08-camera-compensation/report.tex",
       "compiled": true,
       "pages": 3,
-      "sha256": "1ba5e64fc81d8c846b70319a464bc5aeff96b280b6fdd3be60b543984048fd40",
+      "sha256": "525c86d287a0f3e9e1fe521a998b0c7d41da00468fc059fc79bd5702280e325a",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/09-pid-saturation/exercise-solutions.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "598a4b2cbaaafd5fd797078c5809bcc197a2feb400703891135278e0af135e87",
+      "sha256": "37ccfcd1aca87e5924f8777ac8749738293bf3da60e0fbbbbb3ff9b2b28682f5",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/09-pid-saturation/exercises.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "426e3bde255d8fbc12100b86afd655a04bc4299675a3ff606f0ad6d927228341",
+      "sha256": "8459bb465d7c0cc48c45de36be9218cd1efd351987997dc15ad04033aa1477c5",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/09-pid-saturation/report.tex",
       "compiled": true,
       "pages": 3,
-      "sha256": "89e63d84d08bb960b14dd01e682a12bae5d6326fbfa897f71eabb55c62460ac7",
+      "sha256": "7604f2c7adb4c8a27f5338946e31babee329a13103b4dbf82314a264f0278607",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/10-observer-control/exercise-solutions.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "d917dc60ecac8fc851657e8afb4ef7816f720e4e974bf401839178d15ad35522",
+      "sha256": "81f778faf04822428556776254c6099b34fcf68d581cb8137bc251955ac5de1e",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/10-observer-control/exercises.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "233e771b4aa4f23c337ad6292c45a6c695e23d53f8885ddcbbab21c8eb29c465",
+      "sha256": "b2a20580583e3a3328f5925b9ed3cabf97debb98328cb46567fac887194d2fc6",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/10-observer-control/report.tex",
       "compiled": true,
       "pages": 3,
-      "sha256": "34f7e5505149c7f28d5bf9a6e7de6e676b09c2a4780d103114b14af205389a7e",
+      "sha256": "627829d1953daa481e3c157c67f22f9f7264db39cb67464062f50739996cd62f",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/11-digital-control/exercise-solutions.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "6cd5dc27578660231cd56fcd06e7381e72308e51827fa6c56e4d29cb5b23a22a",
+      "sha256": "27d9dc8102afd1dfff452c4b72635cbb7d647bc5175f803ca965c43a018d1ed7",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/11-digital-control/exercises.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "9003819bf27465ca35673747d4709d677bde9527b648c1e7389f96b04539a68b",
+      "sha256": "581bf7d3e5b3be68979848df2585e1cfbf030f821189a081973adc83ec07d647",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/11-digital-control/report.tex",
       "compiled": true,
       "pages": 3,
-      "sha256": "7b23fd121402c32714f94e4bcdfc05f6f6729eb794af95965303d0083822142b",
+      "sha256": "caef7629bef7cdf48c858787c77624ea313f1c4b9917e7382560a5470f744162",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/12-identification-capstone/exercise-solutions.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "2ef1ecbb61c6b5606e45d8ee0a7a95a40ebd33b94489ec512ada47328f6eee58",
+      "sha256": "5931da5135aec30c2093de1d431b7afb3856305fa3e591f31d5dde67085e67ca",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/12-identification-capstone/exercises.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "ee629923285de0df64fdc0ac4c2d00b4511400e9af515f93c5af4b7136921b1f",
+      "sha256": "ba5fa1bb8dd18d4cbd542fb2e5b709ddc4961292d31f0b23e56f8be880962df4",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "laboratories/12-identification-capstone/report.tex",
       "compiled": true,
       "pages": 4,
-      "sha256": "af838741f412b5a6b04237f510c4a369bc9bce6cce40629d2d199b8a1a4b516c",
+      "sha256": "12c1384507249aa9510a46ec4b14a7e4cffcbb307b0eeead16028dd03cab2c67",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "problem-sets/integrated-design/exercises.tex",
       "compiled": true,
       "pages": 5,
-      "sha256": "cce8332a07c39b6efb93599977f41b519d2dd4a0dbd8b31f95cb2c6943882cd5",
+      "sha256": "0fcef11d9a57685c38441c12f8480ae99075613d898f8150e22cea542c195b43",
       "compiler": "pdfLaTeX / TeX Live 2025"
     },
     {
       "source": "problem-sets/integrated-design/solutions.tex",
       "compiled": true,
       "pages": 10,
-      "sha256": "fc09cd8960a26a5146e6b4c5aa7343f4d4396125206edbe8b0cd8611d40489ec",
+      "sha256": "51d9410f4654772e36f88102e50d0c125c8e49b6b24aa08c6d48e8c8f4429481",
       "compiler": "pdfLaTeX / TeX Live 2025"
     }
   ],
@@ -380,5 +380,6 @@
   ],
   "updated": "2026-11-19",
   "scope": "Style revision: 13 internal equipment views and all 39 embedding documents rebuilt; mathematical content retained. Figure compositions visually reviewed; all document compiler logs checked.",
-  "pdf_optimization": "Documents larger than 5 MB: Ghostscript PDF image recompression, JPEG quality 90, no downsampling; vector text retained."
+  "pdf_optimization": "Documents larger than 5 MB: Ghostscript PDF image recompression, JPEG quality 90, no downsampling; vector text retained.",
+  "illustration_review": "docs/ILLUSTRATION_REVIEW.md"
 }

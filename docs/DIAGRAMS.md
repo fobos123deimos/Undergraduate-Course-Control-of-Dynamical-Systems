@@ -2,6 +2,8 @@
 
 Thirteen original physical illustrations accompany twelve existing control diagrams. Style 2 pairs generated equipment artwork with editable TikZ labels, equations, arrows and electrical connections. Editable TikZ sources, individual composite PDFs, 2600-pixel PNG previews and the [PDF atlas](diagram-atlas.pdf) are included. Each equipment drawing identifies states, signals, units, governing balances and interpretation limits. Rotation arrows are centered on their shafts or pivots; directed paths terminate at their equipment ports. All equipment and parameters are hypothetical.
 
+See the [layout and physical-coherence review](ILLUSTRATION_REVIEW.md) for the changes shared by the two visual styles.
+
 ## 01. Thermal enclosure and a slow sensor
 
 ![Physical system](../laboratories/01-thermal-enclosure/figures/physical-system.png)
@@ -134,6 +136,6 @@ python tools/build_api_docs.py
 python tools/build_api_docs.py --check
 ```
 
-The drawing build regenerates 14 individual PDF/PNG pairs (13 internal equipment views and the separate style-1 README hero) and every report, exercise sheet, solution and atlas that embeds the TikZ sources. `--figures-only` supports preview inspection before `--documents-only`; `--only-cached` requires a populated Tectonic bundle. [The build record](diagram-build.json) checks normalized source hashes, source-artwork hashes and all committed artifact hashes, including the atlas. Numerical response plots are independent artifacts and are preserved. The generated artwork is illustrative; the equations, circuit wiring and signal directions are explicit vector content. Prompts are retained in [illustration-prompts.json](illustration-prompts.json). The [README hero](images/interacting-tanks-hero.png) uses style 1 and is not reused in the internal gallery. After editing geometry, inspect all affected renders and check text placement before recording the build.
+The drawing build regenerates 14 individual PDF/PNG pairs (13 internal equipment views and the shared style-1 README/site hero) and every report, exercise sheet, solution and atlas that embeds the TikZ sources. `--figures-only` supports preview inspection before `--documents-only`; `--only-cached` requires a populated Tectonic bundle. [The build record](diagram-build.json) checks normalized source hashes, source-artwork hashes and all committed artifact hashes, including the atlas. Numerical response plots are independent artifacts and are preserved. The generated artwork is illustrative; the equations, circuit wiring and signal directions are explicit vector content. Prompts are retained in [illustration-prompts.json](illustration-prompts.json). The [README/site hero](images/interacting-tanks-hero.png) uses style 1; the internal equipment gallery remains style 2. After editing geometry, inspect all affected renders and check text placement before recording the build.
 
 PDFs larger than 5 MB use high-quality JPEG compression for embedded equipment artwork, without downsampling. Labels, equations and connections remain vector content. Original PNG artwork and individual high-resolution figure exports remain available.

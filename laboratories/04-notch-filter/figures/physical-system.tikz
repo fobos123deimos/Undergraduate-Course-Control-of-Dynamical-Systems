@@ -14,18 +14,18 @@ wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/04-notch-filter-art.png}{\def\equipmentart{figures/04-notch-filter-art.png}}{\IfFileExists{../../laboratories/04-notch-filter/figures/04-notch-filter-art.png}{\def\equipmentart{../../laboratories/04-notch-filter/figures/04-notch-filter-art.png}}{\IfFileExists{../laboratories/04-notch-filter/figures/04-notch-filter-art.png}{\def\equipmentart{../laboratories/04-notch-filter/figures/04-notch-filter-art.png}}{\def\equipmentart{laboratories/04-notch-filter/figures/04-notch-filter-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Series RLC notch-filter experiment};
-\node[lab,text=ink,text width=3.3cm] at (1.8,6.5) {Signal source $u$};
-\node[lab,text=ink,text width=2.5cm] at (5.4,5.8) {$R=10\,\Omega$};
-\node[lab,text=ink,text width=2.5cm] at (8.2,5.8) {$L=10$ mH};
-\node[lab,text=ink,text width=2.7cm] at (10.7,6.15) {$C=100\,\mu$F};
-\node[lab,text=ink,text width=3.3cm] at (13.8,2.05) {Voltage readout $y$};
+\node[lab,text=ink,text width=3.3cm] at (1.8,6.65) {Signal source $u$};
+\node[lab,text=ink,text width=2.35cm] at (5.4,6.0) {$R=10\,\Omega$};
+\node[lab,text=ink,text width=2.35cm] at (8.2,6.0) {$L=10$ mH};
+\node[lab,text=ink,text width=2.35cm] at (10.7,6.0) {$C=100\,\mu$F};
+\node[lab,text=ink,text width=2.5cm] at (14.0,6.65) {Readout $y$};
 \draw[wire] (3.5,4.85)--(3.9,4.85)--(3.9,4.4)--(4.35,4.4) (6.45,4.4)--(7.05,4.4) (9.3,4.4)--(10.05,4.4) (11.45,4.4)--(11.6,4.4)--(11.6,2.3)--(3.5,2.3)--(3.5,4.05);
 \draw[measure] (6.75,4.4)--(6.75,7.1)--(12.43,7.1)--(12.43,4.83);
 \draw[teal!70!black,line width=.9pt] (11.45,4.4)--(11.9,4.4)--(11.9,4.05)--(12.43,4.05);
 \fill[ink] (6.75,4.4)circle(.055)(11.45,4.4)circle(.055);
 \node[lab,text=ink,text width=9cm] at (8.9,7.9) {Differential probe across $L+C$: $y=u-Ri$};
-\node[lab,text=teal!70!black,text width=0.5cm] at (12.8,5.3) {$+$};
-\node[lab,text=teal!70!black,text width=0.5cm] at (12.75,3.9) {$-$};
+\node[text=teal!70!black,font=\sffamily\bfseries\small,inner sep=1pt] at (11.95,5.3) {$+$};
+\node[text=teal!70!black,font=\sffamily\bfseries\small,inner sep=1pt] at (11.95,3.7) {$-$};
 \draw[flow] (6.1,3.2)--(7.8,3.2);
 \node[lab,text=ink,text width=1.5cm] at (7,2.8) {$i(t)$};
 \draw[wire] (11.6,2.3)--++(0,-.23)++(-.28,0)--++(.56,0)++(-.46,-.1)--++(.36,0)++(-.27,-.1)--++(.18,0);

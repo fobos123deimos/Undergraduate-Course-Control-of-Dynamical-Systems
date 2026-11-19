@@ -14,23 +14,26 @@ wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/06-root-locus-art.png}{\def\equipmentart{figures/06-root-locus-art.png}}{\IfFileExists{../../laboratories/06-root-locus/figures/06-root-locus-art.png}{\def\equipmentart{../../laboratories/06-root-locus/figures/06-root-locus-art.png}}{\IfFileExists{../laboratories/06-root-locus/figures/06-root-locus-art.png}{\def\equipmentart{../laboratories/06-root-locus/figures/06-root-locus-art.png}}{\def\equipmentart{laboratories/06-root-locus/figures/06-root-locus-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Third-order positioning actuator};
-\draw[lead,draw=ink] (2.5,7.3)--(2.4,4.5);
+\draw[lead,draw=ink] (2.5,8.15)--(2.4,4.5);
 \fill[ink] (2.4,4.5) circle (.035);
-\node[lab,text=ink,text width=3cm] at (2.5,7.3) {Drive motor};
-\draw[lead,draw=ink] (6.1,7.35)--(6.2,4.65);
+\node[lab,text=ink,text width=3cm] at (2.5,8.15) {Drive motor};
+\draw[lead,draw=ink] (6.1,8.15)--(6.2,4.65);
 \fill[ink] (6.2,4.65) circle (.035);
-\node[lab,text=ink,text width=3.7cm] at (6.1,7.35) {Screw / nut coupling};
-\draw[lead,draw=ink] (9.45,8.35)--(9.5,6.1);
+\node[lab,text=ink,text width=2.7cm] at (6.1,8.15) {Lead screw};
+\draw[lead,draw=ink] (9.5,8.15)--(9.5,6.1);
 \fill[ink] (9.5,6.1) circle (.035);
-\node[lab,text=ink,text width=2.7cm] at (9.45,8.35) {Carriage};
-\draw[lead,draw=teal!70!black] (12.5,0.85)--(13.1,2.9);
-\fill[teal!70!black] (13.1,2.9) circle (.035);
-\node[lab,text=teal!70!black,text width=3.2cm] at (12.5,0.85) {Encoder scale};
+\node[lab,text=ink,text width=3.0cm] at (9.5,8.15) {Carriage / nut};
+\draw[lead,draw=teal!70!black] (12.5,1.15)--(9.95,2.95);
+\fill[teal!70!black] (9.95,2.95) circle (.035);
+\node[lab,text=teal!70!black,text width=4.4cm] at (12.5,1.15) {Carriage-mounted readhead};
+\draw[lead,draw=teal!70!black] (5.0,1.15)--(6.6,2.8);
+\fill[teal!70!black] (6.6,2.8) circle (.035);
+\node[lab,text=teal!70!black,text width=4.0cm] at (5.0,1.15) {Fixed encoder scale};
 \draw[heat] (0.2,4.6)--(.9,4.6);
 \node[lab,text=ink,text width=1cm] at (0.65,5.25) {$u$};
-\draw[measure] (8.4,7.15)--(12.7,7.15);
-\node[lab,text=ink,text width=3cm] at (10.7,7.7) {Position $x$};
-\node[lab,text=ink,text width=10cm] at (6.3,0.35) {Normalized plant: $G(s)=1/[s(s+2)(s+6)]$};
+\draw[measure] (11.4,7.15)--(14.8,7.15);
+\node[lab,text=ink,text width=2.8cm] at (13.4,8.15) {Position $x$};
+\node[lab,text=ink,text width=12cm] at (7.5,0.25) {Normalized plant: $G(s)=1/[s(s+2)(s+6)]$};
 
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Command and readout}\\[3pt]Drive command $u$ and measured position $x$ form a normalized teaching interface.};
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Stipulated dynamics}\\[3pt]$G(s)=\dfrac{1}{s(s+2)(s+6)}$.\\One integrator and two stable lags determine the pole geometry.};

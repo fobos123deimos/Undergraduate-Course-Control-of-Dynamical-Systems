@@ -1,7 +1,7 @@
 % Style 2: raster equipment illustration with exact editable TikZ annotations.
 \begin{tikzpicture}[
 font=\sffamily\small,>=Latex,line cap=round,line join=round,
-lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner sep=3.5pt},
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.88,text opacity=1,rounded corners=2pt,inner sep=2.7pt},
 lead/.style={draw=ink!70,line width=.7pt},
 flow/.style={->,draw=blue!65!black,line width=1.15pt},
 heat/.style={->,draw=orange!85!black,line width=1.15pt},
@@ -14,26 +14,31 @@ wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/12-identification-capstone-art.png}{\def\equipmentart{figures/12-identification-capstone-art.png}}{\IfFileExists{../../laboratories/12-identification-capstone/figures/12-identification-capstone-art.png}{\def\equipmentart{../../laboratories/12-identification-capstone/figures/12-identification-capstone-art.png}}{\IfFileExists{../laboratories/12-identification-capstone/figures/12-identification-capstone-art.png}{\def\equipmentart{../laboratories/12-identification-capstone/figures/12-identification-capstone-art.png}}{\def\equipmentart{laboratories/12-identification-capstone/figures/12-identification-capstone-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Identification of a process with transport delay};
-\draw[lead,draw=ink] (2.0,8.1)--(2.3,7.0);
+\draw[lead,draw=ink] (2.7,8.2)--(2.3,7.0);
 \fill[ink] (2.3,7.0) circle (.035);
-\node[lab,text=ink,text width=4.0cm] at (2.0,8.1) {Matched inlet at ambient temperature};
+\node[lab,text=ink,text width=4.4cm] at (2.7,8.2) {Inlet at ambient $T_a$\\constant flow $q$};
+\draw[flow] (.65,7.0)--(1.9,7.0);
 \draw[lead,draw=ink] (6.2,8.2)--(4.7,7.1);
 \fill[ink] (4.7,7.1) circle (.035);
 \node[lab,text=ink,text width=2.2cm] at (6.2,8.2) {Stirrer};
-\node[lab,text=ink,text width=3.5cm] at (4.65,4.3) {Mixed inventory\\temperature deviation $x$};
+\draw[lead,draw=ink] (9.1,7.7)--(7.6,6.6)--(6.3,4.3);
+\fill[ink] (6.3,4.3) circle (.035);
+\node[lab,text=ink,text width=3.8cm] at (10.1,8.2) {Well-mixed fluid\\state $x=T-T_a$};
 \draw[lead,draw=orange!85!black] (4.2,0.65)--(4.2,2.5);
 \fill[orange!85!black] (4.2,2.5) circle (.035);
 \node[lab,text=orange!85!black,text width=3.5cm] at (4.2,0.65) {Heater input $u$};
 \draw[heat] (2.1,5.6)--(.5,6.2);
-\node[lab,text=ink,text width=1.8cm] at (0.95,5.25) {Wall heat leakage};
-\draw[lead,draw=ink] (10.4,6.3)--(10.7,2.3);
+\node[lab,text=ink,text width=1.25cm] at (1.0,4.9) {Heat\\loss};
+\draw[lead,draw=ink] (10.5,6.3)--(10.7,2.3);
 \fill[ink] (10.7,2.3) circle (.035);
-\node[lab,text=ink,text width=4.4cm] at (10.4,6.3) {Transport delay $\theta$\\ideal plug flow};
+\node[lab,text=ink,text width=3.8cm] at (10.5,6.3) {Transport delay $\theta$\\ideal plug flow};
 \draw[lead,draw=teal!70!black] (13.7,5.1)--(13.6,3.85);
 \fill[teal!70!black] (13.6,3.85) circle (.035);
 \node[lab,text=teal!70!black,text width=3.5cm] at (13.7,5.1) {Remote readout $y$};
 \draw[flow] (7.9,3.35)--(9.4,3.35);
 \draw[flow] (11.4,2.2)--(12.6,2.2);
+\draw[flow] (14.15,2.2)--(15.2,2.2);
+\node[lab,text=ink,text width=1.8cm] at (14.7,1.45) {Outlet $q$};
 \node[lab,text=ink,text width=5.5cm] at (11.8,0.65) {$y(t)=x(t-\theta)$};
 
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Synthetic experiment}\\[3pt]$G(s)=1.8e^{-0.6s}/(4s+1)$.\\Declared gain, lag and delay generate the records; none is a physical measurement.};

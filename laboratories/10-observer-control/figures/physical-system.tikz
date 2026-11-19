@@ -1,7 +1,7 @@
 % Style 2: raster equipment illustration with exact editable TikZ annotations.
 \begin{tikzpicture}[
 font=\sffamily\small,>=Latex,line cap=round,line join=round,
-lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner sep=3.5pt},
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.88,text opacity=1,rounded corners=2pt,inner sep=2.7pt},
 lead/.style={draw=ink!70,line width=.7pt},
 flow/.style={->,draw=blue!65!black,line width=1.15pt},
 heat/.style={->,draw=orange!85!black,line width=1.15pt},
@@ -14,23 +14,28 @@ wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/10-observer-control-art.png}{\def\equipmentart{figures/10-observer-control-art.png}}{\IfFileExists{../../laboratories/10-observer-control/figures/10-observer-control-art.png}{\def\equipmentart{../../laboratories/10-observer-control/figures/10-observer-control-art.png}}{\IfFileExists{../laboratories/10-observer-control/figures/10-observer-control-art.png}{\def\equipmentart{../laboratories/10-observer-control/figures/10-observer-control-art.png}}{\def\equipmentart{laboratories/10-observer-control/figures/10-observer-control-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Two thermal zones, one measurement};
-\node[lab,text=ink,text width=3.7cm] at (4.1,4.9) {Zone 1: $x_1$\\$C_1=10$ J/K};
-\node[lab,text=ink,text width=3.6cm] at (10.9,4.9) {Zone 2: $x_2$\\$C_2=10$ J/K};
-\draw[heat] (3.7,7.3)--(3.7,8.0);
-\node[lab,text=ink,text width=3.5cm] at (3.7,8.5) {$H_{1a}=1$ W/K};
-\draw[heat] (11.6,7.3)--(11.6,8.0);
-\node[lab,text=ink,text width=3.7cm] at (11.6,8.5) {$H_{2a}=0.5$ W/K};
-\draw[lead,draw=orange!85!black] (8,6.5)--(8,4.5);
+% An aligned top band identifies each inventory and all three conductances.
+\draw[heat] (1.7,7.2)--(1.7,7.85);
+\node[lab,text=ink,text width=2.5cm] at (1.7,8.45) {Ambient loss\\$H_{1a}=1$ W/K};
+\draw[lead,draw=ink] (4.7,8.0)--(4.7,5.2);
+\fill[ink] (4.7,5.2) circle (.035);
+\node[lab,text=ink,text width=2.8cm] at (4.7,8.45) {Zone 1: $x_1$\\$C_1=10$ J/K};
+\draw[lead,draw=orange!85!black] (8,8.0)--(8,4.5);
 \fill[orange!85!black] (8,4.5) circle (.035);
-\node[lab,text=orange!85!black,text width=3.6cm] at (8,6.5) {Thermal bridge\\$H_{12}=0.5$ W/K};
+\node[lab,text=orange!85!black,text width=2.8cm] at (8,8.45) {Thermal bridge\\$H_{12}=0.5$ W/K};
+\draw[lead,draw=ink] (11.1,8.0)--(11.1,5.2);
+\fill[ink] (11.1,5.2) circle (.035);
+\node[lab,text=ink,text width=2.8cm] at (11.1,8.45) {Zone 2: $x_2$\\$C_2=10$ J/K};
+\draw[heat] (14.3,7.2)--(14.3,7.85);
+\node[lab,text=ink,text width=2.5cm] at (14.3,8.45) {Ambient loss\\$H_{2a}=0.5$ W/K};
 \draw[heatboth] (7.15,4.5)--(8.9,4.5);
-\draw[lead,draw=orange!85!black] (3.9,0.85)--(3.9,3.5);
+\draw[lead,draw=orange!85!black] (3.9,0.95)--(3.9,3.5);
 \fill[orange!85!black] (3.9,3.5) circle (.035);
-\node[lab,text=orange!85!black,text width=3.5cm] at (3.9,0.85) {Heater $u$ [W]};
-\draw[measure] (12.55,4.7)--(15.75,4.7);
-\node[lab,text=ink,text width=2cm] at (14.7,5.5) {$y=x_2$};
-\node[lab,text=ink,text width=4.5cm] at (11.7,0.85) {Only zone 2 is sensed};
-\node[lab,text=ink,text width=12cm] at (8,0.2) {Temperatures relative to a fixed ambient temperature};
+\node[lab,text=orange!85!black,text width=3.5cm] at (3.9,0.95) {Heater $u$ [W]};
+\draw[measure] (14.1,4.9)--(15.75,4.9);
+
+\node[lab,text=ink,text width=5.5cm] at (11.7,0.95) {Measured output $y=x_2$; only zone 2 is sensed};
+\node[lab,text=ink,text width=12cm] at (8,0.25) {Temperatures relative to a fixed ambient temperature};
 
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Two energy stores}\\[3pt]$C_1=C_2=10$ J/K.\\$x_1,x_2$: ambient-relative temperatures.\\Input heat enters zone 1 only.};
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Coupled balances}\\[3pt]$10\dot x_1=u-1.5x_1+0.5x_2$.\\$10\dot x_2=0.5x_1-x_2$.\\All right-hand terms are heat rates.};
