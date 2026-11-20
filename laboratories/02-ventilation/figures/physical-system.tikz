@@ -14,8 +14,16 @@ wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/02-ventilation-art.png}{\def\equipmentart{figures/02-ventilation-art.png}}{\IfFileExists{../../laboratories/02-ventilation/figures/02-ventilation-art.png}{\def\equipmentart{../../laboratories/02-ventilation/figures/02-ventilation-art.png}}{\IfFileExists{../laboratories/02-ventilation/figures/02-ventilation-art.png}{\def\equipmentart{../laboratories/02-ventilation/figures/02-ventilation-art.png}}{\def\equipmentart{laboratories/02-ventilation/figures/02-ventilation-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Ventilation and its liquid analogue};
-\node[lab,text=ink,text width=4cm] at (4.1,8.35) {Ventilated room};
-\node[lab,text=ink,text width=3.2cm] at (12.0,8.35) {Mixed tank};
+\node[lab,text=ink,text width=4cm] (roomLabel) at (4.1,8.35) {Ventilated room};
+\node[lab,text=ink,text width=3.2cm] (tankLabel) at (12.0,8.35) {Mixed tank};
+% Link the shared model, not the fluid circuits: air and liquid stay separate.
+\draw[<->,draw=ink!65,line width=.85pt,dash pattern=on 3pt off 2pt,
+shorten <=3pt,shorten >=3pt]
+  (roomLabel.east)--node[above=3pt,font=\sffamily\footnotesize,text=ink,
+  fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner sep=2pt]
+  {Same mass balance}
+  node[below=3pt,font=\sffamily\scriptsize,text=ink!80]
+  {Mathematical analogy}(tankLabel.west);
 \draw[flow] (0.2,4.4)--(1.5,4.4);
 \draw[lead] (1.65,7.1)--(1.65,5.55);
 \node[lab,text=ink,text width=2.6cm] at (1.65,7.45) {Clean air $q$};
