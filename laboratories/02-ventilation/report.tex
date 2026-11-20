@@ -19,7 +19,7 @@
 \section{Design brief}
 A hypothetical well-mixed room has $V=120\,\mathrm{m^3}$, tracer generation $S=360\,\mathrm{ppm\,m^3/min}$ and nominal airflow $q_0=3\,\mathrm{m^3/min}$. Inlet excess concentration is zero. Derive the equilibrium and local airflow-to-concentration model from $V\dot c=S-qc$. Compare $10\%$ and $100\%$ airflow increases using the nonlinear and linearized models, including their final-value errors.
 \section{Physical system}
-\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small A ventilated room and a well-mixed liquid analogue share an inventory balance. The room uses m$^3$ and the liquid case uses L; do not mix their concentration or flow units. Equal inlet and outlet volume flows keep each inventory constant.}\end{center}
+\begin{center}\resizebox{.88\linewidth}{!}{\input{figures/physical-system.tikz}}\par{\small The room uses m$^3$ and the isolated liquid analogue uses L. Their balances are evaluated separately with consistent concentration and flow units. The connecting pipe is illustrative; gas--liquid transfer and absorption are not included in these models.}\end{center}
 \section{Concentration balance}
 For a perfectly mixed room, let $c$ be excess tracer concentration in ppm, $q$ ventilation flow in m$^3$/min and $S$ tracer generation in ppm m$^3$/min. Conservation gives
 \[V\dot c=S-qc.\]

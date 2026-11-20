@@ -1,9 +1,10 @@
 % Style 2: raster equipment illustration with exact editable TikZ annotations.
 \definecolor{ventFlow}{RGB}{30,128,163}
 \definecolor{ventSource}{RGB}{185,98,34}
+\definecolor{ventSteel}{RGB}{37,58,72}
 \begin{tikzpicture}[
 font=\sffamily\small,>=Latex,line cap=round,line join=round,
-lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner sep=3.5pt},
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner xsep=3pt,inner ysep=2.5pt},
 lead/.style={draw=ink!70,line width=.7pt},
 flow/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=ventFlow,line width=1.05pt},
 sourceflow/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=ventSource,line width=1.05pt},
@@ -17,43 +18,57 @@ wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/02-ventilation-art.png}{\def\equipmentart{figures/02-ventilation-art.png}}{\IfFileExists{../../laboratories/02-ventilation/figures/02-ventilation-art.png}{\def\equipmentart{../../laboratories/02-ventilation/figures/02-ventilation-art.png}}{\IfFileExists{../laboratories/02-ventilation/figures/02-ventilation-art.png}{\def\equipmentart{../laboratories/02-ventilation/figures/02-ventilation-art.png}}{\def\equipmentart{laboratories/02-ventilation/figures/02-ventilation-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Ventilation and its liquid analogue};
-\node[lab,text=ink,text width=4cm] (roomLabel) at (4.1,8.35) {Ventilated room};
-\node[lab,text=ink,text width=3.2cm] (tankLabel) at (12.0,8.35) {Mixed tank};
-\node[lab,text=ink,font=\sffamily\footnotesize,text width=3.3cm]
-  at (8.2,8.55) {Mass-balance analogy};
-\node[text=ink,font=\small] at (8.2,8.12) {$V\dot c=S-qc$};
-% A structural bridge makes the analogy explicit between the two bodies.
-% Its neutral dashed stroke and equivalence sign distinguish it from flows.
-\draw[draw=ink!65,line width=1.1pt,dash pattern=on 2.4pt off 1.8pt]
-  (8.46,5.55)--(9.83,5.55);
-\node[circle,draw=ink!55,fill=white,line width=.65pt,
-  minimum size=.46cm,inner sep=1pt,text=ink,font=\normalsize]
-  at (9.15,5.55) {$\equiv$};
-\node[lab,text=ink,font=\sffamily\scriptsize,text width=1.0cm,
-  inner sep=2pt] at (9.15,6.12) {Same\\model};
+\node[lab,text=ink] (roomLabel) at (4.1,8.5) {Ventilated room};
+\node[lab,text=ink] (tankLabel) at (12.0,8.5) {Mixed tank};
+\node[lab,text=ink,font=\sffamily\footnotesize]
+  at (8.2,8.7) {Mass-balance analogy};
+\node[text=ink,font=\small] at (8.2,8.08) {$V\dot c=S-qc$};
+% A metal duct joins the room wall to the existing tank inlet.
+% It is an illustrative coupling; the equations refer to isolated models.
+\def\transferpipe{(8.43,4.4)--(8.91,4.4)--(8.91,6.8)--(9.49,6.8)}
+\begin{scope}[rounded corners=5.5pt,line cap=butt]
+  \draw[draw=ink!20,line width=8.6pt,opacity=.3,xshift=.55pt,yshift=-.65pt] \transferpipe;
+  \draw[draw=ventSteel,line width=7.5pt] \transferpipe;
+  % Fine nested strokes provide a continuous cylindrical metal reflection.
+  \foreach \step in {1,...,60} {
+    \pgfmathsetmacro{\fraction}{\step/60}
+    \pgfmathsetmacro{\steelwidth}{7.5-7.35*\fraction}
+    \pgfmathsetmacro{\steeltone}{\fraction<.36 ? 10+87*\fraction/.36 : 97-35*(\fraction-.36)/.64}
+    \draw[draw=white!\steeltone!ventSteel,line width=\steelwidth pt] \transferpipe;
+  }
+  \draw[draw=white,line width=.3pt,opacity=.65,xshift=-.85pt,yshift=.85pt] \transferpipe;
+\end{scope}
+% Wall flange and inlet sleeve close the joints against the raster equipment.
+\shade[left color=gray!70,right color=gray!65,middle color=white,
+  draw=ink!75,line width=.45pt,rounded corners=1pt]
+  (8.39,4.1) rectangle (8.56,4.7);
+\fill[ink!75] (8.475,4.63) circle (.022);
+\fill[ink!75] (8.475,4.17) circle (.022);
+\shade[top color=gray!75,bottom color=gray!70,middle color=white,
+  draw=ink!75,line width=.4pt]
+  (9.38,6.64) rectangle (9.5,6.96);
 % Flow arrows stay outside the hardware, along each port's axis.
-\draw[flow] (0.10,4.4)--(0.94,4.4);
-\node[lab,text=ink,text width=2.6cm] (airLabel) at (1.65,7.62) {Clean air $q$};
+\draw[flow] (-.08,4.4)--(.68,4.4);
+\node[lab,text=ink] (airLabel) at (1.65,7.42) {Clean air $q$};
 \draw[lead,shorten <=3pt,shorten >=2pt] (airLabel.south)--(1.8,5.2);
-\draw[flow] (8.55,4.4)--(9.18,4.4);
-\node[lab,text=ink,text width=2.1cm] (exhaustLabel) at (7.35,7.62) {Exhaust $qc$};
+\draw[flow] (9.3,4.95)--(9.3,5.72);
+\node[lab,text=ink] (exhaustLabel) at (7.35,7.42) {Exhaust $qc$};
 \draw[lead,shorten <=3pt,shorten >=2pt] (exhaustLabel.south)--(7.8,5.15);
 % Tracer enters the room through the nozzle and rises into the air.
 \draw[sourceflow] (4.2,3.03)--(4.2,3.94);
 \node[lab,text=ventSource] at (4.2,4.5) {Tracer source $S$};
-\node[lab,text=teal!70!black,text width=2.0cm] (sensorLabel) at (6.5,1.12) {Sensor $c$};
+\node[lab,text=teal!70!black] (sensorLabel) at (6.5,1.12) {Sensor $c$};
 \draw[lead,draw=teal!70!black,shorten <=3pt] (sensorLabel.north)--(6.5,2.8);
 \fill[teal!70!black] (6.5,2.8) circle (.035);
-\draw[flow] (8.70,6.8)--(9.35,6.8);
-\node[lab,text=ink,text width=1.8cm] at (9.9,7.62) {Clean $q$};
+\node[lab,text=ink] at (10.0,7.42) {Gas inlet};
 \draw[sourceflow] (15.28,6.86)--(14.42,6.86);
-\node[lab,text=ink,text width=2.2cm] at (14.35,7.62) {Dose $S$};
+\node[lab,text=ink] at (14.35,7.42) {Dose $S$};
 \draw[flow] (15.46,2.6)--(15.92,2.6);
 \node[lab,text=ink] at (15.15,3.55) {$qc$};
-\node[lab,text=ink,text width=7cm] at (4.2,0.3) {$V=120$ m$^3$; concentration $c$};
-\node[lab,text=ink,text width=7cm] at (12.0,0.3) {$V=120$ L; same balance, different units};
+\node[lab,text=ink] at (4.2,0.3) {$V=120$ m$^3$; concentration $c$};
+\node[lab,text=ink] at (12.0,0.3) {$V=120$ L; liquid analogue};
 
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Inventory and channels}\\[3pt]$c$: tracer concentration.\\$S$: source rate; $q$: throughput.\\Equal inlet/outlet flow fixes $V$.};
-\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Balance and bilinearity}\\[3pt]$V\dot c=S-qc$.\\The product $qc$ couples state and input. Room and liquid cases use different volume units.};
-\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(10.9,-.3){\textbf{Mixing assumption}\\[3pt]The fan and stirrer illustrate ideal mixing only. Air velocity fields, fan dynamics and mixing transients are not modeled.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Isolated-system balances}\\[3pt]$V\dot c=S-qc$.\\The product $qc$ couples state and input. Each isolated model uses its own consistent units.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(10.9,-.3){\textbf{Mixing and connection}\\[3pt]Fan and stirrer illustrate ideal mixing. The pipe connection is illustrative; gas--liquid transfer is not modeled.};
 \end{tikzpicture}

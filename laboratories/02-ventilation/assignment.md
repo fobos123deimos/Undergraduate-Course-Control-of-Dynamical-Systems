@@ -6,7 +6,7 @@ A hypothetical well-mixed room has $V=120\,\mathrm{m^3}$, tracer generation $S=3
 
 ![Physical system](figures/physical-system.png)
 
-A ventilated room and a well-mixed liquid analogue share an inventory balance. The room uses m$^3$ and the liquid case uses L; do not mix their concentration or flow units. Equal inlet and outlet volume flows keep each inventory constant.
+The room uses m$^3$ and the isolated liquid analogue uses L. Their balances are evaluated separately with consistent concentration and flow units. The connecting pipe is illustrative; gas--liquid transfer and absorption are not included in these models.
 
 ## Mathematical structure
 
