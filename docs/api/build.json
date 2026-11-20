@@ -65,7 +65,7 @@
     "laboratories/12-identification-capstone/figures/system-diagram.png": "5588deedb3fead5a79de8f033c6b2233ceca09fccda0c89a53a0ac41734bb174",
     "laboratories/12-identification-capstone/response.png": "b85ddb124c576783faf987cd990054d52accb923d49ed56253993dd480f6124d",
     "problem-sets/integrated-design/figures/interacting-tanks.png": "a1e520e4f6ac641d3fe7fce992db8e43fa4eee893fae4a75e9480e1a6fbb2aa0",
-    "docs/images/interacting-tanks-hero.png": "a491c52b17cf1744a7b11f221366aa6ab41851fd847c1336ea6f5cca6cd05b46",
+    "docs/images/interacting-tanks-hero.png": "ee38ef6cd198695cf910789996e76c52a8637221a189d8f483eb2162018b873b",
     "docs/diagram-atlas.pdf": "e6e823000469cce5a9ac184599b881d0a48a22f70125bd5666d3823beec2c99f"
   },
   "artifact_sha256": {
@@ -107,7 +107,7 @@
     "assets/12-response.png": "b85ddb124c576783faf987cd990054d52accb923d49ed56253993dd480f6124d",
     "assets/12-system-diagram.png": "5588deedb3fead5a79de8f033c6b2233ceca09fccda0c89a53a0ac41734bb174",
     "assets/diagram-atlas.pdf": "e6e823000469cce5a9ac184599b881d0a48a22f70125bd5666d3823beec2c99f",
-    "assets/interacting-tanks-hero.png": "a491c52b17cf1744a7b11f221366aa6ab41851fd847c1336ea6f5cca6cd05b46",
+    "assets/interacting-tanks-hero.png": "ee38ef6cd198695cf910789996e76c52a8637221a189d8f483eb2162018b873b",
     "assets/interacting-tanks.png": "a1e520e4f6ac641d3fe7fce992db8e43fa4eee893fae4a75e9480e1a6fbb2aa0",
     "course_guide.html": "bc8fd8af36bf73ba4645772115514fe84c64703710fa76d867dbd572aa6640ba",
     "index.html": "58da73edbb03ae1a5d940f0c934b7b6c2ffc75583a1c2233d4ce0c461a3e63b6",
