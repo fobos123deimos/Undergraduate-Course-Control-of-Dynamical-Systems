@@ -1,36 +1,38 @@
 % Style 2: raster equipment illustration with exact editable TikZ annotations.
 \begin{tikzpicture}[
 font=\sffamily\small,>=Latex,line cap=round,line join=round,
-lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.88,text opacity=1,rounded corners=2pt,inner sep=2.7pt},
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner xsep=3pt,inner ysep=2.5pt},
 lead/.style={draw=ink!70,line width=.7pt},
 flow/.style={->,draw=blue!65!black,line width=1.15pt},
-heat/.style={->,draw=orange!85!black,line width=1.15pt},
+heat/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=orange!85!black,line width=1.05pt},
 heatboth/.style={<->,draw=orange!85!black,line width=1.15pt},
-measure/.style={->,draw=teal!70!black,line width=1.05pt},
+measure/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=teal!70!black,line width=1.05pt},
 digital/.style={->,draw=teal!70!black,line width=1pt,dashed},
 beam/.style={->,draw=red!70!black,line width=.65pt},
-dim/.style={<->,draw=ink!70,line width=.7pt},
+dim/.style={{Latex[length=2mm,width=1.4mm]}-{Latex[length=2mm,width=1.4mm]},draw=ink!70,line width=.7pt},
 wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/07-delay-budget-art.png}{\def\equipmentart{figures/07-delay-budget-art.png}}{\IfFileExists{../../laboratories/07-delay-budget/figures/07-delay-budget-art.png}{\def\equipmentart{../../laboratories/07-delay-budget/figures/07-delay-budget-art.png}}{\IfFileExists{../laboratories/07-delay-budget/figures/07-delay-budget-art.png}{\def\equipmentart{../laboratories/07-delay-budget/figures/07-delay-budget-art.png}}{\def\equipmentart{laboratories/07-delay-budget/figures/07-delay-budget-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Feedback with communication delay};
-\draw[lead,draw=ink] (4.5,8.3)--(5.6,7.2);
+\node[lab,text=ink] (sensorLabel) at (4.5,8.3) {Remote sensor};
+\draw[lead,draw=ink,shorten <=3pt] (sensorLabel.south)--(5.6,7.2);
 \fill[ink] (5.6,7.2) circle (.035);
-\node[lab,text=ink,text width=3.0cm] at (4.5,8.3) {Remote sensor};
-\draw[measure] (6.8,6.45)--(11.05,6.45);
-\node[lab,text=ink,text width=3.5cm] at (9.3,7.5) {Sensed output\\sample packets};
+% Keep packet flow above the apparatus and enter the controller at its edge.
+\draw[measure,rounded corners=3pt] (6.8,6.45)--(10.7,6.45)--(10.7,6.05)--(11.1,6.05);
+\node[lab,text=ink] at (9.3,7.5) {Sensed output\\sample packets};
 \foreach \x in {7.4,8.2,9.0}{\draw[ink,fill=blue!12] (\x,6.31)rectangle++(.34,.28);}
 \draw[teal!60!black,dashed] (4.1,5.45)--(3.25,3.8) (3.85,5.2)--(1.5,3.8);
-\draw[measure] (1.45,4.7)--(3.2,4.7);
-\node[lab,text=ink,text width=1.5cm] at (2.2,5.15) {$y(t)$};
-\node[lab,text=white,fill opacity=0,text width=2.8cm] at (13.2,4.9) {Controller\\time stamp};
+% Position indication is separate from the camera's dashed field of view.
+\draw[measure] (1.45,5.32)--(3.15,5.32);
+\node[lab,text=ink] at (2.2,5.77) {$y(t)$};
+\node[lab,text=white,fill opacity=0] at (13.2,4.9) {Controller\\time stamp};
 \draw[dim] (7.5,4.75)--(10.4,4.75);
-\node[lab,text=ink,text width=2.8cm] at (8.95,4.05) {Total delay $T$};
+\node[lab,text=ink] at (8.95,4.32) {Total delay $T$};
 % Command terminates at the stage motor, not the supporting bench.
-\draw[heat] (11.2,3.6)--(8,3.6)--(8,1.1)--(6.25,1.1)--(6.25,2.5)--(5.85,2.5);
-\node[lab,text=ink,text width=2.6cm] at (9.65,2.7) {Actuation\\command};
-\node[lab,text=ink,text width=3.1cm] at (2.7,0.45) {Position stage};
-\node[lab,text=ink,text width=9.8cm] at (10.2,0.45) {Fixed latency; packet loss and jitter omitted};
+\draw[heat,rounded corners=3pt] (11.0,3.85)--(8,3.85)--(8,1.6)--(6.25,1.6)--(6.25,2.5)--(5.92,2.5);
+\node[lab,text=ink] at (9.65,2.7) {Actuation\\command};
+\node[lab,text=ink] at (2.7,0.45) {Position stage};
+\node[lab,text=ink] at (10.2,0.45) {Fixed latency; packet loss and jitter omitted};
 
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Signal direction}\\[3pt]Top path: sensed output to controller. Bottom path: command returning to the mechanism.};
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Equivalent delay}\\[3pt]$y_d(t)=y(t-T)$.\\$e^{-sT}$ has unit magnitude and phase $-\omega T$ [rad].};

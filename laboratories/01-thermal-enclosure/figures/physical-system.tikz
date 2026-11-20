@@ -1,35 +1,38 @@
 % Style 2: raster equipment illustration with exact editable TikZ annotations.
 \begin{tikzpicture}[
 font=\sffamily\small,>=Latex,line cap=round,line join=round,
-lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner sep=3.5pt},
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner xsep=3pt,inner ysep=2.5pt},
 lead/.style={draw=ink!70,line width=.7pt},
-flow/.style={->,draw=blue!65!black,line width=1.15pt},
-heat/.style={->,draw=orange!85!black,line width=1.15pt},
+flow/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=cyan!55!blue!75!black,line width=1.05pt},
+heat/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=orange!75!black,line width=1.05pt},
 heatboth/.style={<->,draw=orange!85!black,line width=1.15pt},
-measure/.style={->,draw=teal!70!black,line width=1.05pt},
+measure/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=teal!70!black,line width=1.0pt},
 digital/.style={->,draw=teal!70!black,line width=1pt,dashed},
-beam/.style={->,draw=red!70!black,line width=.65pt},
-dim/.style={<->,draw=ink!70,line width=.7pt},
+beam/.style={-{Latex[length=1.6mm,width=1.0mm]},draw=red!70!black,line width=.65pt},
+dim/.style={{Latex[length=1.7mm,width=1.2mm]}-{Latex[length=1.7mm,width=1.2mm]},draw=ink!70,line width=.7pt},
 wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/01-thermal-enclosure-art.png}{\def\equipmentart{figures/01-thermal-enclosure-art.png}}{\IfFileExists{../../laboratories/01-thermal-enclosure/figures/01-thermal-enclosure-art.png}{\def\equipmentart{../../laboratories/01-thermal-enclosure/figures/01-thermal-enclosure-art.png}}{\IfFileExists{../laboratories/01-thermal-enclosure/figures/01-thermal-enclosure-art.png}{\def\equipmentart{../laboratories/01-thermal-enclosure/figures/01-thermal-enclosure-art.png}}{\def\equipmentart{laboratories/01-thermal-enclosure/figures/01-thermal-enclosure-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Thermal enclosure and sensor lag};
-\draw[lead,draw=ink] (8,8.45)--(8,7.25);
-\fill[ink] (8,7.25) circle (.035);
-\node[lab,text=ink,text width=4.3cm] at (8,8.45) {Insulated camera enclosure};
-\draw[lead,draw=ink] (1.7,5.65)--(6.5,4.7);
-\fill[ink] (6.5,4.7) circle (.035);
-\node[lab,text=ink,text width=2.7cm] at (1.7,5.65) {Thermal payload};
-\draw[lead,draw=orange!85!black] (6.7,0.95)--(7.9,2.9);
-\fill[orange!85!black] (7.9,2.9) circle (.035);
-\node[lab,text=orange!85!black,text width=3.3cm] at (6.7,0.95) {Electrical heater};
-\draw[heat] (0.7,2.95)--(4.35,2.95);
-\node[lab,text=ink,text width=2cm] at (1.6,3.4) {$P$ [W]};
-\draw[measure] (10.75,4.8)--(14.5,4.8);
-\node[lab,text=ink,text width=2.35cm] at (14.45,5.9) {Sensor reading $y$\\$\tau_s=12$ s};
-\draw[heat] (12.8,3.45)--(14.9,3.45);
-\node[lab,text=ink,text width=2.35cm] at (14.45,2.45) {Heat loss\\$H(T-T_a)$};
-\node[lab,text=ink,text width=10cm] at (8,0.15) {$C=900$ J/K; $H=15$ W/K; ambient $T_a$};
+% Compact labels and leaders terminate on the named component.
+\node[lab,text=ink] (enclosureLabel) at (8,8.45) {Insulated camera enclosure};
+\draw[lead,shorten <=3pt] (enclosureLabel.south)--(8,7.25);
+\fill[ink] (8,7.25) circle (.028);
+\node[lab,text=ink] (payloadLabel) at (1.7,5.65) {Thermal payload};
+\draw[lead,shorten <=3pt] (payloadLabel.east)--(6.35,4.95);
+\fill[ink] (6.35,4.95) circle (.028);
+\node[lab,text=orange!75!black] (heaterLabel) at (6.7,1.00) {Electrical heater};
+\draw[lead,draw=orange!75!black,shorten <=3pt] (heaterLabel.north)--(7.9,2.9);
+\fill[orange!75!black] (7.9,2.9) circle (.028);
+% The power and loss arrowheads remain clear of the enclosure hardware.
+\draw[heat] (.7,2.95)--(3.0,2.95);
+\node[lab,text=ink] at (1.7,3.40) {$P$ [W]};
+% Measurement originates at the sensor edge; its arrowhead is outside the wall.
+\draw[measure] (11.22,4.8)--(14.80,4.8);
+\node[lab,text=ink] at (14.25,5.80) {Sensor reading $y$\\$\tau_s=12$ s};
+\draw[heat] (13.03,3.45)--(14.85,3.45);
+\node[lab,text=ink] at (14.25,2.45) {Heat loss\\$H(T-T_a)$};
+\node[lab,text=ink] at (8,.30) {$C=900$ J/K; $H=15$ W/K; ambient $T_a$};
 
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Stored and indicated heat}\\[3pt]$x=T-T_a$ [K]; $y$ [K].\\Physical storage and sensor memory are separate states.};
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Balances}\\[3pt]$900\dot x=P-15x$.\\$12\dot y=x-y$.\\Heat rate in W; time in s.};

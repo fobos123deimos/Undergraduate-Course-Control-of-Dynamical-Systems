@@ -1,12 +1,12 @@
 % Style 2: raster equipment illustration with exact editable TikZ annotations.
 \begin{tikzpicture}[
 font=\sffamily\small,>=Latex,line cap=round,line join=round,
-lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.88,text opacity=1,rounded corners=2pt,inner sep=2.7pt},
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner xsep=3pt,inner ysep=2.5pt},
 lead/.style={draw=ink!70,line width=.7pt},
 flow/.style={->,draw=blue!65!black,line width=1.15pt},
-heat/.style={->,draw=orange!85!black,line width=1.15pt},
-heatboth/.style={<->,draw=orange!85!black,line width=1.15pt},
-measure/.style={->,draw=teal!70!black,line width=1.05pt},
+heat/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=orange!85!black,line width=1.05pt},
+heatboth/.style={{Latex[length=2.2mm,width=1.5mm]}-{Latex[length=2.2mm,width=1.5mm]},draw=orange!85!black,line width=1.05pt},
+measure/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=teal!70!black,line width=1.05pt},
 digital/.style={->,draw=teal!70!black,line width=1pt,dashed},
 beam/.style={->,draw=red!70!black,line width=.65pt},
 dim/.style={<->,draw=ink!70,line width=.7pt},
@@ -14,26 +14,27 @@ wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/09-pid-saturation-art.png}{\def\equipmentart{figures/09-pid-saturation-art.png}}{\IfFileExists{../../laboratories/09-pid-saturation/figures/09-pid-saturation-art.png}{\def\equipmentart{../../laboratories/09-pid-saturation/figures/09-pid-saturation-art.png}}{\IfFileExists{../laboratories/09-pid-saturation/figures/09-pid-saturation-art.png}{\def\equipmentart{../laboratories/09-pid-saturation/figures/09-pid-saturation-art.png}}{\def\equipmentart{laboratories/09-pid-saturation/figures/09-pid-saturation-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {PID regulation with actuator saturation};
-\draw[lead,draw=ink] (1.7,8.15)--(1.4,6.45);
+\node[lab,text=ink] (supportLabel) at (1.7,8.15) {Fixed support};
+\draw[lead,draw=ink,shorten <=3pt] (supportLabel.south)--(1.4,6.45);
 \fill[ink] (1.4,6.45) circle (.035);
-\node[lab,text=ink,text width=2.7cm] at (1.7,8.15) {Fixed support};
-\draw[lead,draw=ink] (4.4,6.7)--(4.4,5.45);
+\node[lab,text=ink] (springLabel) at (4.4,6.7) {$k=1$ N/m};
+\draw[lead,draw=ink,shorten <=3pt] (springLabel.south)--(4.4,5.45);
 \fill[ink] (4.4,5.45) circle (.035);
-\node[lab,text=ink,text width=2.8cm] at (4.4,6.7) {$k=1$ N/m};
-\draw[lead,draw=ink] (4.4,1.1)--(4.4,3.7);
+\node[lab,text=ink] (damperLabel) at (4.4,1.1) {$b=2$ N s/m};
+\draw[lead,draw=ink,shorten <=3pt] (damperLabel.north)--(4.4,3.7);
 \fill[ink] (4.4,3.7) circle (.035);
-\node[lab,text=ink,text width=3.1cm] at (4.4,1.1) {$b=2$ N s/m};
-\draw[lead,draw=ink] (8.7,6.8)--(8.7,5.4);
+\node[lab,text=ink] (massLabel) at (8.7,6.8) {$m=1$ kg\\position $y$};
+\draw[lead,draw=ink,shorten <=3pt] (massLabel.south)--(8.7,5.4);
 \fill[ink] (8.7,5.4) circle (.035);
-\node[lab,text=ink,text width=2.8cm] at (8.7,6.8) {$m=1$ kg\\position $y$};
-\draw[lead,draw=orange!85!black] (13.4,7.8)--(13.45,4.8);
+\node[lab,text=orange!85!black] (actuatorLabel) at (13.4,7.8) {Force actuator\\$|u|\leq2$ N};
+\draw[lead,draw=orange!85!black,shorten <=3pt] (actuatorLabel.south)--(13.45,4.8);
 \fill[orange!85!black] (13.45,4.8) circle (.035);
-\node[lab,text=orange!85!black,text width=3.5cm] at (13.4,7.8) {Force actuator\\$|u|\leq2$ N};
-\draw[heat] (10.45,4.55)--(11.55,4.55);
-\node[lab,text=ink,text width=1.1cm] at (11.2,5.25) {$u$};
+% The applied-force reference is parallel to the rod, in the clear gap above it.
+\draw[heat] (10.8,5.12)--(11.68,5.12);
+\node[lab,text=orange!85!black] at (11.2,5.6) {$u$};
 \draw[measure] (7.3,7.8)--(10.65,7.8);
-\node[lab,text=ink,text width=3cm] at (9,8.35) {Positive $y$};
-\node[lab,text=ink,text width=12cm] at (8,0.35) {Ideal guidance; no rolling friction or hard stops};
+\node[lab,text=ink] at (9,8.35) {Positive $y$};
+\node[lab,text=ink] at (8,0.35) {Ideal guidance; no rolling friction or hard stops};
 
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Force and displacement}\\[3pt]$u$: applied force [N].\\$y$: displacement [m].\\Requested and applied inputs differ when saturation is active.};
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Dynamics and bound}\\[3pt]$\ddot y+2\dot y+y=u$.\\$-2\leq u\leq2$ N.\\The drawn source applies force to the moving mass.};

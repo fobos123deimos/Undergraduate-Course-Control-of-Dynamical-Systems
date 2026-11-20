@@ -1,45 +1,48 @@
 % Style 2: raster equipment illustration with exact editable TikZ annotations.
+\definecolor{detailFlow}{RGB}{30,128,163}
+\definecolor{detailHeat}{RGB}{185,98,34}
 \begin{tikzpicture}[
 font=\sffamily\small,>=Latex,line cap=round,line join=round,
-lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.88,text opacity=1,rounded corners=2pt,inner sep=2.7pt},
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner xsep=3pt,inner ysep=2.5pt},
 lead/.style={draw=ink!70,line width=.7pt},
-flow/.style={->,draw=blue!65!black,line width=1.15pt},
-heat/.style={->,draw=orange!85!black,line width=1.15pt},
+flow/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=detailFlow,line width=1.05pt},
+heat/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=detailHeat,line width=1.05pt},
 heatboth/.style={<->,draw=orange!85!black,line width=1.15pt},
 measure/.style={->,draw=teal!70!black,line width=1.05pt},
-digital/.style={->,draw=teal!70!black,line width=1pt,dashed},
+digital/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=teal!70!black,line width=.95pt,dashed,rounded corners=3pt},
 beam/.style={->,draw=red!70!black,line width=.65pt},
-dim/.style={<->,draw=ink!70,line width=.7pt},
+dim/.style={{Latex[length=1.8mm,width=1.2mm]}-{Latex[length=1.8mm,width=1.2mm]},draw=ink!70,line width=.7pt},
 wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/12-identification-capstone-art.png}{\def\equipmentart{figures/12-identification-capstone-art.png}}{\IfFileExists{../../laboratories/12-identification-capstone/figures/12-identification-capstone-art.png}{\def\equipmentart{../../laboratories/12-identification-capstone/figures/12-identification-capstone-art.png}}{\IfFileExists{../laboratories/12-identification-capstone/figures/12-identification-capstone-art.png}{\def\equipmentart{../laboratories/12-identification-capstone/figures/12-identification-capstone-art.png}}{\def\equipmentart{laboratories/12-identification-capstone/figures/12-identification-capstone-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Identification of a process with transport delay};
-\draw[lead,draw=ink] (2.7,8.2)--(2.3,7.0);
-\fill[ink] (2.3,7.0) circle (.035);
-\node[lab,text=ink,text width=4.4cm] at (2.7,8.2) {Inlet at ambient $T_a$\\constant flow $q$};
-\draw[flow] (.65,7.0)--(1.9,7.0);
-\draw[lead,draw=ink] (6.2,8.2)--(4.7,7.1);
-\fill[ink] (4.7,7.1) circle (.035);
-\node[lab,text=ink,text width=2.2cm] at (6.2,8.2) {Stirrer};
-\draw[lead,draw=ink] (9.1,7.7)--(7.6,6.6)--(6.3,4.3);
-\fill[ink] (6.3,4.3) circle (.035);
-\node[lab,text=ink,text width=3.8cm] at (10.1,8.2) {Well-mixed fluid\\state $x=T-T_a$};
-\draw[lead,draw=orange!85!black] (4.2,0.65)--(4.2,2.5);
-\fill[orange!85!black] (4.2,2.5) circle (.035);
-\node[lab,text=orange!85!black,text width=3.5cm] at (4.2,0.65) {Heater input $u$};
-\draw[heat] (2.1,5.6)--(.5,6.2);
-\node[lab,text=ink,text width=1.25cm] at (1.0,4.9) {Heat\\loss};
-\draw[lead,draw=ink] (10.5,6.3)--(10.7,2.3);
-\fill[ink] (10.7,2.3) circle (.035);
-\node[lab,text=ink,text width=3.8cm] at (10.5,6.3) {Transport delay $\theta$\\ideal plug flow};
-\draw[lead,draw=teal!70!black] (13.7,5.1)--(13.6,3.85);
-\fill[teal!70!black] (13.6,3.85) circle (.035);
-\node[lab,text=teal!70!black,text width=3.5cm] at (13.7,5.1) {Remote readout $y$};
+\node[lab,text=ink] (inletLabel) at (2.5,8.25) {Inlet at ambient $T_a$\\constant flow $q$};
+\draw[lead,shorten <=3pt] (inletLabel.south)--(2.3,7.0);
+\fill[ink!70] (2.3,7.0) circle (.028);
+% Transparent flow paths retain compact arrows on their centreline.
+\draw[flow] (.65,7.0)--(1.7,7.0);
+\node[lab,text=ink] (stirrerLabel) at (6.15,8.25) {Stirrer};
+\draw[lead,shorten <=3pt] (stirrerLabel.south west)--(4.7,7.1);
+\fill[ink!70] (4.7,7.1) circle (.028);
+\node[lab,text=ink] (fluidLabel) at (10.0,8.25) {Well-mixed fluid\\state $x=T-T_a$};
+\draw[lead,shorten <=3pt,rounded corners=2pt] (fluidLabel.south west)--(7.8,5.15)--(6.3,4.3);
+\fill[ink!70] (6.3,4.3) circle (.028);
+\node[lab,text=detailHeat] (heaterLabel) at (4.2,0.65) {Heater input $u$};
+\draw[lead,draw=detailHeat,shorten <=3pt] (heaterLabel.north)--(4.2,2.5);
+\fill[detailHeat] (4.2,2.5) circle (.028);
+\draw[heat] (1.85,5.15)--(.55,5.8);
+\node[lab,text=detailHeat] at (.85,4.8) {Heat\\loss};
+\node[lab,text=ink] (delayLabel) at (10.05,4.85) {Transport delay $\theta$\\ideal plug flow};
+\draw[lead,shorten <=3pt] (delayLabel.south east)--(10.7,3.0);
+\fill[ink!70] (10.7,3.0) circle (.028);
+\node[lab,text=teal!70!black] (sensorLabel) at (13.7,5.15) {Remote readout $y$};
+\draw[lead,draw=teal!70!black,shorten <=3pt] (sensorLabel.south)--(13.6,3.85);
+\fill[teal!70!black] (13.6,3.85) circle (.028);
 \draw[flow] (7.9,3.35)--(9.4,3.35);
 \draw[flow] (11.4,2.2)--(12.6,2.2);
-\draw[flow] (14.15,2.2)--(15.2,2.2);
-\node[lab,text=ink,text width=1.8cm] at (14.7,1.45) {Outlet $q$};
-\node[lab,text=ink,text width=5.5cm] at (11.8,0.65) {$y(t)=x(t-\theta)$};
+\draw[flow] (15.08,2.2)--(15.7,2.2);
+\node[lab,text=ink] at (14.65,1.5) {Outlet $q$};
+\node[lab,text=ink] at (11.8,0.65) {$y(t)=x(t-\theta)$};
 
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Synthetic experiment}\\[3pt]$G(s)=1.8e^{-0.6s}/(4s+1)$.\\Declared gain, lag and delay generate the records; none is a physical measurement.};
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Thermal interpretation}\\[3pt]One mixed energy store plus ideal transport. Through-flow and wall losses enter one effective conductance.};

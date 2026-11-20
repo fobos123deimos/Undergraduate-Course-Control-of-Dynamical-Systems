@@ -1,12 +1,12 @@
 % Style 2: raster equipment illustration with exact editable TikZ annotations.
 \begin{tikzpicture}[
 font=\sffamily\small,>=Latex,line cap=round,line join=round,
-lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner sep=3.5pt},
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner xsep=3pt,inner ysep=2.5pt},
 lead/.style={draw=ink!70,line width=.7pt},
 flow/.style={->,draw=blue!65!black,line width=1.15pt},
-heat/.style={->,draw=orange!85!black,line width=1.15pt},
+heat/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=orange!85!black,line width=1.05pt},
 heatboth/.style={<->,draw=orange!85!black,line width=1.15pt},
-measure/.style={->,draw=teal!70!black,line width=1.05pt},
+measure/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=teal!70!black,line width=1.05pt},
 digital/.style={->,draw=teal!70!black,line width=1pt,dashed},
 beam/.style={->,draw=red!70!black,line width=.65pt},
 dim/.style={<->,draw=ink!70,line width=.7pt},
@@ -14,26 +14,27 @@ wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/06-root-locus-art.png}{\def\equipmentart{figures/06-root-locus-art.png}}{\IfFileExists{../../laboratories/06-root-locus/figures/06-root-locus-art.png}{\def\equipmentart{../../laboratories/06-root-locus/figures/06-root-locus-art.png}}{\IfFileExists{../laboratories/06-root-locus/figures/06-root-locus-art.png}{\def\equipmentart{../laboratories/06-root-locus/figures/06-root-locus-art.png}}{\def\equipmentart{laboratories/06-root-locus/figures/06-root-locus-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Third-order positioning actuator};
-\draw[lead,draw=ink] (2.5,8.15)--(2.4,4.5);
+\node[lab,text=ink] (motorLabel) at (2.5,8.15) {Drive motor};
+\draw[lead,draw=ink,shorten <=3pt] (motorLabel.south)--(2.4,4.5);
 \fill[ink] (2.4,4.5) circle (.035);
-\node[lab,text=ink,text width=3cm] at (2.5,8.15) {Drive motor};
-\draw[lead,draw=ink] (6.1,8.15)--(6.2,4.65);
+\node[lab,text=ink] (screwLabel) at (6.1,8.15) {Lead screw};
+\draw[lead,draw=ink,shorten <=3pt] (screwLabel.south)--(6.2,4.65);
 \fill[ink] (6.2,4.65) circle (.035);
-\node[lab,text=ink,text width=2.7cm] at (6.1,8.15) {Lead screw};
-\draw[lead,draw=ink] (9.5,8.15)--(9.5,6.1);
-\fill[ink] (9.5,6.1) circle (.035);
-\node[lab,text=ink,text width=3.0cm] at (9.5,8.15) {Carriage / nut};
-\draw[lead,draw=teal!70!black] (12.5,1.15)--(9.95,2.95);
+\node[lab,text=ink] (carriageLabel) at (9.5,8.15) {Carriage / nut};
+% Terminate on the carriage frame, rather than on the transported payload.
+\draw[lead,draw=ink,shorten <=3pt] (carriageLabel.south east)--(11.15,6.05);
+\fill[ink] (11.15,6.05) circle (.035);
+\node[lab,text=teal!70!black] (readheadLabel) at (12.5,1.15) {Carriage-mounted readhead};
+\draw[lead,draw=teal!70!black,shorten <=3pt] (readheadLabel.north)--(9.95,2.95);
 \fill[teal!70!black] (9.95,2.95) circle (.035);
-\node[lab,text=teal!70!black,text width=4.4cm] at (12.5,1.15) {Carriage-mounted readhead};
-\draw[lead,draw=teal!70!black] (5.0,1.15)--(6.6,2.8);
+\node[lab,text=teal!70!black] (scaleLabel) at (5.0,1.15) {Fixed encoder scale};
+\draw[lead,draw=teal!70!black,shorten <=3pt] (scaleLabel.north)--(6.6,2.8);
 \fill[teal!70!black] (6.6,2.8) circle (.035);
-\node[lab,text=teal!70!black,text width=4.0cm] at (5.0,1.15) {Fixed encoder scale};
-\draw[heat] (0.2,4.6)--(.9,4.6);
-\node[lab,text=ink,text width=1cm] at (0.65,5.25) {$u$};
+\draw[heat] (0.16,4.6)--(.78,4.6);
+\node[lab,text=ink] at (0.48,5.08) {$u$};
 \draw[measure] (11.4,7.15)--(14.8,7.15);
-\node[lab,text=ink,text width=2.8cm] at (13.4,8.15) {Position $x$};
-\node[lab,text=ink,text width=12cm] at (7.5,0.25) {Normalized plant: $G(s)=1/[s(s+2)(s+6)]$};
+\node[lab,text=ink] at (13.4,8.15) {Position $x$};
+\node[lab,text=ink] at (8,0.25) {Normalized plant: $G(s)=1/[s(s+2)(s+6)]$};
 
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Command and readout}\\[3pt]Drive command $u$ and measured position $x$ form a normalized teaching interface.};
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Stipulated dynamics}\\[3pt]$G(s)=\dfrac{1}{s(s+2)(s+6)}$.\\One integrator and two stable lags determine the pole geometry.};

@@ -1,48 +1,50 @@
 % Style 2: raster equipment illustration with exact editable TikZ annotations.
 \begin{tikzpicture}[
 font=\sffamily\small,>=Latex,line cap=round,line join=round,
-lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner sep=3.5pt},
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner xsep=3pt,inner ysep=2.5pt},
 lead/.style={draw=ink!70,line width=.7pt},
-flow/.style={->,draw=blue!65!black,line width=1.15pt},
-heat/.style={->,draw=orange!85!black,line width=1.15pt},
+flow/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=cyan!55!blue!75!black,line width=1.05pt},
+heat/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=orange!75!black,line width=1.05pt},
 heatboth/.style={<->,draw=orange!85!black,line width=1.15pt},
-measure/.style={->,draw=teal!70!black,line width=1.05pt},
+measure/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=teal!70!black,line width=1.0pt},
 digital/.style={->,draw=teal!70!black,line width=1pt,dashed},
-beam/.style={->,draw=red!70!black,line width=.65pt},
-dim/.style={<->,draw=ink!70,line width=.7pt},
+beam/.style={-{Latex[length=1.6mm,width=1.0mm]},draw=red!70!black,line width=.65pt},
+dim/.style={{Latex[length=1.7mm,width=1.2mm]}-{Latex[length=1.7mm,width=1.2mm]},draw=ink!70,line width=.7pt},
 wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/03-vibration-isolation-art.png}{\def\equipmentart{figures/03-vibration-isolation-art.png}}{\IfFileExists{../../laboratories/03-vibration-isolation/figures/03-vibration-isolation-art.png}{\def\equipmentart{../../laboratories/03-vibration-isolation/figures/03-vibration-isolation-art.png}}{\IfFileExists{../laboratories/03-vibration-isolation/figures/03-vibration-isolation-art.png}{\def\equipmentart{../laboratories/03-vibration-isolation/figures/03-vibration-isolation-art.png}}{\def\equipmentart{laboratories/03-vibration-isolation/figures/03-vibration-isolation-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Precision platform under floor motion};
-\draw[lead,draw=ink] (4.6,8.2)--(5.0,6.5);
-\fill[ink] (5.0,6.5) circle (.035);
-\node[lab,text=ink,text width=3cm] at (4.6,8.2) {Optical source};
-\draw[lead,draw=ink] (11.5,8.2)--(11.3,6.5);
-\fill[ink] (11.3,6.5) circle (.035);
-\node[lab,text=ink,text width=2.5cm] at (11.5,8.2) {Detector};
-\draw[beam] (6.65,6.44)--(10.4,6.44);
-\draw[lead] (1.65,6.95)--(2.65,5.3);
-\fill[ink] (2.65,5.3) circle (.035);
-\node[lab,text=ink,text width=2.5cm] at (1.65,7.25) {Payload\\$m=8$ kg};
-\draw[lead,draw=ink] (2.1,3.45)--(3.6,3.5);
-\fill[ink] (3.6,3.5) circle (.035);
-\node[lab,text=ink,text width=1.1cm] at (2.1,3.45) {$k/2$};
-\draw[lead,draw=ink] (10.0,3.45)--(11.4,3.5);
-\fill[ink] (11.4,3.5) circle (.035);
-\node[lab,text=ink,text width=1.1cm] at (10.0,3.45) {$k/2$};
-\draw[lead,draw=ink] (8.0,3.65)--(5.5,3.4);
-\fill[ink] (5.5,3.4) circle (.035);
-\node[lab,text=ink,text width=2.2cm] at (8.0,3.65) {Damper $b$};
-\draw[measure] (15.4,5.0)--(15.4,6.3);
-\node[lab,text=ink,text width=.9cm] at (15.4,6.85) {$x(t)$};
-\draw[measure] (15.4,1.8)--(15.4,2.8);
-\node[lab,text=ink,text width=.9cm] at (15.4,3.3) {$z(t)$};
-\draw[dim] (13.5,2.2)--(13.5,4.9);
-\node[lab,text=ink,text width=1.0cm] at (12.75,4.25) {$x-z$};
+\node[lab,text=ink] (sourceLabel) at (4.6,8.2) {Optical source};
+\draw[lead,shorten <=3pt] (sourceLabel.south)--(5.0,6.5);
+\fill[ink] (5.0,6.5) circle (.028);
+\node[lab,text=ink] (detectorLabel) at (11.5,8.2) {Detector};
+\draw[lead,shorten <=3pt] (detectorLabel.south)--(11.3,6.5);
+\fill[ink] (11.3,6.5) circle (.028);
+% The optical ray enters the aperture without covering its rim with a large tip.
+\draw[beam] (6.68,6.44)--(10.35,6.44);
+\node[lab,text=ink] (payloadLabel) at (1.65,7.25) {Payload\\$m=8$ kg};
+\draw[lead,shorten <=3pt] (payloadLabel.south)--(3.0,5.20);
+\fill[ink] (3.0,5.20) circle (.028);
+\node[lab,text=ink] (springLeft) at (2.1,3.45) {$k/2$};
+\draw[lead,shorten <=3pt] (springLeft.east)--(3.6,3.5);
+\fill[ink] (3.6,3.5) circle (.028);
+\node[lab,text=ink] (springRight) at (10.0,3.45) {$k/2$};
+\draw[lead,shorten <=3pt] (springRight.east)--(11.4,3.5);
+\fill[ink] (11.4,3.5) circle (.028);
+\node[lab,text=ink] (damperLabel) at (8.0,3.65) {Damper $b$};
+\draw[lead,shorten <=3pt] (damperLabel.west)--(5.5,3.4);
+\fill[ink] (5.5,3.4) circle (.028);
+% Coordinate and dimension arrows occupy the clear space beside the apparatus.
+\draw[measure] (15.35,5.0)--(15.35,6.3);
+\node[lab,text=ink] at (15.35,6.80) {$x(t)$};
+\draw[measure] (15.35,1.8)--(15.35,2.8);
+\node[lab,text=ink] at (15.35,3.30) {$z(t)$};
+\draw[dim] (13.5,2.25)--(13.5,4.83);
+\node[lab,text=ink] at (12.75,4.25) {$\Delta\ell$};
 \draw[blue!65!black,domain=3:12,samples=100] plot(\x,{.9+.07*sin(320*\x)});
-\node[lab,text=ink,text width=12cm] at (8,0.35) {Moving floor; coordinates relative to static equilibrium};
+\node[lab,text=ink] at (8,0.35) {Moving floor; coordinates relative to static equilibrium};
 
-\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Measured coordinates}\\[3pt]$x,z$: absolute displacements [m].\\$x-z$: spring travel [m].\\$\dot x-\dot z$: damping velocity.};
+\node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Measured coordinates}\\[3pt]$x,z$: absolute displacements [m].\\$\Delta\ell=x-z$: spring travel [m].\\$\dot x-\dot z$: damping velocity.};
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Force balance}\\[3pt]$m\ddot x+b(\dot x-\dot z)$\\$\qquad+k(x-z)=0$.\\Two $k/2$ supports give total $k$.};
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(10.9,-.3){\textbf{Operating boundary}\\[3pt]Coordinates are deviations about static sag. The blue floor trace indicates motion; it is not a measured waveform.};
 \end{tikzpicture}

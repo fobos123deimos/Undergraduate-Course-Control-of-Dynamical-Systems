@@ -1,43 +1,47 @@
 % Style 2: raster equipment illustration with exact editable TikZ annotations.
+\definecolor{detailFlow}{RGB}{30,128,163}
+\definecolor{detailHeat}{RGB}{185,98,34}
 \begin{tikzpicture}[
 font=\sffamily\small,>=Latex,line cap=round,line join=round,
-lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner sep=3.5pt},
+lab/.style={align=center,font=\sffamily\small,fill=white,fill opacity=.94,text opacity=1,rounded corners=2pt,inner xsep=3pt,inner ysep=2.5pt},
 lead/.style={draw=ink!70,line width=.7pt},
-flow/.style={->,draw=blue!65!black,line width=1.15pt},
-heat/.style={->,draw=orange!85!black,line width=1.15pt},
+flow/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=detailFlow,line width=1.05pt},
+heat/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=detailHeat,line width=1.05pt},
 heatboth/.style={<->,draw=orange!85!black,line width=1.15pt},
 measure/.style={->,draw=teal!70!black,line width=1.05pt},
-digital/.style={->,draw=teal!70!black,line width=1pt,dashed},
+digital/.style={-{Latex[length=2.2mm,width=1.5mm]},draw=teal!70!black,line width=.95pt,dashed,rounded corners=3pt},
 beam/.style={->,draw=red!70!black,line width=.65pt},
-dim/.style={<->,draw=ink!70,line width=.7pt},
+dim/.style={{Latex[length=1.8mm,width=1.2mm]}-{Latex[length=1.8mm,width=1.2mm]},draw=ink!70,line width=.7pt},
 wire/.style={draw=ink,line width=1pt}]
 \IfFileExists{figures/interacting-tanks-art.png}{\def\equipmentart{figures/interacting-tanks-art.png}}{\IfFileExists{../../problem-sets/integrated-design/figures/interacting-tanks-art.png}{\def\equipmentart{../../problem-sets/integrated-design/figures/interacting-tanks-art.png}}{\IfFileExists{../problem-sets/integrated-design/figures/interacting-tanks-art.png}{\def\equipmentart{../problem-sets/integrated-design/figures/interacting-tanks-art.png}}{\def\equipmentart{problem-sets/integrated-design/figures/interacting-tanks-art.png}}}}
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=16cm,height=9cm]{\equipmentart}};
 
 \node[anchor=west,text=ink,font=\sffamily\bfseries\large] at (.2,9.38) {Interacting water tanks};
-\node[lab,text=blue!65!black,text width=2.5cm] (pump) at (1.75,8.25) {Pump inflow $q$};
-\draw[lead,draw=blue!65!black] (pump.south east)--(3.3,7.25);
-\fill[blue!65!black] (3.3,7.25) circle (.028);
-\node[lab,text=ink,text width=2.8cm] at (5.2,8.25) {Tank 1\\$A_1=0.02$ m$^2$};
-\node[lab,text=ink,text width=2.8cm] at (10.9,8.25) {Tank 2\\$A_2=0.03$ m$^2$};
-\node[lab,text=teal!70!black,text width=2.0cm] (sensor) at (14.6,6.5) {Level sensor\\$y=h_2$};
-\draw[lead,draw=teal!70!black] (sensor.south west)--(12.9,5.6);
+\node[lab,text=detailFlow] (pump) at (1.75,8.25) {Pump inflow $q$};
+\draw[lead,draw=detailFlow,shorten <=3pt] (pump.south east)--(3.3,7.25);
+\fill[detailFlow] (3.3,7.25) circle (.028);
+\node[lab,text=ink] at (5.2,8.25) {Tank 1\\$A_1=0.02$ m$^2$};
+\node[lab,text=ink] at (10.9,8.25) {Tank 2\\$A_2=0.03$ m$^2$};
+\node[lab,text=teal!70!black] (sensor) at (14.6,6.75) {Level sensor\\$y=h_2$};
+\draw[lead,draw=teal!70!black,shorten <=3pt] (sensor.south west)--(12.9,5.6);
 \fill[teal!70!black] (12.9,5.6) circle (.028);
 \draw[dim] (3.0,3.0)--(3.0,5.5);
 \draw[ink!50,line width=.6pt] (2.92,3.0)--(3.3,3.0) (2.92,5.5)--(3.4,5.5);
-\node[lab,text=ink,text width=.5cm,inner sep=2pt] at (2.6,4.45) {$h_1$};
+\node[lab,text=ink,inner sep=2pt] at (2.6,4.45) {$h_1$};
 \draw[dim] (14.0,3.0)--(14.0,4.45);
 \draw[ink!50,line width=.6pt] (13.65,3.0)--(14.08,3.0) (13.5,4.45)--(14.08,4.45);
-\node[lab,text=ink,text width=.5cm,inner sep=2pt] at (14.45,3.9) {$h_2$};
-\node[lab,text=ink,text width=1.35cm] (link) at (7.8,5.4) {Coupling\\$q_{12}$};
-\draw[lead] (link.south)--(8.25,4.35)--(8.25,3.1);
-\fill[ink] (8.25,3.1) circle (.028);
-\draw[flow] (5.1,6.85)--(5.1,5.75);
-\draw[flow] (6.95,3.0)--(8.7,3.0);
-\draw[flow] (14.1,2.85)--(15.25,2.85);
-\node[lab,text=ink,text width=2.5cm] (drain) at (14.4,.55) {Drain $q_2$};
-\draw[lead] (drain.north east)--(15.7,1.8)--(15.3,2.85);
-\node[lab,text=ink,text width=8.5cm,font=\sffamily\footnotesize] at (8.3,.55) {Open tanks; common hydraulic datum at the outlets};
+\node[lab,text=ink,inner sep=2pt] at (14.45,3.9) {$h_2$};
+\node[lab,text=ink] (link) at (7.8,5.4) {Coupling\\$q_{12}$};
+\draw[lead,shorten <=3pt,rounded corners=2pt] (link.south east)--(8.4,4.3)--(8.4,3.1);
+\fill[ink!70] (8.4,3.1) circle (.028);
+% The inflow arrow begins below the pipe mouth. Opaque pipes and the valve
+% remain uncovered; the coupling arrow runs parallel immediately beneath them.
+\draw[flow] (5.1,6.32)--(5.1,5.85);
+\draw[flow] (7.05,2.55)--(8.55,2.55);
+% Drain flow follows the downward outlet after leaving the metal nozzle.
+\draw[flow] (15.25,2.42)--(15.25,1.85);
+\node[lab,text=detailFlow] (drain) at (14.6,.9) {Drain $q_2$};
+\node[lab,text=ink,font=\sffamily\footnotesize] at (8.3,.55) {Open tanks; common hydraulic datum at the outlets};
 
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(0.2,-.3){\textbf{Two volume inventories}\\[3pt]$A_1\dot h_1=q-q_{12}$.\\$A_2\dot h_2=q_{12}-q_2$.\\Only tank 2 drains to the exterior.};
 \node[draw=ink!25,fill=blue!2,rounded corners=2pt,anchor=north west,text width=4.55cm,minimum height=1.9cm,inner sep=5pt,align=left,font=\sffamily\footnotesize]at(5.55,-.3){\textbf{Gravity-driven coupling}\\[3pt]$q_{12}=k_{12}\operatorname{sgn}(h_1-h_2)$\\$\qquad\cdot\sqrt{|h_1-h_2|}$.\\$q_2=k_2\sqrt{h_2}$.};
